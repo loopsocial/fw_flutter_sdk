@@ -49,6 +49,7 @@ samples, guidance on mobile development, and a full API reference.
         import io.flutter.plugin.common.MethodChannel.Result
         import io.flutter.plugin.common.PluginRegistry.Registrar
         import io.flutter.embedding.android.FlutterActivity
+        import io.flutter.embedding.android.FlutterFragmentActivity
         import io.flutter.embedding.engine.FlutterEngine
         import android.content.Context
         import android.content.ContextWrapper
@@ -58,14 +59,16 @@ samples, guidance on mobile development, and a full API reference.
         import android.os.Build.VERSION
         import android.os.Build.VERSION_CODES
 
-        private val CHANNEL = "com.exemplo.app_flutter/firework"
+        class MainActivity: FlutterFragmentActivity() {
+            private val CHANNEL = "com.exemplo.app_flutter/firework"
 
-        override fun configureFlutterEngine(@NonNull flutterEngine: FlutterEngine) {
-            super.configureFlutterEngine(flutterEngine)
-            MethodChannel(flutterEngine.dartExecutor.binaryMessenger, CHANNEL).setMethodCallHandler {
-                call, result ->
-                if (call.method == "getFirework") {
-                    setContentView(R.layout.firework);
+            override fun configureFlutterEngine(@NonNull flutterEngine: FlutterEngine) {
+                super.configureFlutterEngine(flutterEngine)
+                MethodChannel(flutterEngine.dartExecutor.binaryMessenger, CHANNEL).setMethodCallHandler {
+                    call, result ->
+                    if (call.method == "getFirework") {
+                        setContentView(R.layout.firework);
+                    }
                 }
             }
         }
