@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "853915632557",
+    "project_id": "firework-flutter-sdk-demo",
+    "storage_bucket": "firework-flutter-sdk-demo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:853915632557:android:a5ab25719f48f992d51724",
+        "android_client_info": {
+          "package_name": "com.loopnow.fondor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "853915632557-qq63tqbaj8ks9buoqo73fbsiaphb05k7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbDVpys9Z6wBw1n9NJERRR8pTaUyS7Khs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "853915632557-qq63tqbaj8ks9buoqo73fbsiaphb05k7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,115 @@
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader('UTF-8') { reader ->
+        localProperties.load(reader)
+    }
+}
+
+def flutterRoot = localProperties.getProperty('flutter.sdk')
+if (flutterRoot == null) {
+    throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
+}
+
+def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
+if (flutterVersionCode == null) {
+    flutterVersionCode = '1'
+}
+
+def flutterVersionName = localProperties.getProperty('flutter.versionName')
+if (flutterVersionName == null) {
+    flutterVersionName = '1.0'
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+
+/**
+ * env: PRODUCTION/STAGING
+ */
+def env = findProperty("FWENV")?:"PRODUCTION"
+
+/**
+ * appid
+ */
+def fw_appid_production = ""
+def fw_appid_staging = ""
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+
+    defaultConfig {
+        applicationId "com.loopnow.fondor"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 100008
+        versionName "1.0.0"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file('debug.keystore')
+            storePassword 'android'
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+        release {
+            storeFile rootProject.file('loop-release-key.keystore')
+            storePassword   'LoopMeIn!'
+            keyAlias        'dd-key-alias'
+            keyPassword     'LoopMeIn!'
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+
+    buildTypes {
+        // ./gradlew -v
+        // ./gradlew clean
+        // ./gradlew build --info
+        // ./gradlew build --profile
+        // ./gradlew build --info --debug --stacktrace
+        // ./gradlew clean build --refresh-dependencies
+        // ./gradlew assembleDebug
+        // ./gradlew installDebug
+        debug {
+            manifestPlaceholders = [fw_appid: env=="STAGING" ? fw_appid_staging : fw_appid_production]
+            signingConfig signingConfigs.release
+        }
+        release {
+            manifestPlaceholders = [fw_appid: env=="STAGING" ? fw_appid_staging : fw_appid_production]
+            signingConfig signingConfigs.release
+        }
+        profile {
+            manifestPlaceholders = [fw_appid: env=="STAGING" ? fw_appid_staging : fw_appid_production]
+            signingConfig signingConfigs.release
+        }
+    }
+}
+
+flutter {
+    source '../..'
+}
+
+dependencies {
+}
+
+apply from: 'google.gradle'
+apply from: 'version.gradle'
+apply from: 'firework.gradle'
