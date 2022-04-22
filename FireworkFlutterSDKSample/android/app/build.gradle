@@ -43,7 +43,7 @@ android {
         applicationId "com.loopnow.fondor"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 100008
+        versionCode 100011
         versionName "1.0.0"
     }
 
