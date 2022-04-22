@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Theme applied to the Android Window while the process is starting when the OS's Dark Mode setting is off -->
+    <style name="LaunchTheme" parent="@android:style/Theme.Light.NoTitleBar">
+        <!-- Show a splash screen on the activity. Automatically removed when
+             Flutter draws its first frame -->
+        <item name="android:windowBackground">@drawable/launch_background</item>
+    </style>
+    <!-- Theme applied to the Android Window as soon as the process has started.
+         This theme determines the color of the Android Window while your
+         Flutter UI initializes, as well as behind your Flutter UI while its
+         running.
+         
+         This Theme is only used starting with V2 of Flutter's Android embedding. -->
+    <style name="NormalTheme" parent="@android:style/Theme.Light.NoTitleBar">
+        <item name="android:windowBackground">?android:colorBackground</item>
+    </style>
+
+    <!--  Apply your feed image by "FWFeedViewImageStyle" style.-->
+    <style name="FWFeedViewImageStyle" >
+        <item name="android:radius">12dp</item>
+    </style>
+
+    <!--  Apply your feed caption by "FWFeedViewCaptionStyle" style.-->
+    <style name="FWFeedViewCaptionStyle">
+        <item name="android:textColor">#ffffffff</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:gravity">top</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:background">#80000000</item>
+    </style>
+
+    <!--  Apply your play button by "FWPlayButtonStyle" style.-->
+    <style name="FWPlayButtonStyle" >
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:src">@drawable/fw_play_icon</item>
+    </style>
+
+    <!--  Apply your custom CTA button background by "FWCtaButtonBgStyle" style.-->
+    <style name="FWCtaButtonBgStyle">
+        <item name="android:background">@drawable/fw_cta_bg_primary</item>
+    </style>
+
+    <!--  Apply your custom CTA button title by "FWCtaButtonLabelStyle" style.-->
+    <style name="FWCtaButtonLabelStyle">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#ffff6622</item>
+    </style>
+
+    <!--  Apply your custom "Add to cart" button by "FWAddToCartButtonStyle" style.-->
+    <style name="FWAddToCartButtonStyle">
+        <item name="android:background">@drawable/fw_add_to_cart_button</item>
+        <item name="android:textColor">#ffffffff</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <!--  Apply your feed custom "ad badge" Label by "FwAdBadgeOnFeedStyle" style.-->
+    <style name="FwAdBadgeOnFeedStyle">
+        <item name="android:background">@null</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/fw_font_size_14</item>
+    </style>
+
+    <!--  Apply your player custom "ad badge" Label by "FwAdBadgeOnPlayerStyle" style.-->
+    <style name="FwAdBadgeOnPlayerStyle" >
+        <item name="android:background">@null</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/fw_font_size_16</item>
+    </style>
+</resources>
