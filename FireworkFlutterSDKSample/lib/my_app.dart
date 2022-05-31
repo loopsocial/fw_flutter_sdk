@@ -29,7 +29,7 @@ class _MyAppState extends State<MyApp> {
 
     _registerCallbacks();
     FWExampleLoggerUtil.log(
-        "window.defaultRouteName ${window.defaultRouteName}");
+        "window.defaultRouteName ${window.defaultRouteName} _MyAppState initState");
     if (window.defaultRouteName == "/") {
       FireworkSDK.getInstance().init();
     }
@@ -39,10 +39,6 @@ class _MyAppState extends State<MyApp> {
     FireworkSDK.getInstance().onSDKInit = (event) {
       event.logMessage();
     };
-
-    // FireworkSDK.getInstance().onCustomCTAClick = (event) {
-    //   event?.logMessage();
-    // };
 
     // FireworkSDK.getInstance().onVideoPlayback = (event) {
     //   event?.logMessage();
@@ -94,8 +90,22 @@ class _MyAppState extends State<MyApp> {
         ],
         supportedLocales: S.delegate.supportedLocales,
         onGenerateRoute: (RouteSettings settings) {
-          final factory = routeMap[settings.name];
-          return factory?.call(settings);
+          if (settings.name != null) {
+            FWExampleLoggerUtil.log(
+                "window.defaultRouteName ${window.defaultRouteName} onGenerateRoute settings.name ${settings.name}");
+            final uri = Uri.parse(settings.name!);
+            // indicate this is a new container if the path starts with new_native_container
+            bool isNewContainer = uri.path.startsWith("new_native_container");
+            // remove custom prefix(new_native_container) of the page name
+            final pageName =
+                uri.path.replaceAll(RegExp(r"^new_native_container"), "");
+            FWExampleLoggerUtil.log(
+                "window.defaultRouteName ${window.defaultRouteName} pageName $pageName");
+            final factory = routeMap[pageName];
+            return factory?.call(settings, isNewContainer);
+          }
+
+          return null;
         },
         builder: EasyLoading.init(),
       ),

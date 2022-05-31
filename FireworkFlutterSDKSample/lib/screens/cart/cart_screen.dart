@@ -10,7 +10,12 @@ import '../../utils/host_app_shopping_service.dart';
 import '../../widgets/fw_app_bar.dart';
 
 class CartScreen extends StatefulWidget {
-  const CartScreen({Key? key}) : super(key: key);
+  final bool? isNewContainer;
+
+  const CartScreen({
+    Key? key,
+    this.isNewContainer,
+  }) : super(key: key);
 
   @override
   _CartScreenState createState() => _CartScreenState();
@@ -56,6 +61,7 @@ class _CartScreenState extends State<CartScreen> {
       appBar: fwAppBar(
         context: context,
         titleText: S.of(context).cartPage,
+        isNewContainer: widget.isNewContainer,
       ),
       body: CartWidget(
         cartItemList: _cartItemList,

@@ -166,6 +166,7 @@ class _FeedScreenState extends State<FeedScreen> {
     String? channel;
     String? playlist;
     String? playlistGroup;
+    Map<String, List<String>>? dynamicContentParameters;
 
     if (widget.settings.arguments is Map<dynamic, dynamic>) {
       final arg = widget.settings.arguments as Map<dynamic, dynamic>;
@@ -185,13 +186,23 @@ class _FeedScreenState extends State<FeedScreen> {
       if (arg["playlistGroup"] is String) {
         playlistGroup = arg["playlistGroup"] as String;
       }
+
+      if (arg["dynamicContentParameters"] is Map<String, List<String>>) {
+        dynamicContentParameters =
+            arg["dynamicContentParameters"] as Map<String, List<String>>;
+      }
     }
+    FWExampleLoggerUtil.log("_FeedScreenState source $source");
+    FWExampleLoggerUtil.log("_FeedScreenState channel $channel");
+    FWExampleLoggerUtil.log(
+        "_FeedScreenState dynamicContentParameters $dynamicContentParameters");
     final feedWidget = VideoFeed(
       height: 200,
       source: source,
       channel: channel,
       playlist: playlist,
       playlistGroup: playlistGroup,
+      dynamicContentParameters: dynamicContentParameters,
       mode: _mode,
       videoFeedConfiguration: feedConfiguration,
       videoPlayerConfiguration: playerConfiguration,

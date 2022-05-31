@@ -75,6 +75,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("e.g. #c0c0c0"),
         "ctaFontHint": MessageLookupByLibrary.simpleMessage("e.g. 14"),
         "ctaFontSize": MessageLookupByLibrary.simpleMessage("CTA font size"),
+        "ctaLinkContentScreenTitle": MessageLookupByLibrary.simpleMessage(
+            "CTA Link Content(Flutter page)"),
         "ctaTextColor": MessageLookupByLibrary.simpleMessage("CTA text color"),
         "ctaTextColorHint":
             MessageLookupByLibrary.simpleMessage("e.g. #000000"),
@@ -82,7 +84,31 @@ class MessageLookup extends MessageLookupByLibrary {
         "custom": MessageLookupByLibrary.simpleMessage("Custom"),
         "defaultBehavior":
             MessageLookupByLibrary.simpleMessage("defaultBehavior"),
+        "disableCustomCTAClickCallbackSuccessfully":
+            MessageLookupByLibrary.simpleMessage(
+                "Disable custom CTA click callback successfully"),
         "discoverFeed": MessageLookupByLibrary.simpleMessage("Discover Feed"),
+        "dynamicContentFeed":
+            MessageLookupByLibrary.simpleMessage("Dynamic Content Feed"),
+        "dynamicContentInfo":
+            MessageLookupByLibrary.simpleMessage("Dynamic Content Info"),
+        "dynamicContentParameters":
+            MessageLookupByLibrary.simpleMessage("Dynamic Content Parameters"),
+        "dynamicContentParametersFormatError":
+            MessageLookupByLibrary.simpleMessage(
+                "Please enter correct dynamic content parameters"),
+        "dynamicContentParametersHint": MessageLookupByLibrary.simpleMessage(
+            "e.g. {\"key\": [\"value1\", \"value2\"]}"),
+        "dynamicContentParametersRequiredError":
+            MessageLookupByLibrary.simpleMessage(
+                "Please enter dynamic content parameters"),
+        "enableCustomCTAClickCallback": MessageLookupByLibrary.simpleMessage(
+            "Enable Custom CTA Click Callback"),
+        "enableCustomCTAClickCallbackSuccessfully":
+            MessageLookupByLibrary.simpleMessage(
+                "Enable custom CTA click callback successfully"),
+        "enableCustomLayoutName": MessageLookupByLibrary.simpleMessage(
+            "Enable Custom Layout Name(Android)"),
         "feed": MessageLookupByLibrary.simpleMessage("Feed"),
         "feedConfiguration":
             MessageLookupByLibrary.simpleMessage("Feed Configuration"),
@@ -143,6 +169,14 @@ class MessageLookup extends MessageLookupByLibrary {
             "Do you want to reset to default configuration?"),
         "row": MessageLookupByLibrary.simpleMessage("Row"),
         "save": MessageLookupByLibrary.simpleMessage("Save"),
+        "selectChannelId":
+            MessageLookupByLibrary.simpleMessage("Select Channel Id"),
+        "selectDynamicContentInfo":
+            MessageLookupByLibrary.simpleMessage("Select Dynamic Content Info"),
+        "selectPlaylistGroupId":
+            MessageLookupByLibrary.simpleMessage("Select Playlist Group Id"),
+        "selectPlaylistInfo":
+            MessageLookupByLibrary.simpleMessage("Select Playlist Info"),
         "setAdBadgeConfiguration":
             MessageLookupByLibrary.simpleMessage("Set Ad Badge Configuration"),
         "setAdBadgeConfigurationSuccessfully":

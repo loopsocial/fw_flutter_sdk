@@ -1209,6 +1209,156 @@ class S {
       args: [],
     );
   }
+
+  /// `CTA Link Content(Flutter page)`
+  String get ctaLinkContentScreenTitle {
+    return Intl.message(
+      'CTA Link Content(Flutter page)',
+      name: 'ctaLinkContentScreenTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enable Custom CTA Click Callback`
+  String get enableCustomCTAClickCallback {
+    return Intl.message(
+      'Enable Custom CTA Click Callback',
+      name: 'enableCustomCTAClickCallback',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enable custom CTA click callback successfully`
+  String get enableCustomCTAClickCallbackSuccessfully {
+    return Intl.message(
+      'Enable custom CTA click callback successfully',
+      name: 'enableCustomCTAClickCallbackSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Disable custom CTA click callback successfully`
+  String get disableCustomCTAClickCallbackSuccessfully {
+    return Intl.message(
+      'Disable custom CTA click callback successfully',
+      name: 'disableCustomCTAClickCallbackSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dynamic Content Feed`
+  String get dynamicContentFeed {
+    return Intl.message(
+      'Dynamic Content Feed',
+      name: 'dynamicContentFeed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dynamic Content Info`
+  String get dynamicContentInfo {
+    return Intl.message(
+      'Dynamic Content Info',
+      name: 'dynamicContentInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dynamic Content Parameters`
+  String get dynamicContentParameters {
+    return Intl.message(
+      'Dynamic Content Parameters',
+      name: 'dynamicContentParameters',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `e.g. {"key": ["value1", "value2"]}`
+  String get dynamicContentParametersHint {
+    return Intl.message(
+      'e.g. {"key": ["value1", "value2"]}',
+      name: 'dynamicContentParametersHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter dynamic content parameters`
+  String get dynamicContentParametersRequiredError {
+    return Intl.message(
+      'Please enter dynamic content parameters',
+      name: 'dynamicContentParametersRequiredError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter correct dynamic content parameters`
+  String get dynamicContentParametersFormatError {
+    return Intl.message(
+      'Please enter correct dynamic content parameters',
+      name: 'dynamicContentParametersFormatError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Channel Id`
+  String get selectChannelId {
+    return Intl.message(
+      'Select Channel Id',
+      name: 'selectChannelId',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Playlist Info`
+  String get selectPlaylistInfo {
+    return Intl.message(
+      'Select Playlist Info',
+      name: 'selectPlaylistInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Playlist Group Id`
+  String get selectPlaylistGroupId {
+    return Intl.message(
+      'Select Playlist Group Id',
+      name: 'selectPlaylistGroupId',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Dynamic Content Info`
+  String get selectDynamicContentInfo {
+    return Intl.message(
+      'Select Dynamic Content Info',
+      name: 'selectDynamicContentInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enable Custom Layout Name(Android)`
+  String get enableCustomLayoutName {
+    return Intl.message(
+      'Enable Custom Layout Name(Android)',
+      name: 'enableCustomLayoutName',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -29,7 +29,7 @@
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>FireworkVideoAppID</key>
-	<string></string>
+	<string>a88f229debf60f9299816075b80b6071fe9e84a593aa3b223d47010328951826</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSBonjourServices</key>
