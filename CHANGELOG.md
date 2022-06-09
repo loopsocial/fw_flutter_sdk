@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## [1.1.0]
+
+### Added
+
+- Add a new video feed source: `dynamicContent`
+- Support for navigating from native page to Flutter page
+
+### Breaking Changes
+
+- Remove `AdConfig` class 
+- Remove `adConfig` parameter from `init` method of `FireworkSDK` class
+- Remove `exitCartPage` method from `VideoShopping` classs
+
 ## [1.1.0-beta.1]
 
 - Firework Flutter SDK beta release
