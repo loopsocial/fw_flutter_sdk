@@ -54,7 +54,6 @@ import fw_flutter_sdk
             // Used to connect plugins
             GeneratedPluginRegistrant.register(with: engine)
             let flutterVC = FlutterViewController(engine: engine, nibName: nil, bundle: nil)
-            flutterVC.modalPresentationStyle = .fullScreen
             return flutterVC
         }
 

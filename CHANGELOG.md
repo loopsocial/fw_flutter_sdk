@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## [1.1.1]
+
+### Added
+
+- Add `canPopNativeContainer` method in `FWNavigator` class
+- Add new properties in `FeedItemDetails` class
+
+### Changed
+
+- `popNativeContainer` method also can pop the video or live stream player
+
 ## [1.1.0]
 
 ### Added
