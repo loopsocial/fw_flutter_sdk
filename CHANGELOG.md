@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## [1.2.0-beta.1]
+
+- Firework Flutter SDK beta release
+
 ## [1.1.1]
 
 ### Added
