@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## [1.2.0-beta.4]
+
+- Firework Flutter SDK beta release
+
 ## [1.2.0-beta.3]
 
 - Firework Flutter SDK beta release
