@@ -5,7 +5,7 @@ import android.content.Context
 import android.os.Bundle
 import com.fireworksdk.bridge.flutter.FireworkFlutterSdkPlugin
 import com.fireworksdk.bridge.flutter.models.FWFlutterFragmentDelegate
-import com.fireworksdk.bridge.utils.FWGsonUtil
+import com.fireworksdk.bridge.utils.FWJsonUtils
 import io.flutter.embedding.android.FlutterFragment
 import io.flutter.embedding.android.FlutterFragmentActivity
 import io.flutter.embedding.engine.FlutterEngineCache
@@ -89,7 +89,7 @@ class MainActivity: FlutterFragmentActivity() {
 
                 val pageName = map["pageName"] as String
                 val parameters = map["parameters"] as Map<String, String>
-                val encodeParameters = URLEncoder.encode(FWGsonUtil.toJson(parameters), "UTF-8")
+                val encodeParameters = URLEncoder.encode(FWJsonUtils.toJson(parameters), "UTF-8")
                 val initialRoute = "${pageName}?parameters=${encodeParameters}"
 
                 createEngineContainer(activity, initialRoute)

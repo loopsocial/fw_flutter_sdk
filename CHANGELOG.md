@@ -1,24 +1,10 @@
 # CHANGELOG
 
-## [1.2.0-beta.5]
+## [1.1.2]
 
-- Firework Flutter SDK beta release
+### Added
 
-## [1.2.0-beta.4]
-
-- Firework Flutter SDK beta release
-
-## [1.2.0-beta.3]
-
-- Firework Flutter SDK beta release
-
-## [1.2.0-beta.2]
-
-- Firework Flutter SDK beta release
-
-## [1.2.0-beta.1]
-
-- Firework Flutter SDK beta release
+- Add new properties in `VideoFeedConfiguration` class
 
 ## [1.1.1]
 

@@ -57,6 +57,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Please enter channel id"),
         "channelInfo": MessageLookupByLibrary.simpleMessage("Channel Info"),
         "checkout": MessageLookupByLibrary.simpleMessage("CHECKOUT"),
+        "circleThumbnails":
+            MessageLookupByLibrary.simpleMessage("Circle Thumbnails(iOS)"),
         "city": MessageLookupByLibrary.simpleMessage("City"),
         "colorError":
             MessageLookupByLibrary.simpleMessage("Please enter correct color"),

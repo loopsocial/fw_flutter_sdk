@@ -129,5 +129,6 @@
   "selectPlaylistInfo": "Select Playlist Info",
   "selectPlaylistGroupId": "Select Playlist Group Id",
   "selectDynamicContentInfo": "Select Dynamic Content Info",
-  "enableCustomLayoutName": "Enable Custom Layout Name(Android)"
+  "enableCustomLayoutName": "Enable Custom Layout Name(Android)",
+  "circleThumbnails": "Circle Thumbnails(iOS)"
 }

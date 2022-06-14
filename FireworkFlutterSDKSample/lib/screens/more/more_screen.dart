@@ -52,6 +52,13 @@ class _MoreScreenState extends State<MoreScreen> {
                     .pushNamed("/enable_custom_cta_click_callback");
               },
             ),
+            _buildItem(
+              context: context,
+              title: S.of(context).circleThumbnails,
+              onTap: () {
+                Navigator.of(context).pushNamed("/circle_thumbnails");
+              },
+            ),
           ],
         ),
       ),

@@ -1359,6 +1359,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Circle Thumbnails(iOS)`
+  String get circleThumbnails {
+    return Intl.message(
+      'Circle Thumbnails(iOS)',
+      name: 'circleThumbnails',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
