@@ -1,5 +1,35 @@
 # CHANGELOG
 
+## [1.2.0]
+
+### Added
+
+- Support for RTL and Arabic translations
+- Support for autoplay video in thumbnails
+- Add `imageUrl` and `options` to `ProductUnit` class
+- Add `gridColumns` to `VideoFeedConfiguration` class
+- Add `onCustomClickCartIcon` callback in `VideoShopping` class
+
+## [1.2.0-beta.5]
+
+- Firework Flutter SDK beta release
+
+## [1.2.0-beta.4]
+
+- Firework Flutter SDK beta release
+
+## [1.2.0-beta.3]
+
+- Firework Flutter SDK beta release
+
+## [1.2.0-beta.2]
+
+- Firework Flutter SDK beta release
+
+## [1.2.0-beta.1]
+
+- Firework Flutter SDK beta release
+
 ## [1.1.3]
 
 ### Added

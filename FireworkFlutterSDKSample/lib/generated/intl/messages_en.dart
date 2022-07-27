@@ -89,6 +89,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "disableCustomCTAClickCallbackSuccessfully":
             MessageLookupByLibrary.simpleMessage(
                 "Disable custom CTA click callback successfully"),
+        "disableCustomClickCartIconCallbackSuccessfully":
+            MessageLookupByLibrary.simpleMessage(
+                "Disable custom click cart icon callback successfully"),
         "discoverFeed": MessageLookupByLibrary.simpleMessage("Discover Feed"),
         "dynamicContentFeed":
             MessageLookupByLibrary.simpleMessage("Dynamic Content Feed"),
@@ -104,11 +107,19 @@ class MessageLookup extends MessageLookupByLibrary {
         "dynamicContentParametersRequiredError":
             MessageLookupByLibrary.simpleMessage(
                 "Please enter dynamic content parameters"),
+        "enableAutoplay":
+            MessageLookupByLibrary.simpleMessage("Enable Autoplay"),
         "enableCustomCTAClickCallback": MessageLookupByLibrary.simpleMessage(
             "Enable Custom CTA Click Callback"),
         "enableCustomCTAClickCallbackSuccessfully":
             MessageLookupByLibrary.simpleMessage(
                 "Enable custom CTA click callback successfully"),
+        "enableCustomClickCartIconCallback":
+            MessageLookupByLibrary.simpleMessage(
+                "Enable Custom Click Cart Icon Callback"),
+        "enableCustomClickCartIconCallbackSuccessfully":
+            MessageLookupByLibrary.simpleMessage(
+                "Enable custom click cart icon callback successfully"),
         "enableCustomLayoutName": MessageLookupByLibrary.simpleMessage(
             "Enable Custom Layout Name(Android)"),
         "feed": MessageLookupByLibrary.simpleMessage("Feed"),

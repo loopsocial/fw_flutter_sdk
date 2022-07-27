@@ -13,7 +13,10 @@ ShopifyProductVariant _$ShopifyProductVariantFromJson(
     )
       ..title = json['title'] as String?
       ..image = json['image'] as Map<String, dynamic>?
-      ..priceV2 = json['priceV2'] as Map<String, dynamic>?;
+      ..priceV2 = json['priceV2'] as Map<String, dynamic>?
+      ..selectedOptions = (json['selectedOptions'] as List<dynamic>?)
+          ?.map((e) => e as Map<String, dynamic>)
+          .toList();
 
 Map<String, dynamic> _$ShopifyProductVariantToJson(
         ShopifyProductVariant instance) =>
@@ -22,4 +25,5 @@ Map<String, dynamic> _$ShopifyProductVariantToJson(
       'title': instance.title,
       'image': instance.image,
       'priceV2': instance.priceV2,
+      'selectedOptions': instance.selectedOptions,
     };

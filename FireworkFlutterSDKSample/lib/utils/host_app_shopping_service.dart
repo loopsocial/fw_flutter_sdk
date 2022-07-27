@@ -77,8 +77,8 @@ class HostAppShoppingService {
 
       if (variant.image != null) {
         final image = variant.image!;
-        if (image["originalSrc"] is String) {
-          cartItem.imageURL = image["originalSrc"] as String;
+        if (image["src"] is String) {
+          cartItem.imageURL = image["src"] as String;
         }
       }
       await addCartItem(cartItem);
@@ -116,9 +116,10 @@ class HostAppShoppingService {
 
         if (shopifyProduct.variants != null) {
           product.units = shopifyProduct.variants!.map((shopifyProductVariant) {
+            final unitId = ShopifyClient.getInstance()
+                .decodeId(shopifyProductVariant.encodedId);
             final unit = ProductUnit(
-              unitId: ShopifyClient.getInstance()
-                  .decodeId(shopifyProductVariant.encodedId),
+              unitId: unitId,
               name: shopifyProductVariant.title,
             );
             if (shopifyProductVariant.priceV2 != null) {

@@ -1369,6 +1369,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Enable Autoplay`
+  String get enableAutoplay {
+    return Intl.message(
+      'Enable Autoplay',
+      name: 'enableAutoplay',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enable Custom Click Cart Icon Callback`
+  String get enableCustomClickCartIconCallback {
+    return Intl.message(
+      'Enable Custom Click Cart Icon Callback',
+      name: 'enableCustomClickCartIconCallback',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enable custom click cart icon callback successfully`
+  String get enableCustomClickCartIconCallbackSuccessfully {
+    return Intl.message(
+      'Enable custom click cart icon callback successfully',
+      name: 'enableCustomClickCartIconCallbackSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Disable custom click cart icon callback successfully`
+  String get disableCustomClickCartIconCallbackSuccessfully {
+    return Intl.message(
+      'Disable custom click cart icon callback successfully',
+      name: 'disableCustomClickCartIconCallbackSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
@@ -1377,6 +1417,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
   List<Locale> get supportedLocales {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
+      Locale.fromSubtags(languageCode: 'ar'),
     ];
   }
 

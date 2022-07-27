@@ -130,5 +130,9 @@
   "selectPlaylistGroupId": "Select Playlist Group Id",
   "selectDynamicContentInfo": "Select Dynamic Content Info",
   "enableCustomLayoutName": "Enable Custom Layout Name(Android)",
-  "circleThumbnails": "Circle Thumbnails(iOS)"
+  "circleThumbnails": "Circle Thumbnails(iOS)",
+  "enableAutoplay": "Enable Autoplay",
+  "enableCustomClickCartIconCallback": "Enable Custom Click Cart Icon Callback",
+  "enableCustomClickCartIconCallbackSuccessfully": "Enable custom click cart icon callback successfully",
+  "disableCustomClickCartIconCallbackSuccessfully": "Disable custom click cart icon callback successfully"
 }

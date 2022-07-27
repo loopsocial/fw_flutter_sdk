@@ -15,6 +15,9 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'extensions/fw_events_extensions.dart';
 import 'generated/l10n.dart';
 
+final GlobalKey<NavigatorState> globalNavigatorKey =
+    GlobalKey<NavigatorState>();
+
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -82,6 +85,7 @@ class _MyAppState extends State<MyApp> {
         ),
       ],
       child: MaterialApp(
+        navigatorKey: globalNavigatorKey,
         localizationsDelegates: const [
           S.delegate,
           GlobalMaterialLocalizations.delegate,

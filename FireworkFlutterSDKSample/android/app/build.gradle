@@ -47,8 +47,8 @@ android {
         applicationId "com.loopnow.fondor"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 101002
-        versionName "1.1.0"
+        versionCode 102005
+        versionName "1.2.0"
     }
 
     compileOptions {
@@ -115,5 +115,4 @@ dependencies {
 }
 
 apply from: 'google.gradle'
-apply from: 'version.gradle'
 apply from: 'firework.gradle'

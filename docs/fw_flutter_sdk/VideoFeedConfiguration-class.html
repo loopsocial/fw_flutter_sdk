@@ -58,7 +58,7 @@
 
       <dl class="constructor-summary-list">
         <dt id="VideoFeedConfiguration" class="callable">
-          <span class="name"><a href="../fw_flutter_sdk/VideoFeedConfiguration/VideoFeedConfiguration.html">VideoFeedConfiguration</a></span><span class="signature">(<span class="parameter" id="-param-backgroundColor">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">backgroundColor</span>, </span><span class="parameter" id="-param-cornerRadius"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">cornerRadius</span>, </span><span class="parameter" id="-param-title"><span class="type-annotation"><a href="../fw_flutter_sdk/VideoFeedTitleConfiguration-class.html">VideoFeedTitleConfiguration</a>?</span> <span class="parameter-name">title</span>, </span><span class="parameter" id="-param-titlePosition"><span class="type-annotation"><a href="../fw_flutter_sdk/VideoFeedTitlePosition.html">VideoFeedTitlePosition</a>?</span> <span class="parameter-name">titlePosition</span>, </span><span class="parameter" id="-param-playIcon"><span class="type-annotation"><a href="../fw_flutter_sdk/VideoFeedPlayIconConfiguration-class.html">VideoFeedPlayIconConfiguration</a>?</span> <span class="parameter-name">playIcon</span>, </span><span class="parameter" id="-param-showAdBadge"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">showAdBadge</span>, </span><span class="parameter" id="-param-customLayoutName"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">customLayoutName</span>, </span><span class="parameter" id="-param-aspectRatio"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">aspectRatio</span>, </span><span class="parameter" id="-param-contentPadding"><span class="type-annotation"><a href="../fw_flutter_sdk/VideoFeedContentPadding-class.html">VideoFeedContentPadding</a>?</span> <span class="parameter-name">contentPadding</span>, </span><span class="parameter" id="-param-itemSpacing"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">itemSpacing</span>}</span>)</span>
+          <span class="name"><a href="../fw_flutter_sdk/VideoFeedConfiguration/VideoFeedConfiguration.html">VideoFeedConfiguration</a></span><span class="signature">(<span class="parameter" id="-param-backgroundColor">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">backgroundColor</span>, </span><span class="parameter" id="-param-cornerRadius"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">cornerRadius</span>, </span><span class="parameter" id="-param-title"><span class="type-annotation"><a href="../fw_flutter_sdk/VideoFeedTitleConfiguration-class.html">VideoFeedTitleConfiguration</a>?</span> <span class="parameter-name">title</span>, </span><span class="parameter" id="-param-titlePosition"><span class="type-annotation"><a href="../fw_flutter_sdk/VideoFeedTitlePosition.html">VideoFeedTitlePosition</a>?</span> <span class="parameter-name">titlePosition</span>, </span><span class="parameter" id="-param-playIcon"><span class="type-annotation"><a href="../fw_flutter_sdk/VideoFeedPlayIconConfiguration-class.html">VideoFeedPlayIconConfiguration</a>?</span> <span class="parameter-name">playIcon</span>, </span><span class="parameter" id="-param-showAdBadge"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">showAdBadge</span>, </span><span class="parameter" id="-param-customLayoutName"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">customLayoutName</span>, </span><span class="parameter" id="-param-aspectRatio"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">aspectRatio</span>, </span><span class="parameter" id="-param-contentPadding"><span class="type-annotation"><a href="../fw_flutter_sdk/VideoFeedContentPadding-class.html">VideoFeedContentPadding</a>?</span> <span class="parameter-name">contentPadding</span>, </span><span class="parameter" id="-param-itemSpacing"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">itemSpacing</span>, </span><span class="parameter" id="-param-enableAutoplay"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">enableAutoplay</span>, </span><span class="parameter" id="-param-gridColumns"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">gridColumns</span>}</span>)</span>
         </dt>
         <dd>
            
@@ -121,6 +121,30 @@
 </dt>
 <dd>
   Custom layout name for video feed item. Only supported on Android. 
+  <div class="features">read / write</div>
+
+</dd>
+
+        <dt id="enableAutoplay" class="property">
+  <span class="name"><a href="../fw_flutter_sdk/VideoFeedConfiguration/enableAutoplay.html">enableAutoplay</a></span>
+  <span class="signature">&#8596; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> 
+
+</dt>
+<dd>
+  Specifies if autoplay is enabled. 
+  <div class="features">read / write</div>
+
+</dd>
+
+        <dt id="gridColumns" class="property">
+  <span class="name"><a href="../fw_flutter_sdk/VideoFeedConfiguration/gridColumns.html">gridColumns</a></span>
+  <span class="signature">&#8596; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> 
+
+</dt>
+<dd>
+  The number of feed items to be displayed per row.
+The property only takes effect when video feed mode is grid.
+The property value needs to be greater than 0. 
   <div class="features">read / write</div>
 
 </dd>
@@ -298,6 +322,7 @@
   <li><a href="../fw_flutter_sdk/ProductInfoViewConfiguration-class.html">ProductInfoViewConfiguration</a></li>
   <li><a href="../fw_flutter_sdk/ProductPrice-class.html">ProductPrice</a></li>
   <li><a href="../fw_flutter_sdk/ProductUnit-class.html">ProductUnit</a></li>
+  <li><a href="../fw_flutter_sdk/ProductUnitOption-class.html">ProductUnitOption</a></li>
   <li><a href="../fw_flutter_sdk/SDKInitEvent-class.html">SDKInitEvent</a></li>
   <li><a href="../fw_flutter_sdk/UpdateProductDetailsEvent-class.html">UpdateProductDetailsEvent</a></li>
   <li><a href="../fw_flutter_sdk/VideoFeed-class.html">VideoFeed</a></li>
@@ -335,6 +360,7 @@
 
   <li class="section-title"><a href="../fw_flutter_sdk/fw_flutter_sdk-library.html#typedefs">Typedefs</a></li>
   <li><a href="../fw_flutter_sdk/AddToCartCallback.html">AddToCartCallback</a></li>
+  <li><a href="../fw_flutter_sdk/CustomClickCartIconCallback.html">CustomClickCartIconCallback</a></li>
   <li><a href="../fw_flutter_sdk/CustomCTAClickCallback.html">CustomCTAClickCallback</a></li>
   <li><a href="../fw_flutter_sdk/OnLiveStreamChatEventCallback.html">OnLiveStreamChatEventCallback</a></li>
   <li><a href="../fw_flutter_sdk/OnLiveStreamEventCallback.html">OnLiveStreamEventCallback</a></li>
@@ -365,6 +391,8 @@
     <li><a href="../fw_flutter_sdk/VideoFeedConfiguration/contentPadding.html">contentPadding</a></li>
     <li><a href="../fw_flutter_sdk/VideoFeedConfiguration/cornerRadius.html">cornerRadius</a></li>
     <li><a href="../fw_flutter_sdk/VideoFeedConfiguration/customLayoutName.html">customLayoutName</a></li>
+    <li><a href="../fw_flutter_sdk/VideoFeedConfiguration/enableAutoplay.html">enableAutoplay</a></li>
+    <li><a href="../fw_flutter_sdk/VideoFeedConfiguration/gridColumns.html">gridColumns</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
     <li><a href="../fw_flutter_sdk/VideoFeedConfiguration/itemSpacing.html">itemSpacing</a></li>
     <li><a href="../fw_flutter_sdk/VideoFeedConfiguration/playIcon.html">playIcon</a></li>
@@ -392,7 +420,7 @@
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      1.1.3
+      1.2.0
   </span>
 
   

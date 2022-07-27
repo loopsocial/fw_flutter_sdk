@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:fw_flutter_sdk/fw_flutter_sdk.dart';
+import 'package:fw_flutter_sdk_example/extensions/video_feed_configuration_extension.dart';
 import 'package:fw_flutter_sdk_example/states/feed_configuration_state.dart';
 import 'package:fw_flutter_sdk_example/states/player_configuration_state.dart';
 import 'package:fw_flutter_sdk_example/utils/fw_example_logger_util.dart';
@@ -6,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import '../../generated/l10n.dart';
-import '../../extensions/fw_error_extensions.dart';
+import '../../extensions/fw_error_extension.dart';
 import '../../widgets/fw_app_bar.dart';
 
 class FeedScreen extends StatefulWidget {
@@ -75,7 +78,10 @@ class _FeedScreenState extends State<FeedScreen> {
       color: Colors.white,
       child: Column(
         mainAxisSize: MainAxisSize.max,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+        crossAxisAlignment:
+            (_mode == VideoFeedMode.column && Platform.isAndroid)
+                ? CrossAxisAlignment.center
+                : CrossAxisAlignment.stretch,
         children: [
           const SizedBox(
             height: 20,
@@ -95,28 +101,31 @@ class _FeedScreenState extends State<FeedScreen> {
   }
 
   Widget _buildModeSegmentedControl(BuildContext context) {
-    return CupertinoSegmentedControl<VideoFeedMode>(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      onValueChanged: (value) {
-        setState(() {
-          _mode = value;
-        });
-      },
-      children: {
-        VideoFeedMode.row: Text(
-          S.of(context).row,
-          style: const TextStyle(fontSize: 13),
-        ),
-        VideoFeedMode.column: Text(
-          S.of(context).column,
-          style: const TextStyle(fontSize: 13),
-        ),
-        VideoFeedMode.grid: Text(
-          S.of(context).grid,
-          style: const TextStyle(fontSize: 13),
-        ),
-      },
-      groupValue: _mode,
+    return SizedBox(
+      width: double.infinity,
+      child: CupertinoSegmentedControl<VideoFeedMode>(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        onValueChanged: (value) {
+          setState(() {
+            _mode = value;
+          });
+        },
+        children: {
+          VideoFeedMode.row: Text(
+            S.of(context).row,
+            style: const TextStyle(fontSize: 13),
+          ),
+          VideoFeedMode.column: Text(
+            S.of(context).column,
+            style: const TextStyle(fontSize: 13),
+          ),
+          VideoFeedMode.grid: Text(
+            S.of(context).grid,
+            style: const TextStyle(fontSize: 13),
+          ),
+        },
+        groupValue: _mode,
+      ),
     );
   }
 
@@ -162,6 +171,12 @@ class _FeedScreenState extends State<FeedScreen> {
         context.watch<FeedConfigurationState>().feedConfiguration;
     final playerConfiguration =
         context.watch<PlayerConfigurationState>().playerConfiguration;
+    final resultConfiguration = feedConfiguration.clone();
+    if (_mode == VideoFeedMode.column) {
+      resultConfiguration.aspectRatio = 1;
+    } else {
+      resultConfiguration.aspectRatio = null;
+    }
     VideoFeedSource source = VideoFeedSource.discover;
     String? channel;
     String? playlist;
@@ -198,13 +213,14 @@ class _FeedScreenState extends State<FeedScreen> {
         "_FeedScreenState dynamicContentParameters $dynamicContentParameters");
     final feedWidget = VideoFeed(
       height: 200,
+      width: (_mode == VideoFeedMode.column && Platform.isAndroid) ? 150 : null,
       source: source,
       channel: channel,
       playlist: playlist,
       playlistGroup: playlistGroup,
       dynamicContentParameters: dynamicContentParameters,
       mode: _mode,
-      videoFeedConfiguration: feedConfiguration,
+      videoFeedConfiguration: resultConfiguration,
       videoPlayerConfiguration: playerConfiguration,
       onVideoFeedLoadFinished: _onVideoFeedLoadFinished,
       onVideoFeedCreated: _onVideoFeedCreated,

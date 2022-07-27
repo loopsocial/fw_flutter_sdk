@@ -11,6 +11,7 @@ import 'package:fw_flutter_sdk_example/screens/configuration/playlist_group_conf
 import 'package:fw_flutter_sdk_example/screens/cta_link_content/cta_link_content_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/feed/feed_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/more/circle_thumbnails.dart';
+import 'package:fw_flutter_sdk_example/screens/more/enable_custom_click_cart_icon_callback_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/more/enable_custom_cta_click_callback_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/more/open_video_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/more/set_share_base_url_screen.dart';
@@ -113,6 +114,11 @@ final routeMap = <String, FWRouteFactory>{
   '/circle_thumbnails': (settings, isNewContainer) {
     return MaterialPageRoute(
       builder: (context) => const CircleThumbnails(),
+    );
+  },
+  '/enable_custom_click_cart_icon_callback_screen': (settings, isNewContainer) {
+    return MaterialPageRoute(
+      builder: (context) => const EnableCustomClickCartIconCallbackScreen(),
     );
   },
 };

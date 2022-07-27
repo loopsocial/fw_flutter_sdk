@@ -9,6 +9,7 @@ class ShopifyProductVariant {
   String? title;
   Map<String, dynamic>? image;
   Map<String, dynamic>? priceV2;
+  List<Map<String, dynamic>>? selectedOptions;
 
   ShopifyProductVariant({
     required this.encodedId,

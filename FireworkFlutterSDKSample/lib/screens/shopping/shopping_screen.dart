@@ -4,7 +4,7 @@ import 'package:fw_flutter_sdk/fw_flutter_sdk.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../../extensions/fw_error_extensions.dart';
+import '../../extensions/fw_error_extension.dart';
 import '../../generated/l10n.dart';
 import '../../utils/fw_example_logger_util.dart';
 import '../../widgets/fw_app_bar.dart';
