@@ -44,12 +44,24 @@ extension VideoFeedClickEventExtension on VideoFeedClickEvent {
     final id = info.id;
     final duration = info.duration;
     final index = info.index;
+    final title = info.title;
     final source = info.source;
+    final channel = info.channel;
+    final playlist = info.playlist;
+    final playlistGroup = info.playlistGroup;
+    final dynamicContentParameters = info.dynamicContentParameters;
 
     FWExampleLoggerUtil.log("""onVideoFeedClick id: $id 
 duration: $duration 
 index: $index
-source: $source""");
+title: $title
+source: $source
+channel: $channel
+playlist: $playlist
+playlistGroup: $playlistGroup
+dynamicContentParameters: $dynamicContentParameters
+dynamicContentParameters.runtimeType: ${dynamicContentParameters.runtimeType}
+""");
   }
 }
 

@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:fw_flutter_sdk/fw_flutter_sdk.dart';
 import 'package:fw_flutter_sdk_example/utils/fw_example_logger_util.dart';
 import 'package:flutter/cupertino.dart';
@@ -20,6 +19,7 @@ class FeedLayoutsScreen extends StatefulWidget {
 class _FeedLayoutsScreenState extends State<FeedLayoutsScreen> {
   List<String> _defaultChannelIdArray = [];
   List<_FeedLayoutsPlaylistInfo> _defaultPlaylistInfoArray = [];
+  List<_FeedLayoutsDynamicContentInfo> _defaultDynamicContentInfoArray = [];
   List<String> _defaultPlaylistGroupIdArray = [];
 
   @override
@@ -74,6 +74,44 @@ class _FeedLayoutsScreenState extends State<FeedLayoutsScreen> {
           _defaultPlaylistGroupIdArray = List<String>.from(
               jsonData["defaultPlaylistGroupIdArray"] as List<dynamic>);
         }
+
+        if (jsonData["defaultDynamicContentInfoArray"] is List<dynamic>) {
+          final defaultDynamicContentInfoJsonArray =
+              List<Map<String, dynamic>>.from(
+                  jsonData["defaultDynamicContentInfoArray"] as List<dynamic>);
+          _defaultDynamicContentInfoArray = defaultDynamicContentInfoJsonArray
+              .map(
+                (e) {
+                  if (e["channelId"] is String &&
+                      e["parameters"] is Map<String, dynamic> &&
+                      e["name"] is String) {
+                    final tmpParameters = Map<String, List<dynamic>>.from(
+                        e["parameters"] as Map<String, dynamic>);
+                    var resultParameters = <String, List<String>>{};
+
+                    tmpParameters.forEach((key, value) {
+                      resultParameters[key] = List<String>.from(value);
+                    });
+                    return _FeedLayoutsDynamicContentInfo(
+                      channelId: e["channelId"] as String,
+                      parameters: resultParameters,
+                      name: e["name"] as String,
+                    );
+                  } else {
+                    return _FeedLayoutsDynamicContentInfo(
+                      channelId: "",
+                      parameters: <String, List<String>>{},
+                      name: "",
+                    );
+                  }
+                },
+              )
+              .where((dynamicContentInfo) =>
+                  dynamicContentInfo.channelId.isNotEmpty &&
+                  dynamicContentInfo.name.isNotEmpty &&
+                  dynamicContentInfo.parameters.isNotEmpty)
+              .toList();
+        }
       }
     } catch (e) {
       FWExampleLoggerUtil.log("_FeedLayoutsScreenState _readConfig error: $e");
@@ -85,6 +123,8 @@ class _FeedLayoutsScreenState extends State<FeedLayoutsScreen> {
 
     FWExampleLoggerUtil.log(
         "_defaultPlaylistGroupIdArray $_defaultPlaylistGroupIdArray");
+    FWExampleLoggerUtil.log(
+        "_defaultDynamicContentInfoArray $_defaultDynamicContentInfoArray");
   }
 
   @override
@@ -102,6 +142,7 @@ class _FeedLayoutsScreenState extends State<FeedLayoutsScreen> {
             _buildChannelItem(context),
             _buildPlaylistItem(context),
             _buildPlaylistGroupItem(context),
+            _buildDynamicContentItem(context),
           ],
         ),
       ),
@@ -146,6 +187,9 @@ class _FeedLayoutsScreenState extends State<FeedLayoutsScreen> {
               ),
             );
             return CupertinoActionSheet(
+              title: Text(
+                S.of(context).selectChannelId,
+              ),
               actions: [
                 for (var w in _defaultChannelIdWidgetArray) w,
                 CupertinoActionSheetAction(
@@ -154,7 +198,7 @@ class _FeedLayoutsScreenState extends State<FeedLayoutsScreen> {
                   ),
                   onPressed: () async {
                     Navigator.of(context).pop();
-                    _goChannelConfiguration();
+                    _goToChannelConfiguration();
                   },
                 ),
               ],
@@ -173,7 +217,7 @@ class _FeedLayoutsScreenState extends State<FeedLayoutsScreen> {
     );
   }
 
-  void _goChannelConfiguration() async {
+  void _goToChannelConfiguration() async {
     final channelId = await Navigator.of(context).pushNamed(
       "/channel_configuration",
     );
@@ -217,6 +261,9 @@ class _FeedLayoutsScreenState extends State<FeedLayoutsScreen> {
               ),
             );
             return CupertinoActionSheet(
+              title: Text(
+                S.of(context).selectPlaylistInfo,
+              ),
               actions: [
                 for (var w in _defaultPlaylistInfoWidgetArray) w,
                 CupertinoActionSheetAction(
@@ -225,7 +272,7 @@ class _FeedLayoutsScreenState extends State<FeedLayoutsScreen> {
                   ),
                   onPressed: () {
                     Navigator.of(context).pop();
-                    _goPlaylistConfiguration();
+                    _goToPlaylistConfiguration();
                   },
                 ),
               ],
@@ -244,7 +291,7 @@ class _FeedLayoutsScreenState extends State<FeedLayoutsScreen> {
     );
   }
 
-  void _goPlaylistConfiguration() async {
+  void _goToPlaylistConfiguration() async {
     final result = await Navigator.of(context).pushNamed(
       "/playlist_configuration",
     );
@@ -294,6 +341,9 @@ class _FeedLayoutsScreenState extends State<FeedLayoutsScreen> {
               ),
             );
             return CupertinoActionSheet(
+              title: Text(
+                S.of(context).selectPlaylistGroupId,
+              ),
               actions: [
                 for (var w in _defaultPlaylistGroupIdWidgetArray) w,
                 CupertinoActionSheetAction(
@@ -302,7 +352,7 @@ class _FeedLayoutsScreenState extends State<FeedLayoutsScreen> {
                   ),
                   onPressed: () {
                     Navigator.of(context).pop();
-                    _goPlaylistGroupConfiguration();
+                    _goToPlaylistGroupConfiguration();
                   },
                 ),
               ],
@@ -321,7 +371,7 @@ class _FeedLayoutsScreenState extends State<FeedLayoutsScreen> {
     );
   }
 
-  void _goPlaylistGroupConfiguration() async {
+  void _goToPlaylistGroupConfiguration() async {
     final playlistGroupId = await Navigator.of(context).pushNamed(
       "/playlist_group_configuration",
     );
@@ -339,6 +389,97 @@ class _FeedLayoutsScreenState extends State<FeedLayoutsScreen> {
         "source": VideoFeedSource.playlistGroup,
         "playlistGroup": playlistGroupId,
         "title": S.of(context).playlistGroupFeed,
+      },
+    );
+  }
+
+  Widget _buildDynamicContentItem(BuildContext context) {
+    return _buildItem(
+      context: context,
+      title: S.of(context).dynamicContentFeed,
+      onTap: () {
+        showCupertinoModalPopup(
+          context: context,
+          builder: (context) {
+            final _defaultDynamicContentInfoWidgetArray =
+                _defaultDynamicContentInfoArray.map(
+              (dynamicContentInfo) => CupertinoActionSheetAction(
+                isDefaultAction: true,
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  _goToDynamicContentGroupFeed(dynamicContentInfo.channelId,
+                      dynamicContentInfo.parameters);
+                },
+                child: Text(
+                  dynamicContentInfo.name,
+                ),
+              ),
+            );
+            return CupertinoActionSheet(
+              title: Text(
+                S.of(context).selectDynamicContentInfo,
+              ),
+              actions: [
+                for (var w in _defaultDynamicContentInfoWidgetArray) w,
+                CupertinoActionSheetAction(
+                  child: Text(
+                    S.of(context).custom,
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                    _goToDynamicContentConfiguration();
+                  },
+                ),
+              ],
+              cancelButton: CupertinoActionSheetAction(
+                child: Text(
+                  S.of(context).cancel,
+                ),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            );
+          },
+        );
+      },
+    );
+  }
+
+  void _goToDynamicContentConfiguration() async {
+    final result = await Navigator.of(context).pushNamed(
+      "/dynamic_content_configuration",
+    );
+    if (result is Map<String, dynamic>) {
+      FWExampleLoggerUtil.log(
+          'dynamicContentParameters ${result["dynamicContentParameters"]} ${result["dynamicContentParameters"].runtimeType}');
+      FWExampleLoggerUtil.log(
+          'channelId ${result["channelId"]} ${result["channelId"].runtimeType}');
+      if (result["channelId"] is String &&
+          result["dynamicContentParameters"] is Map<String, List<String>>) {
+        Navigator.of(context).pushNamed(
+          "/feed",
+          arguments: {
+            "source": VideoFeedSource.dynamicContent,
+            "channel": result["channelId"] as String,
+            "dynamicContentParameters":
+                result["dynamicContentParameters"] as Map<String, List<String>>,
+            "title": S.of(context).dynamicContentFeed,
+          },
+        );
+      }
+    }
+  }
+
+  void _goToDynamicContentGroupFeed(
+      String channelId, Map<String, List<String>> dynamicContentParameters) {
+    Navigator.of(context).pushNamed(
+      "/feed",
+      arguments: {
+        "source": VideoFeedSource.dynamicContent,
+        "channel": channelId,
+        "dynamicContentParameters": dynamicContentParameters,
+        "title": S.of(context).dynamicContentFeed,
       },
     );
   }
@@ -381,5 +522,16 @@ class _FeedLayoutsPlaylistInfo {
   _FeedLayoutsPlaylistInfo({
     required this.channelId,
     required this.playlistId,
+  });
+}
+
+class _FeedLayoutsDynamicContentInfo {
+  final String channelId;
+  final Map<String, List<String>> parameters;
+  final String name;
+  _FeedLayoutsDynamicContentInfo({
+    required this.channelId,
+    required this.parameters,
+    required this.name,
   });
 }

@@ -44,6 +44,29 @@ class _MoreScreenState extends State<MoreScreen> {
                 Navigator.of(context).pushNamed("/set_ad_badge_configuration");
               },
             ),
+            _buildItem(
+              context: context,
+              title: S.of(context).enableCustomCTAClickCallback,
+              onTap: () {
+                Navigator.of(context)
+                    .pushNamed("/enable_custom_cta_click_callback");
+              },
+            ),
+            _buildItem(
+              context: context,
+              title: S.of(context).circleThumbnails,
+              onTap: () {
+                Navigator.of(context).pushNamed("/circle_thumbnails");
+              },
+            ),
+            _buildItem(
+              context: context,
+              title: S.of(context).enableCustomClickCartIconCallback,
+              onTap: () {
+                Navigator.of(context).pushNamed(
+                    "/enable_custom_click_cart_icon_callback_screen");
+              },
+            ),
           ],
         ),
       ),

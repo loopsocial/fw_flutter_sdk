@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 class FWTextFormField extends StatefulWidget {
   final String? initialValue;
   final String? hintText;
+  final int? maxLines;
+  final int? minLines;
   final FormFieldSetter<String>? onSaved;
   final FormFieldValidator<String>? validator;
   final TextEditingController? controller;
@@ -11,6 +13,8 @@ class FWTextFormField extends StatefulWidget {
     Key? key,
     this.initialValue,
     this.hintText,
+    this.maxLines,
+    this.minLines,
     this.onSaved,
     this.validator,
     this.controller,
@@ -41,6 +45,8 @@ class _FWTextFormFieldState extends State<FWTextFormField> {
           icon: const Icon(Icons.clear),
         ),
       ),
+      maxLines: widget.maxLines,
+      minLines: widget.minLines,
       validator: widget.validator,
       onSaved: widget.onSaved,
     );

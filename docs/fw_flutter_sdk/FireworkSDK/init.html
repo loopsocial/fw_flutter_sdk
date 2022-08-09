@@ -53,8 +53,7 @@
       
 
 <span class="returntype">void</span>
-<span class="name ">init</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="init-param-userId">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">userId</span>, </span></li>
-<li><span class="parameter" id="init-param-adConfig"><span class="type-annotation"><a href="../../fw_flutter_sdk/AdConfig-class.html">AdConfig</a>?</span> <span class="parameter-name">adConfig</span>}</span></li>
+<span class="name ">init</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="init-param-userId">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">userId</span>}</span></li>
 </ol>)
 
       
@@ -63,8 +62,7 @@
     
 <section class="desc markdown">
   <p>Initializes Firework SDK.</p>
-<p><code>userId</code> is used to uniquely identify device or user.
-<code>adConfig</code> is the configuration of Advertisement.</p>
+<p><code>userId</code> is used to uniquely identify device or user.</p>
 </section>
 
 
@@ -73,17 +71,12 @@
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">void init({
   String? userId,
-  AdConfig? adConfig,
 }) {
   final nativeMethodName =
       FWMethodNameUtil.convertToNativeMethod(FWNativeMethodName.init);
   Map&lt;String, dynamic&gt; arg = {};
   if (userId != null) {
     arg[&quot;userId&quot;] = userId;
-  }
-
-  if (adConfig != null) {
-    arg[&quot;adConfig&quot;] = AdConfigUtil.toJson(adConfig);
   }
 
   FWMethodChannelUtil.getFirewokSDKChannel()
@@ -136,6 +129,7 @@
     <li><a href="../../fw_flutter_sdk/FireworkSDK/adBadgeConfiguration.html">adBadgeConfiguration</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
     <li><a href="../../fw_flutter_sdk/FireworkSDK/liveStream.html">liveStream</a></li>
+    <li><a href="../../fw_flutter_sdk/FireworkSDK/navigator.html">navigator</a></li>
     <li><a href="../../fw_flutter_sdk/FireworkSDK/onCustomCTAClick.html">onCustomCTAClick</a></li>
     <li><a href="../../fw_flutter_sdk/FireworkSDK/onSDKInit.html">onSDKInit</a></li>
     <li><a href="../../fw_flutter_sdk/FireworkSDK/onVideoFeedClick.html">onVideoFeedClick</a></li>
@@ -168,7 +162,7 @@
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      1.0.0
+      1.2.0
   </span>
 
   

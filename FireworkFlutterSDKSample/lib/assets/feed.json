@@ -1,7 +1,17 @@
 {
-  "defaultChannelIdArray": ["bJDywZ"],
-  "defaultPlaylistInfoArray": [
-    { "channelId": "bJDywZ", "playlistId": "g206q5" }
+  "defaultChannelIdArray": [
+    "bJDywZ"
   ],
-  "defaultShoppingPlaylist": { "channelId": "", "playlistId": "" }
+  "defaultPlaylistInfoArray": [
+    {
+      "channelId": "bJDywZ",
+      "playlistId": "g206q5"
+    }
+  ],
+  "defaultPlaylistGroupIdArray": [],
+  "defaultDynamicContentInfoArray": [],
+  "defaultShoppingPlaylist": {
+    "channelId": "",
+    "playlistId": ""
+  }
 }

@@ -107,6 +107,17 @@
 
 </dd>
 
+        <dt id="navigator" class="property">
+  <span class="name"><a href="../fw_flutter_sdk/FireworkSDK/navigator.html">navigator</a></span>
+  <span class="signature">&#8594; <a href="../fw_flutter_sdk/FWNavigator-class.html">FWNavigator</a></span> 
+
+</dt>
+<dd>
+  FWNavigator instance. 
+  <div class="features">read-only</div>
+
+</dd>
+
         <dt id="onCustomCTAClick" class="property">
   <span class="name"><a href="../fw_flutter_sdk/FireworkSDK/onCustomCTAClick.html">onCustomCTAClick</a></span>
   <span class="signature">&#8596; <a href="../fw_flutter_sdk/CustomCTAClickCallback.html">CustomCTAClickCallback</a>?</span> 
@@ -191,7 +202,7 @@
       <h2>Methods</h2>
       <dl class="callables">
         <dt id="init" class="callable">
-  <span class="name"><a href="../fw_flutter_sdk/FireworkSDK/init.html">init</a></span><span class="signature">(<wbr><span class="parameter" id="init-param-userId">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">userId</span>, </span><span class="parameter" id="init-param-adConfig"><span class="type-annotation"><a href="../fw_flutter_sdk/AdConfig-class.html">AdConfig</a>?</span> <span class="parameter-name">adConfig</span>}</span>)
+  <span class="name"><a href="../fw_flutter_sdk/FireworkSDK/init.html">init</a></span><span class="signature">(<wbr><span class="parameter" id="init-param-userId">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">userId</span>}</span>)
     <span class="returntype parameter">&#8594; void</span>
   </span>
   
@@ -287,7 +298,6 @@
     <ol>
   <li class="section-title"><a href="../fw_flutter_sdk/fw_flutter_sdk-library.html#classes">Classes</a></li>
   <li><a href="../fw_flutter_sdk/AdBadgeConfiguration-class.html">AdBadgeConfiguration</a></li>
-  <li><a href="../fw_flutter_sdk/AdConfig-class.html">AdConfig</a></li>
   <li><a href="../fw_flutter_sdk/AddToCartButtonConfiguration-class.html">AddToCartButtonConfiguration</a></li>
   <li><a href="../fw_flutter_sdk/AddToCartEvent-class.html">AddToCartEvent</a></li>
   <li><a href="../fw_flutter_sdk/AddToCartResult-class.html">AddToCartResult</a></li>
@@ -297,6 +307,7 @@
   <li><a href="../fw_flutter_sdk/FWError-class.html">FWError</a></li>
   <li><a href="../fw_flutter_sdk/FWEvent-class.html">FWEvent</a></li>
   <li><a href="../fw_flutter_sdk/FWEventBus-class.html">FWEventBus</a></li>
+  <li><a href="../fw_flutter_sdk/FWNavigator-class.html">FWNavigator</a></li>
   <li><a href="../fw_flutter_sdk/LiveStream-class.html">LiveStream</a></li>
   <li><a href="../fw_flutter_sdk/LiveStreamChatEvent-class.html">LiveStreamChatEvent</a></li>
   <li><a href="../fw_flutter_sdk/LiveStreamEvent-class.html">LiveStreamEvent</a></li>
@@ -306,11 +317,13 @@
   <li><a href="../fw_flutter_sdk/ProductInfoViewConfiguration-class.html">ProductInfoViewConfiguration</a></li>
   <li><a href="../fw_flutter_sdk/ProductPrice-class.html">ProductPrice</a></li>
   <li><a href="../fw_flutter_sdk/ProductUnit-class.html">ProductUnit</a></li>
+  <li><a href="../fw_flutter_sdk/ProductUnitOption-class.html">ProductUnitOption</a></li>
   <li><a href="../fw_flutter_sdk/SDKInitEvent-class.html">SDKInitEvent</a></li>
   <li><a href="../fw_flutter_sdk/UpdateProductDetailsEvent-class.html">UpdateProductDetailsEvent</a></li>
   <li><a href="../fw_flutter_sdk/VideoFeed-class.html">VideoFeed</a></li>
   <li><a href="../fw_flutter_sdk/VideoFeedClickEvent-class.html">VideoFeedClickEvent</a></li>
   <li><a href="../fw_flutter_sdk/VideoFeedConfiguration-class.html">VideoFeedConfiguration</a></li>
+  <li><a href="../fw_flutter_sdk/VideoFeedContentPadding-class.html">VideoFeedContentPadding</a></li>
   <li><a href="../fw_flutter_sdk/VideoFeedController-class.html">VideoFeedController</a></li>
   <li><a href="../fw_flutter_sdk/VideoFeedPlayIconConfiguration-class.html">VideoFeedPlayIconConfiguration</a></li>
   <li><a href="../fw_flutter_sdk/VideoFeedTitleConfiguration-class.html">VideoFeedTitleConfiguration</a></li>
@@ -330,7 +343,6 @@
   <li class="section-title"><a href="../fw_flutter_sdk/fw_flutter_sdk-library.html#enums">Enums</a></li>
   <li><a href="../fw_flutter_sdk/AdBadgeTextType.html">AdBadgeTextType</a></li>
   <li><a href="../fw_flutter_sdk/AddToCartResponse.html">AddToCartResponse</a></li>
-  <li><a href="../fw_flutter_sdk/AdType.html">AdType</a></li>
   <li><a href="../fw_flutter_sdk/LiveStreamChatEventName.html">LiveStreamChatEventName</a></li>
   <li><a href="../fw_flutter_sdk/LiveStreamEventName.html">LiveStreamEventName</a></li>
   <li><a href="../fw_flutter_sdk/VideoFeedMode.html">VideoFeedMode</a></li>
@@ -343,6 +355,7 @@
 
   <li class="section-title"><a href="../fw_flutter_sdk/fw_flutter_sdk-library.html#typedefs">Typedefs</a></li>
   <li><a href="../fw_flutter_sdk/AddToCartCallback.html">AddToCartCallback</a></li>
+  <li><a href="../fw_flutter_sdk/CustomClickCartIconCallback.html">CustomClickCartIconCallback</a></li>
   <li><a href="../fw_flutter_sdk/CustomCTAClickCallback.html">CustomCTAClickCallback</a></li>
   <li><a href="../fw_flutter_sdk/OnLiveStreamChatEventCallback.html">OnLiveStreamChatEventCallback</a></li>
   <li><a href="../fw_flutter_sdk/OnLiveStreamEventCallback.html">OnLiveStreamEventCallback</a></li>
@@ -371,6 +384,7 @@
     <li><a href="../fw_flutter_sdk/FireworkSDK/adBadgeConfiguration.html">adBadgeConfiguration</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
     <li><a href="../fw_flutter_sdk/FireworkSDK/liveStream.html">liveStream</a></li>
+    <li><a href="../fw_flutter_sdk/FireworkSDK/navigator.html">navigator</a></li>
     <li><a href="../fw_flutter_sdk/FireworkSDK/onCustomCTAClick.html">onCustomCTAClick</a></li>
     <li><a href="../fw_flutter_sdk/FireworkSDK/onSDKInit.html">onSDKInit</a></li>
     <li><a href="../fw_flutter_sdk/FireworkSDK/onVideoFeedClick.html">onVideoFeedClick</a></li>
@@ -400,7 +414,7 @@
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      1.0.0
+      1.2.0
   </span>
 
   
