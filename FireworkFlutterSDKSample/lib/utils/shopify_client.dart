@@ -58,8 +58,9 @@ query {
           id,
           title,
           availableForSale,
-          image { originalSrc },
-          priceV2{amount,currencyCode}
+          image { src },
+          priceV2 { amount, currencyCode }
+          selectedOptions { name, value }
         }
       }
     },

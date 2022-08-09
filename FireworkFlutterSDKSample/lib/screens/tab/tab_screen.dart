@@ -35,7 +35,7 @@ class _TabScreenState extends State<TabScreen> {
   @override
   void initState() {
     super.initState();
-
+    FWExampleLoggerUtil.log('_TabScreenState initState');
     _initCartItems();
   }
 

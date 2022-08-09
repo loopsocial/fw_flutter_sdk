@@ -32,6 +32,8 @@ class _FeedConfigurationScreenState extends State<FeedConfigurationScreen> {
     _resultConfig.titlePosition = _initConfig.titlePosition;
     _resultConfig.playIcon = _initConfig.playIcon;
     _resultConfig.showAdBadge = _initConfig.showAdBadge;
+    _resultConfig.customLayoutName = _initConfig.customLayoutName;
+    _resultConfig.enableAutoplay = _initConfig.enableAutoplay;
   }
 
   @override
@@ -123,6 +125,14 @@ class _FeedConfigurationScreenState extends State<FeedConfigurationScreen> {
               height: 20,
             ),
             _buildShowAdBadge(context),
+            const SizedBox(
+              height: 20,
+            ),
+            _buildEnableCustomLayoutName(context),
+            const SizedBox(
+              height: 20,
+            ),
+            _buildEnableAutoplay(context),
             const SizedBox(
               height: 20,
             ),
@@ -330,6 +340,38 @@ class _FeedConfigurationScreenState extends State<FeedConfigurationScreen> {
       },
       title: Text(
         S.of(context).showAdBadge,
+      ),
+    );
+  }
+
+  Widget _buildEnableCustomLayoutName(BuildContext context) {
+    return CheckboxListTile(
+      value: _resultConfig.customLayoutName != null ? true : false,
+      onChanged: (value) {
+        setState(() {
+          if (value != null && value) {
+            _resultConfig.customLayoutName = "fw_feed_custom_layout";
+          } else {
+            _resultConfig.customLayoutName = null;
+          }
+        });
+      },
+      title: Text(
+        S.of(context).enableCustomLayoutName,
+      ),
+    );
+  }
+
+  Widget _buildEnableAutoplay(BuildContext context) {
+    return CheckboxListTile(
+      value: _resultConfig.enableAutoplay ?? false,
+      onChanged: (value) {
+        setState(() {
+          _resultConfig.enableAutoplay = value;
+        });
+      },
+      title: Text(
+        S.of(context).enableAutoplay,
       ),
     );
   }

@@ -38,18 +38,16 @@ android {
     print("\n=================FIREBASE_CREDENTIAL_FILE_PATH====================\n")
 
     debug {
-      def debugNotesTxt = "${project.buildDir}/$project.name-releasenotes-debug.txt"
       firebaseAppDistribution {
-        releaseNotesFile= project.file(debugNotesTxt)
+        releaseNotes="debug"
         groups="email-notification"
         serviceCredentialsFile=firebase_service_credential_file_path
       }
     }
 
     release {
-      def releaseNotesTxt = "${project.buildDir}/$project.name-releasenotes-release.txt"
       firebaseAppDistribution {
-        releaseNotesFile= project.file(releaseNotesTxt)
+        releaseNotes="release"
         groups="email-notification"
         serviceCredentialsFile=firebase_service_credential_file_path
       }
