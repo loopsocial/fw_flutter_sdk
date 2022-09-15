@@ -230,6 +230,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "use": MessageLookupByLibrary.simpleMessage("Use"),
         "videoCompleteAction":
             MessageLookupByLibrary.simpleMessage("Video complete action"),
+        "videoFeed": MessageLookupByLibrary.simpleMessage("Video Feed"),
         "videoFeedLoadError":
             MessageLookupByLibrary.simpleMessage("Fail to load video feed"),
         "videoPlayerCompleteAction":

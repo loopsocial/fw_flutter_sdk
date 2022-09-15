@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:fw_flutter_sdk/fw_flutter_sdk.dart';
 import 'package:fw_flutter_sdk_example/utils/fw_example_logger_util.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -161,7 +160,7 @@ class _FeedLayoutsScreenState extends State<FeedLayoutsScreen> {
 
   void _goToDiscoverFeed() {
     Navigator.of(context).pushNamed("/feed", arguments: {
-      "source": VideoFeedSource.discover,
+      "source": "discover",
       "title": S.of(context).discoverFeed,
     });
   }
@@ -231,7 +230,7 @@ class _FeedLayoutsScreenState extends State<FeedLayoutsScreen> {
     Navigator.of(context).pushNamed(
       "/feed",
       arguments: {
-        "source": VideoFeedSource.channel,
+        "source": "channel",
         "channel": channelId,
         "title": S.of(context).channelFeed,
       },
@@ -311,7 +310,7 @@ class _FeedLayoutsScreenState extends State<FeedLayoutsScreen> {
     Navigator.of(context).pushNamed(
       "/feed",
       arguments: {
-        "source": VideoFeedSource.playlist,
+        "source": "playlist",
         "channel": channelId,
         "playlist": playlistId,
         "title": S.of(context).playlistFeed,
@@ -386,7 +385,7 @@ class _FeedLayoutsScreenState extends State<FeedLayoutsScreen> {
     Navigator.of(context).pushNamed(
       "/feed",
       arguments: {
-        "source": VideoFeedSource.playlistGroup,
+        "source": "playlistGroup",
         "playlistGroup": playlistGroupId,
         "title": S.of(context).playlistGroupFeed,
       },
@@ -460,7 +459,7 @@ class _FeedLayoutsScreenState extends State<FeedLayoutsScreen> {
         Navigator.of(context).pushNamed(
           "/feed",
           arguments: {
-            "source": VideoFeedSource.dynamicContent,
+            "source": "dynamicContent",
             "channel": result["channelId"] as String,
             "dynamicContentParameters":
                 result["dynamicContentParameters"] as Map<String, List<String>>,
@@ -476,7 +475,7 @@ class _FeedLayoutsScreenState extends State<FeedLayoutsScreen> {
     Navigator.of(context).pushNamed(
       "/feed",
       arguments: {
-        "source": VideoFeedSource.dynamicContent,
+        "source": "dynamicContent",
         "channel": channelId,
         "dynamicContentParameters": dynamicContentParameters,
         "title": S.of(context).dynamicContentFeed,

@@ -1,0 +1,16 @@
+android {
+    lintOptions {
+        baseline rootProject.file('lint.xml')
+
+        // {your project dir}/fondor/example/android/build/reports/app/lint-results.xml
+        xmlOutput rootProject.file("build/reports/${project.name}/lint-results.xml")
+        htmlOutput rootProject.file("build/reports/${project.name}/lint-results.html")
+//        textOutput rootProject.file("build/reports/${project.name}/lint-results.txt")
+    }
+}
+
+//tasks.whenTaskAdded { task ->
+//    if(task.name.contains("AndroidTest")){
+//        task.enabled = false
+//    }
+//}
