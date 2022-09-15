@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## [1.3.0]
+
+### Added
+
+- Support for Flutter 3
+
+### Fixed
+
+- Hydration API doesn't work in the release package when setting `minifyEnabled` to `true`
+
+
 ## [1.2.0]
 
 ### Added

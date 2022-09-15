@@ -1409,6 +1409,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Video Feed`
+  String get videoFeed {
+    return Intl.message(
+      'Video Feed',
+      name: 'videoFeed',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

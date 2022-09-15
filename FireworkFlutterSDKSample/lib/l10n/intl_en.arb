@@ -134,5 +134,6 @@
   "enableAutoplay": "Enable Autoplay",
   "enableCustomClickCartIconCallback": "Enable Custom Click Cart Icon Callback",
   "enableCustomClickCartIconCallbackSuccessfully": "Enable custom click cart icon callback successfully",
-  "disableCustomClickCartIconCallbackSuccessfully": "Disable custom click cart icon callback successfully"
+  "disableCustomClickCartIconCallbackSuccessfully": "Disable custom click cart icon callback successfully",
+  "videoFeed": "Video Feed"
 }

@@ -39,16 +39,12 @@ def fw_appid_staging = ""
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    /**
-     * 0101100
-     * 1.1.1
-     */
     defaultConfig {
         applicationId "com.loopnow.fondor"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 102005
-        versionName "1.2.0"
+        versionCode 110000
+        versionName "1.3.0"
     }
 
     compileOptions {
@@ -95,14 +91,23 @@ android {
         debug {
             manifestPlaceholders = [fw_appid: env=="STAGING" ? fw_appid_staging : fw_appid_production]
             signingConfig signingConfigs.release
+            consumerProguardFiles 'proguard-rules.pro'
+            minifyEnabled false
+            shrinkResources false
         }
         release {
             manifestPlaceholders = [fw_appid: env=="STAGING" ? fw_appid_staging : fw_appid_production]
             signingConfig signingConfigs.release
+            minifyEnabled true
+            shrinkResources false
+            consumerProguardFiles 'proguard-rules.pro'
         }
         profile {
             manifestPlaceholders = [fw_appid: env=="STAGING" ? fw_appid_staging : fw_appid_production]
             signingConfig signingConfigs.release
+            minifyEnabled true
+            shrinkResources false
+            consumerProguardFiles 'proguard-rules.pro'
         }
     }
 }
@@ -112,7 +117,10 @@ flutter {
 }
 
 dependencies {
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
 }
 
 apply from: 'google.gradle'
 apply from: 'firework.gradle'
+
+apply from: rootProject.file('lint.gradle')

@@ -28,10 +28,41 @@ class _FeedScreenState extends State<FeedScreen> {
   VideoFeedController? _feedController;
   FWError? _feedError;
 
+  String? _source;
+  String? _channel;
+  String? _playlist;
+  String? _playlistGroup;
+  Map<String, List<String>>? _dynamicContentParameters;
+
   @override
   void initState() {
     super.initState();
     FWExampleLoggerUtil.log("FeedConfigurationState initState");
+
+    if (widget.settings.arguments is Map<dynamic, dynamic>) {
+      final arg = widget.settings.arguments as Map<dynamic, dynamic>;
+
+      if (arg["source"] is String) {
+        _source = arg["source"] as String;
+      }
+
+      if (arg["channel"] is String) {
+        _channel = arg["channel"] as String;
+      }
+
+      if (arg["playlist"] is String) {
+        _playlist = arg["playlist"] as String;
+      }
+
+      if (arg["playlistGroup"] is String) {
+        _playlistGroup = arg["playlistGroup"] as String;
+      }
+
+      if (arg["dynamicContentParameters"] is Map<String, List<String>>) {
+        _dynamicContentParameters =
+            arg["dynamicContentParameters"] as Map<String, List<String>>;
+      }
+    }
   }
 
   @override
@@ -74,28 +105,34 @@ class _FeedScreenState extends State<FeedScreen> {
   }
 
   Widget _buildBody(BuildContext context) {
+    List<Widget> widgetList = [];
+
+    widgetList.addAll(<Widget>[
+      const SizedBox(
+        height: 20,
+      ),
+      _buildModeSegmentedControl(context),
+      const SizedBox(
+        height: 20,
+      ),
+      _buildConfigButtonList(context),
+      const SizedBox(
+        height: 20,
+      ),
+      _buildFeed(context),
+    ]);
+
+    var crossAxisAlignment = CrossAxisAlignment.stretch;
+    if (_mode == VideoFeedMode.column && Platform.isAndroid) {
+      crossAxisAlignment = CrossAxisAlignment.center;
+    }
+
     return Container(
       color: Colors.white,
       child: Column(
         mainAxisSize: MainAxisSize.max,
-        crossAxisAlignment:
-            (_mode == VideoFeedMode.column && Platform.isAndroid)
-                ? CrossAxisAlignment.center
-                : CrossAxisAlignment.stretch,
-        children: [
-          const SizedBox(
-            height: 20,
-          ),
-          _buildModeSegmentedControl(context),
-          const SizedBox(
-            height: 20,
-          ),
-          _buildConfigButtonList(context),
-          const SizedBox(
-            height: 20,
-          ),
-          _buildFeed(context),
-        ],
+        crossAxisAlignment: crossAxisAlignment,
+        children: widgetList,
       ),
     );
   }
@@ -177,40 +214,19 @@ class _FeedScreenState extends State<FeedScreen> {
     } else {
       resultConfiguration.aspectRatio = null;
     }
-    VideoFeedSource source = VideoFeedSource.discover;
-    String? channel;
-    String? playlist;
-    String? playlistGroup;
-    Map<String, List<String>>? dynamicContentParameters;
+    VideoFeedSource source = VideoFeedSource.values.firstWhere(
+        (e) => e.toString() == 'VideoFeedSource.${_source ?? ''}',
+        orElse: () => VideoFeedSource.discover);
+    String? channel = _channel;
+    String? playlist = _playlist;
+    String? playlistGroup = _playlistGroup;
+    Map<String, List<String>>? dynamicContentParameters =
+        _dynamicContentParameters;
 
-    if (widget.settings.arguments is Map<dynamic, dynamic>) {
-      final arg = widget.settings.arguments as Map<dynamic, dynamic>;
-
-      if (arg["source"] is VideoFeedSource) {
-        source = arg["source"] as VideoFeedSource;
-      }
-
-      if (arg["channel"] is String) {
-        channel = arg["channel"] as String;
-      }
-
-      if (arg["playlist"] is String) {
-        playlist = arg["playlist"] as String;
-      }
-
-      if (arg["playlistGroup"] is String) {
-        playlistGroup = arg["playlistGroup"] as String;
-      }
-
-      if (arg["dynamicContentParameters"] is Map<String, List<String>>) {
-        dynamicContentParameters =
-            arg["dynamicContentParameters"] as Map<String, List<String>>;
-      }
-    }
-    FWExampleLoggerUtil.log("_FeedScreenState source $source");
-    FWExampleLoggerUtil.log("_FeedScreenState channel $channel");
+    FWExampleLoggerUtil.log("_FeedScreenState _buildFeed source $source");
+    FWExampleLoggerUtil.log("_FeedScreenState _buildFeed channel $channel");
     FWExampleLoggerUtil.log(
-        "_FeedScreenState dynamicContentParameters $dynamicContentParameters");
+        "_FeedScreenState _buildFeed dynamicContentParameters $dynamicContentParameters");
     final feedWidget = VideoFeed(
       height: 200,
       width: (_mode == VideoFeedMode.column && Platform.isAndroid) ? 150 : null,
@@ -233,6 +249,7 @@ class _FeedScreenState extends State<FeedScreen> {
   }
 
   Widget _buildErrorWidget(BuildContext context) {
+    final defaultErrorText = S.of(context).videoFeedLoadError;
     return Center(
       child: Padding(
         padding: const EdgeInsets.symmetric(
@@ -254,7 +271,7 @@ class _FeedScreenState extends State<FeedScreen> {
               height: 15,
             ),
             Text(
-              _feedError?.reason ?? S.of(context).videoFeedLoadError,
+              _feedError?.reason ?? defaultErrorText,
             ),
           ],
         ),
