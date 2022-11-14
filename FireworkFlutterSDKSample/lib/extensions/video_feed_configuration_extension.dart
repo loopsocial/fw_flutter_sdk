@@ -15,6 +15,7 @@ extension VideoFeedConfigurationExtension on VideoFeedConfiguration {
       itemSpacing: itemSpacing,
       enableAutoplay: enableAutoplay,
       gridColumns: gridColumns,
+      enablePictureInPicture: enablePictureInPicture,
     );
   }
 }

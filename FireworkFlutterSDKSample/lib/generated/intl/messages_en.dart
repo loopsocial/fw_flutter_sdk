@@ -122,6 +122,8 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Enable custom click cart icon callback successfully"),
         "enableCustomLayoutName": MessageLookupByLibrary.simpleMessage(
             "Enable Custom Layout Name(Android)"),
+        "enablePictureInPicture":
+            MessageLookupByLibrary.simpleMessage("Enable Picture In Picture"),
         "feed": MessageLookupByLibrary.simpleMessage("Feed"),
         "feedConfiguration":
             MessageLookupByLibrary.simpleMessage("Feed Configuration"),
@@ -177,6 +179,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Please enter playlist id"),
         "playlistInfo": MessageLookupByLibrary.simpleMessage("Playlist Info"),
         "refresh": MessageLookupByLibrary.simpleMessage("Refresh"),
+        "requiresAds": MessageLookupByLibrary.simpleMessage("Requires Ads"),
         "reset": MessageLookupByLibrary.simpleMessage("Reset"),
         "resetTip": MessageLookupByLibrary.simpleMessage(
             "Do you want to reset to default configuration?"),
@@ -214,6 +217,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "state": MessageLookupByLibrary.simpleMessage("State"),
         "storeDetails": MessageLookupByLibrary.simpleMessage("Store Details"),
         "storefront": MessageLookupByLibrary.simpleMessage("Storefront"),
+        "storyBlock": MessageLookupByLibrary.simpleMessage("Story Block"),
+        "storyBlockLoadError":
+            MessageLookupByLibrary.simpleMessage("Fail to load story block"),
         "street": MessageLookupByLibrary.simpleMessage("Street"),
         "titleColor": MessageLookupByLibrary.simpleMessage("Title Color"),
         "titleColorHint": MessageLookupByLibrary.simpleMessage("e.g. #000000"),
@@ -228,6 +234,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "urlRequiredError":
             MessageLookupByLibrary.simpleMessage("Please correct url"),
         "use": MessageLookupByLibrary.simpleMessage("Use"),
+        "vastAttributes":
+            MessageLookupByLibrary.simpleMessage("Vast Attributes"),
+        "vastAttributesFormatError": MessageLookupByLibrary.simpleMessage(
+            "Please enter correct vast attributes"),
+        "vastAttributesHint": MessageLookupByLibrary.simpleMessage(
+            "e.g. {\"name1\": \"value1\", \"name2\": \"value2\"}"),
         "videoCompleteAction":
             MessageLookupByLibrary.simpleMessage("Video complete action"),
         "videoFeed": MessageLookupByLibrary.simpleMessage("Video Feed"),

@@ -43,6 +43,9 @@ class _MyAppState extends State<MyApp> {
       event.logMessage();
     };
 
+    FireworkSDK.getInstance().adBadgeConfiguration =
+        AdBadgeConfiguration(badgeTextType: AdBadgeTextType.ad);
+
     // FireworkSDK.getInstance().onVideoPlayback = (event) {
     //   event?.logMessage();
     // };

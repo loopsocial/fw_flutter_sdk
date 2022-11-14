@@ -135,5 +135,12 @@
   "enableCustomClickCartIconCallback": "Enable Custom Click Cart Icon Callback",
   "enableCustomClickCartIconCallbackSuccessfully": "Enable custom click cart icon callback successfully",
   "disableCustomClickCartIconCallbackSuccessfully": "Disable custom click cart icon callback successfully",
-  "videoFeed": "Video Feed"
+  "videoFeed": "Video Feed",
+  "storyBlock": "Story Block",
+  "storyBlockLoadError": "Fail to load story block",
+  "requiresAds": "Requires Ads",
+  "vastAttributes": "Vast Attributes",
+  "vastAttributesHint": "e.g. {\"name1\": \"value1\", \"name2\": \"value2\"}",
+  "vastAttributesFormatError": "Please enter correct vast attributes",
+  "enablePictureInPicture": "Enable Picture In Picture"
 }

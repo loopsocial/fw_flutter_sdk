@@ -185,13 +185,30 @@ class _ShoppingScreenState extends State<ShoppingScreen> {
     if (_feedError != null) {
       return _buildErrorWidget(context);
     }
+    VideoFeedConfiguration feedConfiguration = VideoFeedConfiguration(
+      titlePosition: VideoFeedTitlePosition.nested,
+      title: VideoFeedTitleConfiguration(
+        hidden: false,
+      ),
+      showAdBadge: true,
+      enablePictureInPicture: true,
+    );
 
+    VideoPlayerConfiguration playerConfiguration = VideoPlayerConfiguration(
+      playerStyle: VideoPlayerStyle.full,
+      showShareButton: true,
+      showMuteButton: true,
+      showPlaybackButton: true,
+      videoCompleteAction: VideoPlayerCompleteAction.advanceToNext,
+    );
     return VideoFeed(
       height: 200,
       source: VideoFeedSource.playlist,
       channel: _channelId!,
       playlist: _playlistId,
       mode: VideoFeedMode.row,
+      videoFeedConfiguration: feedConfiguration,
+      videoPlayerConfiguration: playerConfiguration,
       onVideoFeedCreated: _onVideoFeedCreated,
       onVideoFeedLoadFinished: _onVideoFeedLoadFinished,
     );
