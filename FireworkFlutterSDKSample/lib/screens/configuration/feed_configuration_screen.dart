@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:fw_flutter_sdk/fw_flutter_sdk.dart';
 import 'package:fw_flutter_sdk_example/states/feed_configuration_state.dart';
 import 'package:fw_flutter_sdk_example/utils/validation_util.dart';
@@ -6,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../generated/l10n.dart';
+import '../../utils/fw_example_logger_util.dart';
 import '../../widgets/fw_app_bar.dart';
 import '../../widgets/fw_text_form_field.dart';
 
@@ -21,6 +25,10 @@ class _FeedConfigurationScreenState extends State<FeedConfigurationScreen> {
   final _formKey = GlobalKey<FormState>();
   VideoFeedConfiguration _initConfig = VideoFeedConfiguration();
   final _resultConfig = VideoFeedConfiguration();
+  AdConfiguration _initAdConfig = AdConfiguration();
+  final _resultAdConfig = AdConfiguration();
+  String _initVastAttributesString = "";
+  String _vastAttributesString = "";
 
   @override
   void initState() {
@@ -34,6 +42,30 @@ class _FeedConfigurationScreenState extends State<FeedConfigurationScreen> {
     _resultConfig.showAdBadge = _initConfig.showAdBadge;
     _resultConfig.customLayoutName = _initConfig.customLayoutName;
     _resultConfig.enableAutoplay = _initConfig.enableAutoplay;
+    _resultConfig.enablePictureInPicture = _initConfig.enablePictureInPicture;
+
+    _initAdConfig = context.read<FeedConfigurationState>().adConfiguration;
+    _resultAdConfig.vastAttributes = _initAdConfig.vastAttributes;
+    _resultAdConfig.requiresAds = _initAdConfig.requiresAds;
+    _resultAdConfig.adsFetchTimeout = _initAdConfig.adsFetchTimeout;
+    if (_initAdConfig.vastAttributes != null) {
+      final vastAttributes = _initAdConfig.vastAttributes!;
+      Map<String, dynamic> vastAttributesJson = {};
+      for (var element in vastAttributes) {
+        if (element.name != null && element.value != null) {
+          vastAttributesJson[element.name!] = element.value!;
+        }
+      }
+      if (vastAttributesJson.isNotEmpty) {
+        try {
+          final vastAttributesString = json.encode(vastAttributesJson);
+          if (vastAttributesString.isNotEmpty) {
+            _initVastAttributesString = vastAttributesString;
+            _vastAttributesString = vastAttributesString;
+          }
+        } catch (_) {}
+      }
+    }
   }
 
   @override
@@ -133,6 +165,18 @@ class _FeedConfigurationScreenState extends State<FeedConfigurationScreen> {
               height: 20,
             ),
             _buildEnableAutoplay(context),
+            const SizedBox(
+              height: 20,
+            ),
+            _buildEnablePictureInPicture(context),
+            const SizedBox(
+              height: 20,
+            ),
+            _buildRequiresAds(context),
+            const SizedBox(
+              height: 20,
+            ),
+            _buildVastAttributes(context),
             const SizedBox(
               height: 20,
             ),
@@ -376,6 +420,79 @@ class _FeedConfigurationScreenState extends State<FeedConfigurationScreen> {
     );
   }
 
+  Widget _buildEnablePictureInPicture(BuildContext context) {
+    return CheckboxListTile(
+      value: _resultConfig.enablePictureInPicture ?? false,
+      onChanged: (value) {
+        setState(() {
+          _resultConfig.enablePictureInPicture = value;
+        });
+      },
+      title: Text(
+        S.of(context).enablePictureInPicture,
+      ),
+    );
+  }
+
+  Widget _buildRequiresAds(BuildContext context) {
+    return CheckboxListTile(
+      value: _resultAdConfig.requiresAds ?? false,
+      onChanged: (value) {
+        setState(() {
+          _resultAdConfig.requiresAds = value;
+        });
+      },
+      title: Text(
+        S.of(context).requiresAds,
+      ),
+    );
+  }
+
+  Widget _buildVastAttributes(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(S.of(context).dynamicContentParameters),
+        FWTextFormField(
+          initialValue: _initVastAttributesString,
+          hintText: S.of(context).vastAttributesHint,
+          minLines: 5,
+          maxLines: 5,
+          onSaved: (text) {
+            _vastAttributesString = text ?? "";
+          },
+        )
+      ],
+    );
+  }
+
+  Future<List<VastAttribute>?> _parseVastAttributesString() async {
+    if (_vastAttributesString.isEmpty) {
+      return [];
+    }
+    try {
+      final jsonData = await json.decode(_vastAttributesString);
+      FWExampleLoggerUtil.log(
+          "_parseVastAttributesString jsonData: $jsonData ${jsonData.runtimeType}");
+      final vastAttributeListJson = jsonData as Map<String, dynamic>;
+      List<VastAttribute> vastAttributeList = [];
+      vastAttributeListJson.forEach((key, value) {
+        if (value is String) {
+          vastAttributeList.add(VastAttribute(
+            name: key,
+            value: value,
+          ));
+        }
+      });
+      return vastAttributeList;
+    } catch (e) {
+      FWExampleLoggerUtil.log("_parseVastAttributesString error: $e");
+    }
+
+    return null;
+  }
+
   Widget _buildButtonList(BuildContext context) {
     return Row(children: [
       Expanded(
@@ -438,9 +555,19 @@ class _FeedConfigurationScreenState extends State<FeedConfigurationScreen> {
             if (_formKey.currentState != null &&
                 _formKey.currentState!.validate()) {
               _formKey.currentState!.save();
-              context.read<FeedConfigurationState>().feedConfiguration =
-                  _resultConfig;
-              Navigator.of(context).pop();
+              _parseVastAttributesString().then((vastAttributes) {
+                if (vastAttributes == null) {
+                  EasyLoading.showError(
+                      S.of(context).vastAttributesFormatError);
+                  return;
+                }
+                _resultAdConfig.vastAttributes = vastAttributes;
+                context.read<FeedConfigurationState>().feedConfiguration =
+                    _resultConfig;
+                context.read<FeedConfigurationState>().adConfiguration =
+                    _resultAdConfig;
+                Navigator.of(context).pop();
+              });
             }
           },
           child: Text(

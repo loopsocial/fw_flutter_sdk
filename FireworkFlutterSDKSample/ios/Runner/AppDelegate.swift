@@ -12,7 +12,10 @@ import fw_flutter_sdk
         let engine = engineGroup.makeEngine(
             withEntrypoint: nil,
             libraryURI: nil,
-            // Adding new_native_container(or any other custom prefix without "/") could avoid rendering the screen whose route name is "/" in the new engine.
+            /* 
+             Adding new_native_container(or any other custom prefix without "/")
+             could avoid rendering the screen whose route name is "/" in the new engine.
+            */
             initialRoute: "new_native_container/cart"
         )
         return engine
@@ -43,7 +46,7 @@ import fw_flutter_sdk
                 return nil
             }
             var initialRoute = pageName
-            if let parameters = args["parameters"] as? Dictionary<String, Any>,
+            if let parameters = args["parameters"] as? [String: Any],
                let jsonData = try? JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted),
                let jsonString = String(data: jsonData, encoding: .utf8),
                let encodedJsonString = jsonString.urlEncoded {

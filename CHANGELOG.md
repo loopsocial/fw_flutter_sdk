@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## [1.4.0]
+
+### Added
+
+- Multiple product pinning(only supported on iOS)
+- Picture In Picture functionality(only supported on iOS)
+- Purchase sale tracking API(only supported on iOS)
+- Custom VAST attributes support(only supported on iOS)
+- In feed ad support(only supported on iOS)
+- Support for story block(only supported on iOS)
+
 ## [1.3.0]
 
 ### Added

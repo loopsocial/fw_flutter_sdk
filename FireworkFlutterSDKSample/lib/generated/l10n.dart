@@ -1419,6 +1419,76 @@ class S {
       args: [],
     );
   }
+
+  /// `Story Block`
+  String get storyBlock {
+    return Intl.message(
+      'Story Block',
+      name: 'storyBlock',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fail to load story block`
+  String get storyBlockLoadError {
+    return Intl.message(
+      'Fail to load story block',
+      name: 'storyBlockLoadError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Requires Ads`
+  String get requiresAds {
+    return Intl.message(
+      'Requires Ads',
+      name: 'requiresAds',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Vast Attributes`
+  String get vastAttributes {
+    return Intl.message(
+      'Vast Attributes',
+      name: 'vastAttributes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `e.g. {"name1": "value1", "name2": "value2"}`
+  String get vastAttributesHint {
+    return Intl.message(
+      'e.g. {"name1": "value1", "name2": "value2"}',
+      name: 'vastAttributesHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter correct vast attributes`
+  String get vastAttributesFormatError {
+    return Intl.message(
+      'Please enter correct vast attributes',
+      name: 'vastAttributesFormatError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enable Picture In Picture`
+  String get enablePictureInPicture {
+    return Intl.message(
+      'Enable Picture In Picture',
+      name: 'enablePictureInPicture',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

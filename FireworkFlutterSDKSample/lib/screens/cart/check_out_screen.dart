@@ -1,5 +1,9 @@
+import 'dart:math';
+
+import 'package:fw_flutter_sdk/fw_flutter_sdk.dart';
 import 'package:fw_flutter_sdk_example/utils/host_app_shopping_service.dart';
 import 'package:flutter/material.dart';
+import 'package:uuid/uuid.dart';
 import '../../generated/l10n.dart';
 import '../../widgets/fw_app_bar.dart';
 import '../../widgets/fw_text_form_field.dart';
@@ -226,6 +230,21 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
       padding: const EdgeInsets.all(20),
       child: ElevatedButton(
         onPressed: () {
+          const uuid = Uuid();
+          final random = Random();
+          FireworkSDK.getInstance().trackPurchase(
+            TrackPurchaseParameters(
+              orderId: uuid.v4(),
+              value: random.nextInt(100) + 1,
+              currencyCode: "USD",
+              countryCode: "US",
+              additionalInfo: <String, String>{
+                "additionalKey1": "additionalValue1",
+                "additionalKey2": "additionalValue2",
+                "additionalKey3": "additionalValue3"
+              },
+            ),
+          );
           HostAppShoppingService.getInstance().removeAllCartItems();
           Navigator.of(context).pop();
         },

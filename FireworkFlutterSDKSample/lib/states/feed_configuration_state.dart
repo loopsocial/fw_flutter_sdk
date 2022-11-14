@@ -7,6 +7,8 @@ class FeedConfigurationState extends ChangeNotifier {
     title: VideoFeedTitleConfiguration(
       hidden: false,
     ),
+    showAdBadge: true,
+    enablePictureInPicture: true,
   );
 
   VideoFeedConfiguration get feedConfiguration => _feedConfiguration;
@@ -16,12 +18,28 @@ class FeedConfigurationState extends ChangeNotifier {
     notifyListeners();
   }
 
+  AdConfiguration _adConfiguration = AdConfiguration(
+    adsFetchTimeout: 20,
+  );
+
+  AdConfiguration get adConfiguration => _adConfiguration;
+
+  set adConfiguration(AdConfiguration adConfiguration) {
+    _adConfiguration = adConfiguration;
+    notifyListeners();
+  }
+
   void reset() {
     _feedConfiguration = VideoFeedConfiguration(
       titlePosition: VideoFeedTitlePosition.nested,
       title: VideoFeedTitleConfiguration(
         hidden: false,
       ),
+      showAdBadge: true,
+      enablePictureInPicture: true,
+    );
+    _adConfiguration = AdConfiguration(
+      adsFetchTimeout: 20,
     );
     notifyListeners();
   }
