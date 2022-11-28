@@ -2,6 +2,7 @@ import 'package:fw_flutter_sdk/fw_flutter_sdk.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import '../../generated/l10n.dart';
+import '../../my_app.dart';
 import '../../widgets/fw_app_bar.dart';
 
 class EnableCustomCTAClickCallbackScreen extends StatefulWidget {
@@ -104,12 +105,10 @@ class _EnableCustomCTAClickCallbackScreenState
                 FireworkSDK.getInstance().onCustomCTAClick = (event) {
                   final url = event?.url;
                   if (url != null) {
-                    FireworkSDK.getInstance().navigator.pushNativeContainer({
-                      // Adding new_native_container(or any other custom prefix without "/") could avoid rendering the screen whose route name is "/" in the new engine.
-                      "pageName": "new_native_container/cta_link_content",
-                      "parameters": {
-                        "url": url,
-                      }
+                    FireworkSDK.getInstance().navigator.popNativeContainer();
+                    globalNavigatorKey.currentState
+                        ?.pushNamed('/cta_link_content', arguments: {
+                      "url": url,
                     });
                   }
                 };
