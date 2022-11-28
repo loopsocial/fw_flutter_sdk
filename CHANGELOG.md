@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [1.4.1]
+
+### Fixed
+
+- The users are navigated to the trailer video when opening the share link of the active live stream on the Android side.
+- Clicking the cart icon doesn't close the player when enabling the custom click cart icon callback on the iOS side
+
 ## [1.4.0]
 
 ### Added
