@@ -31,6 +31,7 @@ class _MyAppState extends State<MyApp> {
     super.initState();
 
     _registerCallbacks();
+    FireworkSDK.getInstance().shareBaseURL = "https://fw.tv";
     FWExampleLoggerUtil.log(
         "window.defaultRouteName ${window.defaultRouteName} _MyAppState initState");
     if (window.defaultRouteName == "/") {

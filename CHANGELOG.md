@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## [1.5.0]
+
+### Added
+
+- Support Picture in Picture for story block(only supported on iOS)
+- Support floating player(only supported on iOS)
+- Support sharing and opening universal links(only supported on iOS)
+
 ## [1.4.1]
 
 ### Fixed

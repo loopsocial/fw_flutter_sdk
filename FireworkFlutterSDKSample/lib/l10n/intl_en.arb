@@ -73,7 +73,7 @@
   "setShareBaseURL": "Set Share Base URL",
   "urlHint": "Enter url",
   "urlError": "Please enter correct url",
-  "urlRequiredError": "Please correct url",
+  "urlRequiredError": "Please enter correct url",
   "videoURL": "Video URL",
   "open": "Open",
   "currentShareBaseURLTip": "Current: {url}",
@@ -142,5 +142,9 @@
   "vastAttributes": "Vast Attributes",
   "vastAttributesHint": "e.g. {\"name1\": \"value1\", \"name2\": \"value2\"}",
   "vastAttributesFormatError": "Please enter correct vast attributes",
-  "enablePictureInPicture": "Enable Picture In Picture"
+  "enablePictureInPicture": "Enable Picture In Picture",
+  "gridColumns": "Grid Columns",
+  "gridColumnsHint": "e.g. 3",
+  "gridColumnsError": "Please enter correct grid columns",
+  "gridColumnsRangeError": "Please enter grid columns in [2, 8]"
 }

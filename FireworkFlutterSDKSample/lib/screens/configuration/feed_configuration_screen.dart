@@ -156,6 +156,10 @@ class _FeedConfigurationScreenState extends State<FeedConfigurationScreen> {
             const SizedBox(
               height: 20,
             ),
+            _buildGridColumns(context),
+            const SizedBox(
+              height: 20,
+            ),
             _buildShowAdBadge(context),
             const SizedBox(
               height: 20,
@@ -368,6 +372,33 @@ class _FeedConfigurationScreenState extends State<FeedConfigurationScreen> {
             _resultConfig.playIcon ??= VideoFeedPlayIconConfiguration();
             _resultConfig.playIcon?.iconWidth =
                 int.tryParse(text ?? '')?.toDouble();
+          },
+        )
+      ],
+    );
+  }
+
+  Widget _buildGridColumns(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(S.of(context).gridColumns),
+        FWTextFormField(
+          initialValue: _initConfig.gridColumns?.toStringAsFixed(0),
+          hintText: S.of(context).gridColumnsHint,
+          validator: (text) {
+            return ValidationUtil.validateNumber(
+              context: context,
+              text: text,
+              min: 2,
+              max: 8,
+              errorMessage: S.of(context).gridColumnsError,
+              rangeErrorMessage: S.of(context).gridColumnsRangeError,
+            );
+          },
+          onSaved: (text) {
+            _resultConfig.gridColumns = int.tryParse(text ?? '')?.toInt();
           },
         )
       ],

@@ -790,10 +790,10 @@ class S {
     );
   }
 
-  /// `Please correct url`
+  /// `Please enter correct url`
   String get urlRequiredError {
     return Intl.message(
-      'Please correct url',
+      'Please enter correct url',
       name: 'urlRequiredError',
       desc: '',
       args: [],
@@ -1485,6 +1485,46 @@ class S {
     return Intl.message(
       'Enable Picture In Picture',
       name: 'enablePictureInPicture',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Grid Columns`
+  String get gridColumns {
+    return Intl.message(
+      'Grid Columns',
+      name: 'gridColumns',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `e.g. 3`
+  String get gridColumnsHint {
+    return Intl.message(
+      'e.g. 3',
+      name: 'gridColumnsHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter correct grid columns`
+  String get gridColumnsError {
+    return Intl.message(
+      'Please enter correct grid columns',
+      name: 'gridColumnsError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter grid columns in [2, 8]`
+  String get gridColumnsRangeError {
+    return Intl.message(
+      'Please enter grid columns in [2, 8]',
+      name: 'gridColumnsRangeError',
       desc: '',
       args: [],
     );

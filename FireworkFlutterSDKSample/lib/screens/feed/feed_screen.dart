@@ -342,6 +342,7 @@ class _FeedScreenState extends State<FeedScreen> {
             channel: channel,
             playlist: playlist,
             dynamicContentParameters: dynamicContentParameters,
+            enablePictureInPicture: true,
             onStoryBlockLoadFinished: _onStoryBlockLoadFinished,
           ),
         ),
