@@ -1,11 +1,11 @@
 PODS:
-  - FireworkVideo (1.3.0)
+  - FireworkVideo (1.5.0)
   - Flutter (1.0.0)
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
   - fw_flutter_sdk (1.0.0):
-    - FireworkVideo (= 1.3.0)
+    - FireworkVideo (= 1.5.0)
     - Flutter
   - path_provider_ios (0.0.1):
     - Flutter
@@ -40,14 +40,14 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/webview_flutter_wkwebview/ios"
 
 SPEC CHECKSUMS:
-  FireworkVideo: f322479f2425f0e9c51f8793ea254dd14a52069c
+  FireworkVideo: ef38d0d2aeda3ac4da7d0ed777c5b4153d680754
   Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
-  fw_flutter_sdk: 51674434dea87f468631dbc05f76710c8b7eeb92
+  fw_flutter_sdk: e1483e3688e4c19200e00bd8da68aaa57ef483af
   path_provider_ios: 14f3d2fd28c4fdb42f44e0f751d12861c43cee02
   sqflite: 6d358c025f5b867b29ed92fc697fd34924e11904
   webview_flutter_wkwebview: b7e70ef1ddded7e69c796c7390ee74180182971f
 
-PODFILE CHECKSUM: 7d714a5ac7fda1315bc261738086cf00fa98c7e3
+PODFILE CHECKSUM: cffa4ef42a512fb29da27c2e71b1a8bc8f223b56
 
 COCOAPODS: 1.11.3

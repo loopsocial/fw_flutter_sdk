@@ -135,6 +135,12 @@ class MessageLookup extends MessageLookupByLibrary {
             "Please enter font size in [8, 30]"),
         "full": MessageLookupByLibrary.simpleMessage("full"),
         "grid": MessageLookupByLibrary.simpleMessage("Grid"),
+        "gridColumns": MessageLookupByLibrary.simpleMessage("Grid Columns"),
+        "gridColumnsError": MessageLookupByLibrary.simpleMessage(
+            "Please enter correct grid columns"),
+        "gridColumnsHint": MessageLookupByLibrary.simpleMessage("e.g. 3"),
+        "gridColumnsRangeError": MessageLookupByLibrary.simpleMessage(
+            "Please enter grid columns in [2, 8]"),
         "hidePlayIcon": MessageLookupByLibrary.simpleMessage("Hide Play Icon"),
         "hideTitle": MessageLookupByLibrary.simpleMessage("Hide Title"),
         "integration": MessageLookupByLibrary.simpleMessage("Integration"),
@@ -232,7 +238,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Please enter correct url"),
         "urlHint": MessageLookupByLibrary.simpleMessage("Enter url"),
         "urlRequiredError":
-            MessageLookupByLibrary.simpleMessage("Please correct url"),
+            MessageLookupByLibrary.simpleMessage("Please enter correct url"),
         "use": MessageLookupByLibrary.simpleMessage("Use"),
         "vastAttributes":
             MessageLookupByLibrary.simpleMessage("Vast Attributes"),
