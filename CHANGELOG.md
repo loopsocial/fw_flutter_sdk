@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [1.5.2]
+
+### Fixed
+
+- Support Android SDK version 33
+
 ## [1.5.1]
 
 ### Fixed
