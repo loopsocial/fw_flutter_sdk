@@ -26,7 +26,7 @@ dependencies:
   provider: ^6.0.2
   path_provider: ^2.0.9
   flutter_easyloading: ^3.0.3
-  dio: ^4.0.4
+  dio: ^5.1.2
   json_annotation: ^4.4.0
   cached_network_image: ^3.2.0
   event_bus: ^2.0.0
