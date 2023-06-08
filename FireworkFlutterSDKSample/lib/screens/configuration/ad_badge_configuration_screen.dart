@@ -20,18 +20,15 @@ class _AdBadgeConfigurationScreenState
     extends State<AdBadgeConfigurationScreen> {
   final _formKey = GlobalKey<FormState>();
   AdBadgeConfiguration _initConfig = AdBadgeConfiguration();
-  final _resultConfig = AdBadgeConfiguration();
+  AdBadgeConfiguration _resultConfig = AdBadgeConfiguration();
 
   @override
   void initState() {
     super.initState();
     if (FireworkSDK.getInstance().adBadgeConfiguration != null) {
       _initConfig = FireworkSDK.getInstance().adBadgeConfiguration!;
+      _resultConfig = _initConfig.deepCopy();
     }
-
-    _resultConfig.badgeTextType = _initConfig.badgeTextType;
-    _resultConfig.backgroundColor = _initConfig.backgroundColor;
-    _resultConfig.textColor = _initConfig.textColor;
   }
 
   @override
@@ -70,6 +67,7 @@ class _AdBadgeConfigurationScreenState
             const SizedBox(
               height: 20,
             ),
+            _buildTitleUseAndroidFontInfo(context),
             const SizedBox(
               height: 20,
             ),
@@ -123,6 +121,28 @@ class _AdBadgeConfigurationScreenState
           },
         ),
       ],
+    );
+  }
+
+  Widget _buildTitleUseAndroidFontInfo(BuildContext context) {
+    return CheckboxListTile(
+      contentPadding: EdgeInsets.zero,
+      value: _resultConfig.androidFontInfo != null,
+      onChanged: (value) {
+        setState(() {
+          if (value == true) {
+            _resultConfig.androidFontInfo = AndroidFontInfo(
+              isCustom: false,
+              typefaceName: "DEFAULT_BOLD",
+            );
+          } else {
+            _resultConfig.androidFontInfo = null;
+          }
+        });
+      },
+      title: Text(
+        S.of(context).useAndroidFontInfoForTitle,
+      ),
     );
   }
 

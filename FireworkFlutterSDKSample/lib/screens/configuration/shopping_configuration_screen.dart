@@ -1,0 +1,348 @@
+import 'package:flutter/cupertino.dart';
+import 'package:fw_flutter_sdk/fw_flutter_sdk.dart';
+import 'package:flutter/material.dart';
+import 'package:fw_flutter_sdk_example/utils/host_app_service.dart';
+
+import '../../generated/l10n.dart';
+import '../../utils/validation_util.dart';
+import '../../widgets/fw_app_bar.dart';
+import '../../widgets/fw_text_form_field.dart';
+
+class ShoppingConfigurationScreen extends StatefulWidget {
+  const ShoppingConfigurationScreen({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  State<ShoppingConfigurationScreen> createState() =>
+      _ShoppingConfigurationScreenState();
+}
+
+class _ShoppingConfigurationScreenState
+    extends State<ShoppingConfigurationScreen> {
+  final _formKey = GlobalKey<FormState>();
+  bool _resultShowCartIcon = true;
+  ShoppingCTAButtonConfiguration _initShoppingCTAButtonConfig =
+      ShoppingCTAButtonConfiguration();
+  ShoppingCTAButtonConfiguration _resultShoppingCTAButtonConfig =
+      ShoppingCTAButtonConfiguration();
+  LinkButtonConfiguration _resultLinkButtonConfig = LinkButtonConfiguration();
+  bool _resultCustomizeLinkButtonHandler = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _resultShowCartIcon = FireworkSDK.getInstance().shopping.cartIconVisible;
+
+    _initShoppingCTAButtonConfig = FireworkSDK.getInstance()
+            .shopping
+            .productInfoViewConfiguration
+            ?.ctaButton ??
+        ShoppingCTAButtonConfiguration();
+    _resultShoppingCTAButtonConfig = _initShoppingCTAButtonConfig;
+    _resultLinkButtonConfig = FireworkSDK.getInstance()
+            .shopping
+            .productInfoViewConfiguration
+            ?.linkButton ??
+        LinkButtonConfiguration();
+    _resultCustomizeLinkButtonHandler =
+        FireworkSDK.getInstance().shopping.onCustomClickLinkButton != null;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: fwAppBar(
+        context: context,
+        titleText: S.of(context).shoppingConfiguration,
+      ),
+      body: GestureDetector(
+        onTap: () {
+          FocusScope.of(context).unfocus();
+        },
+        child: _buildBody(context),
+      ),
+    );
+  }
+
+  Widget _buildBody(BuildContext context) {
+    return Form(
+      key: _formKey,
+      child: Container(
+        color: Colors.white,
+        child: ListView(
+          padding: const EdgeInsets.all(20),
+          children: [
+            _buildTextSegmentedControl(context),
+            const SizedBox(
+              height: 20,
+            ),
+            _buildShoppingCTAButtonBackgroundColor(context),
+            const SizedBox(
+              height: 20,
+            ),
+            _buildShoppingCTAButtonTextColor(context),
+            const SizedBox(
+              height: 20,
+            ),
+            _buildShoppingCTAButtonFontSize(context),
+            const SizedBox(
+              height: 20,
+            ),
+            _buildUseIOSFontInfo(context),
+            const SizedBox(
+              height: 20,
+            ),
+            _buildCartIconButtonShow(context),
+            const SizedBox(
+              height: 20,
+            ),
+            _buildLinkButtonHidden(context),
+            const SizedBox(
+              height: 20,
+            ),
+            _buildCustomizeLinkButtonHandler(context),
+            const SizedBox(
+              height: 20,
+            ),
+            _buildButtonList(context),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildTextSegmentedControl(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(S.of(context).shoppingCTAButtonText),
+        const SizedBox(
+          height: 20,
+        ),
+        CupertinoSegmentedControl<ShoppingCTAButtonText>(
+          onValueChanged: (value) {
+            setState(() {
+              _resultShoppingCTAButtonConfig.text = value;
+            });
+          },
+          children: {
+            ShoppingCTAButtonText.addToCart: Text(
+              S.of(context).addToCart,
+              style: const TextStyle(fontSize: 13),
+            ),
+            ShoppingCTAButtonText.shopNow: Text(
+              S.of(context).shopNow,
+              style: const TextStyle(fontSize: 13),
+            ),
+          },
+          groupValue: _resultShoppingCTAButtonConfig.text ??
+              ShoppingCTAButtonText.addToCart,
+        ),
+      ],
+    );
+  }
+
+  Widget _buildShoppingCTAButtonBackgroundColor(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(S.of(context).shoppingCTAButtonBackgroundColor),
+        FWTextFormField(
+          initialValue: _initShoppingCTAButtonConfig.backgroundColor,
+          hintText: S.of(context).backgroundColorHint,
+          validator: (text) {
+            return ValidationUtil.validateColor(
+              text,
+              context,
+            );
+          },
+          onSaved: (text) {
+            _resultShoppingCTAButtonConfig.backgroundColor = text;
+          },
+        ),
+      ],
+    );
+  }
+
+  Widget _buildShoppingCTAButtonTextColor(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(S.of(context).shoppingCTAButtonTextColor),
+        FWTextFormField(
+          initialValue: _initShoppingCTAButtonConfig.textColor,
+          hintText: S.of(context).shoppingCTAButtonTextColorHint,
+          validator: (text) {
+            return ValidationUtil.validateColor(
+              text,
+              context,
+            );
+          },
+          onSaved: (text) {
+            _resultShoppingCTAButtonConfig.textColor = text;
+          },
+        ),
+      ],
+    );
+  }
+
+  Widget _buildShoppingCTAButtonFontSize(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(S.of(context).shoppingCTAButtonTextColor),
+        FWTextFormField(
+          initialValue:
+              _initShoppingCTAButtonConfig.fontSize?.toStringAsFixed(0) ?? '16',
+          hintText: S.of(context).titleFontSizeHint,
+          validator: (text) {
+            return ValidationUtil.validateNumber(
+              context: context,
+              text: text,
+              min: 8,
+              max: 30,
+              errorMessage: S.of(context).fontSizeError,
+              rangeErrorMessage: S.of(context).fontSizeRangeError,
+            );
+          },
+          onSaved: (text) {
+            _initShoppingCTAButtonConfig.fontSize =
+                int.tryParse(text ?? '')?.toDouble();
+          },
+        )
+      ],
+    );
+  }
+
+  Widget _buildCartIconButtonShow(BuildContext context) {
+    return CheckboxListTile(
+      contentPadding: EdgeInsets.zero,
+      value: _resultShowCartIcon,
+      onChanged: (value) {
+        setState(() {
+          _resultShowCartIcon = value ?? true;
+        });
+      },
+      title: Text(
+        S.of(context).showCartIcon,
+      ),
+    );
+  }
+
+  Widget _buildUseIOSFontInfo(BuildContext context) {
+    return CheckboxListTile(
+      contentPadding: EdgeInsets.zero,
+      value: _resultShoppingCTAButtonConfig.iOSFontInfo != null,
+      onChanged: (value) {
+        setState(() {
+          if (value == true) {
+            _resultShoppingCTAButtonConfig.iOSFontInfo = IOSFontInfo(
+              fontName: "TimesNewRomanPS-ItalicMT",
+            );
+          } else {
+            _resultShoppingCTAButtonConfig.iOSFontInfo = null;
+          }
+        });
+      },
+      title: Text(
+        S.of(context).useIOSFontInfo,
+      ),
+    );
+  }
+
+  Widget _buildLinkButtonHidden(BuildContext context) {
+    return CheckboxListTile(
+      contentPadding: EdgeInsets.zero,
+      value: _resultLinkButtonConfig.isHidden ?? false,
+      onChanged: (value) {
+        setState(() {
+          _resultLinkButtonConfig.isHidden = value;
+          if (_resultLinkButtonConfig.isHidden == true) {
+            _resultCustomizeLinkButtonHandler = false;
+          }
+        });
+      },
+      title: Text(
+        S.of(context).hideLinkButton,
+      ),
+    );
+  }
+
+  Widget _buildCustomizeLinkButtonHandler(BuildContext context) {
+    return CheckboxListTile(
+      contentPadding: EdgeInsets.zero,
+      value: _resultCustomizeLinkButtonHandler,
+      onChanged: (value) {
+        setState(() {
+          _resultCustomizeLinkButtonHandler = value ?? false;
+          if (_resultCustomizeLinkButtonHandler) {
+            _resultLinkButtonConfig.isHidden = false;
+          }
+        });
+      },
+      title: Text(
+        S.of(context).customizeLinkButtonHandler,
+      ),
+    );
+  }
+
+  Widget _buildButtonList(BuildContext context) {
+    return Row(children: [
+      Expanded(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          child: Text(
+            S.of(context).cancel,
+          ),
+        ),
+      ),
+      const SizedBox(
+        width: 20,
+      ),
+      Expanded(
+        child: ElevatedButton(
+          onPressed: () {
+            if (_formKey.currentState != null &&
+                _formKey.currentState!.validate()) {
+              _formKey.currentState!.save();
+              FireworkSDK.getInstance().shopping.productInfoViewConfiguration =
+                  ProductInfoViewConfiguration(
+                ctaButton: _resultShoppingCTAButtonConfig,
+                linkButton: _resultLinkButtonConfig,
+              );
+              FireworkSDK.getInstance().shopping.cartIconVisible =
+                  _resultShowCartIcon;
+              if (_resultShoppingCTAButtonConfig.text ==
+                  ShoppingCTAButtonText.shopNow) {
+                FireworkSDK.getInstance().shopping.onShoppingCTA =
+                    HostAppService.getInstance().onShopNow;
+              } else {
+                FireworkSDK.getInstance().shopping.onShoppingCTA =
+                    HostAppService.getInstance().onAddToCart;
+              }
+              if (_resultCustomizeLinkButtonHandler) {
+                FireworkSDK.getInstance().shopping.onCustomClickLinkButton =
+                    HostAppService.getInstance().onCustomClickLinkButton;
+              } else {
+                FireworkSDK.getInstance().shopping.onCustomClickLinkButton =
+                    null;
+              }
+              FocusScope.of(context).unfocus();
+              Navigator.of(context).pop();
+            }
+          },
+          child: Text(
+            S.of(context).use,
+          ),
+        ),
+      ),
+    ]);
+  }
+}

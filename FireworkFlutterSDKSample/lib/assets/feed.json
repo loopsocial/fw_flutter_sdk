@@ -13,5 +13,6 @@
   "defaultShoppingPlaylist": {
     "channelId": "",
     "playlistId": ""
-  }
+  },
+  "defaultHashtagPlaylistInfoArray": []
 }

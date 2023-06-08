@@ -6,19 +6,16 @@ import 'package:fw_flutter_sdk_example/screens/cart/widgets/cart_widget.dart';
 import 'package:fw_flutter_sdk_example/utils/fw_example_logger_util.dart';
 import 'package:flutter/material.dart';
 import '../../generated/l10n.dart';
-import '../../utils/host_app_shopping_service.dart';
+import '../../utils/host_app_service.dart';
 import '../../widgets/fw_app_bar.dart';
 
 class CartScreen extends StatefulWidget {
-  final bool? isNewContainer;
-
   const CartScreen({
     Key? key,
-    this.isNewContainer,
   }) : super(key: key);
 
   @override
-  _CartScreenState createState() => _CartScreenState();
+  State<CartScreen> createState() => _CartScreenState();
 }
 
 class _CartScreenState extends State<CartScreen> {
@@ -46,12 +43,13 @@ class _CartScreenState extends State<CartScreen> {
   }
 
   Future<void> _syncCartItems() async {
-    final cartItemList =
-        await HostAppShoppingService.getInstance().getAllCartItems();
+    final cartItemList = await HostAppService.getInstance().getAllCartItems();
     FWExampleLoggerUtil.log('_cartItemList $cartItemList');
-    setState(() {
-      _cartItemList = cartItemList;
-    });
+    if (mounted) {
+      setState(() {
+        _cartItemList = cartItemList;
+      });
+    }
   }
 
   @override
@@ -61,7 +59,6 @@ class _CartScreenState extends State<CartScreen> {
       appBar: fwAppBar(
         context: context,
         titleText: S.of(context).cartPage,
-        isNewContainer: widget.isNewContainer,
       ),
       body: CartWidget(
         cartItemList: _cartItemList,

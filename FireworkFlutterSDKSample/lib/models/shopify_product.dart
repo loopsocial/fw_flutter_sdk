@@ -12,7 +12,7 @@ class ShopifyProduct {
   String? descriptionHtml;
 
   @JsonKey(
-    ignore: true,
+    includeFromJson: false,
   )
   List<ShopifyProductVariant>? variants;
 

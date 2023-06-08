@@ -8,7 +8,7 @@ class ChannelConfigurationScreen extends StatefulWidget {
   const ChannelConfigurationScreen({Key? key}) : super(key: key);
 
   @override
-  _ChannelConfigurationScreenState createState() =>
+  State<ChannelConfigurationScreen> createState() =>
       _ChannelConfigurationScreenState();
 }
 

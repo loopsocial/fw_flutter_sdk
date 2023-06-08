@@ -1,16 +1,8 @@
 # CHANGELOG
 
-## [1.5.2]
+## [2.0.0-beta.1]
 
-### Fixed
-
-- Support Android SDK version 33
-
-## [1.5.1]
-
-### Fixed
-
-- Support the high version of Kotlin
+- Firework Flutter SDK beta release
 
 ## [1.5.0]
 

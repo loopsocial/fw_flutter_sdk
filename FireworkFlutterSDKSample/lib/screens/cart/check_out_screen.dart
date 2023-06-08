@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:fw_flutter_sdk/fw_flutter_sdk.dart';
-import 'package:fw_flutter_sdk_example/utils/host_app_shopping_service.dart';
+import 'package:fw_flutter_sdk_example/utils/host_app_service.dart';
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 import '../../generated/l10n.dart';
@@ -12,7 +12,7 @@ class CheckoutScreen extends StatefulWidget {
   const CheckoutScreen({Key? key}) : super(key: key);
 
   @override
-  _CheckoutScreenState createState() => _CheckoutScreenState();
+  State<CheckoutScreen> createState() => _CheckoutScreenState();
 }
 
 class _CheckoutScreenState extends State<CheckoutScreen> {
@@ -23,7 +23,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     return Scaffold(
       appBar: fwAppBar(
         context: context,
-        titleText: S.of(context).cartConfiguration,
+        titleText: S.of(context).shoppingConfiguration,
       ),
       body: GestureDetector(
         onTap: () {
@@ -245,7 +245,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               },
             ),
           );
-          HostAppShoppingService.getInstance().removeAllCartItems();
+          HostAppService.getInstance().removeAllCartItems();
           Navigator.of(context).pop();
         },
         child: Text(

@@ -2,9 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:fw_flutter_sdk/fw_flutter_sdk.dart';
-import 'package:fw_flutter_sdk_example/extensions/video_feed_configuration_extension.dart';
 import 'package:fw_flutter_sdk_example/states/feed_configuration_state.dart';
 import 'package:fw_flutter_sdk_example/states/player_configuration_state.dart';
+import 'package:fw_flutter_sdk_example/states/story_block_configuration_state.dart';
 import 'package:fw_flutter_sdk_example/utils/fw_example_logger_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -26,13 +26,16 @@ class FeedScreen extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _FeedScreenState createState() => _FeedScreenState();
+  State<FeedScreen> createState() => _FeedScreenState();
 }
 
 class _FeedScreenState extends State<FeedScreen> {
   VideoFeedMode _mode = VideoFeedMode.row;
+  bool _enablePip = true;
   FeedWidgetType _feedWidgetType = FeedWidgetType.videoFeed;
   VideoFeedController? _feedController;
+  StoryBlockController? _storyBlockController;
+
   FWError? _feedError;
 
   String? _source;
@@ -40,11 +43,14 @@ class _FeedScreenState extends State<FeedScreen> {
   String? _playlist;
   String? _playlistGroup;
   Map<String, List<String>>? _dynamicContentParameters;
+  String? _hashtagFilterExpression;
+  final _androidPadding = const EdgeInsets.symmetric(horizontal: 10);
 
   @override
   void initState() {
     super.initState();
-    FWExampleLoggerUtil.log("FeedConfigurationState initState");
+    FWExampleLoggerUtil.log(
+        "FeedConfigurationState initState ${DateTime.now()}");
 
     if (widget.settings.arguments is Map<dynamic, dynamic>) {
       final arg = widget.settings.arguments as Map<dynamic, dynamic>;
@@ -69,12 +75,17 @@ class _FeedScreenState extends State<FeedScreen> {
         _dynamicContentParameters =
             arg["dynamicContentParameters"] as Map<String, List<String>>;
       }
+
+      if (arg["hashtagFilterExpression"] is String) {
+        _hashtagFilterExpression = arg["hashtagFilterExpression"] as String;
+      }
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    FWExampleLoggerUtil.log("FeedConfigurationState build");
+    FWExampleLoggerUtil.log(
+        "FeedConfigurationState build ${DateTime.now()}${DateTime.now()}");
     String? titleText;
     if (widget.settings.arguments is Map<dynamic, dynamic>) {
       final arg = widget.settings.arguments as Map<dynamic, dynamic>;
@@ -93,10 +104,39 @@ class _FeedScreenState extends State<FeedScreen> {
               if (_feedWidgetType == FeedWidgetType.videoFeed)
                 IconButton(
                   onPressed: () {
-                    _refresh();
+                    _refreshVideoFeed();
                   },
                   icon: const Icon(
                     Icons.refresh,
+                  ),
+                ),
+              if (_feedWidgetType == FeedWidgetType.storyBlock &&
+                  defaultTargetPlatform == TargetPlatform.android)
+                IconButton(
+                  onPressed: () {
+                    Navigator.of(context)
+                        .pushNamed("/story_block_configuration");
+                  },
+                  icon: const Icon(
+                    Icons.settings,
+                  ),
+                ),
+              if (_feedWidgetType == FeedWidgetType.storyBlock)
+                IconButton(
+                  onPressed: () {
+                    _playStoryBlock();
+                  },
+                  icon: const Icon(
+                    Icons.play_circle,
+                  ),
+                ),
+              if (_feedWidgetType == FeedWidgetType.storyBlock)
+                IconButton(
+                  onPressed: () {
+                    _pauseStoryBlock();
+                  },
+                  icon: const Icon(
+                    Icons.pause_circle,
                   ),
                 ),
             ],
@@ -114,45 +154,48 @@ class _FeedScreenState extends State<FeedScreen> {
 
   Widget _buildBody(BuildContext context) {
     List<Widget> widgetList = [];
-
-    if (_source != 'playlistGroup' &&
-        defaultTargetPlatform == TargetPlatform.iOS) {
+    final showEnablePictureInPicture =
+        defaultTargetPlatform == TargetPlatform.iOS ||
+            _feedWidgetType == FeedWidgetType.videoFeed;
+    if (_source != 'playlistGroup') {
       widgetList.addAll(<Widget>[
         const SizedBox(
           height: 20,
         ),
         _buildFeedWidgetTypeSegmentedControl(context),
+        const SizedBox(
+          height: 10,
+        ),
+        if (showEnablePictureInPicture) _buildEnablePictureInPicture(context),
       ]);
     }
 
     if (_feedWidgetType == FeedWidgetType.videoFeed) {
       widgetList.addAll(<Widget>[
         const SizedBox(
-          height: 20,
+          height: 10,
         ),
         _buildModeSegmentedControl(context),
         const SizedBox(
-          height: 20,
+          height: 10,
         ),
         _buildConfigButtonList(context),
         const SizedBox(
-          height: 20,
+          height: 10,
         ),
         _buildFeed(context),
       ]);
     } else {
       widgetList.addAll([
         const SizedBox(
-          height: 20,
+          height: 10,
         ),
         _buildStoryBlock(context),
       ]);
     }
 
     var crossAxisAlignment = CrossAxisAlignment.stretch;
-    if (_feedWidgetType == FeedWidgetType.storyBlock) {
-      crossAxisAlignment = CrossAxisAlignment.center;
-    } else if (_feedWidgetType == FeedWidgetType.videoFeed &&
+    if (_feedWidgetType == FeedWidgetType.videoFeed &&
         _mode == VideoFeedMode.column &&
         Platform.isAndroid) {
       crossAxisAlignment = CrossAxisAlignment.center;
@@ -189,6 +232,24 @@ class _FeedScreenState extends State<FeedScreen> {
           ),
         },
         groupValue: _feedWidgetType,
+      ),
+    );
+  }
+
+  Widget _buildEnablePictureInPicture(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: CheckboxListTile(
+        contentPadding: EdgeInsets.zero,
+        value: _enablePip,
+        onChanged: (value) {
+          setState(() {
+            _enablePip = value ?? false;
+          });
+        },
+        title: Text(
+          S.of(context).enablePictureInPicture,
+        ),
       ),
     );
   }
@@ -266,12 +327,7 @@ class _FeedScreenState extends State<FeedScreen> {
         context.watch<FeedConfigurationState>().adConfiguration;
     final playerConfiguration =
         context.watch<PlayerConfigurationState>().playerConfiguration;
-    final resultConfiguration = feedConfiguration.clone();
-    if (_mode == VideoFeedMode.column) {
-      resultConfiguration.aspectRatio = 1;
-    } else {
-      resultConfiguration.aspectRatio = null;
-    }
+
     VideoFeedSource source = VideoFeedSource.values.firstWhere(
         (e) => e.toString() == 'VideoFeedSource.${_source ?? ''}',
         orElse: () => VideoFeedSource.discover);
@@ -280,24 +336,26 @@ class _FeedScreenState extends State<FeedScreen> {
     String? playlistGroup = _playlistGroup;
     Map<String, List<String>>? dynamicContentParameters =
         _dynamicContentParameters;
+    String? hashtagFilterExpression = _hashtagFilterExpression;
 
     FWExampleLoggerUtil.log("_FeedScreenState _buildFeed source $source");
     FWExampleLoggerUtil.log("_FeedScreenState _buildFeed channel $channel");
     FWExampleLoggerUtil.log(
         "_FeedScreenState _buildFeed dynamicContentParameters $dynamicContentParameters");
     FWExampleLoggerUtil.log(
-        "_FeedScreenState _buildFeed enablePictureInPicture ${resultConfiguration.enablePictureInPicture}");
-
+        "_FeedScreenState _buildFeed _hashtagFilterExpression $_hashtagFilterExpression");
     final feedWidget = VideoFeed(
-      height: 200,
+      height: 220,
       width: (_mode == VideoFeedMode.column && Platform.isAndroid) ? 150 : null,
       source: source,
       channel: channel,
       playlist: playlist,
       playlistGroup: playlistGroup,
       dynamicContentParameters: dynamicContentParameters,
+      hashtagFilterExpression: hashtagFilterExpression,
       mode: _mode,
-      videoFeedConfiguration: resultConfiguration,
+      enablePictureInPicture: _enablePip,
+      videoFeedConfiguration: feedConfiguration,
       videoPlayerConfiguration: playerConfiguration,
       adConfiguration: adConfiguration,
       onVideoFeedLoadFinished: _onVideoFeedLoadFinished,
@@ -306,7 +364,18 @@ class _FeedScreenState extends State<FeedScreen> {
 
     return Expanded(
       flex: _mode == VideoFeedMode.row ? 0 : 1,
-      child: feedWidget,
+      child: Padding(
+        padding: defaultTargetPlatform == TargetPlatform.android
+            ? _androidPadding
+            : EdgeInsets.zero,
+        child: Container(
+          color:
+              feedConfiguration.titlePosition == VideoFeedTitlePosition.stacked
+                  ? Colors.grey
+                  : null,
+          child: feedWidget,
+        ),
+      ),
     );
   }
 
@@ -321,7 +390,9 @@ class _FeedScreenState extends State<FeedScreen> {
     String? playlist = _playlist;
     Map<String, List<String>>? dynamicContentParameters =
         _dynamicContentParameters;
-
+    String? hashtagFilterExpression = _hashtagFilterExpression;
+    final storyBlockConfiguration =
+        context.watch<StoryBlockConfigurationState>().storyBlockConfiguration;
     FWExampleLoggerUtil.log("_FeedScreenState _buildStoryBlock source $source");
     FWExampleLoggerUtil.log(
         "_FeedScreenState _buildStoryBlock channel $channel");
@@ -329,21 +400,30 @@ class _FeedScreenState extends State<FeedScreen> {
         "_FeedScreenState _buildStoryBlock dynamicContentParameters $dynamicContentParameters");
 
     return Expanded(
-      child: SafeArea(
-        child: Container(
-          decoration: BoxDecoration(
-            color: Colors.transparent,
-            borderRadius: BorderRadius.circular(30),
-          ),
-          clipBehavior: Clip.hardEdge,
-          child: StoryBlock(
-            width: 350,
-            source: source,
-            channel: channel,
-            playlist: playlist,
-            dynamicContentParameters: dynamicContentParameters,
-            enablePictureInPicture: true,
-            onStoryBlockLoadFinished: _onStoryBlockLoadFinished,
+      child: Padding(
+        padding: _androidPadding,
+        child: SafeArea(
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: defaultTargetPlatform == TargetPlatform.iOS
+                  ? BorderRadius.circular(30)
+                  : null,
+            ),
+            clipBehavior: defaultTargetPlatform == TargetPlatform.iOS
+                ? Clip.hardEdge
+                : Clip.none,
+            child: StoryBlock(
+              source: source,
+              channel: channel,
+              playlist: playlist,
+              dynamicContentParameters: dynamicContentParameters,
+              hashtagFilterExpression: hashtagFilterExpression,
+              adConfiguration: AdConfiguration(requiresAds: false),
+              storyBlockConfiguration: storyBlockConfiguration,
+              enablePictureInPicture: _enablePip,
+              onStoryBlockLoadFinished: _onStoryBlockLoadFinished,
+              onStoryBlockCreated: _onStoryBlockCreated,
+            ),
           ),
         ),
       ),
@@ -365,7 +445,7 @@ class _FeedScreenState extends State<FeedScreen> {
           children: [
             ElevatedButton(
               onPressed: () {
-                _refresh();
+                _refreshVideoFeed();
               },
               child: Text(
                 S.of(context).refresh,
@@ -391,23 +471,52 @@ class _FeedScreenState extends State<FeedScreen> {
   void _onVideoFeedLoadFinished(FWError? error) {
     FWExampleLoggerUtil.log(
         "_onVideoFeedLoadFinished error ${error?.displayString()}");
-    setState(() {
-      _feedError = error;
-    });
+    if (_feedError != error && mounted) {
+      setState(() {
+        _feedError = error;
+      });
+    }
   }
 
   void _onStoryBlockLoadFinished(FWError? error) {
     FWExampleLoggerUtil.log(
         "_onStoryBlockLoadFinished error ${error?.displayString()}");
-    setState(() {
-      _feedError = error;
-    });
+    if (_feedError != error && mounted) {
+      setState(() {
+        _feedError = error;
+      });
+    }
   }
 
-  void _refresh() {
-    setState(() {
-      _feedError = null;
-    });
+  void _onStoryBlockCreated(StoryBlockController controller) {
+    FWExampleLoggerUtil.log("_onVideoFeedCreated");
+    _storyBlockController = controller;
+  }
+
+  void _refreshVideoFeed() {
+    if (_feedError != null && mounted) {
+      setState(() {
+        _feedError = null;
+      });
+    }
     _feedController?.refresh();
+  }
+
+  void _playStoryBlock() {
+    if (_feedError != null && mounted) {
+      setState(() {
+        _feedError = null;
+      });
+    }
+    _storyBlockController?.play();
+  }
+
+  void _pauseStoryBlock() {
+    if (_feedError != null && mounted) {
+      setState(() {
+        _feedError = null;
+      });
+    }
+    _storyBlockController?.pause();
   }
 }

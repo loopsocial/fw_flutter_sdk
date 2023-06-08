@@ -12,7 +12,7 @@ class FeedLayoutsScreen extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _FeedLayoutsScreenState createState() => _FeedLayoutsScreenState();
+  State<FeedLayoutsScreen> createState() => _FeedLayoutsScreenState();
 }
 
 class _FeedLayoutsScreenState extends State<FeedLayoutsScreen> {
@@ -20,6 +20,7 @@ class _FeedLayoutsScreenState extends State<FeedLayoutsScreen> {
   List<_FeedLayoutsPlaylistInfo> _defaultPlaylistInfoArray = [];
   List<_FeedLayoutsDynamicContentInfo> _defaultDynamicContentInfoArray = [];
   List<String> _defaultPlaylistGroupIdArray = [];
+  List<_FeedLayoutsHashtagPlaylistInfo> _defaultHashtagPlaylistInfoArray = [];
 
   @override
   void initState() {
@@ -111,6 +112,38 @@ class _FeedLayoutsScreenState extends State<FeedLayoutsScreen> {
                   dynamicContentInfo.parameters.isNotEmpty)
               .toList();
         }
+        if (jsonData["defaultHashtagPlaylistInfoArray"] is List<dynamic>) {
+          final defaultHashtagPlaylistInfoArray =
+              List<Map<String, dynamic>>.from(
+                  jsonData["defaultHashtagPlaylistInfoArray"] as List<dynamic>);
+
+          _defaultHashtagPlaylistInfoArray = defaultHashtagPlaylistInfoArray
+              .map(
+                (e) {
+                  if (e["channelId"] is String &&
+                      e["hashtagFilterExpression"] is String &&
+                      e["name"] is String) {
+                    return _FeedLayoutsHashtagPlaylistInfo(
+                      channelId: e["channelId"] as String,
+                      hashtagFilterExpression:
+                          e["hashtagFilterExpression"] as String,
+                      name: e["name"] as String,
+                    );
+                  } else {
+                    return _FeedLayoutsHashtagPlaylistInfo(
+                      channelId: "",
+                      hashtagFilterExpression: "",
+                      name: "",
+                    );
+                  }
+                },
+              )
+              .where((hashtagPlaylistInfo) =>
+                  hashtagPlaylistInfo.channelId.isNotEmpty &&
+                  hashtagPlaylistInfo.name.isNotEmpty &&
+                  hashtagPlaylistInfo.hashtagFilterExpression.isNotEmpty)
+              .toList();
+        }
       }
     } catch (e) {
       FWExampleLoggerUtil.log("_FeedLayoutsScreenState _readConfig error: $e");
@@ -142,6 +175,7 @@ class _FeedLayoutsScreenState extends State<FeedLayoutsScreen> {
             _buildPlaylistItem(context),
             _buildPlaylistGroupItem(context),
             _buildDynamicContentItem(context),
+            _buildHashtagPlaylistItem(context),
           ],
         ),
       ),
@@ -173,7 +207,7 @@ class _FeedLayoutsScreenState extends State<FeedLayoutsScreen> {
         showCupertinoModalPopup(
           context: context,
           builder: (context) {
-            final _defaultChannelIdWidgetArray = _defaultChannelIdArray.map(
+            final defaultChannelIdWidgetArray = _defaultChannelIdArray.map(
               (channelId) => CupertinoActionSheetAction(
                 isDefaultAction: true,
                 onPressed: () {
@@ -190,7 +224,7 @@ class _FeedLayoutsScreenState extends State<FeedLayoutsScreen> {
                 S.of(context).selectChannelId,
               ),
               actions: [
-                for (var w in _defaultChannelIdWidgetArray) w,
+                for (var w in defaultChannelIdWidgetArray) w,
                 CupertinoActionSheetAction(
                   child: Text(
                     S.of(context).custom,
@@ -245,7 +279,7 @@ class _FeedLayoutsScreenState extends State<FeedLayoutsScreen> {
         showCupertinoModalPopup(
           context: context,
           builder: (context) {
-            final _defaultPlaylistInfoWidgetArray =
+            final defaultPlaylistInfoWidgetArray =
                 _defaultPlaylistInfoArray.map(
               (playlistInfo) => CupertinoActionSheetAction(
                 isDefaultAction: true,
@@ -264,7 +298,7 @@ class _FeedLayoutsScreenState extends State<FeedLayoutsScreen> {
                 S.of(context).selectPlaylistInfo,
               ),
               actions: [
-                for (var w in _defaultPlaylistInfoWidgetArray) w,
+                for (var w in defaultPlaylistInfoWidgetArray) w,
                 CupertinoActionSheetAction(
                   child: Text(
                     S.of(context).custom,
@@ -326,7 +360,7 @@ class _FeedLayoutsScreenState extends State<FeedLayoutsScreen> {
         showCupertinoModalPopup(
           context: context,
           builder: (context) {
-            final _defaultPlaylistGroupIdWidgetArray =
+            final defaultPlaylistGroupIdWidgetArray =
                 _defaultPlaylistGroupIdArray.map(
               (playlistGroupId) => CupertinoActionSheetAction(
                 isDefaultAction: true,
@@ -344,7 +378,7 @@ class _FeedLayoutsScreenState extends State<FeedLayoutsScreen> {
                 S.of(context).selectPlaylistGroupId,
               ),
               actions: [
-                for (var w in _defaultPlaylistGroupIdWidgetArray) w,
+                for (var w in defaultPlaylistGroupIdWidgetArray) w,
                 CupertinoActionSheetAction(
                   child: Text(
                     S.of(context).custom,
@@ -400,7 +434,7 @@ class _FeedLayoutsScreenState extends State<FeedLayoutsScreen> {
         showCupertinoModalPopup(
           context: context,
           builder: (context) {
-            final _defaultDynamicContentInfoWidgetArray =
+            final defaultDynamicContentInfoWidgetArray =
                 _defaultDynamicContentInfoArray.map(
               (dynamicContentInfo) => CupertinoActionSheetAction(
                 isDefaultAction: true,
@@ -419,7 +453,7 @@ class _FeedLayoutsScreenState extends State<FeedLayoutsScreen> {
                 S.of(context).selectDynamicContentInfo,
               ),
               actions: [
-                for (var w in _defaultDynamicContentInfoWidgetArray) w,
+                for (var w in defaultDynamicContentInfoWidgetArray) w,
                 CupertinoActionSheetAction(
                   child: Text(
                     S.of(context).custom,
@@ -446,7 +480,9 @@ class _FeedLayoutsScreenState extends State<FeedLayoutsScreen> {
   }
 
   void _goToDynamicContentConfiguration() async {
-    final result = await Navigator.of(context).pushNamed(
+    final navigator = Navigator.of(context);
+    final s = S.of(context);
+    final result = await navigator.pushNamed(
       "/dynamic_content_configuration",
     );
     if (result is Map<String, dynamic>) {
@@ -456,14 +492,14 @@ class _FeedLayoutsScreenState extends State<FeedLayoutsScreen> {
           'channelId ${result["channelId"]} ${result["channelId"].runtimeType}');
       if (result["channelId"] is String &&
           result["dynamicContentParameters"] is Map<String, List<String>>) {
-        Navigator.of(context).pushNamed(
+        navigator.pushNamed(
           "/feed",
           arguments: {
             "source": "dynamicContent",
             "channel": result["channelId"] as String,
             "dynamicContentParameters":
                 result["dynamicContentParameters"] as Map<String, List<String>>,
-            "title": S.of(context).dynamicContentFeed,
+            "title": s.dynamicContentFeed,
           },
         );
       }
@@ -483,18 +519,113 @@ class _FeedLayoutsScreenState extends State<FeedLayoutsScreen> {
     );
   }
 
+  Widget _buildHashtagPlaylistItem(BuildContext context) {
+    return _buildItem(
+      context: context,
+      title: S.of(context).hashtagPlaylistFeed,
+      onTap: () {
+        showCupertinoModalPopup(
+          context: context,
+          builder: (context) {
+            final defaultHashtagPlaylistInfoArray =
+                _defaultHashtagPlaylistInfoArray.map(
+              (hashtagPlaylistInfo) => CupertinoActionSheetAction(
+                isDefaultAction: true,
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  _goToHashtagPlaylistFeed(hashtagPlaylistInfo.channelId,
+                      hashtagPlaylistInfo.hashtagFilterExpression);
+                },
+                child: Text(
+                  hashtagPlaylistInfo.name,
+                ),
+              ),
+            );
+            return CupertinoActionSheet(
+              title: Text(
+                S.of(context).selectDynamicContentInfo,
+              ),
+              actions: [
+                for (var w in defaultHashtagPlaylistInfoArray) w,
+                CupertinoActionSheetAction(
+                  child: Text(
+                    S.of(context).custom,
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                    _goToHashtagPlaylistConfiguration();
+                  },
+                ),
+              ],
+              cancelButton: CupertinoActionSheetAction(
+                child: Text(
+                  S.of(context).cancel,
+                ),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            );
+          },
+        );
+      },
+    );
+  }
+
+  void _goToHashtagPlaylistConfiguration() async {
+    final navigator = Navigator.of(context);
+    final s = S.of(context);
+    final result = await navigator.pushNamed(
+      "/hashtag_playlist_configuration",
+    );
+    if (result is Map<String, dynamic>) {
+      FWExampleLoggerUtil.log(
+          'hashtagFilterExpression ${result["hashtagFilterExpression"]} ${result["dynamicContentParameters"].runtimeType}');
+      FWExampleLoggerUtil.log(
+          'channelId ${result["channelId"]} ${result["channelId"].runtimeType}');
+      if (result["channelId"] is String &&
+          result["hashtagFilterExpression"] is String) {
+        navigator.pushNamed(
+          "/feed",
+          arguments: {
+            "source": "hashtagPlaylist",
+            "channel": result["channelId"] as String,
+            "hashtagFilterExpression":
+                result["hashtagFilterExpression"] as String,
+            "title": s.hashtagPlaylistFeed,
+          },
+        );
+      }
+    }
+  }
+
+  void _goToHashtagPlaylistFeed(
+      String channelId, String hashtagFilterExpression) {
+    Navigator.of(context).pushNamed(
+      "/feed",
+      arguments: {
+        "source": "hashtagPlaylist",
+        "channel": channelId,
+        "hashtagFilterExpression": hashtagFilterExpression,
+        "title": S.of(context).hashtagPlaylistFeed,
+      },
+    );
+  }
+
   Widget _buildItem({
     required BuildContext context,
     required String title,
     VoidCallback? onTap,
   }) {
     return GestureDetector(
+      onTap: onTap,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Container(
             color: Colors.white,
+            padding: const EdgeInsets.all(20),
             child: Text(
               title,
               style: const TextStyle(
@@ -502,7 +633,6 @@ class _FeedLayoutsScreenState extends State<FeedLayoutsScreen> {
                 fontWeight: FontWeight.w600,
               ),
             ),
-            padding: const EdgeInsets.all(20),
           ),
           Container(
             height: 1,
@@ -510,7 +640,6 @@ class _FeedLayoutsScreenState extends State<FeedLayoutsScreen> {
           ),
         ],
       ),
-      onTap: onTap,
     );
   }
 }
@@ -531,6 +660,17 @@ class _FeedLayoutsDynamicContentInfo {
   _FeedLayoutsDynamicContentInfo({
     required this.channelId,
     required this.parameters,
+    required this.name,
+  });
+}
+
+class _FeedLayoutsHashtagPlaylistInfo {
+  final String channelId;
+  final String hashtagFilterExpression;
+  final String name;
+  _FeedLayoutsHashtagPlaylistInfo({
+    required this.channelId,
+    required this.hashtagFilterExpression,
     required this.name,
   });
 }

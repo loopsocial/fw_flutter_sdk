@@ -12,7 +12,7 @@ class OpenVideoScreen extends StatefulWidget {
   const OpenVideoScreen({Key? key}) : super(key: key);
 
   @override
-  _OpenVideoScreenState createState() => _OpenVideoScreenState();
+  State<OpenVideoScreen> createState() => _OpenVideoScreenState();
 }
 
 class _OpenVideoScreenState extends State<OpenVideoScreen> {

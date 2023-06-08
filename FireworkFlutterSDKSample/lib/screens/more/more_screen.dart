@@ -1,4 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fw_flutter_sdk/fw_flutter_sdk.dart';
+import 'package:fw_flutter_sdk_example/models/app_language_info.dart';
+import 'package:fw_flutter_sdk_example/utils/host_app_service.dart';
 import '../../generated/l10n.dart';
 import '../../widgets/fw_app_bar.dart';
 
@@ -8,10 +12,28 @@ class MoreScreen extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _MoreScreenState createState() => _MoreScreenState();
+  State<MoreScreen> createState() => _MoreScreenState();
 }
 
 class _MoreScreenState extends State<MoreScreen> {
+  AppLanguageInfo? _currentAppLanguage;
+  @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      HostAppService.getInstance()
+          .getCacheAppLanguageInfo()
+          .then((appLanguage) {
+        if (mounted) {
+          setState(() {
+            _currentAppLanguage = appLanguage;
+          });
+        }
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,12 +83,56 @@ class _MoreScreenState extends State<MoreScreen> {
             ),
             _buildItem(
               context: context,
-              title: S.of(context).enableCustomClickCartIconCallback,
+              title: S.of(context).stopFloatingPlayer,
               onTap: () {
-                Navigator.of(context).pushNamed(
-                    "/enable_custom_click_cart_icon_callback_screen");
+                FireworkSDK.getInstance().navigator.stopFloatingPlayer();
               },
             ),
+            if (_currentAppLanguage != null)
+              _buildItem(
+                context: context,
+                title: S
+                    .of(context)
+                    .changeAppLanguage(_currentAppLanguage!.displayName ?? ""),
+                onTap: () {
+                  final appLanguageInfoArray =
+                      HostAppService.getInstance().getAppLanguageInfoList();
+                  showCupertinoModalPopup(
+                    context: context,
+                    builder: (context) {
+                      final appLanguageInfoWidgetArray =
+                          appLanguageInfoArray.map(
+                        (appLanguageInfo) => CupertinoActionSheetAction(
+                          isDefaultAction: true,
+                          onPressed: () {
+                            _changeAppLanguage(appLanguageInfo);
+                            Navigator.of(context).pop();
+                          },
+                          child: Text(
+                            appLanguageInfo.displayName ?? '',
+                          ),
+                        ),
+                      );
+                      return CupertinoActionSheet(
+                        title: Text(
+                          S.of(context).selectChannelId,
+                        ),
+                        actions: [
+                          for (var w in appLanguageInfoWidgetArray) w,
+                        ],
+                        cancelButton: CupertinoActionSheetAction(
+                          child: Text(
+                            S.of(context).cancel,
+                          ),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                        ),
+                      );
+                    },
+                  );
+                },
+              ),
           ],
         ),
       ),
@@ -79,12 +145,14 @@ class _MoreScreenState extends State<MoreScreen> {
     VoidCallback? onTap,
   }) {
     return GestureDetector(
+      onTap: onTap,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Container(
             color: Colors.white,
+            padding: const EdgeInsets.all(20),
             child: Text(
               title,
               style: const TextStyle(
@@ -92,7 +160,6 @@ class _MoreScreenState extends State<MoreScreen> {
                 fontWeight: FontWeight.w600,
               ),
             ),
-            padding: const EdgeInsets.all(20),
           ),
           Container(
             height: 1,
@@ -100,7 +167,15 @@ class _MoreScreenState extends State<MoreScreen> {
           ),
         ],
       ),
-      onTap: onTap,
     );
+  }
+
+  Future<void> _changeAppLanguage(AppLanguageInfo appLanguageInfo) async {
+    if (mounted) {
+      setState(() {
+        _currentAppLanguage = appLanguageInfo;
+      });
+    }
+    await HostAppService.getInstance().cacheAppLanguageInfo(appLanguageInfo);
   }
 }

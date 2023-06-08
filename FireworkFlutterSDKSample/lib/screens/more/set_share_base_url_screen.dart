@@ -10,7 +10,7 @@ class SetShareBaseURLScreen extends StatefulWidget {
   const SetShareBaseURLScreen({Key? key}) : super(key: key);
 
   @override
-  _SetShareBaseURLScreenState createState() => _SetShareBaseURLScreenState();
+  State<SetShareBaseURLScreen> createState() => _SetShareBaseURLScreenState();
 }
 
 class _SetShareBaseURLScreenState extends State<SetShareBaseURLScreen> {

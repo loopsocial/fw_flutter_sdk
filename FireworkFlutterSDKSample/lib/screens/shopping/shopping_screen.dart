@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:fw_flutter_sdk/fw_flutter_sdk.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -13,15 +14,15 @@ class ShoppingScreen extends StatefulWidget {
   const ShoppingScreen({Key? key}) : super(key: key);
 
   @override
-  _ShoppingScreenState createState() => _ShoppingScreenState();
+  State<ShoppingScreen> createState() => _ShoppingScreenState();
 }
 
 class _ShoppingScreenState extends State<ShoppingScreen> {
   VideoFeedController? _feedController;
-  String? _shopifyDomain;
   String? _channelId;
   String? _playlistId;
   FWError? _feedError;
+  bool _enablePip = true;
 
   @override
   void initState() {
@@ -30,31 +31,7 @@ class _ShoppingScreenState extends State<ShoppingScreen> {
   }
 
   Future<void> _readConfig() async {
-    await _readShopifyConfig();
     await _readFeedConfig();
-  }
-
-  Future<void> _readShopifyConfig() async {
-    try {
-      final String response =
-          await rootBundle.loadString('lib/assets/shopify.json');
-      final jsonData = await json.decode(response);
-
-      FWExampleLoggerUtil.log(
-          "_ShoppingScreenState jsonData: $jsonData jsonData.runtimeType: ${jsonData.runtimeType}");
-      if (jsonData is Map<String, dynamic>) {
-        if (jsonData["shopifyDomain"] is String) {
-          setState(() {
-            _shopifyDomain = jsonData["shopifyDomain"] as String;
-          });
-        }
-      }
-    } catch (e) {
-      FWExampleLoggerUtil.log(
-          "_ShoppingScreenState _readShopifyConfig error: $e");
-    }
-
-    FWExampleLoggerUtil.log("_shopifyDomain $_shopifyDomain");
   }
 
   Future<void> _readFeedConfig() async {
@@ -75,10 +52,12 @@ class _ShoppingScreenState extends State<ShoppingScreen> {
                 defaultShoppingPlaylistJson["channelId"] as String;
             final playlistId =
                 defaultShoppingPlaylistJson["playlistId"] as String;
-            setState(() {
-              _channelId = channelId;
-              _playlistId = playlistId;
-            });
+            if (mounted) {
+              setState(() {
+                _channelId = channelId;
+                _playlistId = playlistId;
+              });
+            }
           }
         }
       }
@@ -122,7 +101,7 @@ class _ShoppingScreenState extends State<ShoppingScreen> {
   }
 
   Widget _buildBody(BuildContext context) {
-    if (_channelId == null || _playlistId == null || _shopifyDomain == null) {
+    if (_channelId == null || _playlistId == null) {
       return Container();
     }
 
@@ -133,6 +112,10 @@ class _ShoppingScreenState extends State<ShoppingScreen> {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            const SizedBox(
+              height: 20,
+            ),
+            _buildEnablePictureInPicture(context),
             const SizedBox(
               height: 20,
             ),
@@ -152,22 +135,6 @@ class _ShoppingScreenState extends State<ShoppingScreen> {
               rightText: _playlistId!,
             ),
             _buildSeperator(context),
-            _buildItem(
-              context: context,
-              leftText: "${S.of(context).storeDetails}:",
-              rightText: "",
-            ),
-            _buildItem(
-              context: context,
-              leftText: "${S.of(context).integration}:",
-              rightText: "Shopify",
-            ),
-            _buildItem(
-              context: context,
-              leftText: "${S.of(context).storefront}:",
-              rightText: _shopifyDomain!,
-            ),
-            _buildSeperator(context),
             const SizedBox(
               height: 20,
             ),
@@ -176,6 +143,24 @@ class _ShoppingScreenState extends State<ShoppingScreen> {
               height: 20,
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildEnablePictureInPicture(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: CheckboxListTile(
+        contentPadding: EdgeInsets.zero,
+        value: _enablePip,
+        onChanged: (value) {
+          setState(() {
+            _enablePip = value ?? false;
+          });
+        },
+        title: Text(
+          S.of(context).enablePictureInPicture,
         ),
       ),
     );
@@ -191,7 +176,6 @@ class _ShoppingScreenState extends State<ShoppingScreen> {
         hidden: false,
       ),
       showAdBadge: true,
-      enablePictureInPicture: true,
     );
 
     VideoPlayerConfiguration playerConfiguration = VideoPlayerConfiguration(
@@ -201,16 +185,22 @@ class _ShoppingScreenState extends State<ShoppingScreen> {
       showPlaybackButton: true,
       videoCompleteAction: VideoPlayerCompleteAction.advanceToNext,
     );
-    return VideoFeed(
-      height: 200,
-      source: VideoFeedSource.playlist,
-      channel: _channelId!,
-      playlist: _playlistId,
-      mode: VideoFeedMode.row,
-      videoFeedConfiguration: feedConfiguration,
-      videoPlayerConfiguration: playerConfiguration,
-      onVideoFeedCreated: _onVideoFeedCreated,
-      onVideoFeedLoadFinished: _onVideoFeedLoadFinished,
+    return Padding(
+      padding: defaultTargetPlatform == TargetPlatform.android
+          ? const EdgeInsets.symmetric(horizontal: 10)
+          : EdgeInsets.zero,
+      child: VideoFeed(
+        height: 220,
+        source: VideoFeedSource.playlist,
+        channel: _channelId!,
+        playlist: _playlistId,
+        mode: VideoFeedMode.row,
+        enablePictureInPicture: _enablePip,
+        videoFeedConfiguration: feedConfiguration,
+        videoPlayerConfiguration: playerConfiguration,
+        onVideoFeedCreated: _onVideoFeedCreated,
+        onVideoFeedLoadFinished: _onVideoFeedLoadFinished,
+      ),
     );
   }
 
@@ -252,9 +242,11 @@ class _ShoppingScreenState extends State<ShoppingScreen> {
   void _onVideoFeedLoadFinished(FWError? error) {
     FWExampleLoggerUtil.log(
         "_onVideoFeedLoadFinished error ${error?.displayString()}");
-    setState(() {
-      _feedError = error;
-    });
+    if (_feedError != error && mounted) {
+      setState(() {
+        _feedError = error;
+      });
+    }
   }
 
   Widget _buildSeperator(BuildContext context) {
@@ -309,7 +301,7 @@ class _ShoppingScreenState extends State<ShoppingScreen> {
     if (result is Map<String, String>) {
       final channelId = result["channelId"] ?? "";
       final playlistId = result["playlistId"] ?? "";
-      if (channelId.isNotEmpty && playlistId.isNotEmpty) {
+      if (channelId.isNotEmpty && playlistId.isNotEmpty && mounted) {
         setState(() {
           _channelId = channelId;
           _playlistId = playlistId;
@@ -323,19 +315,21 @@ class _ShoppingScreenState extends State<ShoppingScreen> {
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: ElevatedButton(
         onPressed: () {
-          Navigator.of(context).pushNamed("/cart_configuration");
+          Navigator.of(context).pushNamed("/shopping_configuration");
         },
         child: Text(
-          S.of(context).cartConfiguration,
+          S.of(context).shoppingConfiguration,
         ),
       ),
     );
   }
 
   void _refresh() {
-    setState(() {
-      _feedError = null;
-    });
+    if (_feedError != null && mounted) {
+      setState(() {
+        _feedError = null;
+      });
+    }
     _feedController?.refresh();
   }
 }

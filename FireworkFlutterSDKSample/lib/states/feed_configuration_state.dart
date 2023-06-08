@@ -2,14 +2,18 @@ import 'package:fw_flutter_sdk/fw_flutter_sdk.dart';
 import 'package:flutter/material.dart';
 
 class FeedConfigurationState extends ChangeNotifier {
-  VideoFeedConfiguration _feedConfiguration = VideoFeedConfiguration(
-    titlePosition: VideoFeedTitlePosition.nested,
-    title: VideoFeedTitleConfiguration(
-      hidden: false,
-    ),
-    showAdBadge: true,
-    enablePictureInPicture: true,
-  );
+  static VideoFeedConfiguration _getDefaultConfiguration() {
+    return VideoFeedConfiguration(
+        titlePosition: VideoFeedTitlePosition.nested,
+        title: VideoFeedTitleConfiguration(
+          hidden: false,
+          fontSize: 12,
+        ),
+        showAdBadge: true,
+        playIcon: VideoFeedPlayIconConfiguration());
+  }
+
+  VideoFeedConfiguration _feedConfiguration = _getDefaultConfiguration();
 
   VideoFeedConfiguration get feedConfiguration => _feedConfiguration;
 
@@ -30,17 +34,7 @@ class FeedConfigurationState extends ChangeNotifier {
   }
 
   void reset() {
-    _feedConfiguration = VideoFeedConfiguration(
-      titlePosition: VideoFeedTitlePosition.nested,
-      title: VideoFeedTitleConfiguration(
-        hidden: false,
-      ),
-      showAdBadge: true,
-      enablePictureInPicture: true,
-    );
-    _adConfiguration = AdConfiguration(
-      adsFetchTimeout: 20,
-    );
+    _feedConfiguration = _getDefaultConfiguration();
     notifyListeners();
   }
 }

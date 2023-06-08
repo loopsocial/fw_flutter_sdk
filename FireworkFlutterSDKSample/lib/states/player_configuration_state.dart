@@ -2,13 +2,25 @@ import 'package:fw_flutter_sdk/fw_flutter_sdk.dart';
 import 'package:flutter/material.dart';
 
 class PlayerConfigurationState extends ChangeNotifier {
-  VideoPlayerConfiguration _playerConfiguration = VideoPlayerConfiguration(
-    playerStyle: VideoPlayerStyle.full,
-    showShareButton: true,
-    showMuteButton: true,
-    showPlaybackButton: true,
-    videoCompleteAction: VideoPlayerCompleteAction.advanceToNext,
-  );
+  static VideoPlayerConfiguration _getDefaultConfiguration() {
+    return VideoPlayerConfiguration(
+      playerStyle: VideoPlayerStyle.full,
+      showShareButton: true,
+      showMuteButton: true,
+      showPlaybackButton: true,
+      videoCompleteAction: VideoPlayerCompleteAction.advanceToNext,
+      ctaButtonStyle: VideoPlayerCTAStyle(
+        fontSize: 14,
+      ),
+      ctaDelay:
+          VideoPlayerCTADelay(type: VideoPlayerCTADelayType.constant, value: 3),
+      ctaHighlightDelay:
+          VideoPlayerCTADelay(type: VideoPlayerCTADelayType.constant, value: 2),
+      ctaWidth: VideoPlayerCTAWidth.fullWidth,
+    );
+  }
+
+  VideoPlayerConfiguration _playerConfiguration = _getDefaultConfiguration();
 
   VideoPlayerConfiguration get playerConfiguration => _playerConfiguration;
 
@@ -18,13 +30,7 @@ class PlayerConfigurationState extends ChangeNotifier {
   }
 
   void reset() {
-    _playerConfiguration = VideoPlayerConfiguration(
-      playerStyle: VideoPlayerStyle.full,
-      showShareButton: true,
-      showMuteButton: true,
-      showPlaybackButton: true,
-      videoCompleteAction: VideoPlayerCompleteAction.advanceToNext,
-    );
+    _playerConfiguration = _getDefaultConfiguration();
     notifyListeners();
   }
 }

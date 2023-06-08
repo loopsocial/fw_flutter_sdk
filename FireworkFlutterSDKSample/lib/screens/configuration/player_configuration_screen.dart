@@ -13,26 +13,24 @@ class PlayerConfigurationScreen extends StatefulWidget {
   const PlayerConfigurationScreen({Key? key}) : super(key: key);
 
   @override
-  _PlayerConfigurationScreenState createState() =>
+  State<PlayerConfigurationScreen> createState() =>
       _PlayerConfigurationScreenState();
 }
 
 class _PlayerConfigurationScreenState extends State<PlayerConfigurationScreen> {
   final _formKey = GlobalKey<FormState>();
   VideoPlayerConfiguration _initConfig = VideoPlayerConfiguration();
-  final _resultConfig = VideoPlayerConfiguration();
+  VideoPlayerConfiguration _resultConfig = VideoPlayerConfiguration();
 
   @override
   void initState() {
     super.initState();
     _initConfig = context.read<PlayerConfigurationState>().playerConfiguration;
-    _resultConfig.playerStyle = _initConfig.playerStyle;
-    _resultConfig.videoCompleteAction = _initConfig.videoCompleteAction;
-    _resultConfig.showShareButton = _initConfig.showShareButton;
-    _resultConfig.ctaButtonStyle = _initConfig.ctaButtonStyle;
-    _resultConfig.showPlaybackButton = _initConfig.showPlaybackButton;
-    _resultConfig.showMuteButton = _initConfig.showMuteButton;
-    _resultConfig.launchBehavior = _initConfig.launchBehavior;
+    _resultConfig = _initConfig.deepCopy();
+    _resultConfig.ctaDelay ??=
+        VideoPlayerCTADelay(type: VideoPlayerCTADelayType.constant, value: 3);
+    _resultConfig.ctaHighlightDelay ??=
+        VideoPlayerCTADelay(type: VideoPlayerCTADelayType.constant, value: 2);
   }
 
   @override
@@ -94,11 +92,31 @@ class _PlayerConfigurationScreenState extends State<PlayerConfigurationScreen> {
                 const SizedBox(
                   width: 20,
                 ),
-                const Expanded(
-                  child: SizedBox(),
+                Expanded(
+                  child: _buildCTAUseIOSFontInfo(context),
                 ),
               ],
             ),
+            const SizedBox(
+              height: 20,
+            ),
+            _buildCTADelayTypeSegmentedControl(context),
+            const SizedBox(
+              height: 20,
+            ),
+            _buildCTADelayValueSlider(context),
+            const SizedBox(
+              height: 20,
+            ),
+            _buildCTAHighlightDelayTypeSegmentedControl(context),
+            const SizedBox(
+              height: 20,
+            ),
+            _buildCTAHighlightDelayValueSlider(context),
+            const SizedBox(
+              height: 20,
+            ),
+            _buildCTAWidthSegmentedControl(context),
             const SizedBox(
               height: 20,
             ),
@@ -134,7 +152,7 @@ class _PlayerConfigurationScreenState extends State<PlayerConfigurationScreen> {
             const SizedBox(
               height: 20,
             ),
-            _buildVideoLaunchBehaviorSegmentedControl(context),
+            _buildShareURL(context),
             const SizedBox(
               height: 20,
             ),
@@ -224,7 +242,7 @@ class _PlayerConfigurationScreenState extends State<PlayerConfigurationScreen> {
   Widget _buildShareButtonShow(BuildContext context) {
     return CheckboxListTile(
       contentPadding: EdgeInsets.zero,
-      value: _resultConfig.showShareButton ?? false,
+      value: _resultConfig.showShareButton,
       onChanged: (value) {
         setState(() {
           _resultConfig.showShareButton = value;
@@ -253,7 +271,11 @@ class _PlayerConfigurationScreenState extends State<PlayerConfigurationScreen> {
           },
           onSaved: (text) {
             _resultConfig.ctaButtonStyle ??= VideoPlayerCTAStyle();
-            _resultConfig.ctaButtonStyle?.backgroundColor = text;
+            if ((text ?? "").isNotEmpty) {
+              _resultConfig.ctaButtonStyle?.backgroundColor = text;
+            } else {
+              _resultConfig.ctaButtonStyle?.backgroundColor = null;
+            }
           },
         ),
       ],
@@ -277,7 +299,11 @@ class _PlayerConfigurationScreenState extends State<PlayerConfigurationScreen> {
           },
           onSaved: (text) {
             _resultConfig.ctaButtonStyle ??= VideoPlayerCTAStyle();
-            _resultConfig.ctaButtonStyle?.textColor = text;
+            if ((text ?? "").isNotEmpty) {
+              _resultConfig.ctaButtonStyle?.textColor = text;
+            } else {
+              _resultConfig.ctaButtonStyle?.textColor = null;
+            }
           },
         ),
       ],
@@ -314,10 +340,219 @@ class _PlayerConfigurationScreenState extends State<PlayerConfigurationScreen> {
     );
   }
 
+  Widget _buildCTAUseIOSFontInfo(BuildContext context) {
+    return CheckboxListTile(
+      contentPadding: EdgeInsets.zero,
+      value: _resultConfig.ctaButtonStyle?.iOSFontInfo != null,
+      onChanged: (value) {
+        setState(() {
+          if (value == true) {
+            _resultConfig.ctaButtonStyle ??= VideoPlayerCTAStyle();
+            _resultConfig.ctaButtonStyle?.iOSFontInfo = IOSFontInfo(
+              fontName: "TimesNewRomanPS-ItalicMT",
+            );
+          } else {
+            _resultConfig.ctaButtonStyle?.iOSFontInfo = null;
+          }
+        });
+      },
+      title: Text(
+        S.of(context).useIOSFontInfoForCTA,
+      ),
+    );
+  }
+
+  Widget _buildCTADelayTypeSegmentedControl(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(
+          S.of(context).ctaDelayType,
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        CupertinoSegmentedControl<VideoPlayerCTADelayType>(
+          padding: EdgeInsets.zero,
+          onValueChanged: (value) {
+            setState(() {
+              _resultConfig.ctaDelay?.type = value;
+              if (value == VideoPlayerCTADelayType.percentage) {
+                _resultConfig.ctaDelay?.value = 0.3;
+              } else {
+                _resultConfig.ctaDelay?.value = 3;
+              }
+            });
+          },
+          children: {
+            VideoPlayerCTADelayType.constant: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Text(
+                S.of(context).constant,
+              ),
+            ),
+            VideoPlayerCTADelayType.percentage: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Text(
+                S.of(context).percentage,
+              ),
+            ),
+          },
+          groupValue: _resultConfig.ctaDelay?.type,
+        )
+      ],
+    );
+  }
+
+  Widget _buildCTADelayValueSlider(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(
+          S.of(context).ctaDelayValue(_resultConfig.ctaDelay?.value ?? 3),
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        Slider(
+            min: 0,
+            max: _resultConfig.ctaDelay?.type ==
+                    VideoPlayerCTADelayType.percentage
+                ? 1.0
+                : 10.0,
+            divisions: 10,
+            value: _resultConfig.ctaDelay?.value ?? 3,
+            onChanged: (double changedValue) {
+              setState(() {
+                _resultConfig.ctaDelay?.value = changedValue;
+              });
+            }),
+      ],
+    );
+  }
+
+  Widget _buildCTAHighlightDelayTypeSegmentedControl(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(
+          S.of(context).ctaHighlightDelayType,
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        CupertinoSegmentedControl<VideoPlayerCTADelayType>(
+          padding: EdgeInsets.zero,
+          onValueChanged: (value) {
+            setState(() {
+              _resultConfig.ctaHighlightDelay?.type = value;
+              if (value == VideoPlayerCTADelayType.percentage) {
+                _resultConfig.ctaHighlightDelay?.value = 0.3;
+              } else {
+                _resultConfig.ctaHighlightDelay?.value = 2;
+              }
+            });
+          },
+          children: {
+            VideoPlayerCTADelayType.constant: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Text(
+                S.of(context).constant,
+              ),
+            ),
+            VideoPlayerCTADelayType.percentage: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Text(
+                S.of(context).percentage,
+              ),
+            ),
+          },
+          groupValue: _resultConfig.ctaHighlightDelay?.type,
+        )
+      ],
+    );
+  }
+
+  Widget _buildCTAHighlightDelayValueSlider(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(
+          S.of(context).ctaHighlightDelayValue(
+              _resultConfig.ctaHighlightDelay?.value ?? 2),
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        Slider(
+            min: 0,
+            max: _resultConfig.ctaHighlightDelay?.type ==
+                    VideoPlayerCTADelayType.percentage
+                ? 1.0
+                : 10.0,
+            divisions: 10,
+            value: _resultConfig.ctaHighlightDelay?.value ?? 2,
+            onChanged: (double changedValue) {
+              setState(() {
+                _resultConfig.ctaHighlightDelay?.value = changedValue;
+              });
+            }),
+      ],
+    );
+  }
+
+  Widget _buildCTAWidthSegmentedControl(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(
+          S.of(context).ctaWidth,
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        CupertinoSegmentedControl<VideoPlayerCTAWidth>(
+          padding: EdgeInsets.zero,
+          onValueChanged: (value) {
+            setState(() {
+              _resultConfig.ctaWidth = value;
+            });
+          },
+          children: {
+            VideoPlayerCTAWidth.fullWidth: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Text(
+                S.of(context).fullWidth,
+              ),
+            ),
+            VideoPlayerCTAWidth.compact: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Text(
+                S.of(context).compact,
+              ),
+            ),
+            VideoPlayerCTAWidth.sizeToFit: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Text(
+                S.of(context).sizeToFit,
+              ),
+            ),
+          },
+          groupValue: _resultConfig.ctaWidth,
+        ),
+      ],
+    );
+  }
+
   Widget _buildPlaybackButtonShow(BuildContext context) {
     return CheckboxListTile(
       contentPadding: EdgeInsets.zero,
-      value: _resultConfig.showPlaybackButton ?? false,
+      value: _resultConfig.showPlaybackButton,
       onChanged: (value) {
         setState(() {
           _resultConfig.showPlaybackButton = value;
@@ -332,7 +567,7 @@ class _PlayerConfigurationScreenState extends State<PlayerConfigurationScreen> {
   Widget _buildMuteButtonShow(BuildContext context) {
     return CheckboxListTile(
       contentPadding: EdgeInsets.zero,
-      value: _resultConfig.showMuteButton ?? false,
+      value: _resultConfig.showMuteButton,
       onChanged: (value) {
         setState(() {
           _resultConfig.showMuteButton = value;
@@ -344,48 +579,48 @@ class _PlayerConfigurationScreenState extends State<PlayerConfigurationScreen> {
     );
   }
 
-  Widget _buildVideoLaunchBehaviorSegmentedControl(BuildContext context) {
+  Widget _buildShareURL(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Text(S.of(context).videolaunchBehavior),
+        Text(S.of(context).shareBaseURL),
         const SizedBox(
-          height: 20,
+          height: 10,
         ),
-        CupertinoSegmentedControl<VideoLaunchBehavior>(
-          padding: EdgeInsets.zero,
-          onValueChanged: (value) {
-            setState(() {
-              _resultConfig.launchBehavior = value;
-            });
+        FWTextFormField(
+          initialValue: _resultConfig.shareBaseURL,
+          hintText: S.of(context).urlHint,
+          validator: (text) {
+            if ((text ?? "").isEmpty) {
+              return null;
+            }
+
+            return ValidationUtil.validURL(
+              text: text,
+              errorMessage: S.of(context).urlError,
+              requiredError: S.of(context).urlRequiredError,
+            );
           },
-          children: {
-            VideoLaunchBehavior.defaultBehavior: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10),
-              child: Text(
-                S.of(context).defaultBehavior,
-              ),
-            ),
-            VideoLaunchBehavior.muteOnFirstLaunch: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10),
-              child: Text(
-                S.of(context).muteOnFirstLaunch,
-              ),
-            ),
+          onSaved: (text) {
+            if ((text ?? "").isNotEmpty) {
+              _resultConfig.shareBaseURL = text;
+            } else {
+              _resultConfig.shareBaseURL = null;
+            }
           },
-          groupValue: _resultConfig.launchBehavior,
-        ),
+        )
       ],
     );
   }
 
   Widget _buildButtonList(BuildContext context) {
+    final navigator = Navigator.of(context);
     return Row(children: [
       Expanded(
         child: ElevatedButton(
           onPressed: () {
-            Navigator.of(context).pop();
+            navigator.pop();
           },
           child: Text(
             S.of(context).cancel,
@@ -408,24 +643,24 @@ class _PlayerConfigurationScreenState extends State<PlayerConfigurationScreen> {
                   actions: [
                     CupertinoActionSheetAction(
                       onPressed: () {
-                        Navigator.of(context).pop();
+                        navigator.pop();
                       },
                       child: Text(S.of(context).cancel),
                     ),
                     CupertinoActionSheetAction(
                       onPressed: () {
                         context.read<PlayerConfigurationState>().reset();
-                        Navigator.of(context).pop(true);
+                        navigator.pop(true);
                       },
-                      child: Text(S.of(context).reset),
                       isDestructiveAction: true,
+                      child: Text(S.of(context).reset),
                     ),
                   ],
                 );
               },
             );
             if (needToPop == true) {
-              Navigator.of(context).pop();
+              navigator.pop();
             }
           },
           child: Text(
@@ -442,9 +677,9 @@ class _PlayerConfigurationScreenState extends State<PlayerConfigurationScreen> {
             if (_formKey.currentState != null &&
                 _formKey.currentState!.validate()) {
               _formKey.currentState!.save();
+              navigator.pop();
               context.read<PlayerConfigurationState>().playerConfiguration =
                   _resultConfig;
-              Navigator.of(context).pop();
             }
           },
           child: Text(

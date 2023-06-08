@@ -1,15 +1,15 @@
 import 'package:fw_flutter_sdk/fw_flutter_sdk.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:fw_flutter_sdk_example/utils/host_app_service.dart';
 import '../../generated/l10n.dart';
-import '../../my_app.dart';
 import '../../widgets/fw_app_bar.dart';
 
 class EnableCustomCTAClickCallbackScreen extends StatefulWidget {
   const EnableCustomCTAClickCallbackScreen({Key? key}) : super(key: key);
 
   @override
-  _EnableCustomCTAClickCallbackScreenState createState() =>
+  State<EnableCustomCTAClickCallbackScreen> createState() =>
       _EnableCustomCTAClickCallbackScreenState();
 }
 
@@ -102,16 +102,8 @@ class _EnableCustomCTAClickCallbackScreenState
                 _formKey.currentState!.validate()) {
               _formKey.currentState!.save();
               if (_enableCustomCTAClickCallback) {
-                FireworkSDK.getInstance().onCustomCTAClick = (event) {
-                  final url = event?.url;
-                  if (url != null) {
-                    FireworkSDK.getInstance().navigator.popNativeContainer();
-                    globalNavigatorKey.currentState
-                        ?.pushNamed('/cta_link_content', arguments: {
-                      "url": url,
-                    });
-                  }
-                };
+                FireworkSDK.getInstance().onCustomCTAClick =
+                    HostAppService.getInstance().onCustomCTAClick;
                 EasyLoading.showToast(
                     S.of(context).enableCustomCTAClickCallbackSuccessfully);
               } else {

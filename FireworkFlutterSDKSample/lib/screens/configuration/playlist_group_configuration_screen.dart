@@ -8,7 +8,7 @@ class PlaylistGroupConfigurationScreen extends StatefulWidget {
   const PlaylistGroupConfigurationScreen({Key? key}) : super(key: key);
 
   @override
-  _PlaylistGroupConfigurationScreenState createState() =>
+  State<PlaylistGroupConfigurationScreen> createState() =>
       _PlaylistGroupConfigurationScreenState();
 }
 

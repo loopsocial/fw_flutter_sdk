@@ -12,7 +12,7 @@ class DynamicContentConfigurationScreen extends StatefulWidget {
   const DynamicContentConfigurationScreen({Key? key}) : super(key: key);
 
   @override
-  _DynamicContentConfigurationScreenState createState() =>
+  State<DynamicContentConfigurationScreen> createState() =>
       _DynamicContentConfigurationScreenState();
 }
 

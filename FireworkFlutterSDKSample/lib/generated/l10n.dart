@@ -870,51 +870,51 @@ class S {
     );
   }
 
-  /// `Cart Configuration`
-  String get cartConfiguration {
+  /// `Shopping Configuration`
+  String get shoppingConfiguration {
     return Intl.message(
-      'Cart Configuration',
-      name: 'cartConfiguration',
+      'Shopping Configuration',
+      name: 'shoppingConfiguration',
       desc: '',
       args: [],
     );
   }
 
-  /// `Background color of "Add to cart" button`
-  String get addToCartButtonBackgroundColor {
+  /// `Background color of shopping CTA button`
+  String get shoppingCTAButtonBackgroundColor {
     return Intl.message(
-      'Background color of "Add to cart" button',
-      name: 'addToCartButtonBackgroundColor',
+      'Background color of shopping CTA button',
+      name: 'shoppingCTAButtonBackgroundColor',
       desc: '',
       args: [],
     );
   }
 
-  /// `Text color of "Add to cart" button`
-  String get addToCartButtonTextColor {
+  /// `Text color of shopping CTA button`
+  String get shoppingCTAButtonTextColor {
     return Intl.message(
-      'Text color of "Add to cart" button',
-      name: 'addToCartButtonTextColor',
+      'Text color of shopping CTA button',
+      name: 'shoppingCTAButtonTextColor',
       desc: '',
       args: [],
     );
   }
 
-  /// `Font size of "Add to cart" button`
-  String get addToCartButtonFontSize {
+  /// `Font size of shopping CTA button`
+  String get shoppingCTAButtonFontSize {
     return Intl.message(
-      'Font size of "Add to cart" button',
-      name: 'addToCartButtonFontSize',
+      'Font size of shopping CTA button',
+      name: 'shoppingCTAButtonFontSize',
       desc: '',
       args: [],
     );
   }
 
   /// `e.g. #ffffff`
-  String get addToCartButtonTextColorHint {
+  String get shoppingCTAButtonTextColorHint {
     return Intl.message(
       'e.g. #ffffff',
-      name: 'addToCartButtonTextColorHint',
+      name: 'shoppingCTAButtonTextColorHint',
       desc: '',
       args: [],
     );
@@ -1525,6 +1525,376 @@ class S {
     return Intl.message(
       'Please enter grid columns in [2, 8]',
       name: 'gridColumnsRangeError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add to cart`
+  String get addToCart {
+    return Intl.message(
+      'Add to cart',
+      name: 'addToCart',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Shop now`
+  String get shopNow {
+    return Intl.message(
+      'Shop now',
+      name: 'shopNow',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Use iOS font info(TimesNewRomanPS-ItalicMT)`
+  String get useIOSFontInfo {
+    return Intl.message(
+      'Use iOS font info(TimesNewRomanPS-ItalicMT)',
+      name: 'useIOSFontInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hide link button`
+  String get hideLinkButton {
+    return Intl.message(
+      'Hide link button',
+      name: 'hideLinkButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Customize link button handler`
+  String get customizeLinkButtonHandler {
+    return Intl.message(
+      'Customize link button handler',
+      name: 'customizeLinkButtonHandler',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Use iOS font info(TimesNewRomanPS-ItalicMT) for title`
+  String get useIOSFontInfoForTitle {
+    return Intl.message(
+      'Use iOS font info(TimesNewRomanPS-ItalicMT) for title',
+      name: 'useIOSFontInfoForTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Use iOS font info(TimesNewRomanPS-ItalicMT) for CTA`
+  String get useIOSFontInfoForCTA {
+    return Intl.message(
+      'Use iOS font info(TimesNewRomanPS-ItalicMT) for CTA',
+      name: 'useIOSFontInfoForCTA',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `e.g. 12`
+  String get titleFontSizeHint1 {
+    return Intl.message(
+      'e.g. 12',
+      name: 'titleFontSizeHint1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Stop floating player`
+  String get stopFloatingPlayer {
+    return Intl.message(
+      'Stop floating player',
+      name: 'stopFloatingPlayer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Play`
+  String get play {
+    return Intl.message(
+      'Play',
+      name: 'play',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pause`
+  String get pause {
+    return Intl.message(
+      'Pause',
+      name: 'pause',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hashtag Playlist Feed`
+  String get hashtagPlaylistFeed {
+    return Intl.message(
+      'Hashtag Playlist Feed',
+      name: 'hashtagPlaylistFeed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hashtag Playlist Info`
+  String get hashtagPlaylistInfo {
+    return Intl.message(
+      'Hashtag Playlist Info',
+      name: 'hashtagPlaylistInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hashtag filter expression`
+  String get hashtagFilterExpression {
+    return Intl.message(
+      'Hashtag filter expression',
+      name: 'hashtagFilterExpression',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter hashtag filter expression`
+  String get hashtagFilterExpressionHint {
+    return Intl.message(
+      'Enter hashtag filter expression',
+      name: 'hashtagFilterExpressionHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter hashtag filter expression`
+  String get hashtagFilterExpressionRequiredError {
+    return Intl.message(
+      'Please enter hashtag filter expression',
+      name: 'hashtagFilterExpressionRequiredError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Change App Langauge ({language})`
+  String changeAppLanguage(Object language) {
+    return Intl.message(
+      'Change App Langauge ($language)',
+      name: 'changeAppLanguage',
+      desc: '',
+      args: [language],
+    );
+  }
+
+  /// `Link Content(Flutter page)`
+  String get linkContentScreenTitle {
+    return Intl.message(
+      'Link Content(Flutter page)',
+      name: 'linkContentScreenTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `CTA delay type`
+  String get ctaDelayType {
+    return Intl.message(
+      'CTA delay type',
+      name: 'ctaDelayType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `constant`
+  String get constant {
+    return Intl.message(
+      'constant',
+      name: 'constant',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `percentage`
+  String get percentage {
+    return Intl.message(
+      'percentage',
+      name: 'percentage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `CTA delay value: {value}`
+  String ctaDelayValue(Object value) {
+    return Intl.message(
+      'CTA delay value: $value',
+      name: 'ctaDelayValue',
+      desc: '',
+      args: [value],
+    );
+  }
+
+  /// `Shopping CTA button text`
+  String get shoppingCTAButtonText {
+    return Intl.message(
+      'Shopping CTA button text',
+      name: 'shoppingCTAButtonText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `CTA highlight delay type`
+  String get ctaHighlightDelayType {
+    return Intl.message(
+      'CTA highlight delay type',
+      name: 'ctaHighlightDelayType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `CTA highlight delay value: {value}`
+  String ctaHighlightDelayValue(Object value) {
+    return Intl.message(
+      'CTA highlight delay value: $value',
+      name: 'ctaHighlightDelayValue',
+      desc: '',
+      args: [value],
+    );
+  }
+
+  /// `Share base URL`
+  String get shareBaseURL {
+    return Intl.message(
+      'Share base URL',
+      name: 'shareBaseURL',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `CTA width`
+  String get ctaWidth {
+    return Intl.message(
+      'CTA width',
+      name: 'ctaWidth',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Full width`
+  String get fullWidth {
+    return Intl.message(
+      'Full width',
+      name: 'fullWidth',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Compact`
+  String get compact {
+    return Intl.message(
+      'Compact',
+      name: 'compact',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Size to fit`
+  String get sizeToFit {
+    return Intl.message(
+      'Size to fit',
+      name: 'sizeToFit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Number of title lines`
+  String get numberOfTitleLines {
+    return Intl.message(
+      'Number of title lines',
+      name: 'numberOfTitleLines',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `e.g. 1`
+  String get numberOfTitleLinesHint {
+    return Intl.message(
+      'e.g. 1',
+      name: 'numberOfTitleLinesHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter correct grid columns`
+  String get numberOfTitleLinesError {
+    return Intl.message(
+      'Please enter correct grid columns',
+      name: 'numberOfTitleLinesError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter grid columns in [1, 5]`
+  String get numberOfTitleLinesRangeError {
+    return Intl.message(
+      'Please enter grid columns in [1, 5]',
+      name: 'numberOfTitleLinesRangeError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Use Android font info for title`
+  String get useAndroidFontInfoForTitle {
+    return Intl.message(
+      'Use Android font info for title',
+      name: 'useAndroidFontInfoForTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Use Android gradient drawable for title`
+  String get useAndroidGradientDrawableForTitle {
+    return Intl.message(
+      'Use Android gradient drawable for title',
+      name: 'useAndroidGradientDrawableForTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Story block configuration(Android)`
+  String get storyBlockConfiguration {
+    return Intl.message(
+      'Story block configuration(Android)',
+      name: 'storyBlockConfiguration',
       desc: '',
       args: [],
     );

@@ -21,7 +21,7 @@ class FWTextFormField extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _FWTextFormFieldState createState() => _FWTextFormFieldState();
+  State<FWTextFormField> createState() => _FWTextFormFieldState();
 }
 
 class _FWTextFormFieldState extends State<FWTextFormField> {

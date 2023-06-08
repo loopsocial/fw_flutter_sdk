@@ -17,16 +17,16 @@ class FeedConfigurationScreen extends StatefulWidget {
   const FeedConfigurationScreen({Key? key}) : super(key: key);
 
   @override
-  _FeedConfigurationScreenState createState() =>
+  State<FeedConfigurationScreen> createState() =>
       _FeedConfigurationScreenState();
 }
 
 class _FeedConfigurationScreenState extends State<FeedConfigurationScreen> {
   final _formKey = GlobalKey<FormState>();
   VideoFeedConfiguration _initConfig = VideoFeedConfiguration();
-  final _resultConfig = VideoFeedConfiguration();
+  VideoFeedConfiguration _resultConfig = VideoFeedConfiguration();
   AdConfiguration _initAdConfig = AdConfiguration();
-  final _resultAdConfig = AdConfiguration();
+  AdConfiguration _resultAdConfig = AdConfiguration();
   String _initVastAttributesString = "";
   String _vastAttributesString = "";
 
@@ -34,20 +34,11 @@ class _FeedConfigurationScreenState extends State<FeedConfigurationScreen> {
   void initState() {
     super.initState();
     _initConfig = context.read<FeedConfigurationState>().feedConfiguration;
-    _resultConfig.backgroundColor = _initConfig.backgroundColor;
-    _resultConfig.cornerRadius = _initConfig.cornerRadius;
-    _resultConfig.title = _initConfig.title;
-    _resultConfig.titlePosition = _initConfig.titlePosition;
-    _resultConfig.playIcon = _initConfig.playIcon;
-    _resultConfig.showAdBadge = _initConfig.showAdBadge;
-    _resultConfig.customLayoutName = _initConfig.customLayoutName;
-    _resultConfig.enableAutoplay = _initConfig.enableAutoplay;
-    _resultConfig.enablePictureInPicture = _initConfig.enablePictureInPicture;
+    _resultConfig = _initConfig.deepCopy();
 
     _initAdConfig = context.read<FeedConfigurationState>().adConfiguration;
-    _resultAdConfig.vastAttributes = _initAdConfig.vastAttributes;
-    _resultAdConfig.requiresAds = _initAdConfig.requiresAds;
-    _resultAdConfig.adsFetchTimeout = _initAdConfig.adsFetchTimeout;
+    _resultAdConfig = _initAdConfig.deepCopy();
+
     if (_initAdConfig.vastAttributes != null) {
       final vastAttributes = _initAdConfig.vastAttributes!;
       Map<String, dynamic> vastAttributesJson = {};
@@ -140,6 +131,22 @@ class _FeedConfigurationScreenState extends State<FeedConfigurationScreen> {
             const SizedBox(
               height: 20,
             ),
+            _buildTitleNumberOfLines(context),
+            const SizedBox(
+              height: 20,
+            ),
+            _buildTitleUseIOSFontInfo(context),
+            const SizedBox(
+              height: 20,
+            ),
+            _buildTitleUseAndroidFontInfo(context),
+            const SizedBox(
+              height: 20,
+            ),
+            _buildTitleGradientDrawable(context),
+            const SizedBox(
+              height: 20,
+            ),
             Row(
               children: [
                 Expanded(
@@ -164,15 +171,7 @@ class _FeedConfigurationScreenState extends State<FeedConfigurationScreen> {
             const SizedBox(
               height: 20,
             ),
-            _buildEnableCustomLayoutName(context),
-            const SizedBox(
-              height: 20,
-            ),
             _buildEnableAutoplay(context),
-            const SizedBox(
-              height: 20,
-            ),
-            _buildEnablePictureInPicture(context),
             const SizedBox(
               height: 20,
             ),
@@ -288,7 +287,7 @@ class _FeedConfigurationScreenState extends State<FeedConfigurationScreen> {
         Text(S.of(context).titleFontSize),
         FWTextFormField(
           initialValue: _initConfig.title?.fontSize?.toStringAsFixed(0),
-          hintText: S.of(context).titleFontSizeHint,
+          hintText: S.of(context).titleFontSizeHint1,
           validator: (text) {
             return ValidationUtil.validateNumber(
               context: context,
@@ -331,6 +330,107 @@ class _FeedConfigurationScreenState extends State<FeedConfigurationScreen> {
         ),
       },
       groupValue: _resultConfig.titlePosition,
+    );
+  }
+
+  Widget _buildTitleNumberOfLines(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(S.of(context).numberOfTitleLines),
+        FWTextFormField(
+          initialValue: _initConfig.title?.numberOfLines?.toStringAsFixed(0),
+          hintText: S.of(context).numberOfTitleLinesHint,
+          validator: (text) {
+            return ValidationUtil.validateNumber(
+              context: context,
+              text: text,
+              min: 1,
+              max: 5,
+              errorMessage: S.of(context).numberOfTitleLinesError,
+              rangeErrorMessage: S.of(context).numberOfTitleLinesRangeError,
+            );
+          },
+          onSaved: (text) {
+            _resultConfig.title ??= VideoFeedTitleConfiguration();
+            _resultConfig.title?.numberOfLines =
+                int.tryParse(text ?? '')?.toInt();
+          },
+        )
+      ],
+    );
+  }
+
+  Widget _buildTitleUseIOSFontInfo(BuildContext context) {
+    return CheckboxListTile(
+      contentPadding: EdgeInsets.zero,
+      value: _resultConfig.title?.iOSFontInfo != null,
+      onChanged: (value) {
+        setState(() {
+          if (value == true) {
+            _resultConfig.title ??= VideoFeedTitleConfiguration();
+            _resultConfig.title?.iOSFontInfo = IOSFontInfo(
+              fontName: "TimesNewRomanPS-ItalicMT",
+            );
+          } else {
+            _resultConfig.title?.iOSFontInfo = null;
+          }
+        });
+      },
+      title: Text(
+        S.of(context).useIOSFontInfoForTitle,
+      ),
+    );
+  }
+
+  Widget _buildTitleUseAndroidFontInfo(BuildContext context) {
+    return CheckboxListTile(
+      contentPadding: EdgeInsets.zero,
+      value: _resultConfig.title?.androidFontInfo != null,
+      onChanged: (value) {
+        setState(() {
+          if (value == true) {
+            _resultConfig.title ??= VideoFeedTitleConfiguration();
+            _resultConfig.title?.androidFontInfo = AndroidFontInfo(
+              isCustom: false,
+              typefaceName: "DEFAULT_BOLD",
+            );
+          } else {
+            _resultConfig.title?.androidFontInfo = null;
+          }
+        });
+      },
+      title: Text(
+        S.of(context).useAndroidFontInfoForTitle,
+      ),
+    );
+  }
+
+  Widget _buildTitleGradientDrawable(BuildContext context) {
+    return CheckboxListTile(
+      contentPadding: EdgeInsets.zero,
+      value: _resultConfig.title?.gradientDrawable != null,
+      onChanged: (value) {
+        setState(() {
+          if (value == true) {
+            _resultConfig.title ??= VideoFeedTitleConfiguration();
+            _resultConfig.title?.gradientDrawable = GradientDrawable(
+              orientation: GradientDrawableOrientation.rightLeft,
+              colors: <String>[
+                "#FF48C9B0",
+                "#FFD98880",
+                "#FFF4D03F",
+              ],
+            );
+          } else {
+            _resultConfig.title?.gradientDrawable = null;
+          }
+        });
+      },
+      title: Text(
+        S.of(context).useAndroidGradientDrawableForTitle,
+      ),
     );
   }
 
@@ -419,24 +519,6 @@ class _FeedConfigurationScreenState extends State<FeedConfigurationScreen> {
     );
   }
 
-  Widget _buildEnableCustomLayoutName(BuildContext context) {
-    return CheckboxListTile(
-      value: _resultConfig.customLayoutName != null ? true : false,
-      onChanged: (value) {
-        setState(() {
-          if (value != null && value) {
-            _resultConfig.customLayoutName = "fw_feed_custom_layout";
-          } else {
-            _resultConfig.customLayoutName = null;
-          }
-        });
-      },
-      title: Text(
-        S.of(context).enableCustomLayoutName,
-      ),
-    );
-  }
-
   Widget _buildEnableAutoplay(BuildContext context) {
     return CheckboxListTile(
       value: _resultConfig.enableAutoplay ?? false,
@@ -447,20 +529,6 @@ class _FeedConfigurationScreenState extends State<FeedConfigurationScreen> {
       },
       title: Text(
         S.of(context).enableAutoplay,
-      ),
-    );
-  }
-
-  Widget _buildEnablePictureInPicture(BuildContext context) {
-    return CheckboxListTile(
-      value: _resultConfig.enablePictureInPicture ?? false,
-      onChanged: (value) {
-        setState(() {
-          _resultConfig.enablePictureInPicture = value;
-        });
-      },
-      title: Text(
-        S.of(context).enablePictureInPicture,
       ),
     );
   }
@@ -525,6 +593,7 @@ class _FeedConfigurationScreenState extends State<FeedConfigurationScreen> {
   }
 
   Widget _buildButtonList(BuildContext context) {
+    final navigator = Navigator.of(context);
     return Row(children: [
       Expanded(
         child: ElevatedButton(
@@ -561,15 +630,15 @@ class _FeedConfigurationScreenState extends State<FeedConfigurationScreen> {
                         context.read<FeedConfigurationState>().reset();
                         Navigator.of(context).pop(true);
                       },
-                      child: Text(S.of(context).reset),
                       isDestructiveAction: true,
+                      child: Text(S.of(context).reset),
                     ),
                   ],
                 );
               },
             );
             if (needToPop == true) {
-              Navigator.of(context).pop();
+              navigator.pop();
             }
           },
           child: Text(

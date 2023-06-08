@@ -47,8 +47,9 @@ class ShopifyClient {
   }
 
   Future<ShopifyProduct?> fetchProduct(String productId) async {
-    final dio = await _dioCompleter.future;
-    final body = """
+    try {
+      final dio = await _dioCompleter.future;
+      final body = """
 query {
   product(id:"gid://shopify/Product/$productId")
   {
@@ -71,26 +72,30 @@ query {
   }
 }
 """;
-    final response = await dio.post(
-      '/graphql.json',
-      data: body,
-    );
-    FWExampleLoggerUtil.log(
-        "fetchProduct Response status: ${response.statusCode}");
-    final resData = response.data as Map<String, dynamic>;
-    final productJson = (resData["data"] as Map<String, dynamic>)["product"];
-    ShopifyProduct shopifyProduct = ShopifyProduct.fromJson(productJson);
-    if (productJson["variants"]["edges"] is List<dynamic>) {
-      shopifyProduct.variants =
-          (productJson["variants"]["edges"] as List<dynamic>)
-              .map(
-                (e) => ShopifyProductVariant.fromJson(
-                    e["node"] as Map<String, dynamic>),
-              )
-              .toList();
-    }
+      final response = await dio.post(
+        '/graphql.json',
+        data: body,
+      );
+      FWExampleLoggerUtil.log(
+          "fetchProduct Response status: ${response.statusCode}");
+      final resData = response.data as Map<String, dynamic>;
+      final productJson = (resData["data"] as Map<String, dynamic>)["product"];
+      ShopifyProduct shopifyProduct = ShopifyProduct.fromJson(productJson);
+      if (productJson["variants"]["edges"] is List<dynamic>) {
+        shopifyProduct.variants =
+            (productJson["variants"]["edges"] as List<dynamic>)
+                .map(
+                  (e) => ShopifyProductVariant.fromJson(
+                      e["node"] as Map<String, dynamic>),
+                )
+                .toList();
+      }
 
-    return shopifyProduct;
+      return shopifyProduct;
+    } catch (e) {
+      FWExampleLoggerUtil.log("ShopifyClient fetchProduct error: $e");
+      return null;
+    }
   }
 
   String decodeId(String encodedId) {
@@ -102,6 +107,15 @@ query {
       return resultId;
     }
     return "";
+  }
+
+  Future<bool> creatClientSuccessfully() async {
+    try {
+      await _dioCompleter.future;
+      return true;
+    } catch (e) {
+      return false;
+    }
   }
 
   Future<void> _readConfig() async {
@@ -118,11 +132,14 @@ query {
           final shopifyDomain = jsonData["shopifyDomain"] as String;
           final shopifyStorefrontAccessToken =
               jsonData["shopifyStorefrontAccessToken"] as String;
-          final dio = _createDio(
-            shopifyDomain: shopifyDomain,
-            shopifyStorefrontAccessToken: shopifyStorefrontAccessToken,
-          );
-          _dioCompleter.complete(dio);
+          if (shopifyDomain.isNotEmpty &&
+              shopifyStorefrontAccessToken.isNotEmpty) {
+            final dio = _createDio(
+              shopifyDomain: shopifyDomain,
+              shopifyStorefrontAccessToken: shopifyStorefrontAccessToken,
+            );
+            _dioCompleter.complete(dio);
+          }
         }
       }
     } catch (e) {
