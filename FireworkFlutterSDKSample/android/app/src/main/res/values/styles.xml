@@ -16,12 +16,14 @@
         <item name="android:windowBackground">?android:colorBackground</item>
     </style>
 
+    <!--Configure the style for the shopping cta button-->
     <style name="FwShoppingCtaButtonStyle" parent="FwShoppingCtaButtonParentStyle">
         <item name="android:backgroundTint">@color/fw_shopping__add_to_cart_btn</item>
         <item name="android:textColor">@color/fw__gnt_white</item>
         <item name="android:textSize">@dimen/fw__font_size_16</item>
     </style>
 
+    <!--Configure the style for the player cta button-->
     <style name="FwCtaButtonStyle" parent="FwCtaButtonViewParentStyle">
         <item name="android:backgroundTint">@color/fw_cta_bg_bluelake</item>
         <item name="android:textColor">@color/white</item>

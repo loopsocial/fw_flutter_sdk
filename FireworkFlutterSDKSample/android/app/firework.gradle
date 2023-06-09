@@ -1,22 +1,29 @@
 android {
-    packagingOptions {
-        exclude 'META-INF/annotation.kotlin_module'
-        exclude 'META-INF/lifecycle-viewmodel_release.kotlin_module'
-        exclude 'META-INF/annotation-experimental_release.kotlin_module'
-        exclude 'META-INF/kotlin-stdlib.kotlin_module'
-    }
+  packagingOptions {
+    exclude 'META-INF/annotation.kotlin_module'
+    exclude 'META-INF/lifecycle-viewmodel_release.kotlin_module'
+    exclude 'META-INF/annotation-experimental_release.kotlin_module'
+    exclude 'META-INF/kotlin-stdlib.kotlin_module'
+  }
 }
 
 dependencies {
-    def fireworkSdkVersion = "6.3.0"
-    implementation "com.firework:sdk:$fireworkSdkVersion"
-    implementation "com.firework.external.livestream:singleHostPlayer:$fireworkSdkVersion"
-    implementation "com.firework.external.livestream:multiHostPlayer:$fireworkSdkVersion"
-
-    // local
-//  def fireworkSdkVersion = "unspecified"
-//  implementation "firework_sdk_v2:fireworkSdk:$fireworkSdkVersion"
-//  implementation "firework_sdk_v2.external:singleHostLivestreamPlayer:$fireworkSdkVersion"
-//  implementation "firework_sdk_v2.external:multiHostLivestreamPlayer:$fireworkSdkVersion"
-
+  implementation "com.firework:sdk:+"
+  implementation "com.firework.external.livestream:singleHostPlayer:+"
+  implementation "com.firework.external.livestream:multiHostPlayer:+"
 }
+
+configurations.all {
+  resolutionStrategy.eachDependency { details ->
+    if (details.requested.group == 'com.firework' && details.requested.name == 'sdk') {
+      details.useVersion rootProject.ext.get("fwNativeVersion")
+    }
+    if (details.requested.group == 'com.firework.external.livestream' && details.requested.name == 'singleHostPlayer') {
+      details.useVersion rootProject.ext.get("fwNativeVersion")
+    }
+    if (details.requested.group == 'com.firework.external.livestream' && details.requested.name == 'multiHostPlayer') {
+      details.useVersion rootProject.ext.get("fwNativeVersion")
+    }
+  }
+}
+
