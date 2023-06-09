@@ -1,5 +1,35 @@
 # CHANGELOG
 
+## [2.0.0]
+
+### Added
+
+- Support Picture in Picture for video feed on the Android side(already supported on iOS)
+- Support floating player for video feed on the Android side(already supported on iOS)
+- Add the ability to programmatically start or stop the floating player
+- Support app-level language setting
+- Support hashtag playlist
+- Support customizing shopping CTA button text to "Add to cart" or "Shop now"
+- Support configuring the width of the CTA button
+- Support play and pause function on `StoryBlock` widget
+- Support story block configuration on the Android side
+- Support hiding link button next to shopping CTA button
+- Support customizing click handler of link button next to shopping CTA button
+- Support passing `videoLaunchBehavior` in `FireworkSDK` class `init` method
+
+### Changed
+
+- Upgrade Firework Android SDK from V5 to V6
+- Upgrade Firework iOS SDK to V1.10
+
+### Breaking Changes
+
+- Remove `launchBehavior` in `VideoPlayerConfiguration` class
+- Remove `pushNativeContainer` method in `FWNavigator` class
+- Remove `canPopNativeContainer` method in `FWNavigator` class
+- Change `onAddToCart` callback to `onShoppingCTA` callback
+- Remove `onWillDisplayProduct` callback in `VideoShopping` class
+
 ## [2.0.0-beta.1]
 
 - Firework Flutter SDK beta release

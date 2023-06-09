@@ -119,7 +119,6 @@ flutter {
 dependencies {
 }
 
-apply from: 'google.gradle'
 apply from: 'firework.gradle'
 
 apply from: rootProject.file('lint.gradle')

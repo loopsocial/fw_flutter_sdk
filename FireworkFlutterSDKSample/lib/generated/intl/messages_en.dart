@@ -239,6 +239,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "setAdBadgeConfigurationSuccessfully":
             MessageLookupByLibrary.simpleMessage(
                 "Set Ad badge configuration successfully"),
+        "setDefaultShoppingPlaylistTip": MessageLookupByLibrary.simpleMessage(
+            "Please set up default shopping playlist info in \'./FireworkFlutterSDKSample/lib/assets/feed.json\'. Or you could also configure shopping playlist info by clicking the setting icon on the right side of the navigation bar."),
         "setShareBaseURL":
             MessageLookupByLibrary.simpleMessage("Set Share Base URL"),
         "setShareBaseURLSuccessfully": MessageLookupByLibrary.simpleMessage(

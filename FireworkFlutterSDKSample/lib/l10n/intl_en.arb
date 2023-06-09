@@ -183,5 +183,6 @@
   "numberOfTitleLinesRangeError": "Please enter grid columns in [1, 5]",
   "useAndroidFontInfoForTitle": "Use Android font info for title",
   "useAndroidGradientDrawableForTitle": "Use Android gradient drawable for title",
-  "storyBlockConfiguration": "Story block configuration(Android)"
+  "storyBlockConfiguration": "Story block configuration(Android)",
+  "setDefaultShoppingPlaylistTip": "Please set up default shopping playlist info in './FireworkFlutterSDKSample/lib/assets/feed.json'. Or you could also configure shopping playlist info by clicking the setting icon on the right side of the navigation bar."
 }

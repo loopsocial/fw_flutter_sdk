@@ -1899,6 +1899,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Please set up default shopping playlist info in './FireworkFlutterSDKSample/lib/assets/feed.json'. Or you could also configure shopping playlist info by clicking the setting icon on the right side of the navigation bar.`
+  String get setDefaultShoppingPlaylistTip {
+    return Intl.message(
+      'Please set up default shopping playlist info in \'./FireworkFlutterSDKSample/lib/assets/feed.json\'. Or you could also configure shopping playlist info by clicking the setting icon on the right side of the navigation bar.',
+      name: 'setDefaultShoppingPlaylistTip',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

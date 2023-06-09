@@ -101,8 +101,19 @@ class _ShoppingScreenState extends State<ShoppingScreen> {
   }
 
   Widget _buildBody(BuildContext context) {
-    if (_channelId == null || _playlistId == null) {
-      return Container();
+    if ((_channelId ?? "").isEmpty || (_playlistId ?? "").isEmpty) {
+      return Container(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Center(
+          child: Text(
+            S.of(context).setDefaultShoppingPlaylistTip,
+            style: const TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ),
+      );
     }
 
     return Container(
@@ -192,7 +203,7 @@ class _ShoppingScreenState extends State<ShoppingScreen> {
       child: VideoFeed(
         height: 220,
         source: VideoFeedSource.playlist,
-        channel: _channelId!,
+        channel: _channelId,
         playlist: _playlistId,
         mode: VideoFeedMode.row,
         enablePictureInPicture: _enablePip,

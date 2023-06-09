@@ -19,6 +19,7 @@ The integration guide is https://docs.firework.tv/flutter-sdk/integration-guide-
 ### Set up default shopping playlist(optional)
  1. Get the channel id and playlist id for the shopping playlist.
  2. In `./FireworkFlutterSDKSample/lib/assets/feed.json`, use the channel id and playlist id to update the value of `defaultShoppingPlaylist`
+Besides that, you could also configure shopping playlist info by clicking the setting icon on the right side of the shopping page navigation bar.
 
 ### Run iOS sample app
  1. `cd FireworkFlutterSDKSample`
