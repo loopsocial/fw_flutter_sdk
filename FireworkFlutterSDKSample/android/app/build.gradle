@@ -26,15 +26,18 @@ apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 /**
- * env: PRODUCTION/STAGING
- */
-def env = findProperty("FWENV")?:"PRODUCTION"
-
-/**
  * appid
  */
 def fw_appid_production = ""
+def fw_base_url_production = "https://api.fw.tv"
+def fw_pixel_base_url_production = "https://p2.fwpixel.com/"
+def fw_web_socket_production = "wss://api.firework.tv/socket/websocket"
+
+
 def fw_appid_staging = ""
+def fw_base_url_staging = ""
+def fw_pixel_base_url_staging = ""
+def fw_web_socket_staging = ""
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -62,23 +65,21 @@ android {
 
     signingConfigs {
         debug {
-            storeFile file('debug.keystore')
-            storePassword 'android'
-            keyAlias 'androiddebugkey'
-            keyPassword 'android'
             v1SigningEnabled true
             v2SigningEnabled true
         }
         release {
-            storeFile rootProject.file('loop-release-key.keystore')
-            storePassword   'LoopMeIn!'
-            keyAlias        'dd-key-alias'
-            keyPassword     'LoopMeIn!'
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+        profile {
             v1SigningEnabled true
             v2SigningEnabled true
         }
     }
 
+    // flutter build apk --flavor staging --debug
+    // flutter run --flavor staging --debug
     buildTypes {
         // ./gradlew -v
         // ./gradlew clean
@@ -89,25 +90,45 @@ android {
         // ./gradlew assembleDebug
         // ./gradlew installDebug
         debug {
-            manifestPlaceholders = [fw_appid: env=="STAGING" ? fw_appid_staging : fw_appid_production]
-            signingConfig signingConfigs.release
+            versionNameSuffix "-debug"
+            signingConfig signingConfigs.debug
             consumerProguardFiles 'proguard-rules.pro'
             minifyEnabled false
             shrinkResources false
         }
         release {
-            manifestPlaceholders = [fw_appid: env=="STAGING" ? fw_appid_staging : fw_appid_production]
+            versionNameSuffix ""
             signingConfig signingConfigs.release
+            consumerProguardFiles 'proguard-rules.pro'
             minifyEnabled true
             shrinkResources false
-            consumerProguardFiles 'proguard-rules.pro'
         }
         profile {
-            manifestPlaceholders = [fw_appid: env=="STAGING" ? fw_appid_staging : fw_appid_production]
-            signingConfig signingConfigs.release
-            minifyEnabled true
-            shrinkResources false
+            versionNameSuffix "-profile"
+            signingConfig signingConfigs.debug
             consumerProguardFiles 'proguard-rules.pro'
+            minifyEnabled false
+            shrinkResources false
+        }
+    }
+
+    flavorDimensions "env"
+    productFlavors {
+        staging {
+            dimension "env"
+            versionNameSuffix "-staging"
+            manifestPlaceholders["fw_appid"] = fw_appid_staging
+            manifestPlaceholders["fw_base_url"] = fw_base_url_staging
+            manifestPlaceholders["fw_pixel_base_url"] = fw_pixel_base_url_staging
+            manifestPlaceholders["fw_web_socket"] = fw_web_socket_staging
+        }
+        production {
+            dimension "env"
+            versionNameSuffix ""
+            manifestPlaceholders["fw_appid"] = fw_appid_production
+            manifestPlaceholders["fw_base_url"] = fw_base_url_production
+            manifestPlaceholders["fw_pixel_base_url"] = fw_pixel_base_url_production
+            manifestPlaceholders["fw_web_socket"] = fw_web_socket_production
         }
     }
 }
@@ -122,3 +143,25 @@ dependencies {
 apply from: 'firework.gradle'
 
 apply from: rootProject.file('lint.gradle')
+
+def defaultFlavor = "production"
+android.applicationVariants.all { variant ->
+    variant.outputs.all { output ->
+        if (variant.name == "${defaultFlavor}Debug") {
+            def taskSuffix = variant.name.capitalize()
+            def assembleTaskName = "assemble${taskSuffix}"
+            if (tasks.findByName(assembleTaskName)) {
+                def copyAPKTask = tasks.create(name: "copyAndRenameApk${taskSuffix}", type: Copy) {
+                    def apkBuildDir = "${buildDir}/outputs/apk"
+                    def flavorsCapitalized = variant.productFlavors.name.withIndex().collect { flavor, index -> index == 0 ? flavor : flavor.capitalize() }
+                    def originalDirPath = "${flavorsCapitalized.join()}/${variant.buildType.name}"
+                    def originalFileName = "${project.archivesBaseName}-${variant.productFlavors.name.join('-')}-${variant.buildType.name}.apk"
+                    from "${apkBuildDir}/${originalDirPath}/${originalFileName}"
+                    into "${buildDir}/outputs/flutter-apk/"
+                    rename("${originalFileName}", "${project.name}-${variant.buildType.name}.apk")
+                }
+                tasks[assembleTaskName].finalizedBy = [copyAPKTask]
+            }
+        }
+    }
+}

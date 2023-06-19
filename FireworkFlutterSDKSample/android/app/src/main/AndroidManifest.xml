@@ -49,5 +49,17 @@
         <meta-data
             android:name="Firework:Appid"
             android:value="${fw_appid}" />
+
+        <meta-data
+            android:name="fw_base_url"
+            android:value="${fw_base_url}" />
+
+        <meta-data
+            android:name="fw_pixel_base_url"
+            android:value="${fw_pixel_base_url}" />
+
+        <meta-data
+            android:name="fw_web_socket"
+            android:value="${fw_web_socket}" />
     </application>
 </manifest>

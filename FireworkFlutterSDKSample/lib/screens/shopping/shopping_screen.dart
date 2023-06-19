@@ -187,6 +187,7 @@ class _ShoppingScreenState extends State<ShoppingScreen> {
         hidden: false,
       ),
       showAdBadge: true,
+      itemSpacing: 10,
     );
 
     VideoPlayerConfiguration playerConfiguration = VideoPlayerConfiguration(

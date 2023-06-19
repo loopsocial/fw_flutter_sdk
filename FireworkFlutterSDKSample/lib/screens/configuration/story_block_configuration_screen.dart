@@ -55,58 +55,61 @@ class _StoryBlockConfigurationScreenState
       key: _formKey,
       child: Container(
         color: Colors.white,
-        child: ListView(
+        child: SingleChildScrollView(
           padding: const EdgeInsets.all(20),
-          children: [
-            _buildVideoCompleteActionSegmentedControl(context),
-            const SizedBox(
-              height: 20,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            _buildCTADelayTypeSegmentedControl(context),
-            const SizedBox(
-              height: 20,
-            ),
-            _buildCTADelayValueSlider(context),
-            const SizedBox(
-              height: 20,
-            ),
-            _buildCTAHighlightDelayTypeSegmentedControl(context),
-            const SizedBox(
-              height: 20,
-            ),
-            _buildCTAHighlightDelayValueSlider(context),
-            const SizedBox(
-              height: 20,
-            ),
-            _buildCTAWidthSegmentedControl(context),
-            const SizedBox(
-              height: 20,
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: _buildShareButtonShow(context),
-                ),
-                const SizedBox(
-                  width: 20,
-                ),
-                Expanded(
-                  child: _buildPlaybackButtonShow(context),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            _buildShareURL(context),
-            const SizedBox(
-              height: 20,
-            ),
-            _buildButtonList(context),
-          ],
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              _buildVideoCompleteActionSegmentedControl(context),
+              const SizedBox(
+                height: 20,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              _buildCTADelayTypeSegmentedControl(context),
+              const SizedBox(
+                height: 20,
+              ),
+              _buildCTADelayValueSlider(context),
+              const SizedBox(
+                height: 20,
+              ),
+              _buildCTAHighlightDelayTypeSegmentedControl(context),
+              const SizedBox(
+                height: 20,
+              ),
+              _buildCTAHighlightDelayValueSlider(context),
+              const SizedBox(
+                height: 20,
+              ),
+              _buildCTAWidthSegmentedControl(context),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: _buildShareButtonShow(context),
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: _buildPlaybackButtonShow(context),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              _buildShareURL(context),
+              const SizedBox(
+                height: 20,
+              ),
+              _buildButtonList(context),
+            ],
+          ),
         ),
       ),
     );

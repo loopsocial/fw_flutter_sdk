@@ -4,13 +4,15 @@ import 'package:flutter/material.dart';
 class FeedConfigurationState extends ChangeNotifier {
   static VideoFeedConfiguration _getDefaultConfiguration() {
     return VideoFeedConfiguration(
-        titlePosition: VideoFeedTitlePosition.nested,
-        title: VideoFeedTitleConfiguration(
-          hidden: false,
-          fontSize: 12,
-        ),
-        showAdBadge: true,
-        playIcon: VideoFeedPlayIconConfiguration());
+      titlePosition: VideoFeedTitlePosition.nested,
+      title: VideoFeedTitleConfiguration(
+        hidden: false,
+        fontSize: 12,
+      ),
+      showAdBadge: true,
+      playIcon: VideoFeedPlayIconConfiguration(),
+      itemSpacing: 10,
+    );
   }
 
   VideoFeedConfiguration _feedConfiguration = _getDefaultConfiguration();

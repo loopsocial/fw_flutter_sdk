@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [2.0.2]
+
+### Added
+
+- Support configuring feed item spacing on the Android side
+
+### Fixed
+
+- Unable to start floating player programmatically in some cases
+
 ## [2.0.1]
 
 ### Changed

@@ -80,111 +80,114 @@ class _FeedConfigurationScreenState extends State<FeedConfigurationScreen> {
       key: _formKey,
       child: Container(
         color: Colors.white,
-        child: ListView(
+        child: SingleChildScrollView(
           padding: const EdgeInsets.all(20),
-          children: [
-            Row(
-              children: [
-                Expanded(
-                  child: _buildBackgroundColor(context),
-                ),
-                const SizedBox(
-                  width: 20,
-                ),
-                Expanded(
-                  child: _buildCornerRadius(context),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: _buildTitleHidden(context),
-                ),
-                const SizedBox(
-                  width: 20,
-                ),
-                Expanded(
-                  child: _buildTitleColor(context),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: _buildTitleFontSize(context),
-                ),
-                const SizedBox(
-                  width: 20,
-                ),
-                Expanded(
-                  child: _buildTitlePositionSegmentedControl(context),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            _buildTitleNumberOfLines(context),
-            const SizedBox(
-              height: 20,
-            ),
-            _buildTitleUseIOSFontInfo(context),
-            const SizedBox(
-              height: 20,
-            ),
-            _buildTitleUseAndroidFontInfo(context),
-            const SizedBox(
-              height: 20,
-            ),
-            _buildTitleGradientDrawable(context),
-            const SizedBox(
-              height: 20,
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: _buildPlayIconHidden(context),
-                ),
-                const SizedBox(
-                  width: 20,
-                ),
-                Expanded(
-                  child: _buildPlayIconWidth(context),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            _buildGridColumns(context),
-            const SizedBox(
-              height: 20,
-            ),
-            _buildShowAdBadge(context),
-            const SizedBox(
-              height: 20,
-            ),
-            _buildEnableAutoplay(context),
-            const SizedBox(
-              height: 20,
-            ),
-            _buildRequiresAds(context),
-            const SizedBox(
-              height: 20,
-            ),
-            _buildVastAttributes(context),
-            const SizedBox(
-              height: 20,
-            ),
-            _buildButtonList(context),
-          ],
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Row(
+                children: [
+                  Expanded(
+                    child: _buildBackgroundColor(context),
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: _buildCornerRadius(context),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: _buildTitleHidden(context),
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: _buildTitleColor(context),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: _buildTitleFontSize(context),
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: _buildTitlePositionSegmentedControl(context),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              _buildTitleNumberOfLines(context),
+              const SizedBox(
+                height: 20,
+              ),
+              _buildTitleUseIOSFontInfo(context),
+              const SizedBox(
+                height: 20,
+              ),
+              _buildTitleUseAndroidFontInfo(context),
+              const SizedBox(
+                height: 20,
+              ),
+              _buildTitleGradientDrawable(context),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: _buildPlayIconHidden(context),
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: _buildPlayIconWidth(context),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              _buildGridColumns(context),
+              const SizedBox(
+                height: 20,
+              ),
+              _buildShowAdBadge(context),
+              const SizedBox(
+                height: 20,
+              ),
+              _buildEnableAutoplay(context),
+              const SizedBox(
+                height: 20,
+              ),
+              _buildRequiresAds(context),
+              const SizedBox(
+                height: 20,
+              ),
+              _buildVastAttributes(context),
+              const SizedBox(
+                height: 20,
+              ),
+              _buildButtonList(context),
+            ],
+          ),
         ),
       ),
     );
