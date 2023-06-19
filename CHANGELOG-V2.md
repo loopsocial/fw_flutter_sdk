@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.0.3]
+
+### Changed
+
+- Upgrade Firework Android SDK version to 6.3.3
+
 ## [2.0.2]
 
 ### Added
@@ -8,7 +14,7 @@
 
 ### Fixed
 
-- Unable to start floating player programmatically in some cases
+- Unable to start floating player programmatically in some cases on the Android side
 
 ## [2.0.1]
 
