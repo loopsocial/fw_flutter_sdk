@@ -156,9 +156,6 @@ class _MyAppState extends State<MyApp> {
 
           return null;
         },
-        navigatorObservers: [
-          FireworkSDK.getInstance().navigator.routeObserver,
-        ],
         builder: EasyLoading.init(),
       ),
     );

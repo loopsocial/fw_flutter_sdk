@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.0.4]
+
+### Breaking Changes
+
+- Remove `routeObserver` property from `FWNavigator` class
+
 ## [2.0.3]
 
 ### Changed

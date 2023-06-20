@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="description" content="API docs for the routeObserver property from the FWNavigator class, for the Dart programming language.">
-  <title>routeObserver property - FWNavigator class - fw_flutter_sdk library - Dart API</title>
+  <meta name="description" content="API docs for the updateVisibleFraction method from the StoryBlockController class, for the Dart programming language.">
+  <title>updateVisibleFraction method - StoryBlockController class - fw_flutter_sdk library - Dart API</title>
 
 
   
@@ -30,10 +30,10 @@
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li><a href="../../index.html">fw_flutter_sdk</a></li>
     <li><a href="../../fw_flutter_sdk/fw_flutter_sdk-library.html">fw_flutter_sdk</a></li>
-    <li><a href="../../fw_flutter_sdk/FWNavigator-class.html">FWNavigator</a></li>
-    <li class="self-crumb">routeObserver property</li>
+    <li><a href="../../fw_flutter_sdk/StoryBlockController-class.html">StoryBlockController</a></li>
+    <li class="self-crumb">updateVisibleFraction method</li>
   </ol>
-  <div class="self-name">routeObserver</div>
+  <div class="self-name">updateVisibleFraction</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
@@ -50,28 +50,33 @@
 
   <div id="dartdoc-main-content" class="main-content">
       <div>
-<h1><span class="kind-property">routeObserver</span> property 
+<h1><span class="kind-method">updateVisibleFraction</span> method 
     <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
 </h1></div>
 
-        <section class="multi-line-signature">
-          
-          <a href="https://api.flutter.dev/flutter/widgets/RouteObserver-class.html">RouteObserver</a>
-          <span class="name ">routeObserver</span>
-          <div class="features"><span class="feature">final</span></div>
+    <section class="multi-line-signature">
+      
 
-        </section>
-        
-<section class="desc markdown">
-  <p>Firework widgets need to be aware of route changes.
-In order to implement that, please help to pass this property to
-navigatorObservers of your MaterialApp(or other app widgets, such as CupertinoApp).</p>
-</section>
+<span class="returntype">void</span>
+<span class="name ">updateVisibleFraction</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="updateVisibleFraction-param-visibleFraction"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a></span> <span class="parameter-name">visibleFraction</span></span></li>
+</ol>)
 
-        
+      
+
+    </section>
+    
+
+
+    
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">final RouteObserver&lt;dynamic&gt; routeObserver = RouteObserver();</code></pre>
+  <pre class="language-dart"><code class="language-dart">void updateVisibleFraction(double visibleFraction) {
+  if (visibleFraction == 0) {
+    handler.hide();
+  } else {
+    handler.show();
+  }
+}</code></pre>
 </section>
 
 
@@ -87,33 +92,33 @@ navigatorObservers of your MaterialApp(or other app widgets, such as CupertinoAp
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
   <li><a href="../../index.html">fw_flutter_sdk</a></li>
   <li><a href="../../fw_flutter_sdk/fw_flutter_sdk-library.html">fw_flutter_sdk</a></li>
-  <li><a href="../../fw_flutter_sdk/FWNavigator-class.html">FWNavigator</a></li>
-  <li class="self-crumb">routeObserver property</li>
+  <li><a href="../../fw_flutter_sdk/StoryBlockController-class.html">StoryBlockController</a></li>
+  <li class="self-crumb">updateVisibleFraction method</li>
 </ol>
 
 
-    <h5>FWNavigator class</h5>
+    <h5>StoryBlockController class</h5>
     <ol>
 
-        <li class="section-title"><a href="../../fw_flutter_sdk/FWNavigator-class.html#constructors">Constructors</a></li>
-          <li><a href="../../fw_flutter_sdk/FWNavigator/FWNavigator.getInstance.html">getInstance</a></li>
+        <li class="section-title"><a href="../../fw_flutter_sdk/StoryBlockController-class.html#constructors">Constructors</a></li>
+          <li><a href="../../fw_flutter_sdk/StoryBlockController/StoryBlockController.html">StoryBlockController</a></li>
 
 
         <li class="section-title">
-          <a href="../../fw_flutter_sdk/FWNavigator-class.html#instance-properties">Properties</a>
+          <a href="../../fw_flutter_sdk/StoryBlockController-class.html#instance-properties">Properties</a>
         </li>
+          <li><a href="../../fw_flutter_sdk/StoryBlockController/handler.html">handler</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
-          <li><a href="../../fw_flutter_sdk/FWNavigator/routeObserver.html">routeObserver</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
 
-        <li class="section-title"><a href="../../fw_flutter_sdk/FWNavigator-class.html#instance-methods">Methods</a></li>
+        <li class="section-title"><a href="../../fw_flutter_sdk/StoryBlockController-class.html#instance-methods">Methods</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
-          <li><a href="../../fw_flutter_sdk/FWNavigator/popNativeContainer.html">popNativeContainer</a></li>
-          <li><a href="../../fw_flutter_sdk/FWNavigator/startFloatingPlayer.html">startFloatingPlayer</a></li>
-          <li><a href="../../fw_flutter_sdk/FWNavigator/stopFloatingPlayer.html">stopFloatingPlayer</a></li>
+          <li><a href="../../fw_flutter_sdk/StoryBlockController/pause.html">pause</a></li>
+          <li><a href="../../fw_flutter_sdk/StoryBlockController/play.html">play</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
+          <li><a href="../../fw_flutter_sdk/StoryBlockController/updateVisibleFraction.html">updateVisibleFraction</a></li>
 
-        <li class="section-title inherited"><a href="../../fw_flutter_sdk/FWNavigator-class.html#operators">Operators</a></li>
+        <li class="section-title inherited"><a href="../../fw_flutter_sdk/StoryBlockController-class.html#operators">Operators</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/operator_equals.html">operator ==</a></li>
 
 
@@ -131,7 +136,7 @@ navigatorObservers of your MaterialApp(or other app widgets, such as CupertinoAp
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.0.3
+      2.0.4
   </span>
 
   

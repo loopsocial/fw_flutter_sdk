@@ -9,6 +9,7 @@ import 'package:fw_flutter_sdk_example/utils/fw_example_logger_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
+import 'package:visibility_detector/visibility_detector.dart';
 import '../../generated/l10n.dart';
 import '../../extensions/fw_error_extension.dart';
 import '../../widgets/fw_app_bar.dart';
@@ -412,17 +413,26 @@ class _FeedScreenState extends State<FeedScreen> {
             clipBehavior: defaultTargetPlatform == TargetPlatform.iOS
                 ? Clip.hardEdge
                 : Clip.none,
-            child: StoryBlock(
-              source: source,
-              channel: channel,
-              playlist: playlist,
-              dynamicContentParameters: dynamicContentParameters,
-              hashtagFilterExpression: hashtagFilterExpression,
-              adConfiguration: AdConfiguration(requiresAds: false),
-              storyBlockConfiguration: storyBlockConfiguration,
-              enablePictureInPicture: _enablePip,
-              onStoryBlockLoadFinished: _onStoryBlockLoadFinished,
-              onStoryBlockCreated: _onStoryBlockCreated,
+            child: VisibilityDetector(
+              key: const Key("firework-story-block"),
+              child: StoryBlock(
+                source: source,
+                channel: channel,
+                playlist: playlist,
+                dynamicContentParameters: dynamicContentParameters,
+                hashtagFilterExpression: hashtagFilterExpression,
+                adConfiguration: AdConfiguration(requiresAds: false),
+                storyBlockConfiguration: storyBlockConfiguration,
+                enablePictureInPicture: _enablePip,
+                onStoryBlockLoadFinished: _onStoryBlockLoadFinished,
+                onStoryBlockCreated: _onStoryBlockCreated,
+              ),
+              onVisibilityChanged: (visibilityInfo) {
+                FWExampleLoggerUtil.log(
+                    "visibilityInfo.visibleFraction: ${visibilityInfo.visibleFraction}");
+                _storyBlockController
+                    ?.updateVisibleFraction(visibilityInfo.visibleFraction);
+              },
             ),
           ),
         ),
