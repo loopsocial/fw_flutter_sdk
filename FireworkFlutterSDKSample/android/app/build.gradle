@@ -39,9 +39,6 @@ def fw_base_url_staging = ""
 def fw_pixel_base_url_staging = ""
 def fw_web_socket_staging = ""
 
-    }
-}
-
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
