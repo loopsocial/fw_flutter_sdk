@@ -404,15 +404,10 @@ class _FeedScreenState extends State<FeedScreen> {
       child: Padding(
         padding: _androidPadding,
         child: SafeArea(
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: defaultTargetPlatform == TargetPlatform.iOS
-                  ? BorderRadius.circular(30)
-                  : null,
+          child: Padding(
+            padding: EdgeInsets.only(
+              bottom: defaultTargetPlatform == TargetPlatform.android ? 20 : 0,
             ),
-            clipBehavior: defaultTargetPlatform == TargetPlatform.iOS
-                ? Clip.hardEdge
-                : Clip.none,
             child: VisibilityDetector(
               key: const Key("firework-story-block"),
               child: StoryBlock(
@@ -424,6 +419,7 @@ class _FeedScreenState extends State<FeedScreen> {
                 adConfiguration: AdConfiguration(requiresAds: false),
                 storyBlockConfiguration: storyBlockConfiguration,
                 enablePictureInPicture: _enablePip,
+                cornerRadius: 20,
                 onStoryBlockLoadFinished: _onStoryBlockLoadFinished,
                 onStoryBlockCreated: _onStoryBlockCreated,
               ),
