@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.0.5]
+
+### Added
+
+- Support configuring `cornerRadius` in `StoryBlock` widget
+
 ## [2.0.4]
 
 ### Breaking Changes
