@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.0.6]
+
+### Fixed
+
+- Fix the video feed item corner radius issue on the Android side
+
 ## [2.0.5]
 
 ### Added
@@ -104,7 +110,6 @@
 
 - Hydration API doesn't work in the release package when setting `minifyEnabled` to `true`
 
-
 ## [1.2.0]
 
 ### Added
@@ -167,7 +172,7 @@
 
 ### Breaking Changes
 
-- Remove `AdConfig` class 
+- Remove `AdConfig` class
 - Remove `adConfig` parameter from `init` method of `FireworkSDK` class
 - Remove `exitCartPage` method from `VideoShopping` classs
 
