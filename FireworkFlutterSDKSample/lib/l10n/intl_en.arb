@@ -184,5 +184,11 @@
   "useAndroidFontInfoForTitle": "Use Android font info for title",
   "useAndroidGradientDrawableForTitle": "Use Android gradient drawable for title",
   "storyBlockConfiguration": "Story block configuration(Android)",
-  "setDefaultShoppingPlaylistTip": "Please set up default shopping playlist info in './FireworkFlutterSDKSample/lib/assets/feed.json'. Or you could also configure shopping playlist info by clicking the setting icon on the right side of the navigation bar."
+  "setDefaultShoppingPlaylistTip": "Please set up default shopping playlist info in './FireworkFlutterSDKSample/lib/assets/feed.json'. Or you could also configure shopping playlist info by clicking the setting icon on the right side of the navigation bar.",
+  "productIds": "Product ids",
+  "productsIdsHint": "e.g. product_id_1,product_id_2",
+  "productsIdsRequiredError": "Please enter product ids",
+  "skuFeed": "SKU Feed",
+  "skuFeedInfo": "SKU info",
+  "fwAndroidSdkVersion": "Firework Android SDK version: {version}"
 }

@@ -3,7 +3,7 @@ description: Demonstrates how to use the fw_flutter_sdk plugin.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 environment:
   sdk: ">=2.17.0 <4.0.0"
@@ -19,7 +19,7 @@ dependencies:
     sdk: flutter
 
 
-  fw_flutter_sdk: 2.0.6
+  fw_flutter_sdk: 2.1.0
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.5
@@ -34,7 +34,6 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: any
-  visibility_detector: ^0.4.0+2
 
 dev_dependencies:
   flutter_test:
@@ -52,8 +51,9 @@ dev_dependencies:
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 # The following section is specific to Flutter.
+dependency_overrides:
+  webview_flutter_wkwebview: "3.5.0"
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

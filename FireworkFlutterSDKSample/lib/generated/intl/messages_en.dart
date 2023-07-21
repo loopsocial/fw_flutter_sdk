@@ -28,6 +28,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m3(url) => "Current: ${url}";
 
+  static String m4(version) => "Firework Android SDK version: ${version}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "CVC": MessageLookupByLibrary.simpleMessage("CVN"),
@@ -143,6 +145,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Please enter font size in [8, 30]"),
         "full": MessageLookupByLibrary.simpleMessage("full"),
         "fullWidth": MessageLookupByLibrary.simpleMessage("Full width"),
+        "fwAndroidSdkVersion": m4,
         "grid": MessageLookupByLibrary.simpleMessage("Grid"),
         "gridColumns": MessageLookupByLibrary.simpleMessage("Grid Columns"),
         "gridColumnsError": MessageLookupByLibrary.simpleMessage(
@@ -219,6 +222,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "playlistIdRequiredError":
             MessageLookupByLibrary.simpleMessage("Please enter playlist id"),
         "playlistInfo": MessageLookupByLibrary.simpleMessage("Playlist Info"),
+        "productIds": MessageLookupByLibrary.simpleMessage("Product ids"),
+        "productsIdsHint": MessageLookupByLibrary.simpleMessage(
+            "e.g. product_id_1,product_id_2"),
+        "productsIdsRequiredError":
+            MessageLookupByLibrary.simpleMessage("Please enter product ids"),
         "refresh": MessageLookupByLibrary.simpleMessage("Refresh"),
         "requiresAds": MessageLookupByLibrary.simpleMessage("Requires Ads"),
         "reset": MessageLookupByLibrary.simpleMessage("Reset"),
@@ -271,6 +279,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "showShareButton":
             MessageLookupByLibrary.simpleMessage("Show share button"),
         "sizeToFit": MessageLookupByLibrary.simpleMessage("Size to fit"),
+        "skuFeed": MessageLookupByLibrary.simpleMessage("SKU Feed"),
+        "skuFeedInfo": MessageLookupByLibrary.simpleMessage("SKU info"),
         "sponsored": MessageLookupByLibrary.simpleMessage("sponsored"),
         "stacked": MessageLookupByLibrary.simpleMessage("stacked"),
         "state": MessageLookupByLibrary.simpleMessage("State"),

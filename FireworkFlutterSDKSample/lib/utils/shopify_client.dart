@@ -99,8 +99,14 @@ query {
   }
 
   String decodeId(String encodedId) {
-    String decodedGid = utf8.decode(base64Decode(encodedId));
-    final splitArray = decodedGid.split('/');
+    String resultDecodedGid = encodedId;
+    try {
+      final decodedGid = utf8.decode(base64Decode(encodedId));
+      resultDecodedGid = decodedGid;
+    } catch (e) {
+      FWExampleLoggerUtil.log('decode id $e encodedId: $encodedId');
+    }
+    final splitArray = resultDecodedGid.split('/');
     if (splitArray.isNotEmpty) {
       final resultId = splitArray.last;
 

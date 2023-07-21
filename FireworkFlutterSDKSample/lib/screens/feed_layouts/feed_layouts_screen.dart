@@ -176,6 +176,7 @@ class _FeedLayoutsScreenState extends State<FeedLayoutsScreen> {
             _buildPlaylistGroupItem(context),
             _buildDynamicContentItem(context),
             _buildHashtagPlaylistItem(context),
+            _buildSkuItem(context),
           ],
         ),
       ),
@@ -487,9 +488,9 @@ class _FeedLayoutsScreenState extends State<FeedLayoutsScreen> {
     );
     if (result is Map<String, dynamic>) {
       FWExampleLoggerUtil.log(
-          'dynamicContentParameters ${result["dynamicContentParameters"]} ${result["dynamicContentParameters"].runtimeType}');
-      FWExampleLoggerUtil.log(
           'channelId ${result["channelId"]} ${result["channelId"].runtimeType}');
+      FWExampleLoggerUtil.log(
+          'dynamicContentParameters ${result["dynamicContentParameters"]} ${result["dynamicContentParameters"].runtimeType}');
       if (result["channelId"] is String &&
           result["dynamicContentParameters"] is Map<String, List<String>>) {
         navigator.pushNamed(
@@ -580,7 +581,7 @@ class _FeedLayoutsScreenState extends State<FeedLayoutsScreen> {
     );
     if (result is Map<String, dynamic>) {
       FWExampleLoggerUtil.log(
-          'hashtagFilterExpression ${result["hashtagFilterExpression"]} ${result["dynamicContentParameters"].runtimeType}');
+          'hashtagFilterExpression ${result["hashtagFilterExpression"]}');
       FWExampleLoggerUtil.log(
           'channelId ${result["channelId"]} ${result["channelId"].runtimeType}');
       if (result["channelId"] is String &&
@@ -610,6 +611,42 @@ class _FeedLayoutsScreenState extends State<FeedLayoutsScreen> {
         "title": S.of(context).hashtagPlaylistFeed,
       },
     );
+  }
+
+  Widget _buildSkuItem(BuildContext context) {
+    return _buildItem(
+      context: context,
+      title: S.of(context).skuFeed,
+      onTap: () {
+        _goToSkuConfiguration();
+      },
+    );
+  }
+
+  void _goToSkuConfiguration() async {
+    final navigator = Navigator.of(context);
+    final s = S.of(context);
+    final result = await navigator.pushNamed(
+      "/sku_configuration",
+    );
+    if (result is Map<String, dynamic>) {
+      FWExampleLoggerUtil.log(
+          'channelId ${result["channelId"]} ${result["channelId"].runtimeType}');
+      FWExampleLoggerUtil.log(
+          'productIds ${result["productIds"]} ${result["productIds"].runtimeType}');
+      if (result["channelId"] is String &&
+          result["productIds"] is List<String>) {
+        navigator.pushNamed(
+          "/feed",
+          arguments: {
+            "source": "sku",
+            "channel": result["channelId"] as String,
+            "productIds": result["productIds"] as List<String>,
+            "title": s.skuFeed,
+          },
+        );
+      }
+    }
   }
 
   Widget _buildItem({

@@ -44,7 +44,6 @@ class _MyAppState extends State<MyApp> {
     _registerCallbacks();
     FireworkSDK.getInstance().adBadgeConfiguration =
         AdBadgeConfiguration(badgeTextType: AdBadgeTextType.ad);
-    FireworkSDK.getInstance().shareBaseURL = "https://fw.tv";
     FireworkSDK.getInstance().shopping.cartIconVisible = true;
     FireworkSDK.getInstance()
         .init(videoLaunchBehavior: VideoLaunchBehavior.muteOnFirstLaunch);

@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:fw_flutter_sdk/fw_flutter_sdk.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +8,7 @@ import 'package:flutter/services.dart';
 
 import '../../extensions/fw_error_extension.dart';
 import '../../generated/l10n.dart';
+import '../../models/feed_widget_type.dart';
 import '../../utils/fw_example_logger_util.dart';
 import '../../widgets/fw_app_bar.dart';
 
@@ -23,6 +25,7 @@ class _ShoppingScreenState extends State<ShoppingScreen> {
   String? _playlistId;
   FWError? _feedError;
   bool _enablePip = true;
+  FeedWidgetType _feedWidgetType = FeedWidgetType.videoFeed;
 
   @override
   void initState() {
@@ -78,14 +81,15 @@ class _ShoppingScreenState extends State<ShoppingScreen> {
         context: context,
         titleText: S.of(context).shopping,
         actions: [
-          IconButton(
-            onPressed: () {
-              _refresh();
-            },
-            icon: const Icon(
-              Icons.refresh,
+          if (_feedWidgetType == FeedWidgetType.videoFeed)
+            IconButton(
+              onPressed: () {
+                _refresh();
+              },
+              icon: const Icon(
+                Icons.refresh,
+              ),
             ),
-          ),
           IconButton(
             onPressed: () {
               _goPlaylistConfiguration();
@@ -128,9 +132,15 @@ class _ShoppingScreenState extends State<ShoppingScreen> {
             ),
             _buildEnablePictureInPicture(context),
             const SizedBox(
-              height: 20,
+              height: 10,
             ),
-            _buildFeed(context),
+            _buildFeedWidgetTypeSegmentedControl(context),
+            const SizedBox(
+              height: 10,
+            ),
+            _feedWidgetType == FeedWidgetType.videoFeed
+                ? _buildFeed(context)
+                : _buildStoryBlock(context),
             const SizedBox(
               height: 20,
             ),
@@ -177,6 +187,31 @@ class _ShoppingScreenState extends State<ShoppingScreen> {
     );
   }
 
+  Widget _buildFeedWidgetTypeSegmentedControl(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      child: CupertinoSegmentedControl<FeedWidgetType>(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        onValueChanged: (value) {
+          setState(() {
+            _feedWidgetType = value;
+          });
+        },
+        children: {
+          FeedWidgetType.videoFeed: Text(
+            S.of(context).videoFeed,
+            style: const TextStyle(fontSize: 13),
+          ),
+          FeedWidgetType.storyBlock: Text(
+            S.of(context).storyBlock,
+            style: const TextStyle(fontSize: 13),
+          ),
+        },
+        groupValue: _feedWidgetType,
+      ),
+    );
+  }
+
   Widget _buildFeed(BuildContext context) {
     if (_feedError != null) {
       return _buildErrorWidget(context);
@@ -212,6 +247,25 @@ class _ShoppingScreenState extends State<ShoppingScreen> {
         videoPlayerConfiguration: playerConfiguration,
         onVideoFeedCreated: _onVideoFeedCreated,
         onVideoFeedLoadFinished: _onVideoFeedLoadFinished,
+      ),
+    );
+  }
+
+  Widget _buildStoryBlock(BuildContext context) {
+    if (_feedError != null) {
+      return _buildErrorWidget(context);
+    }
+
+    return Padding(
+      padding: defaultTargetPlatform == TargetPlatform.android
+          ? const EdgeInsets.symmetric(horizontal: 10)
+          : EdgeInsets.zero,
+      child: StoryBlock(
+        height: 500,
+        source: StoryBlockSource.playlist,
+        channel: _channelId,
+        playlist: _playlistId,
+        enablePictureInPicture: _enablePip,
       ),
     );
   }

@@ -39,8 +39,6 @@ def fw_base_url_staging = ""
 def fw_pixel_base_url_staging = ""
 def fw_web_socket_staging = ""
 
-    }
-}
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -50,7 +48,7 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
-        versionName "2.0.0"
+        versionName "2.1.0"
     }
 
     compileOptions {

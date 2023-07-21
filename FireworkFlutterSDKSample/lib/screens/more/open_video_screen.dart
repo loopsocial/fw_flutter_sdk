@@ -130,7 +130,10 @@ class _OpenVideoScreenState extends State<OpenVideoScreen> {
                   context.read<PlayerConfigurationState>().playerConfiguration;
               FireworkSDK.getInstance().openVideoPlayer(
                 url: _url,
-                config: config,
+                config: OpenVideoPlayerConfiguration.withPlayerConfiguration(
+                  playerConfiguration: config,
+                  enablePictureInPicture: true,
+                ),
               );
             }
           },

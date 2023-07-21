@@ -1,0 +1,4 @@
+enum FeedWidgetType {
+  videoFeed,
+  storyBlock,
+}

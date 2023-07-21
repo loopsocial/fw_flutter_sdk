@@ -19,7 +19,7 @@ class _CircleThumbnailsState extends State<CircleThumbnails> {
     double paddingBottom = 10;
     double paddingLeft = 10;
 
-    final contentPadding = VideoFeedContentPadding(
+    final contentPadding = VideoFeedPadding(
       top: paddingTop,
       right: paddingRight,
       bottom: paddingBottom,

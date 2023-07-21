@@ -1909,6 +1909,66 @@ class S {
       args: [],
     );
   }
+
+  /// `Product ids`
+  String get productIds {
+    return Intl.message(
+      'Product ids',
+      name: 'productIds',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `e.g. product_id_1,product_id_2`
+  String get productsIdsHint {
+    return Intl.message(
+      'e.g. product_id_1,product_id_2',
+      name: 'productsIdsHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter product ids`
+  String get productsIdsRequiredError {
+    return Intl.message(
+      'Please enter product ids',
+      name: 'productsIdsRequiredError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `SKU Feed`
+  String get skuFeed {
+    return Intl.message(
+      'SKU Feed',
+      name: 'skuFeed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `SKU info`
+  String get skuFeedInfo {
+    return Intl.message(
+      'SKU info',
+      name: 'skuFeedInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Firework Android SDK version: {version}`
+  String fwAndroidSdkVersion(Object version) {
+    return Intl.message(
+      'Firework Android SDK version: $version',
+      name: 'fwAndroidSdkVersion',
+      desc: '',
+      args: [version],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

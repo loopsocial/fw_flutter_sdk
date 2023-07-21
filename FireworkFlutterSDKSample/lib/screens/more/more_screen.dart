@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fw_flutter_sdk/fw_flutter_sdk.dart';
 import 'package:fw_flutter_sdk_example/models/app_language_info.dart';
 import 'package:fw_flutter_sdk_example/utils/host_app_service.dart';
 import '../../generated/l10n.dart';
 import '../../widgets/fw_app_bar.dart';
+
+const fwNativeVersionOfAndroid = '6.3.4';
 
 class MoreScreen extends StatefulWidget {
   const MoreScreen({
@@ -132,6 +135,13 @@ class _MoreScreenState extends State<MoreScreen> {
                     },
                   );
                 },
+              ),
+            if (defaultTargetPlatform == TargetPlatform.android)
+              _buildItem(
+                context: context,
+                title:
+                    S.of(context).fwAndroidSdkVersion(fwNativeVersionOfAndroid),
+                onTap: () {},
               ),
           ],
         ),

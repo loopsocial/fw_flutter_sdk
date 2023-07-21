@@ -9,15 +9,10 @@ import 'package:fw_flutter_sdk_example/utils/fw_example_logger_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
-import 'package:visibility_detector/visibility_detector.dart';
 import '../../generated/l10n.dart';
 import '../../extensions/fw_error_extension.dart';
+import '../../models/feed_widget_type.dart';
 import '../../widgets/fw_app_bar.dart';
-
-enum FeedWidgetType {
-  videoFeed,
-  storyBlock,
-}
 
 class FeedScreen extends StatefulWidget {
   final RouteSettings settings;
@@ -45,6 +40,7 @@ class _FeedScreenState extends State<FeedScreen> {
   String? _playlistGroup;
   Map<String, List<String>>? _dynamicContentParameters;
   String? _hashtagFilterExpression;
+  List<String>? _productIds;
   final _androidPadding = const EdgeInsets.symmetric(horizontal: 10);
 
   @override
@@ -79,6 +75,10 @@ class _FeedScreenState extends State<FeedScreen> {
 
       if (arg["hashtagFilterExpression"] is String) {
         _hashtagFilterExpression = arg["hashtagFilterExpression"] as String;
+      }
+
+      if (arg["productIds"] is List<String>) {
+        _productIds = arg["productIds"] as List<String>;
       }
     }
   }
@@ -328,16 +328,21 @@ class _FeedScreenState extends State<FeedScreen> {
         context.watch<FeedConfigurationState>().adConfiguration;
     final playerConfiguration =
         context.watch<PlayerConfigurationState>().playerConfiguration;
-
-    VideoFeedSource source = VideoFeedSource.values.firstWhere(
-        (e) => e.toString() == 'VideoFeedSource.${_source ?? ''}',
-        orElse: () => VideoFeedSource.discover);
+    final resultFeedConfiguration = feedConfiguration.deepCopy();
+    if (feedConfiguration.titlePosition == VideoFeedTitlePosition.stacked) {
+      resultFeedConfiguration.titlePadding =
+          VideoFeedPadding(top: 8, right: 8, bottom: 0, left: 8);
+    }
+    VideoFeedSource source =
+        VideoFeedSource.values.asNameMap()[_source ?? ""] ??
+            VideoFeedSource.discover;
     String? channel = _channel;
     String? playlist = _playlist;
     String? playlistGroup = _playlistGroup;
     Map<String, List<String>>? dynamicContentParameters =
         _dynamicContentParameters;
     String? hashtagFilterExpression = _hashtagFilterExpression;
+    List<String>? productIds = _productIds;
 
     FWExampleLoggerUtil.log("_FeedScreenState _buildFeed source $source");
     FWExampleLoggerUtil.log("_FeedScreenState _buildFeed channel $channel");
@@ -354,9 +359,10 @@ class _FeedScreenState extends State<FeedScreen> {
       playlistGroup: playlistGroup,
       dynamicContentParameters: dynamicContentParameters,
       hashtagFilterExpression: hashtagFilterExpression,
+      productIds: productIds,
       mode: _mode,
       enablePictureInPicture: _enablePip,
-      videoFeedConfiguration: feedConfiguration,
+      videoFeedConfiguration: resultFeedConfiguration,
       videoPlayerConfiguration: playerConfiguration,
       adConfiguration: adConfiguration,
       onVideoFeedLoadFinished: _onVideoFeedLoadFinished,
@@ -392,6 +398,7 @@ class _FeedScreenState extends State<FeedScreen> {
     Map<String, List<String>>? dynamicContentParameters =
         _dynamicContentParameters;
     String? hashtagFilterExpression = _hashtagFilterExpression;
+    List<String>? productIds = _productIds;
     final storyBlockConfiguration =
         context.watch<StoryBlockConfigurationState>().storyBlockConfiguration;
     FWExampleLoggerUtil.log("_FeedScreenState _buildStoryBlock source $source");
@@ -408,27 +415,19 @@ class _FeedScreenState extends State<FeedScreen> {
             padding: EdgeInsets.only(
               bottom: defaultTargetPlatform == TargetPlatform.android ? 20 : 0,
             ),
-            child: VisibilityDetector(
-              key: const Key("firework-story-block"),
-              child: StoryBlock(
-                source: source,
-                channel: channel,
-                playlist: playlist,
-                dynamicContentParameters: dynamicContentParameters,
-                hashtagFilterExpression: hashtagFilterExpression,
-                adConfiguration: AdConfiguration(requiresAds: false),
-                storyBlockConfiguration: storyBlockConfiguration,
-                enablePictureInPicture: _enablePip,
-                cornerRadius: 20,
-                onStoryBlockLoadFinished: _onStoryBlockLoadFinished,
-                onStoryBlockCreated: _onStoryBlockCreated,
-              ),
-              onVisibilityChanged: (visibilityInfo) {
-                FWExampleLoggerUtil.log(
-                    "visibilityInfo.visibleFraction: ${visibilityInfo.visibleFraction}");
-                _storyBlockController
-                    ?.updateVisibleFraction(visibilityInfo.visibleFraction);
-              },
+            child: StoryBlock(
+              source: source,
+              channel: channel,
+              playlist: playlist,
+              dynamicContentParameters: dynamicContentParameters,
+              hashtagFilterExpression: hashtagFilterExpression,
+              productIds: productIds,
+              adConfiguration: AdConfiguration(requiresAds: false),
+              storyBlockConfiguration: storyBlockConfiguration,
+              enablePictureInPicture: _enablePip,
+              cornerRadius: 20,
+              onStoryBlockLoadFinished: _onStoryBlockLoadFinished,
+              onStoryBlockCreated: _onStoryBlockCreated,
             ),
           ),
         ),
