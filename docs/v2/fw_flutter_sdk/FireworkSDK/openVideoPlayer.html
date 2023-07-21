@@ -59,7 +59,7 @@
 
 <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">void</span>&gt;</span></span>
 <span class="name ">openVideoPlayer</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="openVideoPlayer-param-url">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">url</span>, </span></li>
-<li><span class="parameter" id="openVideoPlayer-param-config"><span class="type-annotation"><a href="../../fw_flutter_sdk/VideoPlayerConfiguration-class.html">VideoPlayerConfiguration</a>?</span> <span class="parameter-name">config</span>}</span></li>
+<li><span class="parameter" id="openVideoPlayer-param-config"><span class="type-annotation"><a href="../../fw_flutter_sdk/OpenVideoPlayerConfiguration-class.html">OpenVideoPlayerConfiguration</a>?</span> <span class="parameter-name">config</span>}</span></li>
 </ol>)
 
       
@@ -76,7 +76,7 @@
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">Future&lt;void&gt; openVideoPlayer({
   required String url,
-  VideoPlayerConfiguration? config,
+  OpenVideoPlayerConfiguration? config,
 }) async {
   if (!FWGlobalState.getInstance().sdkInitCalled) {
     await FWGlobalState.getInstance().sdkInitCalledFuture;
@@ -163,7 +163,7 @@
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.0.6
+      2.1.0
   </span>
 
   
