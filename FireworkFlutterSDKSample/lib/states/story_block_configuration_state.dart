@@ -12,6 +12,7 @@ class StoryBlockConfigurationState extends ChangeNotifier {
       ctaHighlightDelay:
           VideoPlayerCTADelay(type: VideoPlayerCTADelayType.constant, value: 3),
       ctaWidth: VideoPlayerCTAWidth.fullWidth,
+      showVideoDetailTitle: true,
     );
   }
 

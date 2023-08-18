@@ -187,6 +187,13 @@ class HostAppService {
     });
   }
 
+  Future<void> onCustomTapProductCard(CustomTapProductCardEvent? event) async {
+    await closePlayerOrStartFloatingPlayer();
+    globalNavigatorKey.currentState?.pushNamed('/link_content', arguments: {
+      "url": event?.url ?? '',
+    });
+  }
+
   void onCustomCTAClick(CustomCTAClickEvent? event) {
     closePlayerOrStartFloatingPlayer().then((_) {
       globalNavigatorKey.currentState?.pushNamed('/link_content', arguments: {

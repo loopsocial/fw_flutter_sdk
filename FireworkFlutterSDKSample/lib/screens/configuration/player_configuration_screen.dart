@@ -146,6 +146,22 @@ class _PlayerConfigurationScreenState extends State<PlayerConfigurationScreen> {
                   const SizedBox(
                     width: 20,
                   ),
+                  Expanded(
+                    child: _buildCustomButtons(context),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: _buildVideoDetailTitleShow(context),
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
                   const Expanded(
                     child: SizedBox(),
                   ),
@@ -578,6 +594,47 @@ class _PlayerConfigurationScreenState extends State<PlayerConfigurationScreen> {
       },
       title: Text(
         S.of(context).showMuteButton,
+      ),
+    );
+  }
+
+  Widget _buildCustomButtons(BuildContext context) {
+    return CheckboxListTile(
+      contentPadding: EdgeInsets.zero,
+      value: _resultConfig.buttonConfiguration != null,
+      onChanged: (value) {
+        setState(() {
+          if (value == true) {
+            _resultConfig.buttonConfiguration = VideoPlayerButtonConfiguration(
+              videoDetailButton: ButtonInfo(imageName: "custom_more"),
+              closeButton: ButtonInfo(imageName: "custom_close"),
+              muteButton: ButtonInfo(imageName: "custom_mute"),
+              unmuteButton: ButtonInfo(imageName: "custom_unmute"),
+              playButton: ButtonInfo(imageName: "custom_play"),
+              pauseButton: ButtonInfo(imageName: "custom_pause"),
+            );
+          } else {
+            _resultConfig.buttonConfiguration = null;
+          }
+        });
+      },
+      title: Text(
+        S.of(context).enableCustomButtons,
+      ),
+    );
+  }
+
+  Widget _buildVideoDetailTitleShow(BuildContext context) {
+    return CheckboxListTile(
+      contentPadding: EdgeInsets.zero,
+      value: _resultConfig.showVideoDetailTitle,
+      onChanged: (value) {
+        setState(() {
+          _resultConfig.showVideoDetailTitle = value;
+        });
+      },
+      title: Text(
+        S.of(context).showVideoDetailTitle,
       ),
     );
   }

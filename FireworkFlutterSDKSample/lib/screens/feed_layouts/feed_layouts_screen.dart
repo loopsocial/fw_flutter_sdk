@@ -177,6 +177,7 @@ class _FeedLayoutsScreenState extends State<FeedLayoutsScreen> {
             _buildDynamicContentItem(context),
             _buildHashtagPlaylistItem(context),
             _buildSkuItem(context),
+            _buildSingleContentItem(context),
           ],
         ),
       ),
@@ -643,6 +644,38 @@ class _FeedLayoutsScreenState extends State<FeedLayoutsScreen> {
             "channel": result["channelId"] as String,
             "productIds": result["productIds"] as List<String>,
             "title": s.skuFeed,
+          },
+        );
+      }
+    }
+  }
+
+  Widget _buildSingleContentItem(BuildContext context) {
+    return _buildItem(
+      context: context,
+      title: S.of(context).singleContentFeed,
+      onTap: () {
+        _goToSingleContentConfiguration();
+      },
+    );
+  }
+
+  void _goToSingleContentConfiguration() async {
+    final navigator = Navigator.of(context);
+    final s = S.of(context);
+    final result = await navigator.pushNamed(
+      "/single_content_configuration",
+    );
+    if (result is Map<String, dynamic>) {
+      FWExampleLoggerUtil.log(
+          'contentId ${result["contentId"]} ${result["contentId"].runtimeType}');
+      if (result["contentId"] is String) {
+        navigator.pushNamed(
+          "/feed",
+          arguments: {
+            "source": "singleContent",
+            "contentId": result["contentId"] as String,
+            "title": s.singleContentFeedInfo,
           },
         );
       }

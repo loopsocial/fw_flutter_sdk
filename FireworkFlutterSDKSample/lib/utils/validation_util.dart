@@ -11,7 +11,8 @@ class ValidationUtil {
       return null;
     }
 
-    RegExp reg = RegExp(r'^#(?:[0-9a-fA-F]{3}){1,2}$');
+    RegExp reg =
+        RegExp(r'^(0x|#)(?:[0-9a-fA-F]{3,4}){1,2}$', caseSensitive: false);
 
     if (!reg.hasMatch(text)) {
       return S.of(context).colorError;

@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fw_flutter_sdk/fw_flutter_sdk.dart';
 import 'package:fw_flutter_sdk_example/states/player_configuration_state.dart';
@@ -103,6 +104,22 @@ class _StoryBlockConfigurationScreenState
               const SizedBox(
                 height: 20,
               ),
+              Row(
+                children: [
+                  Expanded(
+                    child: _buildVideoDetailTitleShow(context),
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  const Expanded(
+                    child: SizedBox(),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
               _buildShareURL(context),
               const SizedBox(
                 height: 20,
@@ -121,7 +138,9 @@ class _StoryBlockConfigurationScreenState
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Text(
-          S.of(context).videoPlayerCompleteAction,
+          defaultTargetPlatform == TargetPlatform.android
+              ? S.of(context).videoPlayerCompleteAction
+              : S.of(context).videoPlayerCompleteAction2,
         ),
         const SizedBox(
           height: 10,
@@ -366,6 +385,21 @@ class _StoryBlockConfigurationScreenState
       },
       title: Text(
         S.of(context).showPlaybackButton,
+      ),
+    );
+  }
+
+  Widget _buildVideoDetailTitleShow(BuildContext context) {
+    return CheckboxListTile(
+      contentPadding: EdgeInsets.zero,
+      value: _resultConfig.showVideoDetailTitle,
+      onChanged: (value) {
+        setState(() {
+          _resultConfig.showVideoDetailTitle = value;
+        });
+      },
+      title: Text(
+        S.of(context).showVideoDetailTitle,
       ),
     );
   }

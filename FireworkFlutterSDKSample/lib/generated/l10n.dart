@@ -1890,10 +1890,10 @@ class S {
     );
   }
 
-  /// `Story block configuration(Android)`
+  /// `Story block configuration`
   String get storyBlockConfiguration {
     return Intl.message(
-      'Story block configuration(Android)',
+      'Story block configuration',
       name: 'storyBlockConfiguration',
       desc: '',
       args: [],
@@ -1950,10 +1950,10 @@ class S {
     );
   }
 
-  /// `SKU info`
+  /// `SKU Info`
   String get skuFeedInfo {
     return Intl.message(
-      'SKU info',
+      'SKU Info',
       name: 'skuFeedInfo',
       desc: '',
       args: [],
@@ -1967,6 +1967,146 @@ class S {
       name: 'fwAndroidSdkVersion',
       desc: '',
       args: [version],
+    );
+  }
+
+  /// `Content id`
+  String get contentId {
+    return Intl.message(
+      'Content id',
+      name: 'contentId',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter content id`
+  String get contentIdHint {
+    return Intl.message(
+      'Enter content id',
+      name: 'contentIdHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter correct content id`
+  String get contentIdError {
+    return Intl.message(
+      'Please enter correct content id',
+      name: 'contentIdError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter content id`
+  String get contentIdRequiredError {
+    return Intl.message(
+      'Please enter content id',
+      name: 'contentIdRequiredError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Single Content Feed`
+  String get singleContentFeed {
+    return Intl.message(
+      'Single Content Feed',
+      name: 'singleContentFeed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Single Content Feed Info`
+  String get singleContentFeedInfo {
+    return Intl.message(
+      'Single Content Feed Info',
+      name: 'singleContentFeedInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Product card CTA button text`
+  String get productCardCTAButtonText {
+    return Intl.message(
+      'Product card CTA button text',
+      name: 'productCardCTAButtonText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Product card theme`
+  String get productCardTheme {
+    return Intl.message(
+      'Product card theme',
+      name: 'productCardTheme',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dark`
+  String get dark {
+    return Intl.message(
+      'Dark',
+      name: 'dark',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Light`
+  String get light {
+    return Intl.message(
+      'Light',
+      name: 'light',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enable Custom Tap Product Card(iOS)`
+  String get enableCustomTapProductCard {
+    return Intl.message(
+      'Enable Custom Tap Product Card(iOS)',
+      name: 'enableCustomTapProductCard',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enable custom buttons`
+  String get enableCustomButtons {
+    return Intl.message(
+      'Enable custom buttons',
+      name: 'enableCustomButtons',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Video Player CompleteAction(only apply to full-screen story block on iOS)`
+  String get videoPlayerCompleteAction2 {
+    return Intl.message(
+      'Video Player CompleteAction(only apply to full-screen story block on iOS)',
+      name: 'videoPlayerCompleteAction2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Show Video Detail Title`
+  String get showVideoDetailTitle {
+    return Intl.message(
+      'Show Video Detail Title',
+      name: 'showVideoDetailTitle',
+      desc: '',
+      args: [],
     );
   }
 }

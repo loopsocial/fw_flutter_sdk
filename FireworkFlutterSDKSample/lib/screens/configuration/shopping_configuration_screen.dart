@@ -27,7 +27,10 @@ class _ShoppingConfigurationScreenState
   ShoppingCTAButtonConfiguration _resultShoppingCTAButtonConfig =
       ShoppingCTAButtonConfiguration();
   LinkButtonConfiguration _resultLinkButtonConfig = LinkButtonConfiguration();
+  ProductCardConfiguration _resultProductCardConfig =
+      ProductCardConfiguration();
   bool _resultCustomizeLinkButtonHandler = false;
+  bool _resultCustomizeTapProductCardHandler = false;
 
   @override
   void initState() {
@@ -45,8 +48,15 @@ class _ShoppingConfigurationScreenState
             .productInfoViewConfiguration
             ?.linkButton ??
         LinkButtonConfiguration();
+    _resultProductCardConfig = FireworkSDK.getInstance()
+            .shopping
+            .productInfoViewConfiguration
+            ?.productCard ??
+        ProductCardConfiguration();
     _resultCustomizeLinkButtonHandler =
         FireworkSDK.getInstance().shopping.onCustomClickLinkButton != null;
+    _resultCustomizeTapProductCardHandler =
+        FireworkSDK.getInstance().shopping.onCustomTapProductCard != null;
   }
 
   @override
@@ -73,7 +83,15 @@ class _ShoppingConfigurationScreenState
         child: ListView(
           padding: const EdgeInsets.all(20),
           children: [
-            _buildTextSegmentedControl(context),
+            _buildShoppingCTAButtonTextSegmentedControl(context),
+            const SizedBox(
+              height: 20,
+            ),
+            _buildProductCardCTAButtonTextSegmentedControl(context),
+            const SizedBox(
+              height: 20,
+            ),
+            _buildProductCardThemeSegmentedControl(context),
             const SizedBox(
               height: 20,
             ),
@@ -105,6 +123,10 @@ class _ShoppingConfigurationScreenState
             const SizedBox(
               height: 20,
             ),
+            _buildCustomizeTapProductCardHandler(context),
+            const SizedBox(
+              height: 20,
+            ),
             _buildButtonList(context),
           ],
         ),
@@ -112,7 +134,7 @@ class _ShoppingConfigurationScreenState
     );
   }
 
-  Widget _buildTextSegmentedControl(BuildContext context) {
+  Widget _buildShoppingCTAButtonTextSegmentedControl(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -139,6 +161,69 @@ class _ShoppingConfigurationScreenState
           },
           groupValue: _resultShoppingCTAButtonConfig.text ??
               ShoppingCTAButtonText.addToCart,
+        ),
+      ],
+    );
+  }
+
+  Widget _buildProductCardCTAButtonTextSegmentedControl(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(S.of(context).productCardCTAButtonText),
+        const SizedBox(
+          height: 20,
+        ),
+        CupertinoSegmentedControl<ProductCardCTAButtonText>(
+          onValueChanged: (value) {
+            setState(() {
+              _resultProductCardConfig.ctaButtonText = value;
+            });
+          },
+          children: {
+            ProductCardCTAButtonText.shopNow: Text(
+              S.of(context).shopNow,
+              style: const TextStyle(fontSize: 13),
+            ),
+            ProductCardCTAButtonText.buyNow: Text(
+              S.of(context).buyNow,
+              style: const TextStyle(fontSize: 13),
+            ),
+          },
+          groupValue: _resultProductCardConfig.ctaButtonText ??
+              ProductCardCTAButtonText.shopNow,
+        ),
+      ],
+    );
+  }
+
+  Widget _buildProductCardThemeSegmentedControl(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(S.of(context).productCardCTAButtonText),
+        const SizedBox(
+          height: 20,
+        ),
+        CupertinoSegmentedControl<ProductCardTheme>(
+          onValueChanged: (value) {
+            setState(() {
+              _resultProductCardConfig.theme = value;
+            });
+          },
+          children: {
+            ProductCardTheme.dark: Text(
+              S.of(context).dark,
+              style: const TextStyle(fontSize: 13),
+            ),
+            ProductCardTheme.light: Text(
+              S.of(context).light,
+              style: const TextStyle(fontSize: 13),
+            ),
+          },
+          groupValue: _resultProductCardConfig.theme ?? ProductCardTheme.dark,
         ),
       ],
     );
@@ -195,7 +280,7 @@ class _ShoppingConfigurationScreenState
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Text(S.of(context).shoppingCTAButtonTextColor),
+        Text(S.of(context).shoppingCTAButtonFontSize),
         FWTextFormField(
           initialValue:
               _initShoppingCTAButtonConfig.fontSize?.toStringAsFixed(0) ?? '16',
@@ -291,6 +376,21 @@ class _ShoppingConfigurationScreenState
     );
   }
 
+  Widget _buildCustomizeTapProductCardHandler(BuildContext context) {
+    return CheckboxListTile(
+      contentPadding: EdgeInsets.zero,
+      value: _resultCustomizeTapProductCardHandler,
+      onChanged: (value) {
+        setState(() {
+          _resultCustomizeTapProductCardHandler = value ?? false;
+        });
+      },
+      title: Text(
+        S.of(context).enableCustomTapProductCard,
+      ),
+    );
+  }
+
   Widget _buildButtonList(BuildContext context) {
     return Row(children: [
       Expanded(
@@ -316,6 +416,7 @@ class _ShoppingConfigurationScreenState
                   ProductInfoViewConfiguration(
                 ctaButton: _resultShoppingCTAButtonConfig,
                 linkButton: _resultLinkButtonConfig,
+                productCard: _resultProductCardConfig,
               );
               FireworkSDK.getInstance().shopping.cartIconVisible =
                   _resultShowCartIcon;
@@ -332,6 +433,13 @@ class _ShoppingConfigurationScreenState
                     HostAppService.getInstance().onCustomClickLinkButton;
               } else {
                 FireworkSDK.getInstance().shopping.onCustomClickLinkButton =
+                    null;
+              }
+              if (_resultCustomizeTapProductCardHandler) {
+                FireworkSDK.getInstance().shopping.onCustomTapProductCard =
+                    HostAppService.getInstance().onCustomTapProductCard;
+              } else {
+                FireworkSDK.getInstance().shopping.onCustomTapProductCard =
                     null;
               }
               FocusScope.of(context).unfocus();

@@ -41,6 +41,8 @@ class _FeedScreenState extends State<FeedScreen> {
   Map<String, List<String>>? _dynamicContentParameters;
   String? _hashtagFilterExpression;
   List<String>? _productIds;
+  String? _contentId;
+
   final _androidPadding = const EdgeInsets.symmetric(horizontal: 10);
 
   @override
@@ -80,6 +82,10 @@ class _FeedScreenState extends State<FeedScreen> {
       if (arg["productIds"] is List<String>) {
         _productIds = arg["productIds"] as List<String>;
       }
+
+      if (arg["contentId"] is String) {
+        _contentId = arg["contentId"] as String;
+      }
     }
   }
 
@@ -111,8 +117,7 @@ class _FeedScreenState extends State<FeedScreen> {
                     Icons.refresh,
                   ),
                 ),
-              if (_feedWidgetType == FeedWidgetType.storyBlock &&
-                  defaultTargetPlatform == TargetPlatform.android)
+              if (_feedWidgetType == FeedWidgetType.storyBlock)
                 IconButton(
                   onPressed: () {
                     Navigator.of(context)
@@ -343,6 +348,7 @@ class _FeedScreenState extends State<FeedScreen> {
         _dynamicContentParameters;
     String? hashtagFilterExpression = _hashtagFilterExpression;
     List<String>? productIds = _productIds;
+    String? contentId = _contentId;
 
     FWExampleLoggerUtil.log("_FeedScreenState _buildFeed source $source");
     FWExampleLoggerUtil.log("_FeedScreenState _buildFeed channel $channel");
@@ -360,6 +366,7 @@ class _FeedScreenState extends State<FeedScreen> {
       dynamicContentParameters: dynamicContentParameters,
       hashtagFilterExpression: hashtagFilterExpression,
       productIds: productIds,
+      contentId: contentId,
       mode: _mode,
       enablePictureInPicture: _enablePip,
       videoFeedConfiguration: resultFeedConfiguration,
@@ -399,6 +406,7 @@ class _FeedScreenState extends State<FeedScreen> {
         _dynamicContentParameters;
     String? hashtagFilterExpression = _hashtagFilterExpression;
     List<String>? productIds = _productIds;
+    String? contentId = _contentId;
     final storyBlockConfiguration =
         context.watch<StoryBlockConfigurationState>().storyBlockConfiguration;
     FWExampleLoggerUtil.log("_FeedScreenState _buildStoryBlock source $source");
@@ -422,12 +430,15 @@ class _FeedScreenState extends State<FeedScreen> {
               dynamicContentParameters: dynamicContentParameters,
               hashtagFilterExpression: hashtagFilterExpression,
               productIds: productIds,
+              contentId: contentId,
               adConfiguration: AdConfiguration(requiresAds: false),
               storyBlockConfiguration: storyBlockConfiguration,
               enablePictureInPicture: _enablePip,
               cornerRadius: 20,
               onStoryBlockLoadFinished: _onStoryBlockLoadFinished,
               onStoryBlockCreated: _onStoryBlockCreated,
+              onStoryBlockFullScreenStateChanged:
+                  _onStoryBlockFullScreenStateChanged,
             ),
           ),
         ),
@@ -496,6 +507,11 @@ class _FeedScreenState extends State<FeedScreen> {
   void _onStoryBlockCreated(StoryBlockController controller) {
     FWExampleLoggerUtil.log("_onVideoFeedCreated");
     _storyBlockController = controller;
+  }
+
+  void _onStoryBlockFullScreenStateChanged(bool isFullScreen) {
+    FWExampleLoggerUtil.log(
+        "_onStoryBlockFullScreenStateChanged isFullScreen: $isFullScreen");
   }
 
   void _refreshVideoFeed() {

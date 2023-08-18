@@ -104,6 +104,13 @@ class _OpenVideoScreenState extends State<OpenVideoScreen> {
   }
 
   Widget _buildActionButtonList(BuildContext context) {
+    const url = "";
+    FireworkSDK.getInstance().openVideoPlayer(
+      url: url,
+      config: OpenVideoPlayerConfiguration(
+        enablePictureInPicture: true,
+      ),
+    );
     return Row(children: [
       Expanded(
         child: ElevatedButton(

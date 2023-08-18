@@ -65,6 +65,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "column": MessageLookupByLibrary.simpleMessage("Column"),
         "compact": MessageLookupByLibrary.simpleMessage("Compact"),
         "constant": MessageLookupByLibrary.simpleMessage("constant"),
+        "contentId": MessageLookupByLibrary.simpleMessage("Content id"),
+        "contentIdError": MessageLookupByLibrary.simpleMessage(
+            "Please enter correct content id"),
+        "contentIdHint":
+            MessageLookupByLibrary.simpleMessage("Enter content id"),
+        "contentIdRequiredError":
+            MessageLookupByLibrary.simpleMessage("Please enter content id"),
         "cornerRadius": MessageLookupByLibrary.simpleMessage("Corner radius"),
         "cornerRadiusError": MessageLookupByLibrary.simpleMessage(
             "Please enter correct corner radius"),
@@ -94,6 +101,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "custom": MessageLookupByLibrary.simpleMessage("Custom"),
         "customizeLinkButtonHandler": MessageLookupByLibrary.simpleMessage(
             "Customize link button handler"),
+        "dark": MessageLookupByLibrary.simpleMessage("Dark"),
         "defaultBehavior":
             MessageLookupByLibrary.simpleMessage("defaultBehavior"),
         "disableCustomCTAClickCallbackSuccessfully":
@@ -119,6 +127,8 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Please enter dynamic content parameters"),
         "enableAutoplay":
             MessageLookupByLibrary.simpleMessage("Enable Autoplay"),
+        "enableCustomButtons":
+            MessageLookupByLibrary.simpleMessage("Enable custom buttons"),
         "enableCustomCTAClickCallback": MessageLookupByLibrary.simpleMessage(
             "Enable Custom CTA Click Callback"),
         "enableCustomCTAClickCallbackSuccessfully":
@@ -132,6 +142,8 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Enable custom click cart icon callback successfully"),
         "enableCustomLayoutName": MessageLookupByLibrary.simpleMessage(
             "Enable Custom Layout Name(Android)"),
+        "enableCustomTapProductCard": MessageLookupByLibrary.simpleMessage(
+            "Enable Custom Tap Product Card(iOS)"),
         "enablePictureInPicture":
             MessageLookupByLibrary.simpleMessage("Enable Picture In Picture"),
         "feed": MessageLookupByLibrary.simpleMessage("Feed"),
@@ -169,6 +181,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "hidePlayIcon": MessageLookupByLibrary.simpleMessage("Hide Play Icon"),
         "hideTitle": MessageLookupByLibrary.simpleMessage("Hide Title"),
         "integration": MessageLookupByLibrary.simpleMessage("Integration"),
+        "light": MessageLookupByLibrary.simpleMessage("Light"),
         "linkContentScreenTitle":
             MessageLookupByLibrary.simpleMessage("Link Content(Flutter page)"),
         "loop": MessageLookupByLibrary.simpleMessage("loop"),
@@ -222,6 +235,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "playlistIdRequiredError":
             MessageLookupByLibrary.simpleMessage("Please enter playlist id"),
         "playlistInfo": MessageLookupByLibrary.simpleMessage("Playlist Info"),
+        "productCardCTAButtonText": MessageLookupByLibrary.simpleMessage(
+            "Product card CTA button text"),
+        "productCardTheme":
+            MessageLookupByLibrary.simpleMessage("Product card theme"),
         "productIds": MessageLookupByLibrary.simpleMessage("Product ids"),
         "productsIdsHint": MessageLookupByLibrary.simpleMessage(
             "e.g. product_id_1,product_id_2"),
@@ -278,9 +295,15 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Show playback button"),
         "showShareButton":
             MessageLookupByLibrary.simpleMessage("Show share button"),
+        "showVideoDetailTitle":
+            MessageLookupByLibrary.simpleMessage("Show Video Detail Title"),
+        "singleContentFeed":
+            MessageLookupByLibrary.simpleMessage("Single Content Feed"),
+        "singleContentFeedInfo":
+            MessageLookupByLibrary.simpleMessage("Single Content Feed Info"),
         "sizeToFit": MessageLookupByLibrary.simpleMessage("Size to fit"),
         "skuFeed": MessageLookupByLibrary.simpleMessage("SKU Feed"),
-        "skuFeedInfo": MessageLookupByLibrary.simpleMessage("SKU info"),
+        "skuFeedInfo": MessageLookupByLibrary.simpleMessage("SKU Info"),
         "sponsored": MessageLookupByLibrary.simpleMessage("sponsored"),
         "stacked": MessageLookupByLibrary.simpleMessage("stacked"),
         "state": MessageLookupByLibrary.simpleMessage("State"),
@@ -289,8 +312,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "storeDetails": MessageLookupByLibrary.simpleMessage("Store Details"),
         "storefront": MessageLookupByLibrary.simpleMessage("Storefront"),
         "storyBlock": MessageLookupByLibrary.simpleMessage("Story Block"),
-        "storyBlockConfiguration": MessageLookupByLibrary.simpleMessage(
-            "Story block configuration(Android)"),
+        "storyBlockConfiguration":
+            MessageLookupByLibrary.simpleMessage("Story block configuration"),
         "storyBlockLoadError":
             MessageLookupByLibrary.simpleMessage("Fail to load story block"),
         "street": MessageLookupByLibrary.simpleMessage("Street"),
@@ -332,6 +355,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Fail to load video feed"),
         "videoPlayerCompleteAction":
             MessageLookupByLibrary.simpleMessage("Video Player CompleteAction"),
+        "videoPlayerCompleteAction2": MessageLookupByLibrary.simpleMessage(
+            "Video Player CompleteAction(only apply to full-screen story block on iOS)"),
         "videoPlayerStyle":
             MessageLookupByLibrary.simpleMessage("Video Player Style"),
         "videoURL": MessageLookupByLibrary.simpleMessage("Video URL"),

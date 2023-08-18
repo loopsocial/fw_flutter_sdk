@@ -10,6 +10,7 @@ import 'package:fw_flutter_sdk_example/screens/configuration/player_configuratio
 import 'package:fw_flutter_sdk_example/screens/configuration/playlist_configuration_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/configuration/playlist_group_configuration_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/configuration/shopping_configuration_screen.dart';
+import 'package:fw_flutter_sdk_example/screens/configuration/single_content_configuration_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/configuration/sku_configuration_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/configuration/story_block_configuration_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/link_content/link_content_screen.dart';
@@ -123,6 +124,11 @@ final routeMap = <String, FWRouteFactory>{
   '/story_block_configuration': (settings) {
     return MaterialPageRoute(
       builder: (context) => const StoryBlockConfigurationScreen(),
+    );
+  },
+  '/single_content_configuration': (settings) {
+    return MaterialPageRoute(
+      builder: (context) => const SingleContentConfigurationScreen(),
     );
   },
 };
