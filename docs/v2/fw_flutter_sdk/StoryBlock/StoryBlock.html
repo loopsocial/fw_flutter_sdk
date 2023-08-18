@@ -63,6 +63,7 @@
 <li><span class="parameter" id="-param-dynamicContentParameters"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>&gt;</span>?</span> <span class="parameter-name">dynamicContentParameters</span>, </span></li>
 <li><span class="parameter" id="-param-hashtagFilterExpression"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">hashtagFilterExpression</span>, </span></li>
 <li><span class="parameter" id="-param-productIds"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">productIds</span>, </span></li>
+<li><span class="parameter" id="-param-contentId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">contentId</span>, </span></li>
 <li><span class="parameter" id="-param-enablePictureInPicture"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">enablePictureInPicture</span>, </span></li>
 <li><span class="parameter" id="-param-cornerRadius"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">cornerRadius</span>, </span></li>
 <li><span class="parameter" id="-param-adConfiguration"><span class="type-annotation"><a href="../../fw_flutter_sdk/AdConfiguration-class.html">AdConfiguration</a>?</span> <span class="parameter-name">adConfiguration</span>, </span></li>
@@ -70,7 +71,8 @@
 <li><span class="parameter" id="-param-width"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">width</span>, </span></li>
 <li><span class="parameter" id="-param-height"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">height</span>, </span></li>
 <li><span class="parameter" id="-param-onStoryBlockCreated"><span class="type-annotation"><a href="../../fw_flutter_sdk/StoryBlockCreatedCallback.html">StoryBlockCreatedCallback</a>?</span> <span class="parameter-name">onStoryBlockCreated</span>, </span></li>
-<li><span class="parameter" id="-param-onStoryBlockLoadFinished"><span class="type-annotation"><a href="../../fw_flutter_sdk/StoryBlockLoadFinishedCallback.html">StoryBlockLoadFinishedCallback</a>?</span> <span class="parameter-name">onStoryBlockLoadFinished</span>}</span></li>
+<li><span class="parameter" id="-param-onStoryBlockLoadFinished"><span class="type-annotation"><a href="../../fw_flutter_sdk/StoryBlockLoadFinishedCallback.html">StoryBlockLoadFinishedCallback</a>?</span> <span class="parameter-name">onStoryBlockLoadFinished</span>, </span></li>
+<li><span class="parameter" id="-param-onStoryBlockFullScreenStateChanged"><span class="type-annotation"><a href="../../fw_flutter_sdk/StoryBlockFullScreenStateChanged.html">StoryBlockFullScreenStateChanged</a>?</span> <span class="parameter-name">onStoryBlockFullScreenStateChanged</span>}</span></li>
 </ol>)
     </section>
 
@@ -88,6 +90,7 @@
   this.dynamicContentParameters,
   this.hashtagFilterExpression,
   this.productIds,
+  this.contentId,
   this.enablePictureInPicture,
   this.cornerRadius,
   this.adConfiguration,
@@ -96,6 +99,7 @@
   this.height,
   this.onStoryBlockCreated,
   this.onStoryBlockLoadFinished,
+  this.onStoryBlockFullScreenStateChanged,
 }) : super(key: key);</code></pre>
 </section>
 
@@ -129,6 +133,7 @@
         </li>
           <li><a href="../../fw_flutter_sdk/StoryBlock/adConfiguration.html">adConfiguration</a></li>
           <li><a href="../../fw_flutter_sdk/StoryBlock/channel.html">channel</a></li>
+          <li><a href="../../fw_flutter_sdk/StoryBlock/contentId.html">contentId</a></li>
           <li><a href="../../fw_flutter_sdk/StoryBlock/cornerRadius.html">cornerRadius</a></li>
           <li><a href="../../fw_flutter_sdk/StoryBlock/dynamicContentParameters.html">dynamicContentParameters</a></li>
           <li><a href="../../fw_flutter_sdk/StoryBlock/enablePictureInPicture.html">enablePictureInPicture</a></li>
@@ -137,6 +142,7 @@
           <li><a href="../../fw_flutter_sdk/StoryBlock/height.html">height</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/widgets/Widget/key.html">key</a></li>
           <li><a href="../../fw_flutter_sdk/StoryBlock/onStoryBlockCreated.html">onStoryBlockCreated</a></li>
+          <li><a href="../../fw_flutter_sdk/StoryBlock/onStoryBlockFullScreenStateChanged.html">onStoryBlockFullScreenStateChanged</a></li>
           <li><a href="../../fw_flutter_sdk/StoryBlock/onStoryBlockLoadFinished.html">onStoryBlockLoadFinished</a></li>
           <li><a href="../../fw_flutter_sdk/StoryBlock/playlist.html">playlist</a></li>
           <li><a href="../../fw_flutter_sdk/StoryBlock/productIds.html">productIds</a></li>
@@ -175,7 +181,7 @@
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.1.0
+      2.2.0-beta.1
   </span>
 
   
