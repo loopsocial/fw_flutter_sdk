@@ -20,8 +20,6 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
-#-keep class androidx.constraintlayout.widget.ConstraintLayout
-#-keep class com.loopnow.fireworklibrary.views.FireworkImageView
-#-keep class android.widget.TextView
-#-keep class android.widget.FrameLayout
-#-keep class android.view.*
+#-dontwarn org.xmlpull.v1.**
+#-dontnote org.xmlpull.v1.**
+#-keep class org.xmlpull.** { *; }
