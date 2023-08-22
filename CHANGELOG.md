@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## [2.2.0]
+
+### Added
+
+- Ability to set a single video/live stream id as the source in story block and video feed
+- New product card
+- [iOS] Ability to define custom navigation handling when user taps on product card
+- [iOS] Ability to customize the images of the full screen player buttons namely: video detail button, mute/unmute button, close button, play/pause button
+- [iOS] Add story block configuration
+- [iOS] Ability to hide dual title
+
 ## [2.2.0-beta.2]
 
 - Firework Flutter SDK beta release
