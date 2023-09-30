@@ -1,5 +1,29 @@
 # CHANGELOG
 
+## [2.3.0]
+
+### Added
+
+- Ability to customize product card
+- Add `wantKeepAlive` in ` VideoFeed`` and `StoryBlock` widgets
+- [Android] Add `onVideoFeedEmpty` in `VideoFeed` widget
+- [Android] Add `onStoryBlockEmpty` in `StoryBlock` widget
+- [Android] Support opening fullscreen story block programmatically
+- [Android] Ability to customize the images of the full screen player buttons namely: video detail button, mute/unmute button, close button, play/pause button
+- [Android] Add `adConfiguration` property in ` VideoFeed`` and `StoryBlock` widgets
+- [Android] Ability to define custom navigation handling when user taps on product card
+- [Android] Ability to hide dual title
+- [iOS] Support PiP callback in ` VideoFeed`` and   `StoryBlock` widgets
+- [iOS] Support pausing and resuming video when handling the video CTA button click event
+
+### Deprecated
+
+- [Android] Deprecate `isHidden` property in `ProductCardPriceConfiguration` class
+
+### Breaking Changes
+
+- Remove `onStoryBlockFullScreenStateChanged` callback in `StoryBlock`` widget
+
 ## [2.2.1-beta.4]
 
 - Firework Flutter SDK beta release

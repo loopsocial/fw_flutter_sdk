@@ -39,18 +39,24 @@
   <div class="toggle" id="theme-button">
     <label for="theme">
       <input type="checkbox" id="theme" value="light-theme">
-      <span class="material-symbols-outlined">
+      <span id="dark-theme-button" class="material-symbols-outlined">
         brightness_4
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        brightness_5
       </span>
     </label>
   </div>
 </header>
 <main>
 
-  <div id="dartdoc-main-content" class="main-content">
+  <div
+      id="dartdoc-main-content"
+      class="main-content"
+      data-above-sidebar="fw_flutter_sdk&#47;fw_flutter_sdk-library-sidebar.html"
+      data-below-sidebar="fw_flutter_sdk&#47;AdBadgeConfiguration-class-sidebar.html">
       <div>
 <h1><span class="kind-class">AdBadgeConfiguration</span> class 
-    <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
  
 </h1></div>
 
@@ -177,7 +183,7 @@ Defaults to #ffffff.
 
 </dt>
 <dd class="inherited">
-  Invoked when a non-existent method or property is accessed.
+  Invoked when a nonexistent method or property is accessed.
   <div class="features"><span class="feature">inherited</span></div>
 
 </dd>
@@ -226,155 +232,25 @@ Defaults to #ffffff.
   </div> <!-- /.main-content -->
 
   <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
-    <header id="header-search-sidebar" class="hidden-l">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
   <form class="search-sidebar" role="search">
     <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
 </header>
 
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
-  <li><a href="../index.html">fw_flutter_sdk</a></li>
-  <li><a href="../fw_flutter_sdk/fw_flutter_sdk-library.html">fw_flutter_sdk</a></li>
-  <li class="self-crumb">AdBadgeConfiguration class</li>
+    <li><a href="../index.html">fw_flutter_sdk</a></li>
+    <li><a href="../fw_flutter_sdk/fw_flutter_sdk-library.html">fw_flutter_sdk</a></li>
+    <li class="self-crumb">AdBadgeConfiguration class</li>
 </ol>
 
 
-    <h5>fw_flutter_sdk library</h5>
-    <ol>
-      <li class="section-title"><a href="../fw_flutter_sdk/fw_flutter_sdk-library.html#classes">Classes</a></li>
-        <li><a href="../fw_flutter_sdk/AdBadgeConfiguration-class.html">AdBadgeConfiguration</a></li>
-        <li><a href="../fw_flutter_sdk/AdConfiguration-class.html">AdConfiguration</a></li>
-        <li><a href="../fw_flutter_sdk/AndroidFontInfo-class.html">AndroidFontInfo</a></li>
-        <li><a href="../fw_flutter_sdk/ButtonInfo-class.html">ButtonInfo</a></li>
-        <li><a href="../fw_flutter_sdk/CustomClickLinkButtonEvent-class.html">CustomClickLinkButtonEvent</a></li>
-        <li><a href="../fw_flutter_sdk/CustomCTAClickEvent-class.html">CustomCTAClickEvent</a></li>
-        <li><a href="../fw_flutter_sdk/CustomTapProductCardEvent-class.html">CustomTapProductCardEvent</a></li>
-        <li><a href="../fw_flutter_sdk/FeedItemDetails-class.html">FeedItemDetails</a></li>
-        <li><a href="../fw_flutter_sdk/FireworkSDK-class.html">FireworkSDK</a></li>
-        <li><a href="../fw_flutter_sdk/FWError-class.html">FWError</a></li>
-        <li><a href="../fw_flutter_sdk/FWEvent-class.html">FWEvent</a></li>
-        <li><a href="../fw_flutter_sdk/FWEventBus-class.html">FWEventBus</a></li>
-        <li><a href="../fw_flutter_sdk/FWNavigator-class.html">FWNavigator</a></li>
-        <li><a href="../fw_flutter_sdk/GradientDrawable-class.html">GradientDrawable</a></li>
-        <li><a href="../fw_flutter_sdk/IOSFontInfo-class.html">IOSFontInfo</a></li>
-        <li><a href="../fw_flutter_sdk/LinkButtonConfiguration-class.html">LinkButtonConfiguration</a></li>
-        <li><a href="../fw_flutter_sdk/LiveStream-class.html">LiveStream</a></li>
-        <li><a href="../fw_flutter_sdk/LiveStreamChatEvent-class.html">LiveStreamChatEvent</a></li>
-        <li><a href="../fw_flutter_sdk/LiveStreamEvent-class.html">LiveStreamEvent</a></li>
-        <li><a href="../fw_flutter_sdk/LiveStreamEventDetails-class.html">LiveStreamEventDetails</a></li>
-        <li><a href="../fw_flutter_sdk/LiveStreamMessageDetails-class.html">LiveStreamMessageDetails</a></li>
-        <li><a href="../fw_flutter_sdk/OpenVideoPlayerConfiguration-class.html">OpenVideoPlayerConfiguration</a></li>
-        <li><a href="../fw_flutter_sdk/Product-class.html">Product</a></li>
-        <li><a href="../fw_flutter_sdk/ProductCardConfiguration-class.html">ProductCardConfiguration</a></li>
-        <li><a href="../fw_flutter_sdk/ProductInfoViewConfiguration-class.html">ProductInfoViewConfiguration</a></li>
-        <li><a href="../fw_flutter_sdk/ProductPrice-class.html">ProductPrice</a></li>
-        <li><a href="../fw_flutter_sdk/ProductUnit-class.html">ProductUnit</a></li>
-        <li><a href="../fw_flutter_sdk/ProductUnitOption-class.html">ProductUnitOption</a></li>
-        <li><a href="../fw_flutter_sdk/SDKInitEvent-class.html">SDKInitEvent</a></li>
-        <li><a href="../fw_flutter_sdk/ShoppingCTAButtonConfiguration-class.html">ShoppingCTAButtonConfiguration</a></li>
-        <li><a href="../fw_flutter_sdk/ShoppingCTAEvent-class.html">ShoppingCTAEvent</a></li>
-        <li><a href="../fw_flutter_sdk/ShoppingCTAResult-class.html">ShoppingCTAResult</a></li>
-        <li><a href="../fw_flutter_sdk/StoryBlock-class.html">StoryBlock</a></li>
-        <li><a href="../fw_flutter_sdk/StoryBlockConfiguration-class.html">StoryBlockConfiguration</a></li>
-        <li><a href="../fw_flutter_sdk/StoryBlockController-class.html">StoryBlockController</a></li>
-        <li><a href="../fw_flutter_sdk/TrackPurchaseParameters-class.html">TrackPurchaseParameters</a></li>
-        <li><a href="../fw_flutter_sdk/UpdateProductDetailsEvent-class.html">UpdateProductDetailsEvent</a></li>
-        <li><a href="../fw_flutter_sdk/VastAttribute-class.html">VastAttribute</a></li>
-        <li><a href="../fw_flutter_sdk/VideoFeed-class.html">VideoFeed</a></li>
-        <li><a href="../fw_flutter_sdk/VideoFeedClickEvent-class.html">VideoFeedClickEvent</a></li>
-        <li><a href="../fw_flutter_sdk/VideoFeedConfiguration-class.html">VideoFeedConfiguration</a></li>
-        <li><a href="../fw_flutter_sdk/VideoFeedController-class.html">VideoFeedController</a></li>
-        <li><a href="../fw_flutter_sdk/VideoFeedPadding-class.html">VideoFeedPadding</a></li>
-        <li><a href="../fw_flutter_sdk/VideoFeedPlayIconConfiguration-class.html">VideoFeedPlayIconConfiguration</a></li>
-        <li><a href="../fw_flutter_sdk/VideoFeedTitleConfiguration-class.html">VideoFeedTitleConfiguration</a></li>
-        <li><a href="../fw_flutter_sdk/VideoPlaybackDetails-class.html">VideoPlaybackDetails</a></li>
-        <li><a href="../fw_flutter_sdk/VideoPlaybackEvent-class.html">VideoPlaybackEvent</a></li>
-        <li><a href="../fw_flutter_sdk/VideoPlayerButtonConfiguration-class.html">VideoPlayerButtonConfiguration</a></li>
-        <li><a href="../fw_flutter_sdk/VideoPlayerConfiguration-class.html">VideoPlayerConfiguration</a></li>
-        <li><a href="../fw_flutter_sdk/VideoPlayerCTADelay-class.html">VideoPlayerCTADelay</a></li>
-        <li><a href="../fw_flutter_sdk/VideoPlayerCTAStyle-class.html">VideoPlayerCTAStyle</a></li>
-        <li><a href="../fw_flutter_sdk/VideoPlayerSize-class.html">VideoPlayerSize</a></li>
-        <li><a href="../fw_flutter_sdk/VideoShopping-class.html">VideoShopping</a></li>
-
-
-
-
-
-
-      <li class="section-title"><a href="../fw_flutter_sdk/fw_flutter_sdk-library.html#enums">Enums</a></li>
-        <li><a href="../fw_flutter_sdk/AdBadgeTextType.html">AdBadgeTextType</a></li>
-        <li><a href="../fw_flutter_sdk/GradientDrawableOrientation.html">GradientDrawableOrientation</a></li>
-        <li><a href="../fw_flutter_sdk/IOSSystemFontStyle.html">IOSSystemFontStyle</a></li>
-        <li><a href="../fw_flutter_sdk/IOSSystemFontWeight.html">IOSSystemFontWeight</a></li>
-        <li><a href="../fw_flutter_sdk/LiveStreamChatEventName.html">LiveStreamChatEventName</a></li>
-        <li><a href="../fw_flutter_sdk/LiveStreamEventName.html">LiveStreamEventName</a></li>
-        <li><a href="../fw_flutter_sdk/ProductCardCTAButtonText.html">ProductCardCTAButtonText</a></li>
-        <li><a href="../fw_flutter_sdk/ProductCardTheme.html">ProductCardTheme</a></li>
-        <li><a href="../fw_flutter_sdk/ShoppingCTAButtonText.html">ShoppingCTAButtonText</a></li>
-        <li><a href="../fw_flutter_sdk/ShoppingCTARes.html">ShoppingCTARes</a></li>
-        <li><a href="../fw_flutter_sdk/StoryBlockSource.html">StoryBlockSource</a></li>
-        <li><a href="../fw_flutter_sdk/VideoFeedMode.html">VideoFeedMode</a></li>
-        <li><a href="../fw_flutter_sdk/VideoFeedSource.html">VideoFeedSource</a></li>
-        <li><a href="../fw_flutter_sdk/VideoFeedTitlePosition.html">VideoFeedTitlePosition</a></li>
-        <li><a href="../fw_flutter_sdk/VideoLaunchBehavior.html">VideoLaunchBehavior</a></li>
-        <li><a href="../fw_flutter_sdk/VideoPlaybackEventName.html">VideoPlaybackEventName</a></li>
-        <li><a href="../fw_flutter_sdk/VideoPlayerCompleteAction.html">VideoPlayerCompleteAction</a></li>
-        <li><a href="../fw_flutter_sdk/VideoPlayerCTADelayType.html">VideoPlayerCTADelayType</a></li>
-        <li><a href="../fw_flutter_sdk/VideoPlayerCTAWidth.html">VideoPlayerCTAWidth</a></li>
-        <li><a href="../fw_flutter_sdk/VideoPlayerStyle.html">VideoPlayerStyle</a></li>
-
-      <li class="section-title"><a href="../fw_flutter_sdk/fw_flutter_sdk-library.html#typedefs">Typedefs</a></li>
-        <li><a href="../fw_flutter_sdk/CustomClickCartIconCallback.html">CustomClickCartIconCallback</a></li>
-        <li><a href="../fw_flutter_sdk/CustomClickLinkButtonCallback.html">CustomClickLinkButtonCallback</a></li>
-        <li><a href="../fw_flutter_sdk/CustomCTAClickCallback.html">CustomCTAClickCallback</a></li>
-        <li><a href="../fw_flutter_sdk/CustomTapProductCardCallback.html">CustomTapProductCardCallback</a></li>
-        <li><a href="../fw_flutter_sdk/OnLiveStreamChatEventCallback.html">OnLiveStreamChatEventCallback</a></li>
-        <li><a href="../fw_flutter_sdk/OnLiveStreamEventCallback.html">OnLiveStreamEventCallback</a></li>
-        <li><a href="../fw_flutter_sdk/SDKInitCallback.html">SDKInitCallback</a></li>
-        <li><a href="../fw_flutter_sdk/ShoppingCTACallback.html">ShoppingCTACallback</a></li>
-        <li><a href="../fw_flutter_sdk/StoryBlockCreatedCallback.html">StoryBlockCreatedCallback</a></li>
-        <li><a href="../fw_flutter_sdk/StoryBlockFullScreenStateChanged.html">StoryBlockFullScreenStateChanged</a></li>
-        <li><a href="../fw_flutter_sdk/StoryBlockLoadFinishedCallback.html">StoryBlockLoadFinishedCallback</a></li>
-        <li><a href="../fw_flutter_sdk/UpdateProductDetailsCallback.html">UpdateProductDetailsCallback</a></li>
-        <li><a href="../fw_flutter_sdk/VideoFeedClickCallback.html">VideoFeedClickCallback</a></li>
-        <li><a href="../fw_flutter_sdk/VideoFeedCreatedCallback.html">VideoFeedCreatedCallback</a></li>
-        <li><a href="../fw_flutter_sdk/VideoFeedLoadFinishedCallback.html">VideoFeedLoadFinishedCallback</a></li>
-        <li><a href="../fw_flutter_sdk/VideoPlaybackCallback.html">VideoPlaybackCallback</a></li>
-
-</ol>
-
+    <!--<h5>fw_flutter_sdk library</h5>-->
+    <div id="dartdoc-sidebar-left-content"></div>
   </div>
 
   <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
-    <ol>
-
-        <li class="section-title"><a href="../fw_flutter_sdk/AdBadgeConfiguration-class.html#constructors">Constructors</a></li>
-          <li><a href="../fw_flutter_sdk/AdBadgeConfiguration/AdBadgeConfiguration.html">AdBadgeConfiguration</a></li>
-
-
-        <li class="section-title">
-          <a href="../fw_flutter_sdk/AdBadgeConfiguration-class.html#instance-properties">Properties</a>
-        </li>
-          <li><a href="../fw_flutter_sdk/AdBadgeConfiguration/androidFontInfo.html">androidFontInfo</a></li>
-          <li><a href="../fw_flutter_sdk/AdBadgeConfiguration/backgroundColor.html">backgroundColor</a></li>
-          <li><a href="../fw_flutter_sdk/AdBadgeConfiguration/badgeTextType.html">badgeTextType</a></li>
-          <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
-          <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
-          <li><a href="../fw_flutter_sdk/AdBadgeConfiguration/textColor.html">textColor</a></li>
-
-        <li class="section-title"><a href="../fw_flutter_sdk/AdBadgeConfiguration-class.html#instance-methods">Methods</a></li>
-          <li><a href="../fw_flutter_sdk/AdBadgeConfiguration/deepCopy.html">deepCopy</a></li>
-          <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
-          <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
-
-        <li class="section-title inherited"><a href="../fw_flutter_sdk/AdBadgeConfiguration-class.html#operators">Operators</a></li>
-          <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/operator_equals.html">operator ==</a></li>
-
-
-
-
-</ol>
-
   </div><!--/.sidebar-offcanvas-->
 
 </main>
@@ -382,7 +258,7 @@ Defaults to #ffffff.
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.2.1-beta.4
+      2.3.0
   </span>
 
   
