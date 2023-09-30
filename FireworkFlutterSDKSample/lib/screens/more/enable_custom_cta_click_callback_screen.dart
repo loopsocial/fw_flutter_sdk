@@ -17,6 +17,7 @@ class _EnableCustomCTAClickCallbackScreenState
     extends State<EnableCustomCTAClickCallbackScreen> {
   final _formKey = GlobalKey<FormState>();
   bool _enableCustomCTAClickCallback = false;
+  bool _enablePausePlayer = false;
 
   @override
   void initState() {
@@ -24,6 +25,7 @@ class _EnableCustomCTAClickCallbackScreenState
 
     _enableCustomCTAClickCallback =
         FireworkSDK.getInstance().onCustomCTAClick != null;
+    _enablePausePlayer = HostAppService.getInstance().enablePausePlayer;
   }
 
   @override
@@ -57,6 +59,10 @@ class _EnableCustomCTAClickCallbackScreenState
               const SizedBox(
                 height: 20,
               ),
+              _buildPausePlayerEnable(context),
+              const SizedBox(
+                height: 20,
+              ),
               _buildActionButtonList(context),
             ],
           ),
@@ -76,6 +82,21 @@ class _EnableCustomCTAClickCallbackScreenState
       },
       title: Text(
         S.of(context).enableCustomCTAClickCallback,
+      ),
+    );
+  }
+
+  Widget _buildPausePlayerEnable(BuildContext context) {
+    return CheckboxListTile(
+      contentPadding: EdgeInsets.zero,
+      value: _enablePausePlayer,
+      onChanged: (value) {
+        setState(() {
+          _enablePausePlayer = value ?? false;
+        });
+      },
+      title: Text(
+        S.of(context).enablePausePlayer,
       ),
     );
   }
@@ -101,6 +122,8 @@ class _EnableCustomCTAClickCallbackScreenState
             if (_formKey.currentState != null &&
                 _formKey.currentState!.validate()) {
               _formKey.currentState!.save();
+              HostAppService.getInstance().enablePausePlayer =
+                  _enablePausePlayer;
               if (_enableCustomCTAClickCallback) {
                 FireworkSDK.getInstance().onCustomCTAClick =
                     HostAppService.getInstance().onCustomCTAClick;

@@ -14,5 +14,12 @@
     "channelId": "",
     "playlistId": ""
   },
-  "defaultHashtagPlaylistInfoArray": []
+  "defaultHashtagPlaylistInfoArray": [],
+  "defaultHomeVideoFeedPlaylistInfoArray": [
+    {
+      "channelId": "bJDywZ",
+      "playlistId": "g206q5"
+    }
+  ],
+  "defaultHomeStoryBlockPlaylistInfoArray": []
 }

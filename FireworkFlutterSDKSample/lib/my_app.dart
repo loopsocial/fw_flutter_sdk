@@ -77,6 +77,8 @@ class _MyAppState extends State<MyApp> {
   }
 
   void _registerCallbacks() {
+    FireworkSDK.getInstance().debugLogsEnabled = true;
+
     FireworkSDK.getInstance().onSDKInit = (event) {
       event.logMessage();
     };

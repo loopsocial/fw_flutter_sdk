@@ -27,6 +27,7 @@ class _ShoppingConfigurationScreenState
   ShoppingCTAButtonConfiguration _resultShoppingCTAButtonConfig =
       ShoppingCTAButtonConfiguration();
   LinkButtonConfiguration _resultLinkButtonConfig = LinkButtonConfiguration();
+  ProductCardConfiguration _initProductCardConfig = ProductCardConfiguration();
   ProductCardConfiguration _resultProductCardConfig =
       ProductCardConfiguration();
   bool _resultCustomizeLinkButtonHandler = false;
@@ -48,6 +49,11 @@ class _ShoppingConfigurationScreenState
             .productInfoViewConfiguration
             ?.linkButton ??
         LinkButtonConfiguration();
+    _initProductCardConfig = FireworkSDK.getInstance()
+            .shopping
+            .productInfoViewConfiguration
+            ?.productCard ??
+        ProductCardConfiguration();
     _resultProductCardConfig = FireworkSDK.getInstance()
             .shopping
             .productInfoViewConfiguration
@@ -92,6 +98,18 @@ class _ShoppingConfigurationScreenState
               height: 20,
             ),
             _buildProductCardThemeSegmentedControl(context),
+            const SizedBox(
+              height: 20,
+            ),
+            _buildProductCardCornerRadius(context),
+            const SizedBox(
+              height: 20,
+            ),
+            _buildProductCardPriceHidden(context),
+            const SizedBox(
+              height: 20,
+            ),
+            _buildProductCardCTAButtonHidden(context),
             const SizedBox(
               height: 20,
             ),
@@ -203,7 +221,7 @@ class _ShoppingConfigurationScreenState
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Text(S.of(context).productCardCTAButtonText),
+        Text(S.of(context).productCardTheme),
         const SizedBox(
           height: 20,
         ),
@@ -226,6 +244,66 @@ class _ShoppingConfigurationScreenState
           groupValue: _resultProductCardConfig.theme ?? ProductCardTheme.dark,
         ),
       ],
+    );
+  }
+
+  Widget _buildProductCardCornerRadius(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(S.of(context).productCardCornerRadius),
+        FWTextFormField(
+          initialValue: _initProductCardConfig.cornerRadius?.toStringAsFixed(0),
+          hintText: S.of(context).cornerRadiusHint,
+          validator: (text) {
+            return ValidationUtil.validateNumber(
+              context: context,
+              text: text,
+              min: 0,
+              max: 50,
+              errorMessage: S.of(context).cornerRadiusError,
+              rangeErrorMessage: S.of(context).cornerRadiusRangeError,
+            );
+          },
+          onSaved: (text) {
+            _resultProductCardConfig.cornerRadius =
+                int.tryParse(text ?? '')?.toDouble();
+          },
+        )
+      ],
+    );
+  }
+
+  Widget _buildProductCardPriceHidden(BuildContext context) {
+    return CheckboxListTile(
+      contentPadding: EdgeInsets.zero,
+      value: _resultProductCardConfig.priceConfiguration?.isHidden ?? false,
+      onChanged: (value) {
+        setState(() {
+          _resultProductCardConfig.priceConfiguration ??=
+              ProductCardPriceConfiguration();
+          _resultProductCardConfig.priceConfiguration?.isHidden = value;
+        });
+      },
+      title: Text(
+        S.of(context).hideProductCardPrice,
+      ),
+    );
+  }
+
+  Widget _buildProductCardCTAButtonHidden(BuildContext context) {
+    return CheckboxListTile(
+      contentPadding: EdgeInsets.zero,
+      value: _resultProductCardConfig.isCtaButtonHidden ?? false,
+      onChanged: (value) {
+        setState(() {
+          _resultProductCardConfig.isCtaButtonHidden = value;
+        });
+      },
+      title: Text(
+        S.of(context).hideProductCardCtaButton,
+      ),
     );
   }
 

@@ -67,9 +67,6 @@ class _PlayerConfigurationScreenState extends State<PlayerConfigurationScreen> {
               const SizedBox(
                 height: 20,
               ),
-              const SizedBox(
-                height: 20,
-              ),
               Row(
                 children: [
                   Expanded(

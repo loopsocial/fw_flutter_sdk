@@ -28,6 +28,7 @@ class FeedScreen extends StatefulWidget {
 class _FeedScreenState extends State<FeedScreen> {
   VideoFeedMode _mode = VideoFeedMode.row;
   bool _enablePip = true;
+  bool _enableKeepingAlive = false;
   FeedWidgetType _feedWidgetType = FeedWidgetType.videoFeed;
   VideoFeedController? _feedController;
   StoryBlockController? _storyBlockController;
@@ -145,6 +146,15 @@ class _FeedScreenState extends State<FeedScreen> {
                     Icons.pause_circle,
                   ),
                 ),
+              if (_feedWidgetType == FeedWidgetType.storyBlock)
+                IconButton(
+                  onPressed: () {
+                    _openFullScreenStoryBlock();
+                  },
+                  icon: const Icon(
+                    Icons.fullscreen,
+                  ),
+                ),
             ],
           ),
           body: _buildBody(context),
@@ -160,9 +170,7 @@ class _FeedScreenState extends State<FeedScreen> {
 
   Widget _buildBody(BuildContext context) {
     List<Widget> widgetList = [];
-    final showEnablePictureInPicture =
-        defaultTargetPlatform == TargetPlatform.iOS ||
-            _feedWidgetType == FeedWidgetType.videoFeed;
+
     if (_source != 'playlistGroup') {
       widgetList.addAll(<Widget>[
         const SizedBox(
@@ -172,7 +180,7 @@ class _FeedScreenState extends State<FeedScreen> {
         const SizedBox(
           height: 10,
         ),
-        if (showEnablePictureInPicture) _buildEnablePictureInPicture(context),
+        _buildEnablePictureInPicture(context),
       ]);
     }
 
@@ -189,10 +197,15 @@ class _FeedScreenState extends State<FeedScreen> {
         const SizedBox(
           height: 10,
         ),
+        if (_mode == VideoFeedMode.row) _buildEnableKeepingAlive(context),
         _buildFeed(context),
       ]);
     } else {
       widgetList.addAll([
+        const SizedBox(
+          height: 10,
+        ),
+        _buildEnableKeepingAlive(context),
         const SizedBox(
           height: 10,
         ),
@@ -225,6 +238,7 @@ class _FeedScreenState extends State<FeedScreen> {
         onValueChanged: (value) {
           setState(() {
             _feedWidgetType = value;
+            _feedError = null;
           });
         },
         children: {
@@ -322,6 +336,24 @@ class _FeedScreenState extends State<FeedScreen> {
     );
   }
 
+  Widget _buildEnableKeepingAlive(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: CheckboxListTile(
+        contentPadding: EdgeInsets.zero,
+        value: _enableKeepingAlive,
+        onChanged: (value) {
+          setState(() {
+            _enableKeepingAlive = value ?? false;
+          });
+        },
+        title: Text(
+          S.of(context).enableKeepingAlive,
+        ),
+      ),
+    );
+  }
+
   Widget _buildFeed(BuildContext context) {
     if (_feedError != null) {
       return _buildErrorWidget(context);
@@ -357,6 +389,7 @@ class _FeedScreenState extends State<FeedScreen> {
     FWExampleLoggerUtil.log(
         "_FeedScreenState _buildFeed _hashtagFilterExpression $_hashtagFilterExpression");
     final feedWidget = VideoFeed(
+      wantKeepAlive: _mode == VideoFeedMode.row ? _enableKeepingAlive : null,
       height: 220,
       width: (_mode == VideoFeedMode.column && Platform.isAndroid) ? 150 : null,
       source: source,
@@ -373,24 +406,57 @@ class _FeedScreenState extends State<FeedScreen> {
       videoPlayerConfiguration: playerConfiguration,
       adConfiguration: adConfiguration,
       onVideoFeedLoadFinished: _onVideoFeedLoadFinished,
+      onVideoFeedEmpty: _onVideoFeedEmpty,
       onVideoFeedCreated: _onVideoFeedCreated,
+      onVideoFeedDidStartPictureInPicture: _onVideoFeedDidStartPictureInPicture,
+      onVideoFeedDidStopPictureInPicture: _onVideoFeedDidStopPictureInPicture,
     );
 
-    return Expanded(
-      flex: _mode == VideoFeedMode.row ? 0 : 1,
-      child: Padding(
-        padding: defaultTargetPlatform == TargetPlatform.android
-            ? _androidPadding
-            : EdgeInsets.zero,
-        child: Container(
-          color:
-              feedConfiguration.titlePosition == VideoFeedTitlePosition.stacked
-                  ? Colors.grey
-                  : null,
-          child: feedWidget,
-        ),
-      ),
-    );
+    return _mode == VideoFeedMode.row
+        ? Expanded(
+            child: ListView(
+                padding: defaultTargetPlatform == TargetPlatform.android
+                    ? _androidPadding
+                    : EdgeInsets.zero,
+                children: [
+                  Container(
+                    color: feedConfiguration.titlePosition ==
+                            VideoFeedTitlePosition.stacked
+                        ? Colors.grey
+                        : null,
+                    child: feedWidget,
+                  ),
+                  _buildListItemPlaceholder(context),
+                  _buildListItemPlaceholder(context),
+                  _buildListItemPlaceholder(context),
+                  _buildListItemPlaceholder(context),
+                  _buildListItemPlaceholder(context),
+                  _buildListItemPlaceholder(context),
+                  _buildListItemPlaceholder(context),
+                  _buildListItemPlaceholder(context),
+                  _buildListItemPlaceholder(context),
+                  _buildListItemPlaceholder(context),
+                  _buildListItemPlaceholder(context),
+                  _buildListItemPlaceholder(context),
+                  _buildListItemPlaceholder(context),
+                  _buildListItemPlaceholder(context),
+                  _buildListItemPlaceholder(context),
+                ]),
+          )
+        : Expanded(
+            child: Padding(
+              padding: defaultTargetPlatform == TargetPlatform.android
+                  ? _androidPadding
+                  : EdgeInsets.zero,
+              child: Container(
+                color: feedConfiguration.titlePosition ==
+                        VideoFeedTitlePosition.stacked
+                    ? Colors.grey
+                    : null,
+                child: feedWidget,
+              ),
+            ),
+          );
   }
 
   Widget _buildStoryBlock(BuildContext context) {
@@ -416,32 +482,62 @@ class _FeedScreenState extends State<FeedScreen> {
         "_FeedScreenState _buildStoryBlock dynamicContentParameters $dynamicContentParameters");
 
     return Expanded(
-      child: Padding(
-        padding: _androidPadding,
-        child: SafeArea(
-          child: Padding(
-            padding: EdgeInsets.only(
-              bottom: defaultTargetPlatform == TargetPlatform.android ? 20 : 0,
-            ),
-            child: StoryBlock(
-              source: source,
-              channel: channel,
-              playlist: playlist,
-              dynamicContentParameters: dynamicContentParameters,
-              hashtagFilterExpression: hashtagFilterExpression,
-              productIds: productIds,
-              contentId: contentId,
-              adConfiguration: AdConfiguration(requiresAds: false),
-              storyBlockConfiguration: storyBlockConfiguration,
-              enablePictureInPicture: _enablePip,
-              cornerRadius: 20,
-              onStoryBlockLoadFinished: _onStoryBlockLoadFinished,
-              onStoryBlockCreated: _onStoryBlockCreated,
-              onStoryBlockFullScreenStateChanged:
-                  _onStoryBlockFullScreenStateChanged,
-            ),
+      child: ListView(
+        padding: defaultTargetPlatform == TargetPlatform.android
+            ? _androidPadding
+            : EdgeInsets.zero,
+        children: [
+          StoryBlock(
+            wantKeepAlive: _enableKeepingAlive,
+            height: 400,
+            source: source,
+            channel: channel,
+            playlist: playlist,
+            dynamicContentParameters: dynamicContentParameters,
+            hashtagFilterExpression: hashtagFilterExpression,
+            productIds: productIds,
+            contentId: contentId,
+            adConfiguration: AdConfiguration(requiresAds: false),
+            storyBlockConfiguration: storyBlockConfiguration,
+            enablePictureInPicture: _enablePip,
+            cornerRadius: 20,
+            onStoryBlockLoadFinished: _onStoryBlockLoadFinished,
+            onStoryBlockEmpty: _onStoryBlockEmpty,
+            onStoryBlockCreated: _onStoryBlockCreated,
+            onStoryBlockDidStartPictureInPicture:
+                _onStoryBlockDidStartPictureInPicture,
+            onStoryBlockDidStopPictureInPicture:
+                _onStoryBlockDidStopPictureInPicture,
           ),
-        ),
+          _buildListItemPlaceholder(context),
+          _buildListItemPlaceholder(context),
+          _buildListItemPlaceholder(context),
+          _buildListItemPlaceholder(context),
+          _buildListItemPlaceholder(context),
+          _buildListItemPlaceholder(context),
+          _buildListItemPlaceholder(context),
+          _buildListItemPlaceholder(context),
+          _buildListItemPlaceholder(context),
+          _buildListItemPlaceholder(context),
+          _buildListItemPlaceholder(context),
+          _buildListItemPlaceholder(context),
+          _buildListItemPlaceholder(context),
+          _buildListItemPlaceholder(context),
+          _buildListItemPlaceholder(context),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildListItemPlaceholder(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(
+        top: 10,
+      ),
+      color: Colors.grey,
+      height: 200,
+      child: const Center(
+        child: Text('List item placeholder'),
       ),
     );
   }
@@ -494,6 +590,21 @@ class _FeedScreenState extends State<FeedScreen> {
     }
   }
 
+  void _onVideoFeedEmpty(FWError? error) {
+    FWExampleLoggerUtil.log(
+        "_onVideoFeedEmpty error ${error?.displayString()}");
+  }
+
+  void _onVideoFeedDidStartPictureInPicture(FWError? error) {
+    FWExampleLoggerUtil.log(
+        "_onVideoFeedDidStartPictureInPicture error ${error?.displayString()}");
+  }
+
+  void _onVideoFeedDidStopPictureInPicture(FWError? error) {
+    FWExampleLoggerUtil.log(
+        "_onVideoFeedDidStopPictureInPicture error ${error?.displayString()}");
+  }
+
   void _onStoryBlockLoadFinished(FWError? error) {
     FWExampleLoggerUtil.log(
         "_onStoryBlockLoadFinished error ${error?.displayString()}");
@@ -504,14 +615,24 @@ class _FeedScreenState extends State<FeedScreen> {
     }
   }
 
+  void _onStoryBlockEmpty(FWError? error) {
+    FWExampleLoggerUtil.log(
+        "_onStoryBlockEmpty error ${error?.displayString()}");
+  }
+
   void _onStoryBlockCreated(StoryBlockController controller) {
     FWExampleLoggerUtil.log("_onVideoFeedCreated");
     _storyBlockController = controller;
   }
 
-  void _onStoryBlockFullScreenStateChanged(bool isFullScreen) {
+  void _onStoryBlockDidStartPictureInPicture(FWError? error) {
     FWExampleLoggerUtil.log(
-        "_onStoryBlockFullScreenStateChanged isFullScreen: $isFullScreen");
+        "_onStoryBlockDidStartPictureInPicture error ${error?.displayString()}");
+  }
+
+  void _onStoryBlockDidStopPictureInPicture(FWError? error) {
+    FWExampleLoggerUtil.log(
+        "_onStoryBlockDidStopPictureInPicture error ${error?.displayString()}");
   }
 
   void _refreshVideoFeed() {
@@ -539,5 +660,9 @@ class _FeedScreenState extends State<FeedScreen> {
       });
     }
     _storyBlockController?.pause();
+  }
+
+  void _openFullScreenStoryBlock() {
+    _storyBlockController?.openFullscreen();
   }
 }

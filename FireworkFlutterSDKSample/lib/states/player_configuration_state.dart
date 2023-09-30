@@ -7,6 +7,7 @@ class PlayerConfigurationState extends ChangeNotifier {
       playerStyle: VideoPlayerStyle.full,
       showShareButton: true,
       showMuteButton: true,
+      showBranding: true,
       showPlaybackButton: true,
       videoCompleteAction: VideoPlayerCompleteAction.advanceToNext,
       ctaButtonStyle: VideoPlayerCTAStyle(

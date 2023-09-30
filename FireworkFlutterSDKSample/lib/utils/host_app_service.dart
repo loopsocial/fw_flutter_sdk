@@ -19,6 +19,8 @@ class HostAppService {
     return _instance!;
   }
 
+  bool enablePausePlayer = false;
+
   HostAppService._();
 
   factory HostAppService.getInstance() => _getInstance();
@@ -189,6 +191,9 @@ class HostAppService {
 
   Future<void> onCustomTapProductCard(CustomTapProductCardEvent? event) async {
     await closePlayerOrStartFloatingPlayer();
+    FWExampleLoggerUtil.log(
+      "onCustomTapProductCard event?.url ${event?.url}",
+    );
     globalNavigatorKey.currentState?.pushNamed('/link_content', arguments: {
       "url": event?.url ?? '',
     });
@@ -196,6 +201,9 @@ class HostAppService {
 
   void onCustomCTAClick(CustomCTAClickEvent? event) {
     closePlayerOrStartFloatingPlayer().then((_) {
+      if (enablePausePlayer) {
+        event?.playerHandler?.pause();
+      }
       globalNavigatorKey.currentState?.pushNamed('/link_content', arguments: {
         "url": event?.url ?? '',
       });

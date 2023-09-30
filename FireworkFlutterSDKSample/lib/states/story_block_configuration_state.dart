@@ -4,8 +4,11 @@ import 'package:flutter/material.dart';
 class StoryBlockConfigurationState extends ChangeNotifier {
   static StoryBlockConfiguration _getDefaultConfiguration() {
     return StoryBlockConfiguration(
+      playerStyle: VideoPlayerStyle.full,
       showShareButton: true,
       showPlaybackButton: true,
+      showMuteButton: true,
+      showBranding: true,
       videoCompleteAction: VideoPlayerCompleteAction.advanceToNext,
       ctaDelay:
           VideoPlayerCTADelay(type: VideoPlayerCTADelayType.constant, value: 3),

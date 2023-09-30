@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../generated/l10n.dart';
+import '../../models/feed_playlist_info.dart';
 import '../../widgets/fw_app_bar.dart';
 
 class FeedLayoutsScreen extends StatefulWidget {
@@ -17,7 +18,7 @@ class FeedLayoutsScreen extends StatefulWidget {
 
 class _FeedLayoutsScreenState extends State<FeedLayoutsScreen> {
   List<String> _defaultChannelIdArray = [];
-  List<_FeedLayoutsPlaylistInfo> _defaultPlaylistInfoArray = [];
+  List<FeedPlaylistInfo> _defaultPlaylistInfoArray = [];
   List<_FeedLayoutsDynamicContentInfo> _defaultDynamicContentInfoArray = [];
   List<String> _defaultPlaylistGroupIdArray = [];
   List<_FeedLayoutsHashtagPlaylistInfo> _defaultHashtagPlaylistInfoArray = [];
@@ -38,111 +39,121 @@ class _FeedLayoutsScreenState extends State<FeedLayoutsScreen> {
           "jsonData: $jsonData jsonData.runtimeType: ${jsonData.runtimeType}");
       if (jsonData is Map<String, dynamic>) {
         if (jsonData["defaultChannelIdArray"] is List<dynamic>) {
-          _defaultChannelIdArray = List<String>.from(
-              jsonData["defaultChannelIdArray"] as List<dynamic>);
+          setState(() {
+            _defaultChannelIdArray = List<String>.from(
+                jsonData["defaultChannelIdArray"] as List<dynamic>);
+          });
         }
 
         if (jsonData["defaultPlaylistInfoArray"] is List<dynamic>) {
           final defaultPlaylistInfoJsonArray = List<Map<String, dynamic>>.from(
               jsonData["defaultPlaylistInfoArray"] as List<dynamic>);
-          _defaultPlaylistInfoArray = defaultPlaylistInfoJsonArray
-              .map(
-                (e) {
-                  if (e["channelId"] is String && e["playlistId"] is String) {
-                    return _FeedLayoutsPlaylistInfo(
-                      channelId: e["channelId"] as String,
-                      playlistId: e["playlistId"] as String,
-                    );
-                  } else {
-                    return _FeedLayoutsPlaylistInfo(
-                      channelId: "",
-                      playlistId: "",
-                    );
-                  }
-                },
-              )
-              .where((playlistInfo) =>
-                  playlistInfo.channelId.isNotEmpty &&
-                  playlistInfo.playlistId.isNotEmpty)
-              .toList();
+          setState(() {
+            _defaultPlaylistInfoArray = defaultPlaylistInfoJsonArray
+                .map(
+                  (e) {
+                    if (e["channelId"] is String && e["playlistId"] is String) {
+                      return FeedPlaylistInfo(
+                        channelId: e["channelId"] as String,
+                        playlistId: e["playlistId"] as String,
+                      );
+                    } else {
+                      return FeedPlaylistInfo(
+                        channelId: "",
+                        playlistId: "",
+                      );
+                    }
+                  },
+                )
+                .where((playlistInfo) =>
+                    playlistInfo.channelId.isNotEmpty &&
+                    playlistInfo.playlistId.isNotEmpty)
+                .toList();
+          });
         }
 
         FWExampleLoggerUtil.log(
             "defaultPlaylistInfoArray ${jsonData["defaultPlaylistInfoArray"].runtimeType}");
 
         if (jsonData["defaultPlaylistGroupIdArray"] is List<dynamic>) {
-          _defaultPlaylistGroupIdArray = List<String>.from(
-              jsonData["defaultPlaylistGroupIdArray"] as List<dynamic>);
+          setState(() {
+            _defaultPlaylistGroupIdArray = List<String>.from(
+                jsonData["defaultPlaylistGroupIdArray"] as List<dynamic>);
+          });
         }
 
         if (jsonData["defaultDynamicContentInfoArray"] is List<dynamic>) {
           final defaultDynamicContentInfoJsonArray =
               List<Map<String, dynamic>>.from(
                   jsonData["defaultDynamicContentInfoArray"] as List<dynamic>);
-          _defaultDynamicContentInfoArray = defaultDynamicContentInfoJsonArray
-              .map(
-                (e) {
-                  if (e["channelId"] is String &&
-                      e["parameters"] is Map<String, dynamic> &&
-                      e["name"] is String) {
-                    final tmpParameters = Map<String, List<dynamic>>.from(
-                        e["parameters"] as Map<String, dynamic>);
-                    var resultParameters = <String, List<String>>{};
+          setState(() {
+            _defaultDynamicContentInfoArray = defaultDynamicContentInfoJsonArray
+                .map(
+                  (e) {
+                    if (e["channelId"] is String &&
+                        e["parameters"] is Map<String, dynamic> &&
+                        e["name"] is String) {
+                      final tmpParameters = Map<String, List<dynamic>>.from(
+                          e["parameters"] as Map<String, dynamic>);
+                      var resultParameters = <String, List<String>>{};
 
-                    tmpParameters.forEach((key, value) {
-                      resultParameters[key] = List<String>.from(value);
-                    });
-                    return _FeedLayoutsDynamicContentInfo(
-                      channelId: e["channelId"] as String,
-                      parameters: resultParameters,
-                      name: e["name"] as String,
-                    );
-                  } else {
-                    return _FeedLayoutsDynamicContentInfo(
-                      channelId: "",
-                      parameters: <String, List<String>>{},
-                      name: "",
-                    );
-                  }
-                },
-              )
-              .where((dynamicContentInfo) =>
-                  dynamicContentInfo.channelId.isNotEmpty &&
-                  dynamicContentInfo.name.isNotEmpty &&
-                  dynamicContentInfo.parameters.isNotEmpty)
-              .toList();
+                      tmpParameters.forEach((key, value) {
+                        resultParameters[key] = List<String>.from(value);
+                      });
+                      return _FeedLayoutsDynamicContentInfo(
+                        channelId: e["channelId"] as String,
+                        parameters: resultParameters,
+                        name: e["name"] as String,
+                      );
+                    } else {
+                      return _FeedLayoutsDynamicContentInfo(
+                        channelId: "",
+                        parameters: <String, List<String>>{},
+                        name: "",
+                      );
+                    }
+                  },
+                )
+                .where((dynamicContentInfo) =>
+                    dynamicContentInfo.channelId.isNotEmpty &&
+                    dynamicContentInfo.name.isNotEmpty &&
+                    dynamicContentInfo.parameters.isNotEmpty)
+                .toList();
+          });
         }
         if (jsonData["defaultHashtagPlaylistInfoArray"] is List<dynamic>) {
           final defaultHashtagPlaylistInfoArray =
               List<Map<String, dynamic>>.from(
                   jsonData["defaultHashtagPlaylistInfoArray"] as List<dynamic>);
 
-          _defaultHashtagPlaylistInfoArray = defaultHashtagPlaylistInfoArray
-              .map(
-                (e) {
-                  if (e["channelId"] is String &&
-                      e["hashtagFilterExpression"] is String &&
-                      e["name"] is String) {
-                    return _FeedLayoutsHashtagPlaylistInfo(
-                      channelId: e["channelId"] as String,
-                      hashtagFilterExpression:
-                          e["hashtagFilterExpression"] as String,
-                      name: e["name"] as String,
-                    );
-                  } else {
-                    return _FeedLayoutsHashtagPlaylistInfo(
-                      channelId: "",
-                      hashtagFilterExpression: "",
-                      name: "",
-                    );
-                  }
-                },
-              )
-              .where((hashtagPlaylistInfo) =>
-                  hashtagPlaylistInfo.channelId.isNotEmpty &&
-                  hashtagPlaylistInfo.name.isNotEmpty &&
-                  hashtagPlaylistInfo.hashtagFilterExpression.isNotEmpty)
-              .toList();
+          setState(() {
+            _defaultHashtagPlaylistInfoArray = defaultHashtagPlaylistInfoArray
+                .map(
+                  (e) {
+                    if (e["channelId"] is String &&
+                        e["hashtagFilterExpression"] is String &&
+                        e["name"] is String) {
+                      return _FeedLayoutsHashtagPlaylistInfo(
+                        channelId: e["channelId"] as String,
+                        hashtagFilterExpression:
+                            e["hashtagFilterExpression"] as String,
+                        name: e["name"] as String,
+                      );
+                    } else {
+                      return _FeedLayoutsHashtagPlaylistInfo(
+                        channelId: "",
+                        hashtagFilterExpression: "",
+                        name: "",
+                      );
+                    }
+                  },
+                )
+                .where((hashtagPlaylistInfo) =>
+                    hashtagPlaylistInfo.channelId.isNotEmpty &&
+                    hashtagPlaylistInfo.name.isNotEmpty &&
+                    hashtagPlaylistInfo.hashtagFilterExpression.isNotEmpty)
+                .toList();
+          });
         }
       }
     } catch (e) {
@@ -712,15 +723,6 @@ class _FeedLayoutsScreenState extends State<FeedLayoutsScreen> {
       ),
     );
   }
-}
-
-class _FeedLayoutsPlaylistInfo {
-  final String channelId;
-  final String playlistId;
-  _FeedLayoutsPlaylistInfo({
-    required this.channelId,
-    required this.playlistId,
-  });
 }
 
 class _FeedLayoutsDynamicContentInfo {

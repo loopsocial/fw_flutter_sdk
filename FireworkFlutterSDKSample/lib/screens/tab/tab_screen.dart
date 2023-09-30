@@ -5,7 +5,7 @@ import 'package:fw_flutter_sdk_example/constants/fw_example_event_name.dart';
 import 'package:fw_flutter_sdk_example/screens/cart/cart_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/feed_layouts/feed_layouts_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/more/more_screen.dart';
-import 'package:fw_flutter_sdk_example/screens/shopping/shopping_screen.dart';
+import 'package:fw_flutter_sdk_example/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import '../../generated/l10n.dart';
 import '../../utils/fw_example_logger_util.dart';
@@ -22,7 +22,7 @@ class TabScreen extends StatefulWidget {
 
 class _TabScreenState extends State<TabScreen> {
   List<Widget> _children = [
-    const ShoppingScreen(),
+    const HomeScreen(),
     const FeedLayoutsScreen(),
     const MoreScreen(),
   ];
@@ -53,7 +53,7 @@ class _TabScreenState extends State<TabScreen> {
         _showCart = showCart;
         if (showCart) {
           _children = [
-            const ShoppingScreen(),
+            const HomeScreen(),
             const CartScreen(),
             const FeedLayoutsScreen(),
             const MoreScreen(),
@@ -102,8 +102,8 @@ class _TabScreenState extends State<TabScreen> {
         onTap: _onItemTapped,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: const Icon(Icons.shopping_bag),
-            label: S.of(context).shopping,
+            icon: const Icon(Icons.home),
+            label: S.of(context).home,
           ),
           if (_showCart)
             BottomNavigationBarItem(

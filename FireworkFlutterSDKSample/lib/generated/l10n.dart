@@ -480,10 +480,10 @@ class S {
     );
   }
 
-  /// `CTA background color`
+  /// `CTA background color(iOS)`
   String get ctaBackgroundColor {
     return Intl.message(
-      'CTA background color',
+      'CTA background color(iOS)',
       name: 'ctaBackgroundColor',
       desc: '',
       args: [],
@@ -500,10 +500,10 @@ class S {
     );
   }
 
-  /// `CTA text color`
+  /// `CTA text color(iOS)`
   String get ctaTextColor {
     return Intl.message(
-      'CTA text color',
+      'CTA text color(iOS)',
       name: 'ctaTextColor',
       desc: '',
       args: [],
@@ -520,10 +520,10 @@ class S {
     );
   }
 
-  /// `CTA font size`
+  /// `CTA font size(iOS)`
   String get ctaFontSize {
     return Intl.message(
-      'CTA font size',
+      'CTA font size(iOS)',
       name: 'ctaFontSize',
       desc: '',
       args: [],
@@ -1170,20 +1170,20 @@ class S {
     );
   }
 
-  /// `Video Player Style`
+  /// `Video player style`
   String get videoPlayerStyle {
     return Intl.message(
-      'Video Player Style',
+      'Video player style',
       name: 'videoPlayerStyle',
       desc: '',
       args: [],
     );
   }
 
-  /// `Video Player CompleteAction`
+  /// `Video player complete action`
   String get videoPlayerCompleteAction {
     return Intl.message(
-      'Video Player CompleteAction',
+      'Video player complete action',
       name: 'videoPlayerCompleteAction',
       desc: '',
       args: [],
@@ -2070,10 +2070,10 @@ class S {
     );
   }
 
-  /// `Enable Custom Tap Product Card(iOS)`
+  /// `Enable custom tap product card`
   String get enableCustomTapProductCard {
     return Intl.message(
-      'Enable Custom Tap Product Card(iOS)',
+      'Enable custom tap product card',
       name: 'enableCustomTapProductCard',
       desc: '',
       args: [],
@@ -2090,21 +2090,141 @@ class S {
     );
   }
 
-  /// `Video Player CompleteAction(only apply to full-screen story block on iOS)`
+  /// `Video player complete action(full-screen)`
   String get videoPlayerCompleteAction2 {
     return Intl.message(
-      'Video Player CompleteAction(only apply to full-screen story block on iOS)',
+      'Video player complete action(full-screen)',
       name: 'videoPlayerCompleteAction2',
       desc: '',
       args: [],
     );
   }
 
-  /// `Show Video Detail Title`
+  /// `Show video detail title`
   String get showVideoDetailTitle {
     return Intl.message(
-      'Show Video Detail Title',
+      'Show video detail title',
       name: 'showVideoDetailTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Video player style(full-screen)`
+  String get videoPlayerStyle2 {
+    return Intl.message(
+      'Video player style(full-screen)',
+      name: 'videoPlayerStyle2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `CTA background color(iOS)(full-screen)`
+  String get ctaBackgroundColor2 {
+    return Intl.message(
+      'CTA background color(iOS)(full-screen)',
+      name: 'ctaBackgroundColor2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `CTA text color(iOS)(full-screen)`
+  String get ctaTextColor2 {
+    return Intl.message(
+      'CTA text color(iOS)(full-screen)',
+      name: 'ctaTextColor2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `CTA font size(iOS)(full-screen)`
+  String get ctaFontSize2 {
+    return Intl.message(
+      'CTA font size(iOS)(full-screen)',
+      name: 'ctaFontSize2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hide product card price`
+  String get hideProductCardPrice {
+    return Intl.message(
+      'Hide product card price',
+      name: 'hideProductCardPrice',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hide product card CTA Button`
+  String get hideProductCardCtaButton {
+    return Intl.message(
+      'Hide product card CTA Button',
+      name: 'hideProductCardCtaButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Product card corner radius`
+  String get productCardCornerRadius {
+    return Intl.message(
+      'Product card corner radius',
+      name: 'productCardCornerRadius',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter product card corner radius`
+  String get productCardCornerRadiusHint {
+    return Intl.message(
+      'Enter product card corner radius',
+      name: 'productCardCornerRadiusHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enable Pause Player`
+  String get enablePausePlayer {
+    return Intl.message(
+      'Enable Pause Player',
+      name: 'enablePausePlayer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enable Keeping Alive`
+  String get enableKeepingAlive {
+    return Intl.message(
+      'Enable Keeping Alive',
+      name: 'enableKeepingAlive',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Multi-feeds`
+  String get multiFeeds {
+    return Intl.message(
+      'Multi-feeds',
+      name: 'multiFeeds',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Home`
+  String get home {
+    return Intl.message(
+      'Home',
+      name: 'home',
       desc: '',
       args: [],
     );

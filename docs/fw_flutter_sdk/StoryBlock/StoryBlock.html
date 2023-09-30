@@ -40,18 +40,24 @@
   <div class="toggle" id="theme-button">
     <label for="theme">
       <input type="checkbox" id="theme" value="light-theme">
-      <span class="material-symbols-outlined">
+      <span id="dark-theme-button" class="material-symbols-outlined">
         brightness_4
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        brightness_5
       </span>
     </label>
   </div>
 </header>
 <main>
 
-  <div id="dartdoc-main-content" class="main-content">
+  <div
+      id="dartdoc-main-content"
+      class="main-content"
+      data-above-sidebar="fw_flutter_sdk&#47;StoryBlock-class-sidebar.html"
+      data-below-sidebar="">
       <div>
 <h1><span class="kind-constructor">StoryBlock</span> constructor 
-    <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
 </h1></div>
 
     <section class="multi-line-signature">
@@ -70,9 +76,12 @@
 <li><span class="parameter" id="-param-storyBlockConfiguration"><span class="type-annotation"><a href="../../fw_flutter_sdk/StoryBlockConfiguration-class.html">StoryBlockConfiguration</a>?</span> <span class="parameter-name">storyBlockConfiguration</span>, </span></li>
 <li><span class="parameter" id="-param-width"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">width</span>, </span></li>
 <li><span class="parameter" id="-param-height"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">height</span>, </span></li>
+<li><span class="parameter" id="-param-wantKeepAlive"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">wantKeepAlive</span>, </span></li>
 <li><span class="parameter" id="-param-onStoryBlockCreated"><span class="type-annotation"><a href="../../fw_flutter_sdk/StoryBlockCreatedCallback.html">StoryBlockCreatedCallback</a>?</span> <span class="parameter-name">onStoryBlockCreated</span>, </span></li>
 <li><span class="parameter" id="-param-onStoryBlockLoadFinished"><span class="type-annotation"><a href="../../fw_flutter_sdk/StoryBlockLoadFinishedCallback.html">StoryBlockLoadFinishedCallback</a>?</span> <span class="parameter-name">onStoryBlockLoadFinished</span>, </span></li>
-<li><span class="parameter" id="-param-onStoryBlockFullScreenStateChanged"><span class="type-annotation"><a href="../../fw_flutter_sdk/StoryBlockFullScreenStateChanged.html">StoryBlockFullScreenStateChanged</a>?</span> <span class="parameter-name">onStoryBlockFullScreenStateChanged</span>}</span></li>
+<li><span class="parameter" id="-param-onStoryBlockEmpty"><span class="type-annotation"><a href="../../fw_flutter_sdk/StoryBlockEmptyCallback.html">StoryBlockEmptyCallback</a>?</span> <span class="parameter-name">onStoryBlockEmpty</span>, </span></li>
+<li><span class="parameter" id="-param-onStoryBlockDidStartPictureInPicture"><span class="type-annotation"><a href="../../fw_flutter_sdk/StoryBlockDidStartPictureInPicture.html">StoryBlockDidStartPictureInPicture</a>?</span> <span class="parameter-name">onStoryBlockDidStartPictureInPicture</span>, </span></li>
+<li><span class="parameter" id="-param-onStoryBlockDidStopPictureInPicture"><span class="type-annotation"><a href="../../fw_flutter_sdk/StoryBlockDidStopPictureInPicture.html">StoryBlockDidStopPictureInPicture</a>?</span> <span class="parameter-name">onStoryBlockDidStopPictureInPicture</span>}</span></li>
 </ol>)
     </section>
 
@@ -97,9 +106,12 @@
   this.storyBlockConfiguration,
   this.width,
   this.height,
+  this.wantKeepAlive,
   this.onStoryBlockCreated,
   this.onStoryBlockLoadFinished,
-  this.onStoryBlockFullScreenStateChanged,
+  this.onStoryBlockEmpty,
+  this.onStoryBlockDidStartPictureInPicture,
+  this.onStoryBlockDidStopPictureInPicture,
 }) : super(key: key);</code></pre>
 </section>
 
@@ -107,70 +119,22 @@
   </div> <!-- /.main-content -->
 
   <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
-    <header id="header-search-sidebar" class="hidden-l">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
   <form class="search-sidebar" role="search">
     <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
 </header>
 
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
-  <li><a href="../../index.html">fw_flutter_sdk</a></li>
-  <li><a href="../../fw_flutter_sdk/fw_flutter_sdk-library.html">fw_flutter_sdk</a></li>
-  <li><a href="../../fw_flutter_sdk/StoryBlock-class.html">StoryBlock</a></li>
-  <li class="self-crumb">StoryBlock const constructor</li>
+    <li><a href="../../index.html">fw_flutter_sdk</a></li>
+    <li><a href="../../fw_flutter_sdk/fw_flutter_sdk-library.html">fw_flutter_sdk</a></li>
+    <li><a href="../../fw_flutter_sdk/StoryBlock-class.html">StoryBlock</a></li>
+    <li class="self-crumb">StoryBlock const constructor</li>
 </ol>
 
 
     <h5>StoryBlock class</h5>
-    <ol>
-
-        <li class="section-title"><a href="../../fw_flutter_sdk/StoryBlock-class.html#constructors">Constructors</a></li>
-          <li><a href="../../fw_flutter_sdk/StoryBlock/StoryBlock.html">StoryBlock</a></li>
-
-
-        <li class="section-title">
-          <a href="../../fw_flutter_sdk/StoryBlock-class.html#instance-properties">Properties</a>
-        </li>
-          <li><a href="../../fw_flutter_sdk/StoryBlock/adConfiguration.html">adConfiguration</a></li>
-          <li><a href="../../fw_flutter_sdk/StoryBlock/channel.html">channel</a></li>
-          <li><a href="../../fw_flutter_sdk/StoryBlock/contentId.html">contentId</a></li>
-          <li><a href="../../fw_flutter_sdk/StoryBlock/cornerRadius.html">cornerRadius</a></li>
-          <li><a href="../../fw_flutter_sdk/StoryBlock/dynamicContentParameters.html">dynamicContentParameters</a></li>
-          <li><a href="../../fw_flutter_sdk/StoryBlock/enablePictureInPicture.html">enablePictureInPicture</a></li>
-          <li class="inherited"><a href="https://api.flutter.dev/flutter/widgets/Widget/hashCode.html">hashCode</a></li>
-          <li><a href="../../fw_flutter_sdk/StoryBlock/hashtagFilterExpression.html">hashtagFilterExpression</a></li>
-          <li><a href="../../fw_flutter_sdk/StoryBlock/height.html">height</a></li>
-          <li class="inherited"><a href="https://api.flutter.dev/flutter/widgets/Widget/key.html">key</a></li>
-          <li><a href="../../fw_flutter_sdk/StoryBlock/onStoryBlockCreated.html">onStoryBlockCreated</a></li>
-          <li><a href="../../fw_flutter_sdk/StoryBlock/onStoryBlockFullScreenStateChanged.html">onStoryBlockFullScreenStateChanged</a></li>
-          <li><a href="../../fw_flutter_sdk/StoryBlock/onStoryBlockLoadFinished.html">onStoryBlockLoadFinished</a></li>
-          <li><a href="../../fw_flutter_sdk/StoryBlock/playlist.html">playlist</a></li>
-          <li><a href="../../fw_flutter_sdk/StoryBlock/productIds.html">productIds</a></li>
-          <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
-          <li><a href="../../fw_flutter_sdk/StoryBlock/source.html">source</a></li>
-          <li><a href="../../fw_flutter_sdk/StoryBlock/storyBlockConfiguration.html">storyBlockConfiguration</a></li>
-          <li><a href="../../fw_flutter_sdk/StoryBlock/width.html">width</a></li>
-
-        <li class="section-title"><a href="../../fw_flutter_sdk/StoryBlock-class.html#instance-methods">Methods</a></li>
-          <li class="inherited"><a href="https://api.flutter.dev/flutter/widgets/StatefulWidget/createElement.html">createElement</a></li>
-          <li><a href="../../fw_flutter_sdk/StoryBlock/createState.html">createState</a></li>
-          <li class="inherited"><a href="https://api.flutter.dev/flutter/foundation/DiagnosticableTree/debugDescribeChildren.html">debugDescribeChildren</a></li>
-          <li class="inherited"><a href="https://api.flutter.dev/flutter/widgets/Widget/debugFillProperties.html">debugFillProperties</a></li>
-          <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
-          <li class="inherited"><a href="https://api.flutter.dev/flutter/foundation/DiagnosticableTree/toDiagnosticsNode.html">toDiagnosticsNode</a></li>
-          <li class="inherited"><a href="https://api.flutter.dev/flutter/foundation/Diagnosticable/toString.html">toString</a></li>
-          <li class="inherited"><a href="https://api.flutter.dev/flutter/foundation/DiagnosticableTree/toStringDeep.html">toStringDeep</a></li>
-          <li class="inherited"><a href="https://api.flutter.dev/flutter/foundation/DiagnosticableTree/toStringShallow.html">toStringShallow</a></li>
-          <li class="inherited"><a href="https://api.flutter.dev/flutter/widgets/Widget/toStringShort.html">toStringShort</a></li>
-
-        <li class="section-title inherited"><a href="../../fw_flutter_sdk/StoryBlock-class.html#operators">Operators</a></li>
-          <li class="inherited"><a href="https://api.flutter.dev/flutter/widgets/Widget/operator_equals.html">operator ==</a></li>
-
-
-
-
-</ol>
-
   </div><!--/.sidebar-offcanvas-left-->
 
   <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
@@ -181,7 +145,7 @@
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.2.1-beta.4
+      2.3.0
   </span>
 
   

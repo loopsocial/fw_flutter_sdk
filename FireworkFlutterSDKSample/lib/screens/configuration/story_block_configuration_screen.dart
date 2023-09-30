@@ -33,6 +33,8 @@ class _StoryBlockConfigurationScreenState
     _resultConfig = _initConfig.deepCopy();
     _resultConfig.ctaDelay ??=
         VideoPlayerCTADelay(type: VideoPlayerCTADelayType.constant, value: 3);
+    _resultConfig.ctaHighlightDelay ??=
+        VideoPlayerCTADelay(type: VideoPlayerCTADelayType.constant, value: 2);
   }
 
   @override
@@ -61,9 +63,42 @@ class _StoryBlockConfigurationScreenState
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
+              _buildPlayerStyleSegmentedControl(context),
+              const SizedBox(
+                height: 20,
+              ),
               _buildVideoCompleteActionSegmentedControl(context),
               const SizedBox(
                 height: 20,
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: _buildCTABackgroundColor(context),
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: _buildCTATextColor(context),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: _buildCTAFontSize(context),
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: _buildCTAUseIOSFontInfo(context),
+                  ),
+                ],
               ),
               const SizedBox(
                 height: 20,
@@ -97,10 +132,28 @@ class _StoryBlockConfigurationScreenState
                     width: 20,
                   ),
                   Expanded(
-                    child: _buildPlaybackButtonShow(context),
+                    child: _buildCustomButtons(context),
                   ),
                 ],
               ),
+              if (defaultTargetPlatform == TargetPlatform.android)
+                const SizedBox(
+                  height: 20,
+                ),
+              if (defaultTargetPlatform == TargetPlatform.android)
+                Row(
+                  children: [
+                    Expanded(
+                      child: _buildMuteButtonShow(context),
+                    ),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    Expanded(
+                      child: _buildPlaybackButtonShow(context),
+                    ),
+                  ],
+                ),
               const SizedBox(
                 height: 20,
               ),
@@ -129,6 +182,46 @@ class _StoryBlockConfigurationScreenState
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildPlayerStyleSegmentedControl(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(
+          defaultTargetPlatform == TargetPlatform.iOS
+              ? S.of(context).videoPlayerStyle2
+              : S.of(context).videoPlayerStyle,
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        CupertinoSegmentedControl<VideoPlayerStyle>(
+          padding: EdgeInsets.zero,
+          onValueChanged: (value) {
+            setState(() {
+              _resultConfig.playerStyle = value;
+            });
+          },
+          children: {
+            VideoPlayerStyle.full: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Text(
+                S.of(context).full,
+              ),
+            ),
+            VideoPlayerStyle.fit: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Text(
+                S.of(context).fit,
+              ),
+            ),
+          },
+          groupValue: _resultConfig.playerStyle,
+        )
+      ],
     );
   }
 
@@ -183,6 +276,132 @@ class _StoryBlockConfigurationScreenState
       },
       title: Text(
         S.of(context).showShareButton,
+      ),
+    );
+  }
+
+  Widget _buildCTABackgroundColor(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        defaultTargetPlatform == TargetPlatform.iOS
+            ? Text(
+                S.of(context).ctaBackgroundColor2,
+              )
+            : Text(
+                S.of(context).ctaBackgroundColor,
+              ),
+        FWTextFormField(
+          initialValue: _initConfig.ctaButtonStyle?.backgroundColor?.toString(),
+          hintText: S.of(context).ctaBackgroundColorHint,
+          validator: (text) {
+            return ValidationUtil.validateColor(
+              text,
+              context,
+            );
+          },
+          onSaved: (text) {
+            _resultConfig.ctaButtonStyle ??= VideoPlayerCTAStyle();
+            if ((text ?? "").isNotEmpty) {
+              _resultConfig.ctaButtonStyle?.backgroundColor = text;
+            } else {
+              _resultConfig.ctaButtonStyle?.backgroundColor = null;
+            }
+          },
+        ),
+      ],
+    );
+  }
+
+  Widget _buildCTATextColor(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        defaultTargetPlatform == TargetPlatform.iOS
+            ? Text(
+                S.of(context).ctaTextColor2,
+              )
+            : Text(
+                S.of(context).ctaTextColor,
+              ),
+        FWTextFormField(
+          initialValue: _initConfig.ctaButtonStyle?.textColor?.toString(),
+          hintText: S.of(context).ctaTextColorHint,
+          validator: (text) {
+            return ValidationUtil.validateColor(
+              text,
+              context,
+            );
+          },
+          onSaved: (text) {
+            _resultConfig.ctaButtonStyle ??= VideoPlayerCTAStyle();
+            if ((text ?? "").isNotEmpty) {
+              _resultConfig.ctaButtonStyle?.textColor = text;
+            } else {
+              _resultConfig.ctaButtonStyle?.textColor = null;
+            }
+          },
+        ),
+      ],
+    );
+  }
+
+  Widget _buildCTAFontSize(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        defaultTargetPlatform == TargetPlatform.iOS
+            ? Text(
+                S.of(context).ctaFontSize2,
+              )
+            : Text(
+                S.of(context).ctaFontSize,
+              ),
+        FWTextFormField(
+          initialValue:
+              _initConfig.ctaButtonStyle?.fontSize?.toStringAsFixed(0),
+          hintText: S.of(context).ctaFontHint,
+          validator: (text) {
+            return ValidationUtil.validateNumber(
+              context: context,
+              text: text,
+              min: 8,
+              max: 30,
+              errorMessage: S.of(context).fontSizeError,
+              rangeErrorMessage: S.of(context).fontSizeRangeError,
+            );
+          },
+          onSaved: (text) {
+            _resultConfig.ctaButtonStyle ??= VideoPlayerCTAStyle();
+            _resultConfig.ctaButtonStyle?.fontSize =
+                int.tryParse(text ?? '')?.toDouble();
+          },
+        )
+      ],
+    );
+  }
+
+  Widget _buildCTAUseIOSFontInfo(BuildContext context) {
+    return CheckboxListTile(
+      contentPadding: EdgeInsets.zero,
+      value: _resultConfig.ctaButtonStyle?.iOSFontInfo != null,
+      onChanged: (value) {
+        setState(() {
+          if (value == true) {
+            _resultConfig.ctaButtonStyle ??= VideoPlayerCTAStyle();
+            _resultConfig.ctaButtonStyle?.iOSFontInfo = IOSFontInfo(
+              fontName: "TimesNewRomanPS-ItalicMT",
+            );
+          } else {
+            _resultConfig.ctaButtonStyle?.iOSFontInfo = null;
+          }
+        });
+      },
+      title: Text(
+        S.of(context).useIOSFontInfoForCTA,
       ),
     );
   }
@@ -385,6 +604,47 @@ class _StoryBlockConfigurationScreenState
       },
       title: Text(
         S.of(context).showPlaybackButton,
+      ),
+    );
+  }
+
+  Widget _buildMuteButtonShow(BuildContext context) {
+    return CheckboxListTile(
+      contentPadding: EdgeInsets.zero,
+      value: _resultConfig.showMuteButton,
+      onChanged: (value) {
+        setState(() {
+          _resultConfig.showMuteButton = value;
+        });
+      },
+      title: Text(
+        S.of(context).showMuteButton,
+      ),
+    );
+  }
+
+  Widget _buildCustomButtons(BuildContext context) {
+    return CheckboxListTile(
+      contentPadding: EdgeInsets.zero,
+      value: _resultConfig.buttonConfiguration != null,
+      onChanged: (value) {
+        setState(() {
+          if (value == true) {
+            _resultConfig.buttonConfiguration = VideoPlayerButtonConfiguration(
+              videoDetailButton: ButtonInfo(imageName: "custom_more"),
+              closeButton: ButtonInfo(imageName: "custom_close"),
+              muteButton: ButtonInfo(imageName: "custom_mute"),
+              unmuteButton: ButtonInfo(imageName: "custom_unmute"),
+              playButton: ButtonInfo(imageName: "custom_play"),
+              pauseButton: ButtonInfo(imageName: "custom_pause"),
+            );
+          } else {
+            _resultConfig.buttonConfiguration = null;
+          }
+        });
+      },
+      title: Text(
+        S.of(context).enableCustomButtons,
       ),
     );
   }

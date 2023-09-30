@@ -555,7 +555,7 @@ class _FeedConfigurationScreenState extends State<FeedConfigurationScreen> {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Text(S.of(context).dynamicContentParameters),
+        Text(S.of(context).vastAttributes),
         FWTextFormField(
           initialValue: _initVastAttributesString,
           hintText: S.of(context).vastAttributesHint,

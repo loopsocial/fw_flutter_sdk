@@ -81,19 +81,27 @@ class MessageLookup extends MessageLookupByLibrary {
         "creditCardInfo":
             MessageLookupByLibrary.simpleMessage("Credit Card Info"),
         "ctaBackgroundColor":
-            MessageLookupByLibrary.simpleMessage("CTA background color"),
+            MessageLookupByLibrary.simpleMessage("CTA background color(iOS)"),
+        "ctaBackgroundColor2": MessageLookupByLibrary.simpleMessage(
+            "CTA background color(iOS)(full-screen)"),
         "ctaBackgroundColorHint":
             MessageLookupByLibrary.simpleMessage("e.g. #c0c0c0"),
         "ctaDelayType": MessageLookupByLibrary.simpleMessage("CTA delay type"),
         "ctaDelayValue": m1,
         "ctaFontHint": MessageLookupByLibrary.simpleMessage("e.g. 14"),
-        "ctaFontSize": MessageLookupByLibrary.simpleMessage("CTA font size"),
+        "ctaFontSize":
+            MessageLookupByLibrary.simpleMessage("CTA font size(iOS)"),
+        "ctaFontSize2": MessageLookupByLibrary.simpleMessage(
+            "CTA font size(iOS)(full-screen)"),
         "ctaHighlightDelayType":
             MessageLookupByLibrary.simpleMessage("CTA highlight delay type"),
         "ctaHighlightDelayValue": m2,
         "ctaLinkContentScreenTitle": MessageLookupByLibrary.simpleMessage(
             "CTA Link Content(Flutter page)"),
-        "ctaTextColor": MessageLookupByLibrary.simpleMessage("CTA text color"),
+        "ctaTextColor":
+            MessageLookupByLibrary.simpleMessage("CTA text color(iOS)"),
+        "ctaTextColor2": MessageLookupByLibrary.simpleMessage(
+            "CTA text color(iOS)(full-screen)"),
         "ctaTextColorHint":
             MessageLookupByLibrary.simpleMessage("e.g. #000000"),
         "ctaWidth": MessageLookupByLibrary.simpleMessage("CTA width"),
@@ -143,7 +151,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "enableCustomLayoutName": MessageLookupByLibrary.simpleMessage(
             "Enable Custom Layout Name(Android)"),
         "enableCustomTapProductCard": MessageLookupByLibrary.simpleMessage(
-            "Enable Custom Tap Product Card(iOS)"),
+            "Enable custom tap product card"),
+        "enableKeepingAlive":
+            MessageLookupByLibrary.simpleMessage("Enable Keeping Alive"),
+        "enablePausePlayer":
+            MessageLookupByLibrary.simpleMessage("Enable Pause Player"),
         "enablePictureInPicture":
             MessageLookupByLibrary.simpleMessage("Enable Picture In Picture"),
         "feed": MessageLookupByLibrary.simpleMessage("Feed"),
@@ -179,13 +191,19 @@ class MessageLookup extends MessageLookupByLibrary {
         "hideLinkButton":
             MessageLookupByLibrary.simpleMessage("Hide link button"),
         "hidePlayIcon": MessageLookupByLibrary.simpleMessage("Hide Play Icon"),
+        "hideProductCardCtaButton": MessageLookupByLibrary.simpleMessage(
+            "Hide product card CTA Button"),
+        "hideProductCardPrice":
+            MessageLookupByLibrary.simpleMessage("Hide product card price"),
         "hideTitle": MessageLookupByLibrary.simpleMessage("Hide Title"),
+        "home": MessageLookupByLibrary.simpleMessage("Home"),
         "integration": MessageLookupByLibrary.simpleMessage("Integration"),
         "light": MessageLookupByLibrary.simpleMessage("Light"),
         "linkContentScreenTitle":
             MessageLookupByLibrary.simpleMessage("Link Content(Flutter page)"),
         "loop": MessageLookupByLibrary.simpleMessage("loop"),
         "more": MessageLookupByLibrary.simpleMessage("More"),
+        "multiFeeds": MessageLookupByLibrary.simpleMessage("Multi-feeds"),
         "muteOnFirstLaunch":
             MessageLookupByLibrary.simpleMessage("muteOnFirstLaunch"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
@@ -237,6 +255,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "playlistInfo": MessageLookupByLibrary.simpleMessage("Playlist Info"),
         "productCardCTAButtonText": MessageLookupByLibrary.simpleMessage(
             "Product card CTA button text"),
+        "productCardCornerRadius":
+            MessageLookupByLibrary.simpleMessage("Product card corner radius"),
+        "productCardCornerRadiusHint": MessageLookupByLibrary.simpleMessage(
+            "Enter product card corner radius"),
         "productCardTheme":
             MessageLookupByLibrary.simpleMessage("Product card theme"),
         "productIds": MessageLookupByLibrary.simpleMessage("Product ids"),
@@ -296,7 +318,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "showShareButton":
             MessageLookupByLibrary.simpleMessage("Show share button"),
         "showVideoDetailTitle":
-            MessageLookupByLibrary.simpleMessage("Show Video Detail Title"),
+            MessageLookupByLibrary.simpleMessage("Show video detail title"),
         "singleContentFeed":
             MessageLookupByLibrary.simpleMessage("Single Content Feed"),
         "singleContentFeedInfo":
@@ -353,12 +375,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "videoFeed": MessageLookupByLibrary.simpleMessage("Video Feed"),
         "videoFeedLoadError":
             MessageLookupByLibrary.simpleMessage("Fail to load video feed"),
-        "videoPlayerCompleteAction":
-            MessageLookupByLibrary.simpleMessage("Video Player CompleteAction"),
+        "videoPlayerCompleteAction": MessageLookupByLibrary.simpleMessage(
+            "Video player complete action"),
         "videoPlayerCompleteAction2": MessageLookupByLibrary.simpleMessage(
-            "Video Player CompleteAction(only apply to full-screen story block on iOS)"),
+            "Video player complete action(full-screen)"),
         "videoPlayerStyle":
-            MessageLookupByLibrary.simpleMessage("Video Player Style"),
+            MessageLookupByLibrary.simpleMessage("Video player style"),
+        "videoPlayerStyle2": MessageLookupByLibrary.simpleMessage(
+            "Video player style(full-screen)"),
         "videoURL": MessageLookupByLibrary.simpleMessage("Video URL"),
         "videolaunchBehavior":
             MessageLookupByLibrary.simpleMessage("Video Launch Behavior")
