@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.3.1]
+
+### Fixed
+
+- [Android] `StoryBlock` widget is not muted when leaving view port under certain conditions
+
 ## [2.3.0]
 
 ### Added
