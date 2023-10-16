@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.3.2]
+
+### Added
+
+- [Android] Support the multiple pinned products feature in the livestream
+
 ## [2.3.1]
 
 ### Fixed
