@@ -76,10 +76,17 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">ProductCardConfiguration deepCopy() =&gt; ProductCardConfiguration(
-      ctaButtonText: ctaButtonText,
       theme: theme,
       cornerRadius: cornerRadius,
       isCtaButtonHidden: isCtaButtonHidden,
+      ctaButtonText: ctaButtonText,
+      ctaButtonStyle: ctaButtonStyle?.deepCopy(),
+      priceConfiguration: priceConfiguration?.deepCopy(),
+      width: width,
+      height: height,
+      backgroundColor: backgroundColor,
+      iconConfiguration: iconConfiguration?.deepCopy(),
+      nameLabel: nameLabel?.deepCopy(),
     );</code></pre>
 </section>
 
@@ -103,6 +110,7 @@
 
 
     <h5>ProductCardConfiguration class</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
   </div><!--/.sidebar-offcanvas-->
 
   <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
@@ -113,7 +121,7 @@
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.3.2
+      2.4.0
   </span>
 
   

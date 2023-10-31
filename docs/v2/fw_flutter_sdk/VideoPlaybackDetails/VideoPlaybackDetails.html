@@ -81,7 +81,17 @@
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">VideoPlaybackDetails</code></pre>
+  <pre class="language-dart"><code class="language-dart">VideoPlaybackDetails(
+    {required this.videoId,
+    this.duration,
+    this.caption,
+    this.badge,
+    this.playerSize,
+    this.hasCTA,
+    this.progress,
+    this.ctaActionType,
+    this.ctaActionURL,
+    this.feedId});</code></pre>
 </section>
 
 
@@ -104,6 +114,7 @@
 
 
     <h5>VideoPlaybackDetails class</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
   </div><!--/.sidebar-offcanvas-left-->
 
   <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
@@ -114,7 +125,7 @@
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.3.2
+      2.4.0
   </span>
 
   

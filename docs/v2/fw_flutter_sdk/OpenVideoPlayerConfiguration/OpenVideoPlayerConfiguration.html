@@ -74,6 +74,7 @@
 <li><span class="parameter" id="-param-shareBaseURL"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">shareBaseURL</span>, </span></li>
 <li><span class="parameter" id="-param-ctaWidth"><span class="type-annotation"><a href="../../fw_flutter_sdk/VideoPlayerCTAWidth.html">VideoPlayerCTAWidth</a>?</span> <span class="parameter-name">ctaWidth</span>, </span></li>
 <li><span class="parameter" id="-param-buttonConfiguration"><span class="type-annotation"><a href="../../fw_flutter_sdk/VideoPlayerButtonConfiguration-class.html">VideoPlayerButtonConfiguration</a>?</span> <span class="parameter-name">buttonConfiguration</span>, </span></li>
+<li><span class="parameter" id="-param-videoPlayerLogoConfiguration"><span class="type-annotation"><a href="../../fw_flutter_sdk/VideoPlayerLogoConfiguration-class.html">VideoPlayerLogoConfiguration</a>?</span> <span class="parameter-name">videoPlayerLogoConfiguration</span>, </span></li>
 <li><span class="parameter" id="-param-showVideoDetailTitle"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">showVideoDetailTitle</span>, </span></li>
 <li><span class="parameter" id="-param-enablePictureInPicture"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">enablePictureInPicture</span>}</span></li>
 </ol>)
@@ -85,7 +86,23 @@
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">OpenVideoPlayerConfiguration</code></pre>
+  <pre class="language-dart"><code class="language-dart">OpenVideoPlayerConfiguration({
+  super.playerStyle,
+  super.videoCompleteAction,
+  super.showShareButton,
+  super.ctaButtonStyle,
+  super.showPlaybackButton,
+  super.showMuteButton,
+  super.showBranding,
+  super.ctaDelay,
+  super.ctaHighlightDelay,
+  super.shareBaseURL,
+  super.ctaWidth,
+  super.buttonConfiguration,
+  super.videoPlayerLogoConfiguration,
+  super.showVideoDetailTitle,
+  this.enablePictureInPicture,
+});</code></pre>
 </section>
 
 
@@ -108,6 +125,7 @@
 
 
     <h5>OpenVideoPlayerConfiguration class</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
   </div><!--/.sidebar-offcanvas-left-->
 
   <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
@@ -118,7 +136,7 @@
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.3.2
+      2.4.0
   </span>
 
   

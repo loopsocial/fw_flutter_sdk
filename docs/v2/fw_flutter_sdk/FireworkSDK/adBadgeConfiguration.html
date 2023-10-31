@@ -110,13 +110,6 @@
       _adBadgeConfiguration?.textColor != adBadgeConfiguration?.textColor;
 
   _adBadgeConfiguration = adBadgeConfiguration;
-  if (valueHasChanged) {
-    FWEventBus.getInstance().fire(
-      FWEvent(
-        eventName: FWEventName.adBadgeConfigurationUpdated,
-      ),
-    );
-  }
 
   final nativeMethodName =
       FireworkSDKNativeMethodName.setAdBadgeConfiguration.name;
@@ -125,7 +118,16 @@
     arg = AdBadgeConfigurationUtil.toJson(adBadgeConfiguration);
   }
   FWMethodChannelUtil.getFirewokSDKChannel()
-      .invokeMethod(nativeMethodName, arg);
+      .invokeMethod(nativeMethodName, arg)
+      .then((_) {
+    if (valueHasChanged) {
+      FWEventBus.getInstance().fire(
+        FWEvent(
+          eventName: FWEventName.adBadgeConfigurationUpdated,
+        ),
+      );
+    }
+  });
 }</code></pre>
 </section>
 
@@ -150,6 +152,7 @@
 
 
     <h5>FireworkSDK class</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
   </div><!--/.sidebar-offcanvas-->
 
   <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
@@ -160,7 +163,7 @@
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.3.2
+      2.4.0
   </span>
 
   

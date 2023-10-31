@@ -62,7 +62,11 @@
 
     <section class="multi-line-signature">
       
-      <span class="name ">ProductCardPriceConfiguration</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-isHidden">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">isHidden</span>}</span></li>
+      <span class="name ">ProductCardPriceConfiguration</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-isHidden">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">isHidden</span>, </span></li>
+<li><span class="parameter" id="-param-axis"><span class="type-annotation"><a href="../../fw_flutter_sdk/ProductCardPriceLabelAxis.html">ProductCardPriceLabelAxis</a>?</span> <span class="parameter-name">axis</span>, </span></li>
+<li><span class="parameter" id="-param-priceLabel"><span class="type-annotation"><a href="../../fw_flutter_sdk/ProductCardLabelConfiguration-class.html">ProductCardLabelConfiguration</a>?</span> <span class="parameter-name">priceLabel</span>, </span></li>
+<li><span class="parameter" id="-param-originalPriceLabel"><span class="type-annotation"><a href="../../fw_flutter_sdk/ProductCardLabelConfiguration-class.html">ProductCardLabelConfiguration</a>?</span> <span class="parameter-name">originalPriceLabel</span>, </span></li>
+<li><span class="parameter" id="-param-isPriceFirst"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">isPriceFirst</span>}</span></li>
 </ol>)
     </section>
 
@@ -72,7 +76,13 @@
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">ProductCardPriceConfiguration</code></pre>
+  <pre class="language-dart"><code class="language-dart">ProductCardPriceConfiguration({
+  this.isHidden,
+  this.axis,
+  this.priceLabel,
+  this.originalPriceLabel,
+  this.isPriceFirst,
+});</code></pre>
 </section>
 
 
@@ -95,6 +105,7 @@
 
 
     <h5>ProductCardPriceConfiguration class</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
   </div><!--/.sidebar-offcanvas-left-->
 
   <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
@@ -105,7 +116,7 @@
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.3.2
+      2.4.0
   </span>
 
   

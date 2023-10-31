@@ -105,17 +105,21 @@
   <pre class="language-dart"><code class="language-dart">set shareBaseURL(String? shareBaseURL) {
   final shareBaseURLChanged = _shareBaseURL != shareBaseURL;
   _shareBaseURL = shareBaseURL;
-  if (shareBaseURLChanged) {
-    FWEventBus.getInstance().fire(
-      FWEvent(
-        eventName: FWEventName.shareBaseURLUpdated,
-      ),
-    );
-  }
 
   final nativeMethodName = FireworkSDKNativeMethodName.setShareBaseURL.name;
   FWMethodChannelUtil.getFirewokSDKChannel()
-      .invokeMethod(nativeMethodName, _shareBaseURL);
+      .invokeMethod(nativeMethodName, _shareBaseURL)
+      .then(
+    (_) {
+      if (shareBaseURLChanged) {
+        FWEventBus.getInstance().fire(
+          FWEvent(
+            eventName: FWEventName.shareBaseURLUpdated,
+          ),
+        );
+      }
+    },
+  );
 }</code></pre>
 </section>
 
@@ -140,6 +144,7 @@
 
 
     <h5>FireworkSDK class</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
   </div><!--/.sidebar-offcanvas-->
 
   <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
@@ -150,7 +155,7 @@
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.3.2
+      2.4.0
   </span>
 
   

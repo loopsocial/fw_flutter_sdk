@@ -87,13 +87,6 @@
 }) async {
   final videoLaunchBehaviorUpdated =
       _videoLaunchBehavior != videoLaunchBehavior;
-  if (videoLaunchBehaviorUpdated) {
-    FWEventBus.getInstance().fire(
-      FWEvent(
-        eventName: FWEventName.videoLaunchBehaviorUpdated,
-      ),
-    );
-  }
 
   final nativeMethodName = FireworkSDKNativeMethodName.init.name;
   Map&lt;String, dynamic&gt; arg = {};
@@ -107,6 +100,13 @@
 
   await FWMethodChannelUtil.getFirewokSDKChannel()
       .invokeMethod(nativeMethodName, arg);
+  if (videoLaunchBehaviorUpdated) {
+    FWEventBus.getInstance().fire(
+      FWEvent(
+        eventName: FWEventName.videoLaunchBehaviorUpdated,
+      ),
+    );
+  }
 
   final shoppingInitNativeMethodName = ShoppingNativeMethodName.init.name;
   await FWMethodChannelUtil.getShoppingChannel().invokeMethod(
@@ -141,6 +141,7 @@
 
 
     <h5>FireworkSDK class</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
   </div><!--/.sidebar-offcanvas-->
 
   <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
@@ -151,7 +152,7 @@
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.3.2
+      2.4.0
   </span>
 
   
