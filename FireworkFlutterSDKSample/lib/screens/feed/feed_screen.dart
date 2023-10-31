@@ -414,34 +414,76 @@ class _FeedScreenState extends State<FeedScreen> {
 
     return _mode == VideoFeedMode.row
         ? Expanded(
-            child: ListView(
-                padding: defaultTargetPlatform == TargetPlatform.android
-                    ? _androidPadding
-                    : EdgeInsets.zero,
-                children: [
-                  Container(
-                    color: feedConfiguration.titlePosition ==
-                            VideoFeedTitlePosition.stacked
-                        ? Colors.grey
-                        : null,
-                    child: feedWidget,
-                  ),
-                  _buildListItemPlaceholder(context),
-                  _buildListItemPlaceholder(context),
-                  _buildListItemPlaceholder(context),
-                  _buildListItemPlaceholder(context),
-                  _buildListItemPlaceholder(context),
-                  _buildListItemPlaceholder(context),
-                  _buildListItemPlaceholder(context),
-                  _buildListItemPlaceholder(context),
-                  _buildListItemPlaceholder(context),
-                  _buildListItemPlaceholder(context),
-                  _buildListItemPlaceholder(context),
-                  _buildListItemPlaceholder(context),
-                  _buildListItemPlaceholder(context),
-                  _buildListItemPlaceholder(context),
-                  _buildListItemPlaceholder(context),
-                ]),
+            child: ListView(children: [
+              Container(
+                color: feedConfiguration.titlePosition ==
+                        VideoFeedTitlePosition.stacked
+                    ? Colors.grey
+                    : null,
+                child: Padding(
+                  padding: defaultTargetPlatform == TargetPlatform.android
+                      ? _androidPadding
+                      : EdgeInsets.zero,
+                  child: feedWidget,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: _buildListItemPlaceholder(context),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: _buildListItemPlaceholder(context),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: _buildListItemPlaceholder(context),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: _buildListItemPlaceholder(context),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: _buildListItemPlaceholder(context),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: _buildListItemPlaceholder(context),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: _buildListItemPlaceholder(context),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: _buildListItemPlaceholder(context),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: _buildListItemPlaceholder(context),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: _buildListItemPlaceholder(context),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: _buildListItemPlaceholder(context),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: _buildListItemPlaceholder(context),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: _buildListItemPlaceholder(context),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: _buildListItemPlaceholder(context),
+              ),
+            ]),
           )
         : Expanded(
             child: Padding(
@@ -485,11 +527,11 @@ class _FeedScreenState extends State<FeedScreen> {
       child: ListView(
         padding: defaultTargetPlatform == TargetPlatform.android
             ? _androidPadding
-            : EdgeInsets.zero,
+            : const EdgeInsets.symmetric(horizontal: 10),
         children: [
           StoryBlock(
             wantKeepAlive: _enableKeepingAlive,
-            height: 400,
+            height: defaultTargetPlatform == TargetPlatform.android ? 400 : 500,
             source: source,
             channel: channel,
             playlist: playlist,

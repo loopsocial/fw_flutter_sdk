@@ -70,10 +70,13 @@
         
 <section class="desc markdown">
   <p>The callback is triggered when there are no items in the video feed.
-It means loading successfully but the back end returns an empty list.
-It means the load failed and list is empty.
+The callback is triggered in the following cases:</p>
+<ol>
+<li>Loading successfully but the back end returns an empty list.</li>
+<li>The load failed and list is empty.
 onVideoFeedLoadFinished will also be triggered when onVideoFeedEmpty is triggered.
-Only supported on Android.</p>
+Only supported on Android.</li>
+</ol>
 </section>
 
         
@@ -102,6 +105,7 @@ Only supported on Android.</p>
 
 
     <h5>VideoFeed class</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
   </div><!--/.sidebar-offcanvas-->
 
   <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
@@ -112,7 +116,7 @@ Only supported on Android.</p>
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.3.2
+      2.4.0
   </span>
 
   

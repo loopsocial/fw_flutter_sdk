@@ -1,11 +1,11 @@
 PODS:
-  - FireworkVideo (1.14.0)
+  - FireworkVideo (1.15.0)
   - Flutter (1.0.0)
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
   - fw_flutter_sdk (1.0.0):
-    - FireworkVideo (= 1.14.0)
+    - FireworkVideo (= 1.15.0)
     - Flutter
   - path_provider_foundation (0.0.1):
     - Flutter
@@ -19,7 +19,7 @@ PODS:
 DEPENDENCIES:
   - Flutter (from `Flutter`)
   - fw_flutter_sdk (from `.symlinks/plugins/fw_flutter_sdk/ios`)
-  - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/ios`)
+  - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
   - sqflite (from `.symlinks/plugins/sqflite/ios`)
   - webview_flutter_wkwebview (from `.symlinks/plugins/webview_flutter_wkwebview/ios`)
 
@@ -34,17 +34,17 @@ EXTERNAL SOURCES:
   fw_flutter_sdk:
     :path: ".symlinks/plugins/fw_flutter_sdk/ios"
   path_provider_foundation:
-    :path: ".symlinks/plugins/path_provider_foundation/ios"
+    :path: ".symlinks/plugins/path_provider_foundation/darwin"
   sqflite:
     :path: ".symlinks/plugins/sqflite/ios"
   webview_flutter_wkwebview:
     :path: ".symlinks/plugins/webview_flutter_wkwebview/ios"
 
 SPEC CHECKSUMS:
-  FireworkVideo: c8af446a350e2486e86c0a789ecfd4a57ce6facc
+  FireworkVideo: fae657a5093efadbf7f4aa723466aee8dcf47824
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
-  fw_flutter_sdk: 932ecc685efbdd35713930dbcae0d5e860250c0a
+  fw_flutter_sdk: 83026fe90211f5037acdfe51c42852b52095edbe
   path_provider_foundation: 29f094ae23ebbca9d3d0cec13889cd9060c0e943
   sqflite: 31f7eba61e3074736dff8807a9b41581e4f7f15a
   webview_flutter_wkwebview: 2e2d318f21a5e036e2c3f26171342e95908bd60a

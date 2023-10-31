@@ -104,23 +104,48 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">set productInfoViewConfiguration(ProductInfoViewConfiguration? value) {
+  final valueChanged = _productInfoViewConfiguration != value;
   _productInfoViewConfiguration = value;
   final nativeMethodName =
       ShoppingNativeMethodName.setProductInfoViewConfiguration.name;
   if (FWGlobalState.getInstance().sdkInitCalled) {
-    FWMethodChannelUtil.getShoppingChannel().invokeMethod(
+    FWMethodChannelUtil.getShoppingChannel()
+        .invokeMethod(
       nativeMethodName,
       ProductInfoViewConfigurationUtil.toJson(
         value ?? ProductInfoViewConfiguration(),
       ),
+    )
+        .then(
+      (_) {
+        if (valueChanged) {
+          FWEventBus.getInstance().fire(
+            FWEvent(
+              eventName: FWEventName.productInfoViewConfigurationUpdated,
+            ),
+          );
+        }
+      },
     );
   } else {
     FWGlobalState.getInstance().sdkInitCalledFuture.then((_) {
-      FWMethodChannelUtil.getShoppingChannel().invokeMethod(
+      FWMethodChannelUtil.getShoppingChannel()
+          .invokeMethod(
         nativeMethodName,
         ProductInfoViewConfigurationUtil.toJson(
           value ?? ProductInfoViewConfiguration(),
         ),
+      )
+          .then(
+        (_) {
+          if (valueChanged) {
+            FWEventBus.getInstance().fire(
+              FWEvent(
+                eventName: FWEventName.productInfoViewConfigurationUpdated,
+              ),
+            );
+          }
+        },
       );
     });
   }
@@ -148,6 +173,7 @@
 
 
     <h5>VideoShopping class</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
   </div><!--/.sidebar-offcanvas-->
 
   <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
@@ -158,7 +184,7 @@
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.3.2
+      2.4.0
   </span>
 
   

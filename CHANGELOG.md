@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [2.4.0]
+
+### Added
+
+- [iOS] Support showing and hiding product price based on API
+- [iOS] Add more configurations for product card, including width and height, background color, price label style, etc.
+- [iOS] Support displaying custom logo instead of ellipsis on the player
+- [iOS] Support pausing and resuming video when handling product card and CTA button click events
+- Add a util method for calculating the height of the grid feed
+
 ## [2.3.2]
 
 ### Added

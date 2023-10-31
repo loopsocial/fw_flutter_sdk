@@ -5,6 +5,7 @@ class FWTextFormField extends StatefulWidget {
   final String? hintText;
   final int? maxLines;
   final int? minLines;
+  final bool? enabled;
   final FormFieldSetter<String>? onSaved;
   final FormFieldValidator<String>? validator;
   final TextEditingController? controller;
@@ -18,6 +19,7 @@ class FWTextFormField extends StatefulWidget {
     this.onSaved,
     this.validator,
     this.controller,
+    this.enabled,
   }) : super(key: key);
 
   @override
@@ -47,6 +49,7 @@ class _FWTextFormFieldState extends State<FWTextFormField> {
       ),
       maxLines: widget.maxLines,
       minLines: widget.minLines,
+      enabled: widget.enabled,
       validator: widget.validator,
       onSaved: widget.onSaved,
     );

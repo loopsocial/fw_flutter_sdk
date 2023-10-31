@@ -171,6 +171,14 @@ class _PlayerConfigurationScreenState extends State<PlayerConfigurationScreen> {
               const SizedBox(
                 height: 20,
               ),
+              _buildPlayerLogoOptionSegmentedControl(context),
+              const SizedBox(
+                height: 20,
+              ),
+              _buildEncodedId(context),
+              const SizedBox(
+                height: 20,
+              ),
               _buildButtonList(context),
             ],
           ),
@@ -664,6 +672,89 @@ class _PlayerConfigurationScreenState extends State<PlayerConfigurationScreen> {
               _resultConfig.shareBaseURL = text;
             } else {
               _resultConfig.shareBaseURL = null;
+            }
+          },
+        )
+      ],
+    );
+  }
+
+  Widget _buildPlayerLogoOptionSegmentedControl(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(
+          S.of(context).playerLogoOption,
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        CupertinoSegmentedControl<VideoPlayerLogoOption>(
+          padding: EdgeInsets.zero,
+          onValueChanged: (value) {
+            setState(() {
+              _resultConfig.videoPlayerLogoConfiguration =
+                  VideoPlayerLogoConfiguration(
+                option: value,
+              );
+            });
+          },
+          children: {
+            VideoPlayerLogoOption.disabled: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Text(
+                S.of(context).disabled,
+              ),
+            ),
+            VideoPlayerLogoOption.creator: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Text(
+                S.of(context).creator,
+              ),
+            ),
+            VideoPlayerLogoOption.channelAggregator: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Text(
+                S.of(context).channelAggregator,
+              ),
+            ),
+          },
+          groupValue: _resultConfig.videoPlayerLogoConfiguration?.option,
+        ),
+      ],
+    );
+  }
+
+  Widget _buildEncodedId(BuildContext context) {
+    final option = _resultConfig.videoPlayerLogoConfiguration?.option;
+    final enabled = option == VideoPlayerLogoOption.creator ||
+        option == VideoPlayerLogoOption.channelAggregator;
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(S.of(context).playerLogoEncodedId),
+        FWTextFormField(
+          initialValue: _resultConfig.videoPlayerLogoConfiguration?.encodedId,
+          hintText: S.of(context).channelIdHint,
+          enabled: enabled,
+          validator: (text) {
+            if (!enabled) {
+              return null;
+            }
+
+            return ValidationUtil.validId(
+              text: text,
+              errorMessage: S.of(context).channelIdError,
+              requiredError: S.of(context).channelIdRequiredError,
+            );
+          },
+          onSaved: (text) {
+            if (enabled) {
+              _resultConfig.videoPlayerLogoConfiguration?.encodedId = text;
+            } else {
+              _resultConfig.videoPlayerLogoConfiguration?.encodedId = null;
             }
           },
         )

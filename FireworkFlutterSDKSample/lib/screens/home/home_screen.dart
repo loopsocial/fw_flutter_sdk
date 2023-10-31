@@ -365,13 +365,11 @@ class _HomeScreenState extends State<HomeScreen> {
           height: 20,
         ),
         Padding(
-          padding: defaultTargetPlatform == TargetPlatform.android
-              ? const EdgeInsets.symmetric(horizontal: 10)
-              : EdgeInsets.zero,
+          padding: const EdgeInsets.symmetric(horizontal: 10),
           child: StoryBlock(
             wantKeepAlive: _enableKeepingAlive,
             cornerRadius: 20,
-            height: 400,
+            height: defaultTargetPlatform == TargetPlatform.android ? 400 : 500,
             source: StoryBlockSource.playlist,
             channel: e.channelId,
             playlist: e.playlistId,

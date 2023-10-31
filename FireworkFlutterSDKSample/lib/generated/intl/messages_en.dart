@@ -30,6 +30,10 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m4(version) => "Firework Android SDK version: ${version}";
 
+  static String m5(min, max) => "Please enter height in [${min}, ${max}]";
+
+  static String m6(min, max) => "Please enter width in [${min}, ${max}]";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "CVC": MessageLookupByLibrary.simpleMessage("CVN"),
@@ -47,6 +51,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "cardNumber": MessageLookupByLibrary.simpleMessage("Card Number"),
         "cartPage": MessageLookupByLibrary.simpleMessage("Cart Page"),
         "changeAppLanguage": m0,
+        "channelAggregator":
+            MessageLookupByLibrary.simpleMessage("Channel Aggregator"),
         "channelFeed": MessageLookupByLibrary.simpleMessage("Channel Feed"),
         "channelId": MessageLookupByLibrary.simpleMessage("Channel Id"),
         "channelIdError": MessageLookupByLibrary.simpleMessage(
@@ -78,6 +84,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "cornerRadiusHint": MessageLookupByLibrary.simpleMessage("e.g. 30"),
         "cornerRadiusRangeError": MessageLookupByLibrary.simpleMessage(
             "Please enter corner radius in [0, 50]"),
+        "creator": MessageLookupByLibrary.simpleMessage("Creator"),
         "creditCardInfo":
             MessageLookupByLibrary.simpleMessage("Credit Card Info"),
         "ctaBackgroundColor":
@@ -118,6 +125,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "disableCustomClickCartIconCallbackSuccessfully":
             MessageLookupByLibrary.simpleMessage(
                 "Disable custom click cart icon callback successfully"),
+        "disabled": MessageLookupByLibrary.simpleMessage("Disabled"),
         "discoverFeed": MessageLookupByLibrary.simpleMessage("Discover Feed"),
         "dynamicContentFeed":
             MessageLookupByLibrary.simpleMessage("Dynamic Content Feed"),
@@ -188,6 +196,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Hashtag Playlist Feed"),
         "hashtagPlaylistInfo":
             MessageLookupByLibrary.simpleMessage("Hashtag Playlist Info"),
+        "heightError":
+            MessageLookupByLibrary.simpleMessage("Please enter correct height"),
+        "heightRangeError": m5,
         "hideLinkButton":
             MessageLookupByLibrary.simpleMessage("Hide link button"),
         "hidePlayIcon": MessageLookupByLibrary.simpleMessage("Hide Play Icon"),
@@ -231,6 +242,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "Please enter play icon width in [0, 100]"),
         "playerConfiguration":
             MessageLookupByLibrary.simpleMessage("Player Configuration"),
+        "playerLogoEncodedId":
+            MessageLookupByLibrary.simpleMessage("Player logo encoded id"),
+        "playerLogoOption":
+            MessageLookupByLibrary.simpleMessage("Player logo option"),
         "playerStyle": MessageLookupByLibrary.simpleMessage("Player style"),
         "playlistFeed": MessageLookupByLibrary.simpleMessage("Playlist Feed"),
         "playlistGroupFeed":
@@ -253,14 +268,63 @@ class MessageLookup extends MessageLookupByLibrary {
         "playlistIdRequiredError":
             MessageLookupByLibrary.simpleMessage("Please enter playlist id"),
         "playlistInfo": MessageLookupByLibrary.simpleMessage("Playlist Info"),
+        "productCardBackgroundColor": MessageLookupByLibrary.simpleMessage(
+            "Product card background color"),
+        "productCardCTAButtonFontSize": MessageLookupByLibrary.simpleMessage(
+            "Font size of product card CTA button(iOS)"),
         "productCardCTAButtonText": MessageLookupByLibrary.simpleMessage(
             "Product card CTA button text"),
+        "productCardCTAButtonTextColor": MessageLookupByLibrary.simpleMessage(
+            "Text color of product card CTA button(iOS)"),
+        "productCardCTAButtonTextColorHint":
+            MessageLookupByLibrary.simpleMessage("e.g. #ffffff"),
         "productCardCornerRadius":
             MessageLookupByLibrary.simpleMessage("Product card corner radius"),
         "productCardCornerRadiusHint": MessageLookupByLibrary.simpleMessage(
             "Enter product card corner radius"),
+        "productCardHeight":
+            MessageLookupByLibrary.simpleMessage("Product card height(iOS)"),
+        "productCardHeightHint":
+            MessageLookupByLibrary.simpleMessage("e.g. 88"),
+        "productCardIconCornerRadius": MessageLookupByLibrary.simpleMessage(
+            "Product card icon corner radius"),
+        "productCardIconCornerRadiusHint": MessageLookupByLibrary.simpleMessage(
+            "Enter product card icon corner radius"),
+        "productCardIsPriceFirst": MessageLookupByLibrary.simpleMessage(
+            "Product card is price first(iOS)"),
+        "productCardNameLabelFontSize": MessageLookupByLibrary.simpleMessage(
+            "Font size of product card name label(iOS)"),
+        "productCardNameLabelLines": MessageLookupByLibrary.simpleMessage(
+            "Number of lines for product card name label(iOS)"),
+        "productCardNameLabelTextColor": MessageLookupByLibrary.simpleMessage(
+            "Text color of product card name label(iOS)"),
+        "productCardNameLabelTextColorHint":
+            MessageLookupByLibrary.simpleMessage("e.g. #ffffff"),
+        "productCardOriginalPriceLabelFontSize":
+            MessageLookupByLibrary.simpleMessage(
+                "Font size of product card original price label(iOS)"),
+        "productCardOriginalPriceLabelLines":
+            MessageLookupByLibrary.simpleMessage(
+                "Number of lines for product card original price label(iOS)"),
+        "productCardOriginalPriceLabelTextColor":
+            MessageLookupByLibrary.simpleMessage(
+                "Text color of product card original price label(iOS)"),
+        "productCardOriginalPriceLabelTextColorHint":
+            MessageLookupByLibrary.simpleMessage("e.g. #ffffff"),
+        "productCardPriceLabelFontSize": MessageLookupByLibrary.simpleMessage(
+            "Font size of product card price label(iOS)"),
+        "productCardPriceLabelLines": MessageLookupByLibrary.simpleMessage(
+            "Number of lines for product card price label(iOS)"),
+        "productCardPriceLabelTextColor": MessageLookupByLibrary.simpleMessage(
+            "Text color of product card price label(iOS)"),
+        "productCardPriceLabelTextColorHint":
+            MessageLookupByLibrary.simpleMessage("e.g. #ffffff"),
         "productCardTheme":
             MessageLookupByLibrary.simpleMessage("Product card theme"),
+        "productCardWidth":
+            MessageLookupByLibrary.simpleMessage("Product card width(iOS)"),
+        "productCardWidthHint":
+            MessageLookupByLibrary.simpleMessage("e.g. 218"),
         "productIds": MessageLookupByLibrary.simpleMessage("Product ids"),
         "productsIdsHint": MessageLookupByLibrary.simpleMessage(
             "e.g. product_id_1,product_id_2"),
@@ -385,6 +449,9 @@ class MessageLookup extends MessageLookupByLibrary {
             "Video player style(full-screen)"),
         "videoURL": MessageLookupByLibrary.simpleMessage("Video URL"),
         "videolaunchBehavior":
-            MessageLookupByLibrary.simpleMessage("Video Launch Behavior")
+            MessageLookupByLibrary.simpleMessage("Video Launch Behavior"),
+        "widthError":
+            MessageLookupByLibrary.simpleMessage("Please enter correct width"),
+        "widthRangeError": m6
       };
 }

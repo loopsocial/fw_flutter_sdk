@@ -76,7 +76,12 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">ProductCardPriceConfiguration deepCopy() =&gt; ProductCardPriceConfiguration(
+      &#47;&#47; ignore: deprecated_member_use_from_same_package
       isHidden: isHidden,
+      axis: axis,
+      priceLabel: priceLabel?.deepCopy(),
+      originalPriceLabel: originalPriceLabel?.deepCopy(),
+      isPriceFirst: isPriceFirst,
     );</code></pre>
 </section>
 
@@ -100,6 +105,7 @@
 
 
     <h5>ProductCardPriceConfiguration class</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
   </div><!--/.sidebar-offcanvas-->
 
   <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
@@ -110,7 +116,7 @@
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.3.2
+      2.4.0
   </span>
 
   

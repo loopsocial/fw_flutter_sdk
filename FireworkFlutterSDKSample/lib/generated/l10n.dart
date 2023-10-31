@@ -2229,6 +2229,326 @@ class S {
       args: [],
     );
   }
+
+  /// `Player logo option`
+  String get playerLogoOption {
+    return Intl.message(
+      'Player logo option',
+      name: 'playerLogoOption',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Disabled`
+  String get disabled {
+    return Intl.message(
+      'Disabled',
+      name: 'disabled',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Creator`
+  String get creator {
+    return Intl.message(
+      'Creator',
+      name: 'creator',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Channel Aggregator`
+  String get channelAggregator {
+    return Intl.message(
+      'Channel Aggregator',
+      name: 'channelAggregator',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Player logo encoded id`
+  String get playerLogoEncodedId {
+    return Intl.message(
+      'Player logo encoded id',
+      name: 'playerLogoEncodedId',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Text color of product card CTA button(iOS)`
+  String get productCardCTAButtonTextColor {
+    return Intl.message(
+      'Text color of product card CTA button(iOS)',
+      name: 'productCardCTAButtonTextColor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Font size of product card CTA button(iOS)`
+  String get productCardCTAButtonFontSize {
+    return Intl.message(
+      'Font size of product card CTA button(iOS)',
+      name: 'productCardCTAButtonFontSize',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `e.g. #ffffff`
+  String get productCardCTAButtonTextColorHint {
+    return Intl.message(
+      'e.g. #ffffff',
+      name: 'productCardCTAButtonTextColorHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Product card width(iOS)`
+  String get productCardWidth {
+    return Intl.message(
+      'Product card width(iOS)',
+      name: 'productCardWidth',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `e.g. 218`
+  String get productCardWidthHint {
+    return Intl.message(
+      'e.g. 218',
+      name: 'productCardWidthHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Product card height(iOS)`
+  String get productCardHeight {
+    return Intl.message(
+      'Product card height(iOS)',
+      name: 'productCardHeight',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `e.g. 88`
+  String get productCardHeightHint {
+    return Intl.message(
+      'e.g. 88',
+      name: 'productCardHeightHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter correct width`
+  String get widthError {
+    return Intl.message(
+      'Please enter correct width',
+      name: 'widthError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter width in [{min}, {max}]`
+  String widthRangeError(Object min, Object max) {
+    return Intl.message(
+      'Please enter width in [$min, $max]',
+      name: 'widthRangeError',
+      desc: '',
+      args: [min, max],
+    );
+  }
+
+  /// `Please enter correct height`
+  String get heightError {
+    return Intl.message(
+      'Please enter correct height',
+      name: 'heightError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter height in [{min}, {max}]`
+  String heightRangeError(Object min, Object max) {
+    return Intl.message(
+      'Please enter height in [$min, $max]',
+      name: 'heightRangeError',
+      desc: '',
+      args: [min, max],
+    );
+  }
+
+  /// `Product card background color`
+  String get productCardBackgroundColor {
+    return Intl.message(
+      'Product card background color',
+      name: 'productCardBackgroundColor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Product card icon corner radius`
+  String get productCardIconCornerRadius {
+    return Intl.message(
+      'Product card icon corner radius',
+      name: 'productCardIconCornerRadius',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter product card icon corner radius`
+  String get productCardIconCornerRadiusHint {
+    return Intl.message(
+      'Enter product card icon corner radius',
+      name: 'productCardIconCornerRadiusHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Text color of product card name label(iOS)`
+  String get productCardNameLabelTextColor {
+    return Intl.message(
+      'Text color of product card name label(iOS)',
+      name: 'productCardNameLabelTextColor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Font size of product card name label(iOS)`
+  String get productCardNameLabelFontSize {
+    return Intl.message(
+      'Font size of product card name label(iOS)',
+      name: 'productCardNameLabelFontSize',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `e.g. #ffffff`
+  String get productCardNameLabelTextColorHint {
+    return Intl.message(
+      'e.g. #ffffff',
+      name: 'productCardNameLabelTextColorHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Number of lines for product card name label(iOS)`
+  String get productCardNameLabelLines {
+    return Intl.message(
+      'Number of lines for product card name label(iOS)',
+      name: 'productCardNameLabelLines',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Text color of product card price label(iOS)`
+  String get productCardPriceLabelTextColor {
+    return Intl.message(
+      'Text color of product card price label(iOS)',
+      name: 'productCardPriceLabelTextColor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Font size of product card price label(iOS)`
+  String get productCardPriceLabelFontSize {
+    return Intl.message(
+      'Font size of product card price label(iOS)',
+      name: 'productCardPriceLabelFontSize',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `e.g. #ffffff`
+  String get productCardPriceLabelTextColorHint {
+    return Intl.message(
+      'e.g. #ffffff',
+      name: 'productCardPriceLabelTextColorHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Number of lines for product card price label(iOS)`
+  String get productCardPriceLabelLines {
+    return Intl.message(
+      'Number of lines for product card price label(iOS)',
+      name: 'productCardPriceLabelLines',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Text color of product card original price label(iOS)`
+  String get productCardOriginalPriceLabelTextColor {
+    return Intl.message(
+      'Text color of product card original price label(iOS)',
+      name: 'productCardOriginalPriceLabelTextColor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Font size of product card original price label(iOS)`
+  String get productCardOriginalPriceLabelFontSize {
+    return Intl.message(
+      'Font size of product card original price label(iOS)',
+      name: 'productCardOriginalPriceLabelFontSize',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `e.g. #ffffff`
+  String get productCardOriginalPriceLabelTextColorHint {
+    return Intl.message(
+      'e.g. #ffffff',
+      name: 'productCardOriginalPriceLabelTextColorHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Number of lines for product card original price label(iOS)`
+  String get productCardOriginalPriceLabelLines {
+    return Intl.message(
+      'Number of lines for product card original price label(iOS)',
+      name: 'productCardOriginalPriceLabelLines',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Product card is price first(iOS)`
+  String get productCardIsPriceFirst {
+    return Intl.message(
+      'Product card is price first(iOS)',
+      name: 'productCardIsPriceFirst',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
