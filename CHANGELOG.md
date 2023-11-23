@@ -1,10 +1,18 @@
 # CHANGELOG
 
+## [2.4.2-beta.1]
+
+- Firework Flutter SDK beta release
+
+### Changed
+
+- [Android] Remove the logic that displays the loader by default when users click on the shopping CTA
+
 ## [2.4.1]
 
 ### Added
 
-- [Android] Fix some issues
+- [Android] Bug fixes
 
 ## [2.4.0]
 

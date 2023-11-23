@@ -25,11 +25,9 @@ class HostAppService {
 
   factory HostAppService.getInstance() => _getInstance();
 
-  Future<ShoppingCTAResult> onShopNow(ShoppingCTAEvent? event) async {
+  Future<ShoppingCTAResult?> onShopNow(ShoppingCTAEvent? event) async {
     if (event == null) {
-      return ShoppingCTAResult(
-        res: ShoppingCTARes.fail,
-      );
+      return null;
     }
 
     await closePlayerOrStartFloatingPlayer();
@@ -38,17 +36,20 @@ class HostAppService {
       "url": event.url,
     });
 
-    return ShoppingCTAResult(
-      res: ShoppingCTARes.success,
+    await event.ctaHandler?.complete(
+      ShoppingCTAResult(
+        res: ShoppingCTARes.success,
+      ),
     );
+
+    return null;
   }
 
-  Future<ShoppingCTAResult> onAddToCart(ShoppingCTAEvent? event) async {
+  Future<ShoppingCTAResult?> onAddToCart(ShoppingCTAEvent? event) async {
+    await event?.ctaHandler?.showLoader();
+
     if (event == null) {
-      return ShoppingCTAResult(
-        res: ShoppingCTARes.fail,
-        tips: "Fail to add to cart",
-      );
+      return null;
     }
 
     final showCart = await shouldShowCart();
@@ -75,10 +76,13 @@ class HostAppService {
           )
           .toList();
       if (variantList.isEmpty) {
-        return ShoppingCTAResult(
-          res: ShoppingCTARes.fail,
-          tips: "Unable to locate the selected variant",
+        await event.ctaHandler?.complete(
+          ShoppingCTAResult(
+            res: ShoppingCTARes.fail,
+            tips: "Unable to locate the selected variant",
+          ),
         );
+        return null;
       }
 
       final variant = variantList.first;
@@ -104,18 +108,22 @@ class HostAppService {
         }
       }
       await _addCartItem(cartItem);
-
-      return ShoppingCTAResult(
-        res: ShoppingCTARes.success,
-        tips: "Add to cart successfully",
+      await event.ctaHandler?.complete(
+        ShoppingCTAResult(
+          res: ShoppingCTARes.success,
+          tips: "Add to cart successfully",
+        ),
       );
     } catch (e) {
       FWExampleLoggerUtil.log("fetchProduct error: $e");
-      return ShoppingCTAResult(
-        res: ShoppingCTARes.fail,
-        tips: "Fail to add to cart",
+      await event.ctaHandler?.complete(
+        ShoppingCTAResult(
+          res: ShoppingCTARes.fail,
+          tips: "Fail to add to cart",
+        ),
       );
     }
+    return null;
   }
 
   Future<void> onCustomClickCartIcon() async {
