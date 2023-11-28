@@ -92,9 +92,7 @@
     &quot;url&quot;: url,
   };
 
-  if (config != null) {
-    arg[&quot;config&quot;] = VideoPlayerConfigurationUtil.toJson(config);
-  }
+  arg[&quot;config&quot;] = VideoPlayerConfigurationUtil.toJson(config);
 
   FWMethodChannelUtil.getFirewokSDKChannel()
       .invokeMethod(nativeMethodName, arg);
@@ -132,7 +130,7 @@
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.4.2-beta.1
+      2.5.1
   </span>
 
   
