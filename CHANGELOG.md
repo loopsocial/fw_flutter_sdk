@@ -1,22 +1,28 @@
 # CHANGELOG
 
-## [2.5.1]
-
-### Fixed
-
-- [Android] Fix the crash issue of `openVideoPlayer` API under certain conditions
-
-## [2.5.0]
+## [2.4.2]
 
 ### Added
 
-- [Android] Show "Tap to enter livestream" in the story block collapsed mode
-- [Android] Support multiple pinned products
-- [Android] Update the UI for replays Product Highlight (key moments)
+- Support initializing SDK on the native side
 
 ### Changed
 
-- [Android] Upgrade Firework Android SDK to V6.8.1
+- [iOS] Upgrade Firework Android SDK to V6.7.0
+
+## [2.4.2-beta.1]
+
+- Firework Flutter SDK beta release
+
+### Changed
+
+- [Android] Remove the logic that displays the loader by default when users click on the shopping CTA
+
+## [2.4.1]
+
+### Added
+
+- [Android] Bug fixes
 
 ## [2.4.0]
 

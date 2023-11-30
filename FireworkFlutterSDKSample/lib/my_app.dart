@@ -45,8 +45,7 @@ class _MyAppState extends State<MyApp> {
     FireworkSDK.getInstance().adBadgeConfiguration =
         AdBadgeConfiguration(badgeTextType: AdBadgeTextType.ad);
     FireworkSDK.getInstance().shopping.cartIconVisible = true;
-    FireworkSDK.getInstance()
-        .init(videoLaunchBehavior: VideoLaunchBehavior.muteOnFirstLaunch);
+    FireworkSDK.getInstance().markInitCalled();
 
     _appLanguageUpdateEventSubscription =
         FWEventBus.getInstance().on().listen((event) {

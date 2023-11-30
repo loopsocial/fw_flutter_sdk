@@ -2,6 +2,7 @@ import UIKit
 import Flutter
 // import FireworkVideoIVSSupport
 import FireworkVideo
+import fw_flutter_sdk
 
 @UIApplicationMain
 @objc class AppDelegate: FlutterAppDelegate {
@@ -12,6 +13,7 @@ import FireworkVideo
 //        FireworkVideoSDK.enableIVSPlayback()
         // Used to connect plugins
         GeneratedPluginRegistrant.register(with: self)
+        FWFlutterSDK.initializeSDK(SDKInitOptions(videoLaunchBehavior: .muteOnFirstLaunch))
         return super.application(application, didFinishLaunchingWithOptions: launchOptions)
     }
 }
