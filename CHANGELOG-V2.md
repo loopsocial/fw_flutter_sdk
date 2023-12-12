@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [2.4.3]
+
+### Changed
+
+- [Android] Upgrade Firework Android SDK to V6.7.3
+- [Android] Bug fixes
+
 ## [2.4.2]
 
 ### Added
@@ -20,7 +27,7 @@
 
 ## [2.4.1]
 
-### Added
+### Changed
 
 - [Android] Bug fixes
 
