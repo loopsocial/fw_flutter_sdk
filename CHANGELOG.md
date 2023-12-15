@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.4.4]
+
+### Fixed
+
+- [Android] Custom CTA callback doesn't work in the release package
+
 ## [2.4.3]
 
 ### Changed
