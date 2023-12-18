@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [2.4.5]
+
+### Fixed
+
+- [Android] The story block background sound issue
+- [Android] The random duplicate feed item issue
+
 ## [2.4.4]
 
 ### Fixed
