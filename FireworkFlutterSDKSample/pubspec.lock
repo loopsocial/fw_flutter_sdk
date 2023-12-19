@@ -316,10 +316,10 @@ packages:
     dependency: "direct main"
     description:
       name: fw_flutter_sdk
-      sha256: "83f67b63c098c53897716049ac9a4f9eea174c1170dad87ac376226157515faa"
+      sha256: c5647f0002f36a1d64ca11475bca1f2cf6a440bb8566c55ba7ff5e68e4e22df1
       url: "https://pub.dev"
     source: hosted
-    version: "2.4.5"
+    version: "2.4.6"
   glob:
     dependency: transitive
     description:

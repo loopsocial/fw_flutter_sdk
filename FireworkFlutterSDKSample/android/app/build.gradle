@@ -39,6 +39,11 @@ def fw_base_url_staging = ""
 def fw_pixel_base_url_staging = ""
 def fw_web_socket_staging = ""
 
+def fw_appid_dev = "f48c0e4d8085ffa29f26f7e4e278b5d36c1bed77075f1f74a1efc16213a50347"
+def fw_base_url_dev = "https://dev.fireworktv.com"
+def fw_pixel_base_url_dev = "https://p2-dev.fwpixel.com/"
+def fw_web_socket_dev = "wss://dev.fireworktv.com/socket/websocket"
+
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -48,7 +53,7 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
-        versionName "2.4.4"
+        versionName "2.4.6"
     }
 
     compileOptions {
@@ -130,6 +135,14 @@ android {
             manifestPlaceholders["fw_base_url"] = fw_base_url_production
             manifestPlaceholders["fw_pixel_base_url"] = fw_pixel_base_url_production
             manifestPlaceholders["fw_web_socket"] = fw_web_socket_production
+        }
+        dev {
+            dimension "env"
+            versionNameSuffix "-dev"
+            manifestPlaceholders["fw_appid"] = fw_appid_dev
+            manifestPlaceholders["fw_base_url"] = fw_base_url_dev
+            manifestPlaceholders["fw_pixel_base_url"] = fw_pixel_base_url_dev
+            manifestPlaceholders["fw_web_socket"] = fw_web_socket_dev
         }
     }
 }
