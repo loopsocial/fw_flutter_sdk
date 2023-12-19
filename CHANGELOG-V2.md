@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.4.6]
+
+### Changed
+
+- [Android] Optimize the livestream transition black screen issue between trailer and go live in story block
+
 ## [2.4.5]
 
 ### Fixed
