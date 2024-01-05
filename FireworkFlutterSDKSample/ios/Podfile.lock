@@ -1,11 +1,14 @@
 PODS:
-  - FireworkVideo (1.15.0)
+  - AmazonIVSPlayer (1.8.3)
+  - FireworkVideo (1.15.1)
+  - FireworkVideoIVSSupport (0.4.0):
+    - AmazonIVSPlayer (~> 1.8.3)
   - Flutter (1.0.0)
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
   - fw_flutter_sdk (1.0.0):
-    - FireworkVideo (= 1.15.0)
+    - FireworkVideo (= 1.15.1)
     - Flutter
   - path_provider_foundation (0.0.1):
     - Flutter
@@ -17,6 +20,7 @@ PODS:
     - Flutter
 
 DEPENDENCIES:
+  - FireworkVideoIVSSupport
   - Flutter (from `Flutter`)
   - fw_flutter_sdk (from `.symlinks/plugins/fw_flutter_sdk/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
@@ -25,7 +29,9 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - AmazonIVSPlayer
     - FireworkVideo
+    - FireworkVideoIVSSupport
     - FMDB
 
 EXTERNAL SOURCES:
@@ -41,14 +47,16 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/webview_flutter_wkwebview/ios"
 
 SPEC CHECKSUMS:
-  FireworkVideo: fae657a5093efadbf7f4aa723466aee8dcf47824
+  AmazonIVSPlayer: ce792b427a4fe466d6ea32b3ce8abe391d9242d0
+  FireworkVideo: a5a9d70b8dc29561801db77db9080acc4f3540e5
+  FireworkVideoIVSSupport: c75d204e55afab922899e2ff90242a5ec6d4ad20
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
-  fw_flutter_sdk: 83026fe90211f5037acdfe51c42852b52095edbe
+  fw_flutter_sdk: ee77703b878a1a6d6efbfd6f51781e2f22442421
   path_provider_foundation: 29f094ae23ebbca9d3d0cec13889cd9060c0e943
   sqflite: 31f7eba61e3074736dff8807a9b41581e4f7f15a
   webview_flutter_wkwebview: 2e2d318f21a5e036e2c3f26171342e95908bd60a
 
-PODFILE CHECKSUM: 3009a3d6402f743585fd7ee5d21e8ee730adedc2
+PODFILE CHECKSUM: ccaaddf84ea9982c5c85c824a0ee740585989ef5
 
-COCOAPODS: 1.12.0
+COCOAPODS: 1.14.3

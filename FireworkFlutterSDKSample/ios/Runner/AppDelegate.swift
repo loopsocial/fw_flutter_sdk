@@ -1,6 +1,6 @@
 import UIKit
 import Flutter
-// import FireworkVideoIVSSupport
+import FireworkVideoIVSSupport
 import FireworkVideo
 import fw_flutter_sdk
 
@@ -10,7 +10,7 @@ import fw_flutter_sdk
       _ application: UIApplication,
       didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
-//        FireworkVideoSDK.enableIVSPlayback()
+       FireworkVideoSDK.enableIVSPlayback()
         // Used to connect plugins
         GeneratedPluginRegistrant.register(with: self)
         FWFlutterSDK.initializeSDK(SDKInitOptions(videoLaunchBehavior: .muteOnFirstLaunch))

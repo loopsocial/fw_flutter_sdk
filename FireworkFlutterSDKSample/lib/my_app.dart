@@ -100,11 +100,40 @@ class _MyAppState extends State<MyApp> {
         HostAppService.getInstance().onCustomClickCartIcon;
 
     FireworkSDK.getInstance().liveStream.onLiveStreamEvent = (event) {
-      event?.logMessage();
+      if (event != null) {
+        switch (event.eventName) {
+          case LiveStreamEventName.userDidjoin:
+            // ignore: avoid_print
+            print(
+                "onLiveStreamEvent userDidjoin livestream id: ${event.info.id}");
+            break;
+          case LiveStreamEventName.userDidLeave:
+            // ignore: avoid_print
+            print(
+                "onLiveStreamEvent userDidLeave livestream id: ${event.info.id}");
+            break;
+          case LiveStreamEventName.userSendLike:
+            // ignore: avoid_print
+            print(
+                "onLiveStreamEvent userSendLike livestream id: ${event.info.id}");
+            break;
+        }
+      }
     };
 
     FireworkSDK.getInstance().liveStream.onLiveStreamChatEvent = (event) {
-      event?.logMessage();
+      if (event != null) {
+        switch (event.eventName) {
+          case LiveStreamChatEventName.userSendChat:
+            // ignore: avoid_print
+            print(
+                "onLiveStreamChatEvent userSendChat livestream id: ${event.liveStream.id}");
+            // ignore: avoid_print
+            print(
+                "onLiveStreamChatEvent userSendChat message id: ${event.message.messageId} username: ${event.message.username} text: ${event.message.text}");
+            break;
+        }
+      }
     };
   }
 
