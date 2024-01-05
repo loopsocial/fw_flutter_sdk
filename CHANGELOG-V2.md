@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [2.4.7]
+
+### Changed
+
+- [iOS] Contain many enhancements for live streams in regions with low latency
+- [Android] Implement `trackPurchase` API
+
 ## [2.4.6]
 
 ### Changed
