@@ -1,5 +1,36 @@
 # CHANGELOG
 
+## [2.6.0]
+
+### Added
+
+- Support showing countdown timer for the livestream trailer
+- Support getting feed id from VideoFeed and StoryBlock widgets
+- Add video model including feed id to some event models
+- [iOS] Support video feed and story block empty callback
+- [Android] Support displaying custom logo instead of ellipsis on the player
+
+### Changed
+
+- [iOS] Upgrade Firework iOS SDK to V1.16.0
+- [Android] Upgrade Firework Android SDK to V6.9.1
+
+### Breaking Changes
+
+- Add event parameter to `onCustomClickCartIcon` callback
+
+## [2.5.0]
+
+### Added
+
+- [Android] Show "Tap to enter livestream" in the story block collapsed mode
+- [Android] Support multiple pinned products
+- [Android] Update the UI for replays Product Highlight (key moments)
+
+### Changed
+
+- [Android] Upgrade Firework Android SDK to V6.8.1
+
 ## [2.4.7]
 
 ### Changed
@@ -38,10 +69,6 @@
 ### Added
 
 - Support initializing SDK on the native side
-
-### Changed
-
-- [iOS] Upgrade Firework Android SDK to V6.7.0
 
 ## [2.4.2-beta.1]
 
