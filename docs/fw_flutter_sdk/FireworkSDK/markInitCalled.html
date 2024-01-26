@@ -79,18 +79,23 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">Future&lt;void&gt; markInitCalled() async {
-  await FWMethodChannelUtil.getFirewokSDKChannel().invokeMethod(
+  final hasCalledSDKInitFromNative =
+      await FWMethodChannelUtil.getFirewokSDKChannel().invokeMethod(
     FireworkSDKNativeMethodName.markInitCalled.name,
   );
 
-  final shoppingInitNativeMethodName = ShoppingNativeMethodName.init.name;
-  await FWMethodChannelUtil.getShoppingChannel().invokeMethod(
-    shoppingInitNativeMethodName,
-  );
+  if (hasCalledSDKInitFromNative is bool &amp;&amp;
+      hasCalledSDKInitFromNative == true) {
+    final shoppingInitNativeMethodName = ShoppingNativeMethodName.init.name;
+    await FWMethodChannelUtil.getShoppingChannel().invokeMethod(
+      shoppingInitNativeMethodName,
+    );
 
-  final liveStreamInitNativeMethodName = LiveStreamNativeMethodName.init.name;
-  await FWMethodChannelUtil.getLiveStreamMethodChannel()
-      .invokeMethod(liveStreamInitNativeMethodName);
+    final liveStreamInitNativeMethodName =
+        LiveStreamNativeMethodName.init.name;
+    await FWMethodChannelUtil.getLiveStreamMethodChannel()
+        .invokeMethod(liveStreamInitNativeMethodName);
+  }
 
   FWGlobalState.getInstance().completeSdkInitCalledFuture();
 }</code></pre>
@@ -127,7 +132,7 @@
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.4.7
+      2.6.0
   </span>
 
   

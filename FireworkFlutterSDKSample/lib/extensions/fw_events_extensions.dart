@@ -27,6 +27,7 @@ extension VideoPlaybackEventExtension on VideoPlaybackEvent {
     final playerWidth = info.playerSize?.width;
     final playerHeight = info.playerSize?.height;
     final hasCTA = info.hasCTA;
+    final feedId = info.feedId;
 
     FWExampleLoggerUtil.log("""onVideoPlayback eventName: $eventName 
 videoId: $videoId 
@@ -35,7 +36,8 @@ caption: $caption
 badge: $badge 
 playerWidth:$playerWidth 
 playerHeight: $playerHeight 
-hasCTA: $hasCTA""");
+hasCTA: $hasCTA
+feedId: $feedId""");
   }
 }
 

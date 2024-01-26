@@ -410,6 +410,7 @@ class _FeedScreenState extends State<FeedScreen> {
       onVideoFeedCreated: _onVideoFeedCreated,
       onVideoFeedDidStartPictureInPicture: _onVideoFeedDidStartPictureInPicture,
       onVideoFeedDidStopPictureInPicture: _onVideoFeedDidStopPictureInPicture,
+      onVideoFeedGetFeedId: _onVideoFeedGetFeedId,
     );
 
     return _mode == VideoFeedMode.row
@@ -550,6 +551,7 @@ class _FeedScreenState extends State<FeedScreen> {
                 _onStoryBlockDidStartPictureInPicture,
             onStoryBlockDidStopPictureInPicture:
                 _onStoryBlockDidStopPictureInPicture,
+            onStoryBlockGetFeedId: _onStoryBlockGetFeedId,
           ),
           _buildListItemPlaceholder(context),
           _buildListItemPlaceholder(context),
@@ -647,6 +649,10 @@ class _FeedScreenState extends State<FeedScreen> {
         "_onVideoFeedDidStopPictureInPicture error ${error?.displayString()}");
   }
 
+  void _onVideoFeedGetFeedId(String feedId) {
+    FWExampleLoggerUtil.log("_onVideoFeedGetFeedId feedId $feedId");
+  }
+
   void _onStoryBlockLoadFinished(FWError? error) {
     FWExampleLoggerUtil.log(
         "_onStoryBlockLoadFinished error ${error?.displayString()}");
@@ -663,7 +669,7 @@ class _FeedScreenState extends State<FeedScreen> {
   }
 
   void _onStoryBlockCreated(StoryBlockController controller) {
-    FWExampleLoggerUtil.log("_onVideoFeedCreated");
+    FWExampleLoggerUtil.log("_onStoryBlockCreated");
     _storyBlockController = controller;
   }
 
@@ -675,6 +681,10 @@ class _FeedScreenState extends State<FeedScreen> {
   void _onStoryBlockDidStopPictureInPicture(FWError? error) {
     FWExampleLoggerUtil.log(
         "_onStoryBlockDidStopPictureInPicture error ${error?.displayString()}");
+  }
+
+  void _onStoryBlockGetFeedId(String feedId) {
+    FWExampleLoggerUtil.log("_onStoryBlockGetFeedId feedId $feedId");
   }
 
   void _refreshVideoFeed() {

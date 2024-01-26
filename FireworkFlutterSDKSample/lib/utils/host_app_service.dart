@@ -26,6 +26,8 @@ class HostAppService {
   factory HostAppService.getInstance() => _getInstance();
 
   Future<ShoppingCTAResult?> onShopNow(ShoppingCTAEvent? event) async {
+    FWExampleLoggerUtil.log("onAddToCart feedId: ${event?.video.feedId}");
+
     if (event == null) {
       return null;
     }
@@ -46,6 +48,8 @@ class HostAppService {
   }
 
   Future<ShoppingCTAResult?> onAddToCart(ShoppingCTAEvent? event) async {
+    FWExampleLoggerUtil.log("onAddToCart feedId: ${event?.video.feedId}");
+
     await event?.ctaHandler?.showLoader();
 
     if (event == null) {
@@ -126,7 +130,10 @@ class HostAppService {
     return null;
   }
 
-  Future<void> onCustomClickCartIcon() async {
+  Future<void> onCustomClickCartIcon(event) async {
+    FWExampleLoggerUtil.log(
+        "onCustomClickCartIcon feedId: ${event?.video.feedId}");
+
     await closePlayerOrStartFloatingPlayer();
     final showCart = await shouldShowCart();
     if (showCart) {
@@ -136,6 +143,9 @@ class HostAppService {
 
   Future<List<Product>?> onUpdateProductDetails(
       UpdateProductDetailsEvent? event) async {
+    FWExampleLoggerUtil.log(
+        "onUpdateProductDetails feedId: ${event?.video.feedId}");
+
     if (event == null) {
       return null;
     }
@@ -208,6 +218,8 @@ class HostAppService {
   }
 
   void onCustomCTAClick(CustomCTAClickEvent? event) {
+    FWExampleLoggerUtil.log("onCustomCTAClick feedId ${event?.video.feedId}");
+
     closePlayerOrStartFloatingPlayer().then((_) {
       if (enablePausePlayer) {
         event?.playerHandler?.pause();

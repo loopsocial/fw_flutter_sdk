@@ -16,6 +16,10 @@ class StoryBlockConfigurationState extends ChangeNotifier {
           VideoPlayerCTADelay(type: VideoPlayerCTADelayType.constant, value: 3),
       ctaWidth: VideoPlayerCTAWidth.fullWidth,
       showVideoDetailTitle: true,
+      countdownTimerConfiguration: CountdownTimerConfiguration(
+        isHidden: false,
+        appearance: CountdownTimerAppearanceMode.light,
+      ),
     );
   }
 

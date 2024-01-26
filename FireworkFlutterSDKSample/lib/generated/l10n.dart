@@ -2549,6 +2549,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Hide replay badge`
+  String get hideReplayBadge {
+    return Intl.message(
+      'Hide replay badge',
+      name: 'hideReplayBadge',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

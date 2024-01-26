@@ -130,7 +130,9 @@ bool operator ==(Object other) {
         ctaWidth == other.ctaWidth &amp;&amp;
         buttonConfiguration == other.buttonConfiguration &amp;&amp;
         videoPlayerLogoConfiguration == other.videoPlayerLogoConfiguration &amp;&amp;
-        showVideoDetailTitle == other.showVideoDetailTitle;
+        showVideoDetailTitle == other.showVideoDetailTitle &amp;&amp;
+        replayBadgeConfiguration == other.replayBadgeConfiguration &amp;&amp;
+        countdownTimerConfiguration == other.countdownTimerConfiguration;
   }
 
   return false;
@@ -168,7 +170,7 @@ bool operator ==(Object other) {
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.4.7
+      2.6.0
   </span>
 
   

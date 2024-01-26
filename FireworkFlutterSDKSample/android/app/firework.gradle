@@ -8,6 +8,7 @@ dependencies {
   implementation "com.firework:sdk:+"
   implementation "com.firework.external.livestream:singleHostPlayer:+"
   implementation "com.firework.external.livestream:multiHostPlayer:+"
+  implementation "com.firework.external.imageloading:glide:+"
 }
 
 configurations.all {
@@ -19,6 +20,9 @@ configurations.all {
       details.useVersion rootProject.ext.get("fwNativeVersion")
     }
     if (details.requested.group == 'com.firework.external.livestream' && details.requested.name == 'multiHostPlayer') {
+      details.useVersion rootProject.ext.get("fwNativeVersion")
+    }
+    if (details.requested.group == 'com.firework.external.imageloading' && details.requested.name == 'glide') {
       details.useVersion rootProject.ext.get("fwNativeVersion")
     }
   }

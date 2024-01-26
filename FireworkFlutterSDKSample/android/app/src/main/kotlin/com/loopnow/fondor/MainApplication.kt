@@ -1,5 +1,6 @@
 package com.loopnow.fondor
 
+import com.firework.imageloading.glide.GlideImageLoaderFactory
 import com.firework.livestream.multihost.MultiHostLivestreamPlayerInitializer
 import com.firework.livestream.singlehost.SingleHostLivestreamPlayerInitializer
 import com.fireworksdk.bridge.flutter.FWFlutterSDK
@@ -14,6 +15,8 @@ class MainApplication: FlutterApplication() {
 
     FWFlutterSDK.addLivestreamPlayerInitializer(SingleHostLivestreamPlayerInitializer())
     FWFlutterSDK.addLivestreamPlayerInitializer(MultiHostLivestreamPlayerInitializer())
+
+    FWFlutterSDK.setImageLoader(GlideImageLoaderFactory.createInstance(this))
 
     FWFlutterSDK.init(
       this,

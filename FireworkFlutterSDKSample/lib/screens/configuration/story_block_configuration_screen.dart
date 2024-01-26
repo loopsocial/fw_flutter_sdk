@@ -165,8 +165,8 @@ class _StoryBlockConfigurationScreenState
                   const SizedBox(
                     width: 20,
                   ),
-                  const Expanded(
-                    child: SizedBox(),
+                  Expanded(
+                    child: _buildHideReplayBadge(context),
                   ),
                 ],
               ),
@@ -668,6 +668,23 @@ class _StoryBlockConfigurationScreenState
       },
       title: Text(
         S.of(context).showVideoDetailTitle,
+      ),
+    );
+  }
+
+  Widget _buildHideReplayBadge(BuildContext context) {
+    return CheckboxListTile(
+      contentPadding: EdgeInsets.zero,
+      value: _resultConfig.replayBadgeConfiguration?.isHidden ?? false,
+      onChanged: (value) {
+        setState(() {
+          _resultConfig.replayBadgeConfiguration ??=
+              ReplayBadgeConfiguration(isHidden: false);
+          _resultConfig.replayBadgeConfiguration!.isHidden = value ?? false;
+        });
+      },
+      title: Text(
+        S.of(context).hideReplayBadge,
       ),
     );
   }

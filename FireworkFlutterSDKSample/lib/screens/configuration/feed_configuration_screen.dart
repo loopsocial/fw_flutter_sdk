@@ -173,6 +173,10 @@ class _FeedConfigurationScreenState extends State<FeedConfigurationScreen> {
               const SizedBox(
                 height: 20,
               ),
+              _buildHideReplayBadge(context),
+              const SizedBox(
+                height: 20,
+              ),
               _buildEnableAutoplay(context),
               const SizedBox(
                 height: 20,
@@ -518,6 +522,23 @@ class _FeedConfigurationScreenState extends State<FeedConfigurationScreen> {
       },
       title: Text(
         S.of(context).showAdBadge,
+      ),
+    );
+  }
+
+  Widget _buildHideReplayBadge(BuildContext context) {
+    return CheckboxListTile(
+      value: _resultConfig.replayBadge?.isHidden ?? false,
+      onChanged: (value) {
+        setState(() {
+          _resultConfig.replayBadge ??= ReplayBadgeConfiguration(
+            isHidden: false,
+          );
+          _resultConfig.replayBadge!.isHidden = value ?? false;
+        });
+      },
+      title: Text(
+        S.of(context).hideReplayBadge,
       ),
     );
   }

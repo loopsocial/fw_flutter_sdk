@@ -206,6 +206,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Hide product card CTA Button"),
         "hideProductCardPrice":
             MessageLookupByLibrary.simpleMessage("Hide product card price"),
+        "hideReplayBadge":
+            MessageLookupByLibrary.simpleMessage("Hide replay badge"),
         "hideTitle": MessageLookupByLibrary.simpleMessage("Hide Title"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "integration": MessageLookupByLibrary.simpleMessage("Integration"),

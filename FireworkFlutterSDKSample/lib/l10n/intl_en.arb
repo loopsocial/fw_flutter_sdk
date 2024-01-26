@@ -249,5 +249,6 @@
   "productCardOriginalPriceLabelFontSize": "Font size of product card original price label(iOS)",
   "productCardOriginalPriceLabelTextColorHint": "e.g. #ffffff",
   "productCardOriginalPriceLabelLines": "Number of lines for product card original price label(iOS)",
-  "productCardIsPriceFirst": "Product card is price first(iOS)"
+  "productCardIsPriceFirst": "Product card is price first(iOS)",
+  "hideReplayBadge": "Hide replay badge"
 }

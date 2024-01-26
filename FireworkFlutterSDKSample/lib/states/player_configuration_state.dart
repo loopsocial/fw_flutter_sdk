@@ -19,6 +19,10 @@ class PlayerConfigurationState extends ChangeNotifier {
           VideoPlayerCTADelay(type: VideoPlayerCTADelayType.constant, value: 2),
       ctaWidth: VideoPlayerCTAWidth.fullWidth,
       showVideoDetailTitle: true,
+      countdownTimerConfiguration: CountdownTimerConfiguration(
+        isHidden: false,
+        appearance: CountdownTimerAppearanceMode.light,
+      ),
     );
   }
 
