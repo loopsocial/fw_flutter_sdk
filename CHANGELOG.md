@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## [2.6.1]
+
+### Added
+
+### Fixed
+
+- The display of the video feed is abnormal when enabling autoplay
+
 ## [2.6.0]
 
 ### Added
