@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.6.2]
+
+### Changed
+
+- [Android] Upgrade Firework Android SDK to V6.9.2
+
 ## [2.6.1]
 
 ### Added
