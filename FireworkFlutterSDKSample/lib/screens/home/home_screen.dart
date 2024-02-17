@@ -360,6 +360,8 @@ class _HomeScreenState extends State<HomeScreen> {
     List<Widget> widgetList = <Widget>[];
 
     for (var e in _defaultHomeStoryBlockPlaylistInfoArray) {
+      FWExampleLoggerUtil.log(
+          "_buildMultiFeeds channelId: ${e.channelId} playlistId: ${e.playlistId}");
       widgetList.addAll([
         const SizedBox(
           height: 20,
@@ -374,6 +376,10 @@ class _HomeScreenState extends State<HomeScreen> {
             channel: e.channelId,
             playlist: e.playlistId,
             enablePictureInPicture: _enablePip,
+            onStoryBlockEmpty: (error) {
+              FWExampleLoggerUtil.log(
+                  "onStoryBlockEmpty error ${error?.displayString()}");
+            },
           ),
         ),
         const SizedBox(

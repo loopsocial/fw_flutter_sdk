@@ -32,7 +32,7 @@ class HostAppService {
       return null;
     }
 
-    await closePlayerOrStartFloatingPlayer();
+    await startFloatingPlayer();
 
     globalNavigatorKey.currentState?.pushNamed('/link_content', arguments: {
       "url": event.url,
@@ -134,7 +134,7 @@ class HostAppService {
     FWExampleLoggerUtil.log(
         "onCustomClickCartIcon feedId: ${event?.video.feedId}");
 
-    await closePlayerOrStartFloatingPlayer();
+    await startFloatingPlayer();
     final showCart = await shouldShowCart();
     if (showCart) {
       globalNavigatorKey.currentState?.pushNamed('/cart');
@@ -201,14 +201,14 @@ class HostAppService {
 
   Future<void> onCustomClickLinkButton(
       CustomClickLinkButtonEvent? event) async {
-    await closePlayerOrStartFloatingPlayer();
+    await startFloatingPlayer();
     globalNavigatorKey.currentState?.pushNamed('/link_content', arguments: {
       "url": event?.url ?? '',
     });
   }
 
   Future<void> onCustomTapProductCard(CustomTapProductCardEvent? event) async {
-    await closePlayerOrStartFloatingPlayer();
+    await startFloatingPlayer();
     FWExampleLoggerUtil.log(
       "onCustomTapProductCard event?.url ${event?.url}",
     );
@@ -220,7 +220,7 @@ class HostAppService {
   void onCustomCTAClick(CustomCTAClickEvent? event) {
     FWExampleLoggerUtil.log("onCustomCTAClick feedId ${event?.video.feedId}");
 
-    closePlayerOrStartFloatingPlayer().then((_) {
+    startFloatingPlayer().then((_) {
       if (enablePausePlayer) {
         event?.playerHandler?.pause();
       }
@@ -230,12 +230,13 @@ class HostAppService {
     });
   }
 
-  Future<void> closePlayerOrStartFloatingPlayer() async {
+  Future<void> startFloatingPlayer() async {
     final result =
         await FireworkSDK.getInstance().navigator.startFloatingPlayer();
-    if (!result) {
-      await FireworkSDK.getInstance().navigator.popNativeContainer();
-    }
+    FWExampleLoggerUtil.log("startFloatingPlayer result: $result");
+    // if (!result) {
+    //   await FireworkSDK.getInstance().navigator.popNativeContainer();
+    // }
   }
 
   Future<void> removeAllCartItems() async {

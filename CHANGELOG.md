@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [2.6.3]
+
+### Fixed
+
+- [Android] `stopFloatingPlayer` doesn't work when the video pauses
+
+### Changed
+
+- [Android] Upgrade Firework Android SDK to V6.9.3
+
 ## [2.6.2]
 
 ### Changed

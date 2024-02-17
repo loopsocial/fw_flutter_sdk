@@ -93,11 +93,17 @@ class _MyAppState extends State<MyApp> {
     };
 
     FireworkSDK.getInstance().shopping.onShoppingCTA =
-        HostAppService.getInstance().onAddToCart;
+        HostAppService.getInstance().onShopNow;
     FireworkSDK.getInstance().shopping.onUpdateProductDetails =
         HostAppService.getInstance().onUpdateProductDetails;
     FireworkSDK.getInstance().shopping.onCustomClickCartIcon =
         HostAppService.getInstance().onCustomClickCartIcon;
+    FireworkSDK.getInstance().shopping.productInfoViewConfiguration =
+        ProductInfoViewConfiguration(
+      ctaButton: ShoppingCTAButtonConfiguration(
+        text: ShoppingCTAButtonText.shopNow,
+      ),
+    );
 
     FireworkSDK.getInstance().liveStream.onLiveStreamEvent = (event) {
       if (event != null) {
