@@ -4,7 +4,7 @@
 
 ### Fixed
 
-- [Android] `stopFloatingPlayer` doesn't work when the video pauses
+- [Android] `startFloatingPlayer` doesn't work when the video pauses
 
 ### Changed
 
