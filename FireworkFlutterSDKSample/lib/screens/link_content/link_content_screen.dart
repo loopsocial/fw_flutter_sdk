@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:fw_flutter_sdk_example/utils/fw_example_logger_util.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -31,6 +32,15 @@ class _LinkContentScreenState extends State<LinkContentScreen> {
         _controller = WebViewController()
           ..setJavaScriptMode(JavaScriptMode.unrestricted)
           ..loadRequest(Uri.parse(url));
+
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          EasyLoading.showToast(
+            S.of(context).pageUrlToastText(url),
+            duration: const Duration(
+              seconds: 5,
+            ),
+          );
+        });
       }
     }
   }

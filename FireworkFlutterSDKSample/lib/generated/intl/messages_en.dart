@@ -32,7 +32,9 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m5(min, max) => "Please enter height in [${min}, ${max}]";
 
-  static String m6(min, max) => "Please enter width in [${min}, ${max}]";
+  static String m6(url) => "The page url is ${url}.";
+
+  static String m7(min, max) => "Please enter width in [${min}, ${max}]";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -199,6 +201,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "heightError":
             MessageLookupByLibrary.simpleMessage("Please enter correct height"),
         "heightRangeError": m5,
+        "hideCountdownTimer":
+            MessageLookupByLibrary.simpleMessage("Hide countdown timer"),
         "hideLinkButton":
             MessageLookupByLibrary.simpleMessage("Hide link button"),
         "hidePlayIcon": MessageLookupByLibrary.simpleMessage("Hide Play Icon"),
@@ -232,6 +236,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Please enter grid columns in [1, 5]"),
         "open": MessageLookupByLibrary.simpleMessage("Open"),
         "openVideoURL": MessageLookupByLibrary.simpleMessage("Open Video URL"),
+        "pageUrlToastText": m6,
         "pause": MessageLookupByLibrary.simpleMessage("Pause"),
         "percentage": MessageLookupByLibrary.simpleMessage("percentage"),
         "play": MessageLookupByLibrary.simpleMessage("Play"),
@@ -244,6 +249,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Please enter play icon width in [0, 100]"),
         "playerConfiguration":
             MessageLookupByLibrary.simpleMessage("Player Configuration"),
+        "playerLogoClickable":
+            MessageLookupByLibrary.simpleMessage("Player logo is clickable"),
         "playerLogoEncodedId":
             MessageLookupByLibrary.simpleMessage("Player logo encoded id"),
         "playerLogoOption":
@@ -358,6 +365,26 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Set Share Base URL"),
         "setShareBaseURLSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Set share base URL successfully"),
+        "shadowColor": MessageLookupByLibrary.simpleMessage("Shadow color"),
+        "shadowColorHint": MessageLookupByLibrary.simpleMessage("e.g. #000000"),
+        "shadowHeight": MessageLookupByLibrary.simpleMessage("Shadow height"),
+        "shadowHeightError": MessageLookupByLibrary.simpleMessage(
+            "Please enter correct shadow height"),
+        "shadowHeightHint": MessageLookupByLibrary.simpleMessage("e.g. 0"),
+        "shadowHeightRangeError": MessageLookupByLibrary.simpleMessage(
+            "Please enter shadow height in [0, 100]"),
+        "shadowOpacity": MessageLookupByLibrary.simpleMessage("Shadow opacity"),
+        "shadowOpacityError": MessageLookupByLibrary.simpleMessage(
+            "Please enter correct shadow opacity"),
+        "shadowOpacityHint": MessageLookupByLibrary.simpleMessage("e.g. 0.6"),
+        "shadowOpacityRangeError": MessageLookupByLibrary.simpleMessage(
+            "Please enter opacity in [0, 1]"),
+        "shadowWidth": MessageLookupByLibrary.simpleMessage("Shadow width"),
+        "shadowWidthError": MessageLookupByLibrary.simpleMessage(
+            "Please enter correct shadow width"),
+        "shadowWidthHint": MessageLookupByLibrary.simpleMessage("e.g. 0"),
+        "shadowWidthRangeError": MessageLookupByLibrary.simpleMessage(
+            "Please enter shadow width in [0, 100]"),
         "shareBaseURL": MessageLookupByLibrary.simpleMessage("Share base URL"),
         "shippingInfo": MessageLookupByLibrary.simpleMessage("Shipping Info"),
         "shopNow": MessageLookupByLibrary.simpleMessage("Shop now"),
@@ -454,6 +481,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Video Launch Behavior"),
         "widthError":
             MessageLookupByLibrary.simpleMessage("Please enter correct width"),
-        "widthRangeError": m6
+        "widthRangeError": m7
       };
 }

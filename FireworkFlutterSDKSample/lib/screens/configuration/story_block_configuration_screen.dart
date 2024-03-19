@@ -173,11 +173,31 @@ class _StoryBlockConfigurationScreenState
               const SizedBox(
                 height: 20,
               ),
+              Row(
+                children: [
+                  Expanded(
+                    child: _buildHideCountdownTimer(context),
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: Container(),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
               _buildShareURL(context),
               const SizedBox(
                 height: 20,
               ),
               _buildPlayerLogoOptionSegmentedControl(context),
+              const SizedBox(
+                height: 20,
+              ),
+              _buildLogoClickable(context),
               const SizedBox(
                 height: 20,
               ),
@@ -689,6 +709,23 @@ class _StoryBlockConfigurationScreenState
     );
   }
 
+  Widget _buildHideCountdownTimer(BuildContext context) {
+    return CheckboxListTile(
+      contentPadding: EdgeInsets.zero,
+      value: _resultConfig.countdownTimerConfiguration?.isHidden ?? false,
+      onChanged: (value) {
+        setState(() {
+          _resultConfig.countdownTimerConfiguration ??=
+              CountdownTimerConfiguration(isHidden: false);
+          _resultConfig.countdownTimerConfiguration!.isHidden = value ?? false;
+        });
+      },
+      title: Text(
+        S.of(context).hideCountdownTimer,
+      ),
+    );
+  }
+
   Widget _buildShareURL(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -804,6 +841,26 @@ class _StoryBlockConfigurationScreenState
           },
         )
       ],
+    );
+  }
+
+  Widget _buildLogoClickable(BuildContext context) {
+    final option = _resultConfig.videoPlayerLogoConfiguration?.option;
+    final enabled = option == VideoPlayerLogoOption.creator ||
+        option == VideoPlayerLogoOption.channelAggregator;
+    return CheckboxListTile(
+      enabled: enabled,
+      contentPadding: EdgeInsets.zero,
+      value: _resultConfig.videoPlayerLogoConfiguration?.isClickable ?? true,
+      onChanged: (value) {
+        setState(() {
+          _resultConfig.videoPlayerLogoConfiguration!.isClickable =
+              value ?? true;
+        });
+      },
+      title: Text(
+        S.of(context).playerLogoClickable,
+      ),
     );
   }
 

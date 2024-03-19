@@ -14,7 +14,7 @@ class MainApplication: FlutterApplication() {
     super.onCreate()
 
     FWFlutterSDK.addLivestreamPlayerInitializer(SingleHostLivestreamPlayerInitializer())
-    FWFlutterSDK.addLivestreamPlayerInitializer(MultiHostLivestreamPlayerInitializer())
+//    FWFlutterSDK.addLivestreamPlayerInitializer(MultiHostLivestreamPlayerInitializer())
 
     FWFlutterSDK.setImageLoader(GlideImageLoaderFactory.createInstance(this))
 

@@ -88,6 +88,38 @@ class _FeedConfigurationScreenState extends State<FeedConfigurationScreen> {
               Row(
                 children: [
                   Expanded(
+                    child: _buildShadowOpacity(context),
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: _buildShadowColor(context),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: _buildShadowWidth(context),
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: _buildShadowHeight(context),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                children: [
+                  Expanded(
                     child: _buildBackgroundColor(context),
                   ),
                   const SizedBox(
@@ -614,6 +646,114 @@ class _FeedConfigurationScreenState extends State<FeedConfigurationScreen> {
     }
 
     return null;
+  }
+
+  Widget _buildShadowOpacity(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(S.of(context).shadowOpacity),
+        FWTextFormField(
+          initialValue: _initConfig.shadow?.opacity?.toString(),
+          hintText: S.of(context).shadowOpacityHint,
+          validator: (text) {
+            return ValidationUtil.validateDoubleNumber(
+              context: context,
+              text: text,
+              min: 0,
+              max: 1,
+              errorMessage: S.of(context).shadowOpacityError,
+              rangeErrorMessage: S.of(context).shadowOpacityRangeError,
+            );
+          },
+          onSaved: (text) {
+            _resultConfig.shadow ??= VideoFeedShadowConfiguration();
+            _resultConfig.shadow?.opacity = double.tryParse(text ?? '');
+          },
+        )
+      ],
+    );
+  }
+
+  Widget _buildShadowColor(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(S.of(context).shadowColor),
+        FWTextFormField(
+          initialValue: _initConfig.shadow?.color,
+          hintText: S.of(context).shadowColorHint,
+          validator: (text) {
+            return ValidationUtil.validateColor(
+              text,
+              context,
+            );
+          },
+          onSaved: (text) {
+            _resultConfig.shadow ??= VideoFeedShadowConfiguration();
+            _resultConfig.shadow?.color = text;
+          },
+        ),
+      ],
+    );
+  }
+
+  Widget _buildShadowWidth(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(S.of(context).shadowWidth),
+        FWTextFormField(
+          initialValue: _initConfig.shadow?.width?.toStringAsFixed(0),
+          hintText: S.of(context).shadowWidthHint,
+          validator: (text) {
+            return ValidationUtil.validateNumber(
+              context: context,
+              text: text,
+              min: 0,
+              max: 100,
+              errorMessage: S.of(context).shadowWidthError,
+              rangeErrorMessage: S.of(context).shadowWidthRangeError,
+            );
+          },
+          onSaved: (text) {
+            _resultConfig.shadow ??= VideoFeedShadowConfiguration();
+            _resultConfig.shadow?.width = int.tryParse(text ?? '')?.toDouble();
+          },
+        )
+      ],
+    );
+  }
+
+  Widget _buildShadowHeight(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(S.of(context).shadowHeight),
+        FWTextFormField(
+          initialValue: _initConfig.shadow?.height?.toStringAsFixed(0),
+          hintText: S.of(context).shadowHeightHint,
+          validator: (text) {
+            return ValidationUtil.validateNumber(
+              context: context,
+              text: text,
+              min: 0,
+              max: 100,
+              errorMessage: S.of(context).shadowHeightError,
+              rangeErrorMessage: S.of(context).shadowHeightRangeError,
+            );
+          },
+          onSaved: (text) {
+            _resultConfig.shadow ??= VideoFeedShadowConfiguration();
+            _resultConfig.shadow?.height = int.tryParse(text ?? '')?.toDouble();
+          },
+        )
+      ],
+    );
   }
 
   Widget _buildButtonList(BuildContext context) {

@@ -111,7 +111,8 @@ like <a href="https://api.flutter.dev/flutter/dart-collection/HashSet-class.html
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">@override
-int get hashCode =&gt; option.hashCode ^ encodedId.hashCode;</code></pre>
+int get hashCode =&gt;
+    option.hashCode ^ encodedId.hashCode ^ isClickable.hashCode;</code></pre>
 </section>
 
 </section>
@@ -147,7 +148,7 @@ int get hashCode =&gt; option.hashCode ^ encodedId.hashCode;</code></pre>
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.6.3
+      2.7.0
   </span>
 
   

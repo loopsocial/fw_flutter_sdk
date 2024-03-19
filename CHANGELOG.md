@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [2.7.0]
+
+### Added
+
+- [iOS] Support customizing feed item shadow
+- [iOS] Support disabling tap action on custom logo
+
 ## [2.6.3]
 
 ### Fixed

@@ -21,6 +21,34 @@ class ValidationUtil {
     return null;
   }
 
+  static String? validateDoubleNumber({
+    required BuildContext context,
+    String? text,
+    required String errorMessage,
+    required double min,
+    required double max,
+    required String rangeErrorMessage,
+  }) {
+    if (text == null) {
+      return null;
+    }
+
+    if (text.isEmpty) {
+      return null;
+    }
+
+    final number = double.tryParse(text);
+    if (number == null) {
+      return errorMessage;
+    }
+
+    if (number >= min && number <= max) {
+      return null;
+    }
+
+    return rangeErrorMessage;
+  }
+
   static String? validateNumber({
     required BuildContext context,
     String? text,

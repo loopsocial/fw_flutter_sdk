@@ -2280,6 +2280,16 @@ class S {
     );
   }
 
+  /// `Player logo is clickable`
+  String get playerLogoClickable {
+    return Intl.message(
+      'Player logo is clickable',
+      name: 'playerLogoClickable',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Text color of product card CTA button(iOS)`
   String get productCardCTAButtonTextColor {
     return Intl.message(
@@ -2557,6 +2567,166 @@ class S {
       name: 'hideReplayBadge',
       desc: '',
       args: [],
+    );
+  }
+
+  /// `Hide countdown timer`
+  String get hideCountdownTimer {
+    return Intl.message(
+      'Hide countdown timer',
+      name: 'hideCountdownTimer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Shadow opacity`
+  String get shadowOpacity {
+    return Intl.message(
+      'Shadow opacity',
+      name: 'shadowOpacity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `e.g. 0.6`
+  String get shadowOpacityHint {
+    return Intl.message(
+      'e.g. 0.6',
+      name: 'shadowOpacityHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter correct shadow opacity`
+  String get shadowOpacityError {
+    return Intl.message(
+      'Please enter correct shadow opacity',
+      name: 'shadowOpacityError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter opacity in [0, 1]`
+  String get shadowOpacityRangeError {
+    return Intl.message(
+      'Please enter opacity in [0, 1]',
+      name: 'shadowOpacityRangeError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Shadow color`
+  String get shadowColor {
+    return Intl.message(
+      'Shadow color',
+      name: 'shadowColor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `e.g. #000000`
+  String get shadowColorHint {
+    return Intl.message(
+      'e.g. #000000',
+      name: 'shadowColorHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Shadow width`
+  String get shadowWidth {
+    return Intl.message(
+      'Shadow width',
+      name: 'shadowWidth',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `e.g. 0`
+  String get shadowWidthHint {
+    return Intl.message(
+      'e.g. 0',
+      name: 'shadowWidthHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter correct shadow width`
+  String get shadowWidthError {
+    return Intl.message(
+      'Please enter correct shadow width',
+      name: 'shadowWidthError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter shadow width in [0, 100]`
+  String get shadowWidthRangeError {
+    return Intl.message(
+      'Please enter shadow width in [0, 100]',
+      name: 'shadowWidthRangeError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Shadow height`
+  String get shadowHeight {
+    return Intl.message(
+      'Shadow height',
+      name: 'shadowHeight',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `e.g. 0`
+  String get shadowHeightHint {
+    return Intl.message(
+      'e.g. 0',
+      name: 'shadowHeightHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter correct shadow height`
+  String get shadowHeightError {
+    return Intl.message(
+      'Please enter correct shadow height',
+      name: 'shadowHeightError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter shadow height in [0, 100]`
+  String get shadowHeightRangeError {
+    return Intl.message(
+      'Please enter shadow height in [0, 100]',
+      name: 'shadowHeightRangeError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The page url is {url}.`
+  String pageUrlToastText(Object url) {
+    return Intl.message(
+      'The page url is $url.',
+      name: 'pageUrlToastText',
+      desc: '',
+      args: [url],
     );
   }
 }

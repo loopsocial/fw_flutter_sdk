@@ -117,7 +117,9 @@ bool operator ==(Object other) {
   }
 
   if (other is VideoPlayerLogoConfiguration) {
-    return option == other.option &amp;&amp; encodedId == other.encodedId;
+    return option == other.option &amp;&amp;
+        encodedId == other.encodedId &amp;&amp;
+        isClickable == other.isClickable;
   }
 
   return false;
@@ -155,7 +157,7 @@ bool operator ==(Object other) {
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.6.3
+      2.7.0
   </span>
 
   

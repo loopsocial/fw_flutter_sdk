@@ -175,6 +175,10 @@ class _PlayerConfigurationScreenState extends State<PlayerConfigurationScreen> {
               const SizedBox(
                 height: 20,
               ),
+              _buildLogoClickable(context),
+              const SizedBox(
+                height: 20,
+              ),
               _buildEncodedId(context),
               const SizedBox(
                 height: 20,
@@ -776,6 +780,26 @@ class _PlayerConfigurationScreenState extends State<PlayerConfigurationScreen> {
           },
         )
       ],
+    );
+  }
+
+  Widget _buildLogoClickable(BuildContext context) {
+    final option = _resultConfig.videoPlayerLogoConfiguration?.option;
+    final enabled = option == VideoPlayerLogoOption.creator ||
+        option == VideoPlayerLogoOption.channelAggregator;
+    return CheckboxListTile(
+      enabled: enabled,
+      contentPadding: EdgeInsets.zero,
+      value: _resultConfig.videoPlayerLogoConfiguration?.isClickable ?? true,
+      onChanged: (value) {
+        setState(() {
+          _resultConfig.videoPlayerLogoConfiguration!.isClickable =
+              value ?? true;
+        });
+      },
+      title: Text(
+        S.of(context).playerLogoClickable,
+      ),
     );
   }
 
