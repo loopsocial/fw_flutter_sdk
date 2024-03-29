@@ -1800,6 +1800,16 @@ class S {
     );
   }
 
+  /// `Livestream countdown timer theme`
+  String get livestreamCountdownTimerTheme {
+    return Intl.message(
+      'Livestream countdown timer theme',
+      name: 'livestreamCountdownTimerTheme',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Full width`
   String get fullWidth {
     return Intl.message(

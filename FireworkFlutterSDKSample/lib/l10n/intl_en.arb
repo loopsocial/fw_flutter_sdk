@@ -174,6 +174,7 @@
   "ctaHighlightDelayValue": "CTA highlight delay value: {value}",
   "shareBaseURL": "Share base URL",
   "ctaWidth": "CTA width",
+  "livestreamCountdownTimerTheme": "Livestream countdown timer theme",
   "fullWidth": "Full width",
   "compact": "Compact",
   "sizeToFit": "Size to fit",

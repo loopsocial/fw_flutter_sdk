@@ -26,7 +26,8 @@ class HostAppService {
   factory HostAppService.getInstance() => _getInstance();
 
   Future<ShoppingCTAResult?> onShopNow(ShoppingCTAEvent? event) async {
-    FWExampleLoggerUtil.log("onAddToCart feedId: ${event?.video.feedId}");
+    FWExampleLoggerUtil.log(
+        "onShopNow feedId: ${event?.video.feedId} videoId: ${event?.video.videoId}");
 
     if (event == null) {
       return null;
@@ -48,7 +49,8 @@ class HostAppService {
   }
 
   Future<ShoppingCTAResult?> onAddToCart(ShoppingCTAEvent? event) async {
-    FWExampleLoggerUtil.log("onAddToCart feedId: ${event?.video.feedId}");
+    FWExampleLoggerUtil.log(
+        "onAddToCart feedId: ${event?.video.feedId} videoId: ${event?.video.videoId}");
 
     await event?.ctaHandler?.showLoader();
 
@@ -132,7 +134,7 @@ class HostAppService {
 
   Future<void> onCustomClickCartIcon(event) async {
     FWExampleLoggerUtil.log(
-        "onCustomClickCartIcon feedId: ${event?.video.feedId}");
+        "onCustomClickCartIcon feedId: ${event?.video.feedId} videoId: ${event?.video.videoId}");
 
     await startFloatingPlayer();
     final showCart = await shouldShowCart();
@@ -144,7 +146,7 @@ class HostAppService {
   Future<List<Product>?> onUpdateProductDetails(
       UpdateProductDetailsEvent? event) async {
     FWExampleLoggerUtil.log(
-        "onUpdateProductDetails feedId: ${event?.video.feedId}");
+        "onUpdateProductDetails feedId: ${event?.video.feedId} videoId: ${event?.video.videoId}");
 
     if (event == null) {
       return null;
@@ -201,6 +203,8 @@ class HostAppService {
 
   Future<void> onCustomClickLinkButton(
       CustomClickLinkButtonEvent? event) async {
+    FWExampleLoggerUtil.log(
+        "onCustomClickLinkButton feedId: ${event?.video?.feedId} videoId: ${event?.video?.videoId}");
     await startFloatingPlayer();
     globalNavigatorKey.currentState?.pushNamed('/link_content', arguments: {
       "url": event?.url ?? '',
@@ -210,7 +214,7 @@ class HostAppService {
   Future<void> onCustomTapProductCard(CustomTapProductCardEvent? event) async {
     await startFloatingPlayer();
     FWExampleLoggerUtil.log(
-      "onCustomTapProductCard event?.url ${event?.url}",
+      "onCustomTapProductCard event?.url ${event?.url} feedId: ${event?.video.feedId} videoId: ${event?.video.videoId}",
     );
     globalNavigatorKey.currentState?.pushNamed('/link_content', arguments: {
       "url": event?.url ?? '',
@@ -218,7 +222,8 @@ class HostAppService {
   }
 
   void onCustomCTAClick(CustomCTAClickEvent? event) {
-    FWExampleLoggerUtil.log("onCustomCTAClick feedId ${event?.video.feedId}");
+    FWExampleLoggerUtil.log(
+        "onCustomCTAClick feedId: ${event?.video.feedId} videoId: ${event?.video.videoId}");
 
     startFloatingPlayer().then((_) {
       if (enablePausePlayer) {

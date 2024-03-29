@@ -29,20 +29,20 @@ apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
  * appid
  */
 def fw_appid_production = ""
-def fw_base_url_production = "https://api.fw.tv"
+def fw_base_url_production = "https://api.firework.com"
 def fw_pixel_base_url_production = "https://p2.fwpixel.com/"
-def fw_web_socket_production = "wss://api.firework.tv/socket/websocket"
+def fw_web_socket_production = "wss://api.firework.com/socket/websocket"
 
 
 def fw_appid_staging = ""
-def fw_base_url_staging = ""
+def fw_base_url_staging = "https://api.firework-staging.com"
 def fw_pixel_base_url_staging = ""
-def fw_web_socket_staging = ""
+def fw_web_socket_staging = "wss://api.firework-staging.com/socket/websocket"
 
 def fw_appid_dev = "f48c0e4d8085ffa29f26f7e4e278b5d36c1bed77075f1f74a1efc16213a50347"
-def fw_base_url_dev = "https://dev.fireworktv.com"
+def fw_base_url_dev = "https://api.firework-dev.com"
 def fw_pixel_base_url_dev = "https://p2-dev.fwpixel.com/"
-def fw_web_socket_dev = "wss://dev.fireworktv.com/socket/websocket"
+def fw_web_socket_dev = "wss://api.firework-dev.com/socket/websocket"
 
 
 android {
@@ -53,7 +53,7 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
-        versionName "2.6.3"
+        versionName "2.8.0"
     }
 
     compileOptions {

@@ -21,7 +21,7 @@ class PlayerConfigurationState extends ChangeNotifier {
       showVideoDetailTitle: true,
       countdownTimerConfiguration: CountdownTimerConfiguration(
         isHidden: false,
-        appearance: CountdownTimerAppearanceMode.light,
+        appearance: CountdownTimerAppearanceMode.dark,
       ),
     );
   }

@@ -1,5 +1,22 @@
 # CHANGELOG
 
+## [2.8.0]
+
+### Added
+
+- Support Digital Showroom
+- [iOS] Add privacy manifest configuration on the iOS SDK to ensure compliance with Apple privacy guidelines and regulations
+
+### Changed
+
+- Replace livestream id with video id for event callbacks
+- Change behaviour of product availability in Livestream Replay. The product availability is based on the last state of the product in the Livestream
+- [Android] Upgrade the Android SDK's Kotlin version to 1.8.x
+
+### Fixed
+
+- [Android] Unmuting muted active livestream when user goes from PIP to fullscreen
+
 ## [2.7.0]
 
 ### Added

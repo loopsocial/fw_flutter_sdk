@@ -218,6 +218,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "light": MessageLookupByLibrary.simpleMessage("Light"),
         "linkContentScreenTitle":
             MessageLookupByLibrary.simpleMessage("Link Content(Flutter page)"),
+        "livestreamCountdownTimerTheme": MessageLookupByLibrary.simpleMessage(
+            "Livestream countdown timer theme"),
         "loop": MessageLookupByLibrary.simpleMessage("loop"),
         "more": MessageLookupByLibrary.simpleMessage("More"),
         "multiFeeds": MessageLookupByLibrary.simpleMessage("Multi-feeds"),

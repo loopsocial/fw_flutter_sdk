@@ -123,6 +123,10 @@ class _StoryBlockConfigurationScreenState
               const SizedBox(
                 height: 20,
               ),
+              _buildCountdownTimerStyleSegmentedControl(context),
+              const SizedBox(
+                height: 20,
+              ),
               Row(
                 children: [
                   Expanded(
@@ -621,6 +625,45 @@ class _StoryBlockConfigurationScreenState
     );
   }
 
+  Widget _buildCountdownTimerStyleSegmentedControl(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(
+          S.of(context).livestreamCountdownTimerTheme,
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        CupertinoSegmentedControl<CountdownTimerAppearanceMode>(
+          padding: EdgeInsets.zero,
+          onValueChanged: (value) {
+            setState(() {
+              _resultConfig.countdownTimerConfiguration?.appearance = value;
+            });
+          },
+          children: {
+            CountdownTimerAppearanceMode.dark: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Text(
+                S.of(context).dark,
+              ),
+            ),
+            CountdownTimerAppearanceMode.light: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Text(
+                S.of(context).light,
+              ),
+            ),
+          },
+          groupValue: _resultConfig.countdownTimerConfiguration?.appearance,
+        ),
+      ],
+    );
+  }
+
   Widget _buildPlaybackButtonShow(BuildContext context) {
     return CheckboxListTile(
       contentPadding: EdgeInsets.zero,
@@ -695,12 +738,12 @@ class _StoryBlockConfigurationScreenState
   Widget _buildHideReplayBadge(BuildContext context) {
     return CheckboxListTile(
       contentPadding: EdgeInsets.zero,
-      value: _resultConfig.replayBadgeConfiguration?.isHidden ?? false,
+      value: _resultConfig.replayBadgeConfiguration?.isHidden ?? true,
       onChanged: (value) {
         setState(() {
           _resultConfig.replayBadgeConfiguration ??=
-              ReplayBadgeConfiguration(isHidden: false);
-          _resultConfig.replayBadgeConfiguration!.isHidden = value ?? false;
+              ReplayBadgeConfiguration(isHidden: true);
+          _resultConfig.replayBadgeConfiguration!.isHidden = value ?? true;
         });
       },
       title: Text(

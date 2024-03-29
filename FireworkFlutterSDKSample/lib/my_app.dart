@@ -84,9 +84,9 @@ class _MyAppState extends State<MyApp> {
     FireworkSDK.getInstance().onCustomCTAClick =
         HostAppService.getInstance().onCustomCTAClick;
 
-    // FireworkSDK.getInstance().onVideoPlayback = (event) {
-    //   event?.logMessage();
-    // };
+    FireworkSDK.getInstance().onVideoPlayback = (event) {
+      event?.logMessage();
+    };
 
     FireworkSDK.getInstance().onVideoFeedClick = (event) {
       event?.logMessage();
@@ -109,18 +109,15 @@ class _MyAppState extends State<MyApp> {
       if (event != null) {
         switch (event.eventName) {
           case LiveStreamEventName.userDidjoin:
-            // ignore: avoid_print
-            print(
+            FWExampleLoggerUtil.log(
                 "onLiveStreamEvent userDidjoin livestream id: ${event.info.id}");
             break;
           case LiveStreamEventName.userDidLeave:
-            // ignore: avoid_print
-            print(
+            FWExampleLoggerUtil.log(
                 "onLiveStreamEvent userDidLeave livestream id: ${event.info.id}");
             break;
           case LiveStreamEventName.userSendLike:
-            // ignore: avoid_print
-            print(
+            FWExampleLoggerUtil.log(
                 "onLiveStreamEvent userSendLike livestream id: ${event.info.id}");
             break;
         }
@@ -141,6 +138,9 @@ class _MyAppState extends State<MyApp> {
         }
       }
     };
+
+    FireworkSDK.getInstance().shopping.onCustomClickLinkButton =
+        HostAppService.getInstance().onCustomClickLinkButton;
   }
 
   @override

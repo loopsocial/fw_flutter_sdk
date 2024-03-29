@@ -560,13 +560,13 @@ class _FeedConfigurationScreenState extends State<FeedConfigurationScreen> {
 
   Widget _buildHideReplayBadge(BuildContext context) {
     return CheckboxListTile(
-      value: _resultConfig.replayBadge?.isHidden ?? false,
+      value: _resultConfig.replayBadge?.isHidden ?? true,
       onChanged: (value) {
         setState(() {
           _resultConfig.replayBadge ??= ReplayBadgeConfiguration(
-            isHidden: false,
+            isHidden: true,
           );
-          _resultConfig.replayBadge!.isHidden = value ?? false;
+          _resultConfig.replayBadge!.isHidden = value ?? true;
         });
       },
       title: Text(
