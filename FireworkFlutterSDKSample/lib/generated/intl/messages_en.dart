@@ -32,9 +32,12 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m5(min, max) => "Please enter height in [${min}, ${max}]";
 
-  static String m6(url) => "The page url is ${url}.";
+  static String m6(url, iOSUrl, androidUrl) =>
+      "The base url is ${url}.\nThe iOS url is ${iOSUrl}.\nThe Android url is ${androidUrl}.";
 
-  static String m7(min, max) => "Please enter width in [${min}, ${max}]";
+  static String m7(url) => "The page url is ${url}.";
+
+  static String m8(min, max) => "Please enter width in [${min}, ${max}]";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -223,6 +226,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "loop": MessageLookupByLibrary.simpleMessage("loop"),
         "more": MessageLookupByLibrary.simpleMessage("More"),
         "multiFeeds": MessageLookupByLibrary.simpleMessage("Multi-feeds"),
+        "multiplePageUrlsToastText": m6,
         "muteOnFirstLaunch":
             MessageLookupByLibrary.simpleMessage("muteOnFirstLaunch"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
@@ -238,7 +242,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Please enter grid columns in [1, 5]"),
         "open": MessageLookupByLibrary.simpleMessage("Open"),
         "openVideoURL": MessageLookupByLibrary.simpleMessage("Open Video URL"),
-        "pageUrlToastText": m6,
+        "pageUrlToastText": m7,
         "pause": MessageLookupByLibrary.simpleMessage("Pause"),
         "percentage": MessageLookupByLibrary.simpleMessage("percentage"),
         "play": MessageLookupByLibrary.simpleMessage("Play"),
@@ -483,6 +487,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Video Launch Behavior"),
         "widthError":
             MessageLookupByLibrary.simpleMessage("Please enter correct width"),
-        "widthRangeError": m7
+        "widthRangeError": m8
       };
 }

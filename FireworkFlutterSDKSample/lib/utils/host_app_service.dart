@@ -1,15 +1,26 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:fw_flutter_sdk_example/constants/fw_example_event_name.dart';
 import 'package:fw_flutter_sdk_example/models/app_language_info.dart';
 import 'package:fw_flutter_sdk_example/models/cart_item.dart';
+import 'package:fw_flutter_sdk_example/utils/fw_url_util.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:fw_flutter_sdk/fw_flutter_sdk.dart';
 import 'package:fw_flutter_sdk_example/utils/fw_example_logger_util.dart';
 import 'package:fw_flutter_sdk_example/utils/shopify_client.dart';
 
 import '../my_app.dart';
+
+class WidgetInfo {
+  String title;
+  String type;
+  WidgetInfo({
+    required this.title,
+    required this.type,
+  });
+}
 
 class HostAppService {
   static HostAppService? _instance;
@@ -21,6 +32,8 @@ class HostAppService {
 
   bool enablePausePlayer = false;
 
+  Map<String, WidgetInfo> widgetInfoMap = {};
+
   HostAppService._();
 
   factory HostAppService.getInstance() => _getInstance();
@@ -28,15 +41,30 @@ class HostAppService {
   Future<ShoppingCTAResult?> onShopNow(ShoppingCTAEvent? event) async {
     FWExampleLoggerUtil.log(
         "onShopNow feedId: ${event?.video.feedId} videoId: ${event?.video.videoId}");
-
+    final feedId = event?.video.feedId ?? "";
+    final widgetInfo = HostAppService.getInstance().widgetInfoMap[feedId];
+    EasyLoading.showToast(
+      "The user comes from ${widgetInfo?.title ?? ""}",
+      duration: const Duration(
+        seconds: 5,
+      ),
+    );
     if (event == null) {
       return null;
     }
 
     await startFloatingPlayer();
+    final url = event.url;
+    final urlInfo = FWUrlUtil.parseUrl(
+        url: url, iOSQueryName: "ios", androidQueryName: "android");
+    FWExampleLoggerUtil.log("onShopNow url: ${urlInfo?.url}");
+    FWExampleLoggerUtil.log("onShopNow iOS url: ${urlInfo?.iOSUrl}");
+    FWExampleLoggerUtil.log("onShopNow android url: ${urlInfo?.androidUrl}");
 
     globalNavigatorKey.currentState?.pushNamed('/link_content', arguments: {
-      "url": event.url,
+      "url": urlInfo?.url ?? '',
+      "iOSUrl": urlInfo?.iOSUrl ?? '',
+      "androidUrl": urlInfo?.androidUrl ?? '',
     });
 
     await event.ctaHandler?.complete(
@@ -205,6 +233,21 @@ class HostAppService {
       CustomClickLinkButtonEvent? event) async {
     FWExampleLoggerUtil.log(
         "onCustomClickLinkButton feedId: ${event?.video?.feedId} videoId: ${event?.video?.videoId}");
+
+    FWExampleLoggerUtil.log(
+        "onCustomClickLinkButton original url: ${event?.url}");
+
+    final urlInfo = FWUrlUtil.parseUrl(
+      url: event?.url ?? "",
+      iOSQueryName: "ios",
+      androidQueryName: "android",
+    );
+
+    FWExampleLoggerUtil.log("onCustomClickLinkButton url: ${urlInfo?.url}");
+    FWExampleLoggerUtil.log(
+        "onCustomClickLinkButton iOS url: ${urlInfo?.iOSUrl}");
+    FWExampleLoggerUtil.log(
+        "onCustomClickLinkButton android url: ${urlInfo?.androidUrl}");
     await startFloatingPlayer();
     globalNavigatorKey.currentState?.pushNamed('/link_content', arguments: {
       "url": event?.url ?? '',
@@ -224,13 +267,24 @@ class HostAppService {
   void onCustomCTAClick(CustomCTAClickEvent? event) {
     FWExampleLoggerUtil.log(
         "onCustomCTAClick feedId: ${event?.video.feedId} videoId: ${event?.video.videoId}");
+    final url = event?.url ?? "";
+    FWExampleLoggerUtil.log("onCustomCTAClick original url: $url");
+
+    final urlInfo = FWUrlUtil.parseUrl(
+        url: url, iOSQueryName: "ios", androidQueryName: "android");
+    FWExampleLoggerUtil.log("onCustomCTAClick base url: ${urlInfo?.url}");
+    FWExampleLoggerUtil.log("onCustomCTAClick iOS url: ${urlInfo?.iOSUrl}");
+    FWExampleLoggerUtil.log(
+        "onCustomCTAClick android url: ${urlInfo?.androidUrl}");
 
     startFloatingPlayer().then((_) {
       if (enablePausePlayer) {
         event?.playerHandler?.pause();
       }
       globalNavigatorKey.currentState?.pushNamed('/link_content', arguments: {
-        "url": event?.url ?? '',
+        "url": urlInfo?.url ?? '',
+        "iOSUrl": urlInfo?.iOSUrl ?? '',
+        "androidUrl": urlInfo?.androidUrl ?? '',
       });
     });
   }

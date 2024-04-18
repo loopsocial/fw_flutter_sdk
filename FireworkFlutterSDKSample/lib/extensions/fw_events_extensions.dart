@@ -44,6 +44,7 @@ feedId: $feedId""");
 extension VideoFeedClickEventExtension on VideoFeedClickEvent {
   void logMessage() {
     final id = info.id;
+    final feedId = info.feedId;
     final duration = info.duration;
     final index = info.index;
     final title = info.title;
@@ -54,6 +55,7 @@ extension VideoFeedClickEventExtension on VideoFeedClickEvent {
     final dynamicContentParameters = info.dynamicContentParameters;
 
     FWExampleLoggerUtil.log("""onVideoFeedClick id: $id 
+feedId: $feedId 
 duration: $duration 
 index: $index
 title: $title

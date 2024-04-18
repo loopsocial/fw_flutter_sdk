@@ -267,5 +267,6 @@
   "shadowHeightHint": "e.g. 0",
   "shadowHeightError": "Please enter correct shadow height",
   "shadowHeightRangeError": "Please enter shadow height in [0, 100]",
-  "pageUrlToastText": "The page url is {url}."
+  "pageUrlToastText": "The page url is {url}.",
+  "multiplePageUrlsToastText": "The base url is {url}.\nThe iOS url is {iOSUrl}.\nThe Android url is {androidUrl}."
 }

@@ -144,20 +144,21 @@ class _StoryBlockConfigurationScreenState
                 const SizedBox(
                   height: 20,
                 ),
-              if (defaultTargetPlatform == TargetPlatform.android)
-                Row(
-                  children: [
-                    Expanded(
-                      child: _buildMuteButtonShow(context),
-                    ),
+              Row(
+                children: [
+                  Expanded(
+                    child: _buildPlaybackButtonShow(context),
+                  ),
+                  if (defaultTargetPlatform == TargetPlatform.android)
                     const SizedBox(
                       width: 20,
                     ),
+                  if (defaultTargetPlatform == TargetPlatform.android)
                     Expanded(
-                      child: _buildPlaybackButtonShow(context),
+                      child: _buildMuteButtonShow(context),
                     ),
-                  ],
-                ),
+                ],
+              ),
               const SizedBox(
                 height: 20,
               ),

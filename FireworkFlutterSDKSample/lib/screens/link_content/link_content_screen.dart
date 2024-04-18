@@ -33,13 +33,36 @@ class _LinkContentScreenState extends State<LinkContentScreen> {
           ..setJavaScriptMode(JavaScriptMode.unrestricted)
           ..loadRequest(Uri.parse(url));
 
+        String? iOSUrl;
+        if (arg["iOSUrl"] is String) {
+          iOSUrl = arg["iOSUrl"] as String;
+        }
+
+        String? androidUrl;
+        if (arg["androidUrl"] is String) {
+          androidUrl = arg["androidUrl"] as String;
+        }
+
         WidgetsBinding.instance.addPostFrameCallback((_) {
-          EasyLoading.showToast(
-            S.of(context).pageUrlToastText(url),
-            duration: const Duration(
-              seconds: 5,
-            ),
-          );
+          if (iOSUrl != null && androidUrl != null) {
+            EasyLoading.showToast(
+              S.of(context).multiplePageUrlsToastText(
+                    url,
+                    iOSUrl,
+                    androidUrl,
+                  ),
+              duration: const Duration(
+                seconds: 5,
+              ),
+            );
+          } else {
+            EasyLoading.showToast(
+              S.of(context).pageUrlToastText(url),
+              duration: const Duration(
+                seconds: 5,
+              ),
+            );
+          }
         });
       }
     }

@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.8.1]
+
+### Fixed
+
+- [Android] [SingleTask Activity is launched in their own affinities](https://groups.google.com/g/ima-sdk/c/PfAnye3Hhww/m/08N6YyFsBAAJ), which is caused by [the Google IMA SDK v3.32.0](https://developers.google.com/interactive-media-ads/docs/sdks/android/client-side/history)
+
 ## [2.8.0]
 
 ### Added

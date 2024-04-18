@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:fw_flutter_sdk/fw_flutter_sdk.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fw_flutter_sdk_example/utils/host_app_service.dart';
 
 import '../../extensions/fw_error_extension.dart';
 import '../../generated/l10n.dart';
@@ -359,10 +360,25 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Widget> _buildMultiFeeds(BuildContext context) {
     List<Widget> widgetList = <Widget>[];
 
+    var storyBlockIndex = 0;
+
     for (var e in _defaultHomeStoryBlockPlaylistInfoArray) {
+      storyBlockIndex++;
+      final title = "Story Block $storyBlockIndex";
       FWExampleLoggerUtil.log(
           "_buildMultiFeeds channelId: ${e.channelId} playlistId: ${e.playlistId}");
       widgetList.addAll([
+        Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 10,
+          ),
+          child: Text(
+            title,
+            style: const TextStyle(
+              fontSize: 20,
+            ),
+          ),
+        ),
         const SizedBox(
           height: 20,
         ),
@@ -380,6 +396,12 @@ class _HomeScreenState extends State<HomeScreen> {
               FWExampleLoggerUtil.log(
                   "onStoryBlockEmpty error ${error?.displayString()}");
             },
+            onStoryBlockGetFeedId: (feedId) {
+              HostAppService.getInstance().widgetInfoMap[feedId] = WidgetInfo(
+                title: title,
+                type: "StoryBlock",
+              );
+            },
           ),
         ),
         const SizedBox(
@@ -389,15 +411,52 @@ class _HomeScreenState extends State<HomeScreen> {
         const SizedBox(
           height: 20,
         ),
-        _buildListItemPlaceholder(context),
-        const SizedBox(
-          height: 20,
-        ),
       ]);
     }
-
+    Map<String, WidgetInfo> globalWidgetInfoMap = {};
+    VideoFeed(
+      height: 220,
+      source: VideoFeedSource.playlist,
+      channel: "your encoded channel id",
+      playlist: "your encoded playlist id",
+      enablePictureInPicture: true,
+      onVideoFeedGetFeedId: (feedId) {
+        globalWidgetInfoMap[feedId] = WidgetInfo(
+          title: "VideoFeed 1",
+          type: "VideoFeed",
+        );
+      },
+    );
+    StoryBlock(
+      cornerRadius: 20,
+      height: 400,
+      source: StoryBlockSource.playlist,
+      channel: "your encoded channel id",
+      playlist: "your encoded playlist id",
+      enablePictureInPicture: true,
+      onStoryBlockGetFeedId: (feedId) {
+        globalWidgetInfoMap[feedId] = WidgetInfo(
+          title: "StoryBlock 1",
+          type: "StoryBlock",
+        );
+      },
+    );
+    var videoFeedIndex = 0;
     for (var e in _defaultHomeVideoFeedPlaylistInfoArray) {
+      videoFeedIndex++;
+      final title = "Video Feed $videoFeedIndex";
       widgetList.addAll([
+        Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 10,
+          ),
+          child: Text(
+            title,
+            style: const TextStyle(
+              fontSize: 20,
+            ),
+          ),
+        ),
         const SizedBox(
           height: 20,
         ),
@@ -412,12 +471,15 @@ class _HomeScreenState extends State<HomeScreen> {
             channel: e.channelId,
             playlist: e.playlistId,
             enablePictureInPicture: _enablePip,
+            onVideoFeedGetFeedId: (feedId) {
+              FWExampleLoggerUtil.log("onVideoFeedGetFeedId feedId: $feedId");
+              HostAppService.getInstance().widgetInfoMap[feedId] = WidgetInfo(
+                title: title,
+                type: "VideoFeed",
+              );
+            },
           ),
         ),
-        const SizedBox(
-          height: 20,
-        ),
-        _buildListItemPlaceholder(context),
         const SizedBox(
           height: 20,
         ),

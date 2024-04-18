@@ -2739,6 +2739,17 @@ class S {
       args: [url],
     );
   }
+
+  /// `The base url is {url}.\nThe iOS url is {iOSUrl}.\nThe Android url is {androidUrl}.`
+  String multiplePageUrlsToastText(
+      Object url, Object iOSUrl, Object androidUrl) {
+    return Intl.message(
+      'The base url is $url.\nThe iOS url is $iOSUrl.\nThe Android url is $androidUrl.',
+      name: 'multiplePageUrlsToastText',
+      desc: '',
+      args: [url, iOSUrl, androidUrl],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
