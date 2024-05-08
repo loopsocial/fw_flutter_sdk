@@ -80,8 +80,8 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">Future&lt;void&gt; trackPurchase(TrackPurchaseParameters parameters) async {
-  if (!FWGlobalState.getInstance().sdkInitCalled) {
-    await FWGlobalState.getInstance().sdkInitCalledFuture;
+  if (!FWGlobalState.getInstance().sdkInitSucceeded) {
+    await FWGlobalState.getInstance().sdkInitSucceededFuture;
   }
   final nativeMethodName = FireworkSDKNativeMethodName.trackPurchase.name;
   FWMethodChannelUtil.getFirewokSDKChannel().invokeMethod(
@@ -120,7 +120,7 @@
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.8.1
+      2.9.0
   </span>
 
   

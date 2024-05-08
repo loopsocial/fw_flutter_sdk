@@ -108,7 +108,7 @@
   _productInfoViewConfiguration = value;
   final nativeMethodName =
       ShoppingNativeMethodName.setProductInfoViewConfiguration.name;
-  if (FWGlobalState.getInstance().sdkInitCalled) {
+  if (FWGlobalState.getInstance().sdkInitSucceeded) {
     FWMethodChannelUtil.getShoppingChannel()
         .invokeMethod(
       nativeMethodName,
@@ -128,7 +128,7 @@
       },
     );
   } else {
-    FWGlobalState.getInstance().sdkInitCalledFuture.then((_) {
+    FWGlobalState.getInstance().sdkInitSucceededFuture.then((_) {
       FWMethodChannelUtil.getShoppingChannel()
           .invokeMethod(
         nativeMethodName,
@@ -184,7 +184,7 @@
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.8.1
+      2.9.0
   </span>
 
   

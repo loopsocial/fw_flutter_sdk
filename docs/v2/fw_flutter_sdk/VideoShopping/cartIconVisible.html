@@ -105,13 +105,13 @@
   <pre class="language-dart"><code class="language-dart">set cartIconVisible(bool cartIconVisible) {
   _cartIconVisible = cartIconVisible;
   final nativeMethodName = ShoppingNativeMethodName.setCartIconVisible.name;
-  if (FWGlobalState.getInstance().sdkInitCalled) {
+  if (FWGlobalState.getInstance().sdkInitSucceeded) {
     FWMethodChannelUtil.getShoppingChannel().invokeMethod(
       nativeMethodName,
       cartIconVisible,
     );
   } else {
-    FWGlobalState.getInstance().sdkInitCalledFuture.then((_) {
+    FWGlobalState.getInstance().sdkInitSucceededFuture.then((_) {
       FWMethodChannelUtil.getShoppingChannel().invokeMethod(
         nativeMethodName,
         cartIconVisible,
@@ -153,7 +153,7 @@
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.8.1
+      2.9.0
   </span>
 
   

@@ -71,7 +71,7 @@
     </section>
     
 <section class="desc markdown">
-  <p>You only need to call this method when you call init method in native side instead of Dart side.</p>
+  <p>You need to call this method when you call init method in native side.</p>
 </section>
 
 
@@ -79,25 +79,16 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">Future&lt;void&gt; markInitCalled() async {
-  final hasCalledSDKInitFromNative =
+  final initSucceeded =
       await FWMethodChannelUtil.getFirewokSDKChannel().invokeMethod(
     FireworkSDKNativeMethodName.markInitCalled.name,
   );
 
-  if (hasCalledSDKInitFromNative is bool &amp;&amp;
-      hasCalledSDKInitFromNative == true) {
-    final shoppingInitNativeMethodName = ShoppingNativeMethodName.init.name;
-    await FWMethodChannelUtil.getShoppingChannel().invokeMethod(
-      shoppingInitNativeMethodName,
-    );
-
-    final liveStreamInitNativeMethodName =
-        LiveStreamNativeMethodName.init.name;
-    await FWMethodChannelUtil.getLiveStreamMethodChannel()
-        .invokeMethod(liveStreamInitNativeMethodName);
+  if (initSucceeded is bool &amp;&amp; initSucceeded == true) {
+    FWLoggerUtil.log(
+        &quot;markInitCalled _completeRemainingInitialization sdkInitSucceeded: ${FWGlobalState.getInstance().sdkInitSucceeded}&quot;);
+    await _completeRemainingInitialization();
   }
-
-  FWGlobalState.getInstance().completeSdkInitCalledFuture();
 }</code></pre>
 </section>
 
@@ -132,7 +123,7 @@
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.8.1
+      2.9.0
   </span>
 
   

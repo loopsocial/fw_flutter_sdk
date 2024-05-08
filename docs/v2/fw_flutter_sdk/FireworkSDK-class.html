@@ -108,6 +108,18 @@
 
 </dd>
 
+        <dt id="dataTrackingLevel" class="property">
+  <span class="name"><a href="../fw_flutter_sdk/FireworkSDK/dataTrackingLevel.html">dataTrackingLevel</a></span>
+  <span class="signature">&#8596; <a href="../fw_flutter_sdk/DataTrackingLevel.html">DataTrackingLevel</a></span> 
+
+</dt>
+<dd>
+  The level of data tracking the SDK is permitted to send.
+Default to all.
+  <div class="features"><span class="feature">getter/setter pair</span></div>
+
+</dd>
+
         <dt id="debugLogsEnabled" class="property">
   <span class="name"><a href="../fw_flutter_sdk/FireworkSDK/debugLogsEnabled.html">debugLogsEnabled</a></span>
   <span class="signature">&#8596; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> 
@@ -258,8 +270,22 @@
 </dt>
 <dd>
   Change App level language.
-language can be en, ar and en-US.
+language can be en, ar and pt-BR.
 If language is null or empty string, SDK will use system language.
+  
+
+</dd>
+
+        <dt id="getWidgetType" class="callable">
+  <span class="name"><a href="../fw_flutter_sdk/FireworkSDK/getWidgetType.html">getWidgetType</a></span><span class="signature">(<wbr><span class="parameter" id="getWidgetType-param-feedId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">feedId</span></span>)
+    <span class="returntype parameter">&#8594; <a href="../fw_flutter_sdk/FWWidgetType.html">FWWidgetType</a>?</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Get the widget type based on <code>feedId</code>, such as <a href="../fw_flutter_sdk/FWWidgetType.html">FWWidgetType.videoFeed</a>, <a href="../fw_flutter_sdk/FWWidgetType.html">FWWidgetType.storyBlock</a>.
+If the feedId isn't attached to a widget(e.g. open the full-screen player using <a href="../fw_flutter_sdk/FireworkSDK/openVideoPlayer.html">openVideoPlayer</a>), the API will return null.
   
 
 </dd>
@@ -285,7 +311,7 @@ If language is null or empty string, SDK will use system language.
 
 </dt>
 <dd>
-  You only need to call this method when you call init method in native side instead of Dart side.
+  You need to call this method when you call init method in native side.
   
 
 </dd>
@@ -399,7 +425,7 @@ If language is null or empty string, SDK will use system language.
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.8.1
+      2.9.0
   </span>
 
   

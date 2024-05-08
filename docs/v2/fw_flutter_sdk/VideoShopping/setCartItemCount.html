@@ -84,8 +84,8 @@ Otherwise, we will hide the red indicator on the cart icon.</p>
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">Future&lt;void&gt; setCartItemCount(int count) async {
-  if (!FWGlobalState.getInstance().sdkInitCalled) {
-    await FWGlobalState.getInstance().sdkInitCalledFuture;
+  if (!FWGlobalState.getInstance().sdkInitSucceeded) {
+    await FWGlobalState.getInstance().sdkInitSucceededFuture;
   }
   final nativeMethodName = ShoppingNativeMethodName.setCartItemCount.name;
   FWMethodChannelUtil.getShoppingChannel().invokeMethod(
@@ -126,7 +126,7 @@ Otherwise, we will hide the red indicator on the cart icon.</p>
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.8.1
+      2.9.0
   </span>
 
   
