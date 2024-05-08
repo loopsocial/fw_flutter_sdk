@@ -134,6 +134,14 @@ class _TabScreenState extends State<TabScreen> {
           ),
         ],
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).pushNamed("/log");
+        },
+        child: Text(
+          S.of(context).log,
+        ),
+      ),
     );
   }
 

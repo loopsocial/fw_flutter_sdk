@@ -5,9 +5,15 @@ import '../utils/fw_example_logger_util.dart';
 extension SDKInitEventExtension on SDKInitEvent {
   void logMessage() {
     if (error == null) {
-      FWExampleLoggerUtil.log("The SDK was initialized successfully.");
+      FWExampleLoggerUtil.log(
+        "The SDK was initialized successfully.",
+        shouldCache: true,
+      );
     } else {
-      FWExampleLoggerUtil.log("Failed to initialize sdk. The error is $error.");
+      FWExampleLoggerUtil.log(
+        "Failed to initialize sdk. The error is $error.",
+        shouldCache: true,
+      );
     }
   }
 }

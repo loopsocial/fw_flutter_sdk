@@ -70,6 +70,14 @@ class _MyAppState extends State<MyApp> {
           setState(() {
             _appLanguageInfo = appLanguageInfo;
           });
+          FireworkSDK.getInstance().changeAppLanguage(
+            appLanguageInfo.languageCode,
+          );
+        }
+      });
+      HostAppService.getInstance().getCacheDataTrackingLevel().then((value) {
+        if (value != null) {
+          FireworkSDK.getInstance().dataTrackingLevel = value;
         }
       });
     });
@@ -84,13 +92,11 @@ class _MyAppState extends State<MyApp> {
     FireworkSDK.getInstance().onCustomCTAClick =
         HostAppService.getInstance().onCustomCTAClick;
 
-    FireworkSDK.getInstance().onVideoPlayback = (event) {
-      event?.logMessage();
-    };
+    // FireworkSDK.getInstance().onVideoPlayback =
+    //     HostAppService.getInstance().onVideoPlayback;
 
-    FireworkSDK.getInstance().onVideoFeedClick = (event) {
-      event?.logMessage();
-    };
+    FireworkSDK.getInstance().onVideoFeedClick =
+        HostAppService.getInstance().onVideoFeedClick;
 
     FireworkSDK.getInstance().shopping.onShoppingCTA =
         HostAppService.getInstance().onShopNow;
@@ -98,6 +104,8 @@ class _MyAppState extends State<MyApp> {
         HostAppService.getInstance().onUpdateProductDetails;
     FireworkSDK.getInstance().shopping.onCustomClickCartIcon =
         HostAppService.getInstance().onCustomClickCartIcon;
+    FireworkSDK.getInstance().shopping.onClickProduct =
+        HostAppService.getInstance().onClickProduct;
     FireworkSDK.getInstance().shopping.productInfoViewConfiguration =
         ProductInfoViewConfiguration(
       ctaButton: ShoppingCTAButtonConfiguration(
@@ -105,39 +113,11 @@ class _MyAppState extends State<MyApp> {
       ),
     );
 
-    FireworkSDK.getInstance().liveStream.onLiveStreamEvent = (event) {
-      if (event != null) {
-        switch (event.eventName) {
-          case LiveStreamEventName.userDidjoin:
-            FWExampleLoggerUtil.log(
-                "onLiveStreamEvent userDidjoin livestream id: ${event.info.id}");
-            break;
-          case LiveStreamEventName.userDidLeave:
-            FWExampleLoggerUtil.log(
-                "onLiveStreamEvent userDidLeave livestream id: ${event.info.id}");
-            break;
-          case LiveStreamEventName.userSendLike:
-            FWExampleLoggerUtil.log(
-                "onLiveStreamEvent userSendLike livestream id: ${event.info.id}");
-            break;
-        }
-      }
-    };
+    FireworkSDK.getInstance().liveStream.onLiveStreamEvent =
+        HostAppService.getInstance().onLiveStreamEvent;
 
-    FireworkSDK.getInstance().liveStream.onLiveStreamChatEvent = (event) {
-      if (event != null) {
-        switch (event.eventName) {
-          case LiveStreamChatEventName.userSendChat:
-            // ignore: avoid_print
-            print(
-                "onLiveStreamChatEvent userSendChat livestream id: ${event.liveStream.id}");
-            // ignore: avoid_print
-            print(
-                "onLiveStreamChatEvent userSendChat message id: ${event.message.messageId} username: ${event.message.username} text: ${event.message.text}");
-            break;
-        }
-      }
-    };
+    FireworkSDK.getInstance().liveStream.onLiveStreamChatEvent =
+        HostAppService.getInstance().onLiveStreamChatEvent;
 
     FireworkSDK.getInstance().shopping.onCustomClickLinkButton =
         HostAppService.getInstance().onCustomClickLinkButton;
@@ -145,7 +125,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    final langauge = _appLanguageInfo?.language;
+    final langauge = _appLanguageInfo?.languageCode;
     Locale? locale;
     if (langauge != null) {
       final languageComponents = langauge.split("-");

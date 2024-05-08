@@ -107,17 +107,6 @@
       ),
     );
   }
-
-  final shoppingInitNativeMethodName = ShoppingNativeMethodName.init.name;
-  await FWMethodChannelUtil.getShoppingChannel().invokeMethod(
-    shoppingInitNativeMethodName,
-  );
-
-  final liveStreamInitNativeMethodName = LiveStreamNativeMethodName.init.name;
-  await FWMethodChannelUtil.getLiveStreamMethodChannel()
-      .invokeMethod(liveStreamInitNativeMethodName);
-
-  FWGlobalState.getInstance().completeSdkInitCalledFuture();
 }</code></pre>
 </section>
 
@@ -152,7 +141,7 @@
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.8.1
+      2.9.0
   </span>
 
   

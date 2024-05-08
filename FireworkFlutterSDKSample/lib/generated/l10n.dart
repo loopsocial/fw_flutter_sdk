@@ -2130,30 +2130,30 @@ class S {
     );
   }
 
-  /// `CTA background color(iOS)(full-screen)`
+  /// `CTA background color(iOS)`
   String get ctaBackgroundColor2 {
     return Intl.message(
-      'CTA background color(iOS)(full-screen)',
+      'CTA background color(iOS)',
       name: 'ctaBackgroundColor2',
       desc: '',
       args: [],
     );
   }
 
-  /// `CTA text color(iOS)(full-screen)`
+  /// `CTA text color(iOS)`
   String get ctaTextColor2 {
     return Intl.message(
-      'CTA text color(iOS)(full-screen)',
+      'CTA text color(iOS)',
       name: 'ctaTextColor2',
       desc: '',
       args: [],
     );
   }
 
-  /// `CTA font size(iOS)(full-screen)`
+  /// `CTA font size(iOS)`
   String get ctaFontSize2 {
     return Intl.message(
-      'CTA font size(iOS)(full-screen)',
+      'CTA font size(iOS)',
       name: 'ctaFontSize2',
       desc: '',
       args: [],
@@ -2748,6 +2748,126 @@ class S {
       name: 'multiplePageUrlsToastText',
       desc: '',
       args: [url, iOSUrl, androidUrl],
+    );
+  }
+
+  /// `Select language`
+  String get selectLanguage {
+    return Intl.message(
+      'Select language',
+      name: 'selectLanguage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select data tracking level`
+  String get selectDataTrackingLevel {
+    return Intl.message(
+      'Select data tracking level',
+      name: 'selectDataTrackingLevel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Change data tracking level({level})`
+  String changeDataTrackingLevel(Object level) {
+    return Intl.message(
+      'Change data tracking level($level)',
+      name: 'changeDataTrackingLevel',
+      desc: '',
+      args: [level],
+    );
+  }
+
+  /// `Log`
+  String get log {
+    return Intl.message(
+      'Log',
+      name: 'log',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Export`
+  String get export {
+    return Intl.message(
+      'Export',
+      name: 'export',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The user comes from {title}`
+  String theUserComesFromTitle(Object title) {
+    return Intl.message(
+      'The user comes from $title',
+      name: 'theUserComesFromTitle',
+      desc: '',
+      args: [title],
+    );
+  }
+
+  /// `The player is closed. If PiP is disabled, it's expected. Otherwise, it's a bug.`
+  String get closePlayerToast {
+    return Intl.message(
+      'The player is closed. If PiP is disabled, it\'s expected. Otherwise, it\'s a bug.',
+      name: 'closePlayerToast',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enable onVideoPlayback log`
+  String get enableOnVideoPlaybackLog {
+    return Intl.message(
+      'Enable onVideoPlayback log',
+      name: 'enableOnVideoPlaybackLog',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enable onVideoPlayback log successfully`
+  String get enableOnVideoPlaybackLogSuccessfully {
+    return Intl.message(
+      'Enable onVideoPlayback log successfully',
+      name: 'enableOnVideoPlaybackLogSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Disable onVideoPlayback log successfully`
+  String get disableOnVideoPlaybackLogSuccessfully {
+    return Intl.message(
+      'Disable onVideoPlayback log successfully',
+      name: 'disableOnVideoPlaybackLogSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Clear log`
+  String get clearLog {
+    return Intl.message(
+      'Clear log',
+      name: 'clearLog',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Clear log successfully`
+  String get clearLogSuccessfully {
+    return Intl.message(
+      'Clear log successfully',
+      name: 'clearLogSuccessfully',
+      desc: '',
+      args: [],
     );
   }
 }

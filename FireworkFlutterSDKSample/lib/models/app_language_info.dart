@@ -4,11 +4,11 @@ part 'app_language_info.g.dart';
 
 @JsonSerializable()
 class AppLanguageInfo {
-  String? language;
+  String? languageCode;
   String? displayName;
 
   AppLanguageInfo({
-    this.language,
+    this.languageCode,
     this.displayName,
   });
 

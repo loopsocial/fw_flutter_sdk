@@ -1,13 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:fw_flutter_sdk/fw_flutter_sdk.dart';
 import 'package:fw_flutter_sdk_example/models/app_language_info.dart';
+import 'package:fw_flutter_sdk_example/utils/fw_example_logger_util.dart';
 import 'package:fw_flutter_sdk_example/utils/host_app_service.dart';
 import '../../generated/l10n.dart';
 import '../../widgets/fw_app_bar.dart';
 
-const fwNativeVersionOfAndroid = '6.10.2';
+const fwNativeVersionOfAndroid = '6.11.0';
 
 class MoreScreen extends StatefulWidget {
   const MoreScreen({
@@ -20,6 +22,7 @@ class MoreScreen extends StatefulWidget {
 
 class _MoreScreenState extends State<MoreScreen> {
   AppLanguageInfo? _currentAppLanguage;
+  DataTrackingLevel _dataTrackingLevel = DataTrackingLevel.all;
   @override
   void initState() {
     super.initState();
@@ -33,6 +36,11 @@ class _MoreScreenState extends State<MoreScreen> {
             _currentAppLanguage = appLanguage;
           });
         }
+      });
+      HostAppService.getInstance().getCacheDataTrackingLevel().then((value) {
+        setState(() {
+          _dataTrackingLevel = value ?? DataTrackingLevel.all;
+        });
       });
     });
   }
@@ -118,7 +126,7 @@ class _MoreScreenState extends State<MoreScreen> {
                       );
                       return CupertinoActionSheet(
                         title: Text(
-                          S.of(context).selectChannelId,
+                          S.of(context).selectLanguage,
                         ),
                         actions: [
                           for (var w in appLanguageInfoWidgetArray) w,
@@ -136,6 +144,52 @@ class _MoreScreenState extends State<MoreScreen> {
                   );
                 },
               ),
+            _buildItem(
+              context: context,
+              title: S
+                  .of(context)
+                  .changeDataTrackingLevel(_dataTrackingLevel.name),
+              onTap: () {
+                showCupertinoModalPopup(
+                  context: context,
+                  builder: (context) {
+                    final dataTrackingLevelWidgetArray =
+                        DataTrackingLevel.values.map(
+                      (level) => CupertinoActionSheetAction(
+                        isDefaultAction: true,
+                        onPressed: () {
+                          HostAppService.getInstance()
+                              .cacheDataTrackingLevel(level);
+                          setState(() {
+                            _dataTrackingLevel = level;
+                          });
+                          Navigator.of(context).pop();
+                        },
+                        child: Text(
+                          level.name,
+                        ),
+                      ),
+                    );
+                    return CupertinoActionSheet(
+                      title: Text(
+                        S.of(context).selectDataTrackingLevel,
+                      ),
+                      actions: [
+                        for (var w in dataTrackingLevelWidgetArray) w,
+                      ],
+                      cancelButton: CupertinoActionSheetAction(
+                        child: Text(
+                          S.of(context).cancel,
+                        ),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                    );
+                  },
+                );
+              },
+            ),
             if (defaultTargetPlatform == TargetPlatform.android)
               _buildItem(
                 context: context,
@@ -143,6 +197,24 @@ class _MoreScreenState extends State<MoreScreen> {
                     S.of(context).fwAndroidSdkVersion(fwNativeVersionOfAndroid),
                 onTap: () {},
               ),
+            _buildItem(
+              context: context,
+              title: S.of(context).enableOnVideoPlaybackLog,
+              onTap: () {
+                Navigator.of(context)
+                    .pushNamed("/enable_on_video_playback_log");
+              },
+            ),
+            _buildItem(
+              context: context,
+              title: S.of(context).clearLog,
+              onTap: () {
+                FWExampleLoggerUtil.messageList.clear();
+                EasyLoading.showToast(
+                  S.of(context).clearLogSuccessfully,
+                );
+              },
+            ),
           ],
         ),
       ),

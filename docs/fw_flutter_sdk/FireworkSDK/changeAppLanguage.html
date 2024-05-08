@@ -73,7 +73,7 @@
     
 <section class="desc markdown">
   <p>Change App level language.
-language can be en, ar and en-US.
+language can be en, ar and pt-BR.
 If language is null or empty string, SDK will use system language.</p>
 </section>
 
@@ -82,8 +82,8 @@ If language is null or empty string, SDK will use system language.</p>
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">Future&lt;bool&gt; changeAppLanguage(String? language) async {
-  if (!FWGlobalState.getInstance().sdkInitCalled) {
-    await FWGlobalState.getInstance().sdkInitCalledFuture;
+  if (!FWGlobalState.getInstance().sdkInitSucceeded) {
+    await FWGlobalState.getInstance().sdkInitSucceededFuture;
   }
 
   final nativeMethodName = FireworkSDKNativeMethodName.changeAppLanguage.name;
@@ -130,7 +130,7 @@ If language is null or empty string, SDK will use system language.</p>
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.8.1
+      2.9.0
   </span>
 
   

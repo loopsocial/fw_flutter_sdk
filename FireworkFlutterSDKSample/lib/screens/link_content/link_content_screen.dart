@@ -77,6 +77,14 @@ class _LinkContentScreenState extends State<LinkContentScreen> {
         titleText: S.of(context).linkContentScreenTitle,
       ),
       body: _buildBody(context),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).pushNamed("/log");
+        },
+        child: Text(
+          S.of(context).log,
+        ),
+      ),
     );
   }
 

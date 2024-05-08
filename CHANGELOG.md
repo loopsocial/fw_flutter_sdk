@@ -1,6 +1,24 @@
 # CHANGELOG
 
+## [2.9.0]
+
+### Added
+
+- More language support
+- Optimizations for RTL
+- Expose more properties for many event callbacks
+- Support configuring data tracking level
+- [Android] Add the email field to the Question interactions
+
+### Fixed
+
+- [Android] "Host Will be right back" pop up message is missing in viewers mobile when the streamer paused the live stream.
+
 ## [2.8.1]
+
+### Added
+
+- [iOS] Support configuring the visibility of the playback button on the full-screen story block
 
 ### Fixed
 

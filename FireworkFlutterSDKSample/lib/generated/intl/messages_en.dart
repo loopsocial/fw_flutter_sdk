@@ -22,22 +22,26 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m0(language) => "Change App Langauge (${language})";
 
-  static String m1(value) => "CTA delay value: ${value}";
+  static String m1(level) => "Change data tracking level(${level})";
 
-  static String m2(value) => "CTA highlight delay value: ${value}";
+  static String m2(value) => "CTA delay value: ${value}";
 
-  static String m3(url) => "Current: ${url}";
+  static String m3(value) => "CTA highlight delay value: ${value}";
 
-  static String m4(version) => "Firework Android SDK version: ${version}";
+  static String m4(url) => "Current: ${url}";
 
-  static String m5(min, max) => "Please enter height in [${min}, ${max}]";
+  static String m5(version) => "Firework Android SDK version: ${version}";
 
-  static String m6(url, iOSUrl, androidUrl) =>
+  static String m6(min, max) => "Please enter height in [${min}, ${max}]";
+
+  static String m7(url, iOSUrl, androidUrl) =>
       "The base url is ${url}.\nThe iOS url is ${iOSUrl}.\nThe Android url is ${androidUrl}.";
 
-  static String m7(url) => "The page url is ${url}.";
+  static String m8(url) => "The page url is ${url}.";
 
-  static String m8(min, max) => "Please enter width in [${min}, ${max}]";
+  static String m9(title) => "The user comes from ${title}";
+
+  static String m10(min, max) => "Please enter width in [${min}, ${max}]";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -56,6 +60,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "cardNumber": MessageLookupByLibrary.simpleMessage("Card Number"),
         "cartPage": MessageLookupByLibrary.simpleMessage("Cart Page"),
         "changeAppLanguage": m0,
+        "changeDataTrackingLevel": m1,
         "channelAggregator":
             MessageLookupByLibrary.simpleMessage("Channel Aggregator"),
         "channelFeed": MessageLookupByLibrary.simpleMessage("Channel Feed"),
@@ -71,6 +76,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "circleThumbnails":
             MessageLookupByLibrary.simpleMessage("Circle Thumbnails(iOS)"),
         "city": MessageLookupByLibrary.simpleMessage("City"),
+        "clearLog": MessageLookupByLibrary.simpleMessage("Clear log"),
+        "clearLogSuccessfully":
+            MessageLookupByLibrary.simpleMessage("Clear log successfully"),
+        "closePlayerToast": MessageLookupByLibrary.simpleMessage(
+            "The player is closed. If PiP is disabled, it\'s expected. Otherwise, it\'s a bug."),
         "colorError":
             MessageLookupByLibrary.simpleMessage("Please enter correct color"),
         "column": MessageLookupByLibrary.simpleMessage("Column"),
@@ -94,30 +104,30 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Credit Card Info"),
         "ctaBackgroundColor":
             MessageLookupByLibrary.simpleMessage("CTA background color(iOS)"),
-        "ctaBackgroundColor2": MessageLookupByLibrary.simpleMessage(
-            "CTA background color(iOS)(full-screen)"),
+        "ctaBackgroundColor2":
+            MessageLookupByLibrary.simpleMessage("CTA background color(iOS)"),
         "ctaBackgroundColorHint":
             MessageLookupByLibrary.simpleMessage("e.g. #c0c0c0"),
         "ctaDelayType": MessageLookupByLibrary.simpleMessage("CTA delay type"),
-        "ctaDelayValue": m1,
+        "ctaDelayValue": m2,
         "ctaFontHint": MessageLookupByLibrary.simpleMessage("e.g. 14"),
         "ctaFontSize":
             MessageLookupByLibrary.simpleMessage("CTA font size(iOS)"),
-        "ctaFontSize2": MessageLookupByLibrary.simpleMessage(
-            "CTA font size(iOS)(full-screen)"),
+        "ctaFontSize2":
+            MessageLookupByLibrary.simpleMessage("CTA font size(iOS)"),
         "ctaHighlightDelayType":
             MessageLookupByLibrary.simpleMessage("CTA highlight delay type"),
-        "ctaHighlightDelayValue": m2,
+        "ctaHighlightDelayValue": m3,
         "ctaLinkContentScreenTitle": MessageLookupByLibrary.simpleMessage(
             "CTA Link Content(Flutter page)"),
         "ctaTextColor":
             MessageLookupByLibrary.simpleMessage("CTA text color(iOS)"),
-        "ctaTextColor2": MessageLookupByLibrary.simpleMessage(
-            "CTA text color(iOS)(full-screen)"),
+        "ctaTextColor2":
+            MessageLookupByLibrary.simpleMessage("CTA text color(iOS)"),
         "ctaTextColorHint":
             MessageLookupByLibrary.simpleMessage("e.g. #000000"),
         "ctaWidth": MessageLookupByLibrary.simpleMessage("CTA width"),
-        "currentShareBaseURLTip": m3,
+        "currentShareBaseURLTip": m4,
         "custom": MessageLookupByLibrary.simpleMessage("Custom"),
         "customizeLinkButtonHandler": MessageLookupByLibrary.simpleMessage(
             "Customize link button handler"),
@@ -130,6 +140,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "disableCustomClickCartIconCallbackSuccessfully":
             MessageLookupByLibrary.simpleMessage(
                 "Disable custom click cart icon callback successfully"),
+        "disableOnVideoPlaybackLogSuccessfully":
+            MessageLookupByLibrary.simpleMessage(
+                "Disable onVideoPlayback log successfully"),
         "disabled": MessageLookupByLibrary.simpleMessage("Disabled"),
         "discoverFeed": MessageLookupByLibrary.simpleMessage("Discover Feed"),
         "dynamicContentFeed":
@@ -167,10 +180,16 @@ class MessageLookup extends MessageLookupByLibrary {
             "Enable custom tap product card"),
         "enableKeepingAlive":
             MessageLookupByLibrary.simpleMessage("Enable Keeping Alive"),
+        "enableOnVideoPlaybackLog":
+            MessageLookupByLibrary.simpleMessage("Enable onVideoPlayback log"),
+        "enableOnVideoPlaybackLogSuccessfully":
+            MessageLookupByLibrary.simpleMessage(
+                "Enable onVideoPlayback log successfully"),
         "enablePausePlayer":
             MessageLookupByLibrary.simpleMessage("Enable Pause Player"),
         "enablePictureInPicture":
             MessageLookupByLibrary.simpleMessage("Enable Picture In Picture"),
+        "export": MessageLookupByLibrary.simpleMessage("Export"),
         "feed": MessageLookupByLibrary.simpleMessage("Feed"),
         "feedConfiguration":
             MessageLookupByLibrary.simpleMessage("Feed Configuration"),
@@ -182,7 +201,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Please enter font size in [8, 30]"),
         "full": MessageLookupByLibrary.simpleMessage("full"),
         "fullWidth": MessageLookupByLibrary.simpleMessage("Full width"),
-        "fwAndroidSdkVersion": m4,
+        "fwAndroidSdkVersion": m5,
         "grid": MessageLookupByLibrary.simpleMessage("Grid"),
         "gridColumns": MessageLookupByLibrary.simpleMessage("Grid Columns"),
         "gridColumnsError": MessageLookupByLibrary.simpleMessage(
@@ -203,7 +222,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Hashtag Playlist Info"),
         "heightError":
             MessageLookupByLibrary.simpleMessage("Please enter correct height"),
-        "heightRangeError": m5,
+        "heightRangeError": m6,
         "hideCountdownTimer":
             MessageLookupByLibrary.simpleMessage("Hide countdown timer"),
         "hideLinkButton":
@@ -223,10 +242,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Link Content(Flutter page)"),
         "livestreamCountdownTimerTheme": MessageLookupByLibrary.simpleMessage(
             "Livestream countdown timer theme"),
+        "log": MessageLookupByLibrary.simpleMessage("Log"),
         "loop": MessageLookupByLibrary.simpleMessage("loop"),
         "more": MessageLookupByLibrary.simpleMessage("More"),
         "multiFeeds": MessageLookupByLibrary.simpleMessage("Multi-feeds"),
-        "multiplePageUrlsToastText": m6,
+        "multiplePageUrlsToastText": m7,
         "muteOnFirstLaunch":
             MessageLookupByLibrary.simpleMessage("muteOnFirstLaunch"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
@@ -242,7 +262,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Please enter grid columns in [1, 5]"),
         "open": MessageLookupByLibrary.simpleMessage("Open"),
         "openVideoURL": MessageLookupByLibrary.simpleMessage("Open Video URL"),
-        "pageUrlToastText": m7,
+        "pageUrlToastText": m8,
         "pause": MessageLookupByLibrary.simpleMessage("Pause"),
         "percentage": MessageLookupByLibrary.simpleMessage("percentage"),
         "play": MessageLookupByLibrary.simpleMessage("Play"),
@@ -354,8 +374,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "save": MessageLookupByLibrary.simpleMessage("Save"),
         "selectChannelId":
             MessageLookupByLibrary.simpleMessage("Select Channel Id"),
+        "selectDataTrackingLevel":
+            MessageLookupByLibrary.simpleMessage("Select data tracking level"),
         "selectDynamicContentInfo":
             MessageLookupByLibrary.simpleMessage("Select Dynamic Content Info"),
+        "selectLanguage":
+            MessageLookupByLibrary.simpleMessage("Select language"),
         "selectPlaylistGroupId":
             MessageLookupByLibrary.simpleMessage("Select Playlist Group Id"),
         "selectPlaylistInfo":
@@ -438,6 +462,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "storyBlockLoadError":
             MessageLookupByLibrary.simpleMessage("Fail to load story block"),
         "street": MessageLookupByLibrary.simpleMessage("Street"),
+        "theUserComesFromTitle": m9,
         "titleColor": MessageLookupByLibrary.simpleMessage("Title Color"),
         "titleColorHint": MessageLookupByLibrary.simpleMessage("e.g. #000000"),
         "titleFontSize":
@@ -487,6 +512,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Video Launch Behavior"),
         "widthError":
             MessageLookupByLibrary.simpleMessage("Please enter correct width"),
-        "widthRangeError": m8
+        "widthRangeError": m10
       };
 }

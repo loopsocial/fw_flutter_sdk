@@ -5,7 +5,6 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:fw_flutter_sdk_example/constants/fw_example_event_name.dart';
 import 'package:fw_flutter_sdk_example/models/app_language_info.dart';
 import 'package:fw_flutter_sdk_example/models/cart_item.dart';
-import 'package:fw_flutter_sdk_example/utils/fw_url_util.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:fw_flutter_sdk/fw_flutter_sdk.dart';
 import 'package:fw_flutter_sdk_example/utils/fw_example_logger_util.dart';
@@ -39,9 +38,13 @@ class HostAppService {
   factory HostAppService.getInstance() => _getInstance();
 
   Future<ShoppingCTAResult?> onShopNow(ShoppingCTAEvent? event) async {
-    FWExampleLoggerUtil.log(
-        "onShopNow feedId: ${event?.video.feedId} videoId: ${event?.video.videoId}");
     final feedId = event?.video.feedId ?? "";
+    final videoId = event?.video.videoId;
+    final widgetType = FireworkSDK.getInstance().getWidgetType(feedId);
+    FWExampleLoggerUtil.log(
+      "onShopNow feedId: $feedId videoId: $videoId widgetType: $widgetType",
+      shouldCache: true,
+    );
     final widgetInfo = HostAppService.getInstance().widgetInfoMap[feedId];
     EasyLoading.showToast(
       "The user comes from ${widgetInfo?.title ?? ""}",
@@ -53,7 +56,7 @@ class HostAppService {
       return null;
     }
 
-    await startFloatingPlayer();
+    await startFloatingPlayerOrClosePlayer();
     final url = event.url;
     final urlInfo = FWUrlUtil.parseUrl(
         url: url, iOSQueryName: "ios", androidQueryName: "android");
@@ -77,9 +80,13 @@ class HostAppService {
   }
 
   Future<ShoppingCTAResult?> onAddToCart(ShoppingCTAEvent? event) async {
+    final feedId = event?.video.feedId ?? "";
+    final videoId = event?.video.videoId;
+    final widgetType = FireworkSDK.getInstance().getWidgetType(feedId);
     FWExampleLoggerUtil.log(
-        "onAddToCart feedId: ${event?.video.feedId} videoId: ${event?.video.videoId}");
-
+      "onAddToCart feedId: $feedId videoId: $videoId widgetType: $widgetType",
+      shouldCache: true,
+    );
     await event?.ctaHandler?.showLoader();
 
     if (event == null) {
@@ -161,10 +168,14 @@ class HostAppService {
   }
 
   Future<void> onCustomClickCartIcon(event) async {
+    final feedId = event?.video.feedId ?? "";
+    final videoId = event?.video.videoId;
+    final widgetType = FireworkSDK.getInstance().getWidgetType(feedId);
     FWExampleLoggerUtil.log(
-        "onCustomClickCartIcon feedId: ${event?.video.feedId} videoId: ${event?.video.videoId}");
-
-    await startFloatingPlayer();
+      "onCustomClickCartIcon feedId: $feedId videoId: $videoId widgetType: $widgetType",
+      shouldCache: true,
+    );
+    await startFloatingPlayerOrClosePlayer();
     final showCart = await shouldShowCart();
     if (showCart) {
       globalNavigatorKey.currentState?.pushNamed('/cart');
@@ -173,9 +184,13 @@ class HostAppService {
 
   Future<List<Product>?> onUpdateProductDetails(
       UpdateProductDetailsEvent? event) async {
+    final feedId = event?.video.feedId ?? "";
+    final videoId = event?.video.videoId;
+    final widgetType = FireworkSDK.getInstance().getWidgetType(feedId);
     FWExampleLoggerUtil.log(
-        "onUpdateProductDetails feedId: ${event?.video.feedId} videoId: ${event?.video.videoId}");
-
+      "onUpdateProductDetails feedId: $feedId videoId: $videoId widgetType: $widgetType",
+      shouldCache: true,
+    );
     if (event == null) {
       return null;
     }
@@ -231,8 +246,13 @@ class HostAppService {
 
   Future<void> onCustomClickLinkButton(
       CustomClickLinkButtonEvent? event) async {
+    final feedId = event?.video?.feedId ?? "";
+    final videoId = event?.video?.videoId;
+    final widgetType = FireworkSDK.getInstance().getWidgetType(feedId);
     FWExampleLoggerUtil.log(
-        "onCustomClickLinkButton feedId: ${event?.video?.feedId} videoId: ${event?.video?.videoId}");
+      "onCustomClickLinkButton feedId: $feedId videoId: $videoId widgetType: $widgetType",
+      shouldCache: true,
+    );
 
     FWExampleLoggerUtil.log(
         "onCustomClickLinkButton original url: ${event?.url}");
@@ -248,25 +268,45 @@ class HostAppService {
         "onCustomClickLinkButton iOS url: ${urlInfo?.iOSUrl}");
     FWExampleLoggerUtil.log(
         "onCustomClickLinkButton android url: ${urlInfo?.androidUrl}");
-    await startFloatingPlayer();
+    await startFloatingPlayerOrClosePlayer();
     globalNavigatorKey.currentState?.pushNamed('/link_content', arguments: {
       "url": event?.url ?? '',
     });
   }
 
   Future<void> onCustomTapProductCard(CustomTapProductCardEvent? event) async {
-    await startFloatingPlayer();
+    final feedId = event?.video.feedId ?? "";
+    final videoId = event?.video.videoId;
+    final widgetType = FireworkSDK.getInstance().getWidgetType(feedId);
     FWExampleLoggerUtil.log(
-      "onCustomTapProductCard event?.url ${event?.url} feedId: ${event?.video.feedId} videoId: ${event?.video.videoId}",
+      "onCustomTapProductCard feedId: $feedId videoId: $videoId widgetType: $widgetType",
+      shouldCache: true,
     );
+
+    await startFloatingPlayerOrClosePlayer();
     globalNavigatorKey.currentState?.pushNamed('/link_content', arguments: {
       "url": event?.url ?? '',
     });
   }
 
-  void onCustomCTAClick(CustomCTAClickEvent? event) {
+  Future<void> onClickProduct(ClickProductEvent? event) async {
+    final feedId = event?.video.feedId ?? "";
+    final videoId = event?.video.videoId;
+    final widgetType = FireworkSDK.getInstance().getWidgetType(feedId);
     FWExampleLoggerUtil.log(
-        "onCustomCTAClick feedId: ${event?.video.feedId} videoId: ${event?.video.videoId}");
+      "onClickProduct feedId: $feedId videoId: $videoId widgetType: $widgetType",
+      shouldCache: true,
+    );
+  }
+
+  void onCustomCTAClick(CustomCTAClickEvent? event) {
+    final feedId = event?.video.feedId ?? "";
+    final videoId = event?.video.videoId;
+    final widgetType = FireworkSDK.getInstance().getWidgetType(feedId);
+    FWExampleLoggerUtil.log(
+      "onCustomCTAClick feedId: $feedId videoId: $videoId widgetType: $widgetType",
+      shouldCache: true,
+    );
     final url = event?.url ?? "";
     FWExampleLoggerUtil.log("onCustomCTAClick original url: $url");
 
@@ -277,7 +317,7 @@ class HostAppService {
     FWExampleLoggerUtil.log(
         "onCustomCTAClick android url: ${urlInfo?.androidUrl}");
 
-    startFloatingPlayer().then((_) {
+    startFloatingPlayerOrClosePlayer().then((_) {
       if (enablePausePlayer) {
         event?.playerHandler?.pause();
       }
@@ -289,13 +329,140 @@ class HostAppService {
     });
   }
 
-  Future<void> startFloatingPlayer() async {
+  Future<void> onVideoPlayback(VideoPlaybackEvent? event) async {
+    if (event != null) {
+      final eventName = event.eventName;
+      final feedId = event.info.feedId ?? "";
+      final videoId = event.info.videoId;
+      final widgetType = FireworkSDK.getInstance().getWidgetType(feedId);
+      final duration = event.info.duration;
+      final progress = event.info.progress;
+      FWExampleLoggerUtil.log(
+        "onVideoPlayback eventName:$eventName feedId: $feedId videoId: $videoId widgetType: $widgetType duration: $duration progress: $progress",
+        shouldCache: true,
+      );
+      switch (eventName) {
+        case VideoPlaybackEventName.impression:
+
+          /// When video is shown to the user.
+          break;
+        case VideoPlaybackEventName.start:
+
+          /// Video started.
+          break;
+        case VideoPlaybackEventName.pause:
+
+          /// Video paused.
+          break;
+        case VideoPlaybackEventName.resume:
+
+          /// Video resume.
+          break;
+        case VideoPlaybackEventName.firstQuartile:
+
+          /// Video reached 25%.
+          break;
+        case VideoPlaybackEventName.midpoint:
+
+          /// Video reached 50%.
+          break;
+        case VideoPlaybackEventName.thirdQuartile:
+
+          /// Video reached 75%.
+          break;
+        case VideoPlaybackEventName.complete:
+
+          /// Video reached 100%.
+          break;
+        case VideoPlaybackEventName.adStart:
+
+          /// When ad video start playing.
+          break;
+        case VideoPlaybackEventName.adEnd:
+
+          /// When ad video finishes playing.
+          break;
+        case VideoPlaybackEventName.clickCTA:
+
+          /// When a visitor clicks on CTA button (if available).
+          break;
+        case VideoPlaybackEventName.clickShare:
+
+          /// When user clicks on "Share" button.
+          break;
+      }
+    }
+  }
+
+  Future<void> onVideoFeedClick(VideoFeedClickEvent? event) async {
+    final feedId = event?.info.feedId ?? "";
+    final videoId = event?.info.id;
+    final widgetType = FireworkSDK.getInstance().getWidgetType(feedId);
+    FWExampleLoggerUtil.log(
+      "onVideoFeedClick feedId: $feedId videoId: $videoId widgetType: $widgetType",
+      shouldCache: true,
+    );
+  }
+
+  Future<void> onLiveStreamEvent(LiveStreamEvent? event) async {
+    if (event != null) {
+      final eventName = event.eventName;
+      final feedId = event.info.feedId ?? "";
+      final videoId = event.info.id;
+      final widgetType = FireworkSDK.getInstance().getWidgetType(feedId);
+      FWExampleLoggerUtil.log(
+        "onLiveStreamEvent eventName: $eventName feedId: $feedId videoId: $videoId widgetType: $widgetType",
+        shouldCache: true,
+      );
+
+      switch (eventName) {
+        case LiveStreamEventName.userDidjoin:
+          // The user joins an active live stream.
+          break;
+        case LiveStreamEventName.userDidLeave:
+          // The user leaves an active live stream.
+          break;
+        case LiveStreamEventName.userSendLike:
+          // The user sends a like to an active live stream.
+          break;
+      }
+    }
+  }
+
+  Future<void> onLiveStreamChatEvent(LiveStreamChatEvent? event) async {
+    if (event != null) {
+      final eventName = event.eventName;
+      final feedId = event.liveStream.feedId ?? "";
+      final videoId = event.liveStream.id;
+      final widgetType = FireworkSDK.getInstance().getWidgetType(feedId);
+      FWExampleLoggerUtil.log(
+        "onLiveStreamChatEvent eventName: $eventName feedId: $feedId videoId: $videoId widgetType: $widgetType",
+        shouldCache: true,
+      );
+      switch (eventName) {
+        case LiveStreamChatEventName.userSendChat:
+          FWExampleLoggerUtil.log(
+              "onLiveStreamChatEvent userSendChat livestream videoId: ${event.liveStream.id} feedId: ${event.liveStream.feedId} widgetType: ${FireworkSDK.getInstance().getWidgetType(event.liveStream.feedId ?? "")}");
+          FWExampleLoggerUtil.log(
+              "onLiveStreamChatEvent userSendChat message id: ${event.message.messageId} username: ${event.message.username} text: ${event.message.text}");
+          break;
+      }
+    }
+  }
+
+  Future<void> startFloatingPlayerOrClosePlayer() async {
     final result =
         await FireworkSDK.getInstance().navigator.startFloatingPlayer();
     FWExampleLoggerUtil.log("startFloatingPlayer result: $result");
-    // if (!result) {
-    //   await FireworkSDK.getInstance().navigator.popNativeContainer();
-    // }
+    if (!result) {
+      await FireworkSDK.getInstance().navigator.popNativeContainer();
+      EasyLoading.showToast(
+        "The player is closed. If PiP is disabled, it's expected. Otherwise, it's a bug.",
+        duration: const Duration(
+          seconds: 5,
+        ),
+      );
+    }
   }
 
   Future<void> removeAllCartItems() async {
@@ -394,23 +561,63 @@ class HostAppService {
   List<AppLanguageInfo> getAppLanguageInfoList() {
     return [
       AppLanguageInfo(
-        language: 'en',
+        languageCode: 'en',
         displayName: 'English',
       ),
       AppLanguageInfo(
-        language: 'ar',
+        languageCode: 'ar',
         displayName: 'Arabic',
       ),
       AppLanguageInfo(
-        language: 'ja',
+        languageCode: 'ar-SA',
+        displayName: 'Arabic (Saudi Arabia)',
+      ),
+      AppLanguageInfo(
+        languageCode: 'ar-AE',
+        displayName: 'Arabic (United Arab Emirates)',
+      ),
+      AppLanguageInfo(
+        languageCode: 'de',
+        displayName: 'German',
+      ),
+      AppLanguageInfo(
+        languageCode: 'it',
+        displayName: 'Italian',
+      ),
+      AppLanguageInfo(
+        languageCode: 'ja',
         displayName: 'Japanese',
       ),
       AppLanguageInfo(
-        language: 'pt-BR',
+        languageCode: 'pl',
+        displayName: 'Polish',
+      ),
+      AppLanguageInfo(
+        languageCode: 'pt-BR',
         displayName: 'Portuguese (Brazil)',
       ),
       AppLanguageInfo(
-        language: null,
+        languageCode: 'ru',
+        displayName: 'Russian',
+      ),
+      AppLanguageInfo(
+        languageCode: 'es',
+        displayName: 'Spanish',
+      ),
+      AppLanguageInfo(
+        languageCode: 'es-MX',
+        displayName: 'Spanish (Mexico)',
+      ),
+      AppLanguageInfo(
+        languageCode: 'es-CO',
+        displayName: 'Spanish (Colombia)',
+      ),
+      AppLanguageInfo(
+        languageCode: 'vi',
+        displayName: 'Vietnamese',
+      ),
+      AppLanguageInfo(
+        languageCode: null,
         displayName: 'System',
       ),
     ];
@@ -422,7 +629,7 @@ class HostAppService {
       final cacheFile = await _appLanguageInfoCacheFile;
       await cacheFile.writeAsString(jsonString);
       await FireworkSDK.getInstance()
-          .changeAppLanguage(appLanguageInfo.language);
+          .changeAppLanguage(appLanguageInfo.languageCode);
       FWEventBus.getInstance().fire(
         FWEvent(
           eventName: FWExampleEventName.appLanguageUpdateEvent,
@@ -446,10 +653,33 @@ class HostAppService {
         );
       }
     } catch (e) {
-      FWExampleLoggerUtil.log("cacheAppLanguageInfo e $e");
+      FWExampleLoggerUtil.log("getCacheAppLanguageInfo e $e");
     }
 
-    return AppLanguageInfo(language: null, displayName: 'System');
+    return AppLanguageInfo(languageCode: null, displayName: 'System');
+  }
+
+  Future<void> cacheDataTrackingLevel(
+      DataTrackingLevel dataTrackingLevel) async {
+    try {
+      final cacheFile = await _dataTrackingLevelCacheFile;
+      await cacheFile.writeAsString(dataTrackingLevel.name);
+      FireworkSDK.getInstance().dataTrackingLevel = dataTrackingLevel;
+    } catch (e) {
+      FWExampleLoggerUtil.log("cacheDataTrackingLevel e $e");
+    }
+  }
+
+  Future<DataTrackingLevel?> getCacheDataTrackingLevel() async {
+    try {
+      final cacheFile = await _dataTrackingLevelCacheFile;
+      final contents = await cacheFile.readAsString();
+      return DataTrackingLevel.values.byName(contents);
+    } catch (e) {
+      FWExampleLoggerUtil.log("getCacheDataTrackingLevel e $e");
+    }
+
+    return null;
   }
 
   Future<File> get _cartItemsCacheFile async {
@@ -472,6 +702,20 @@ class HostAppService {
     final exist = await file.exists();
 
     FWExampleLoggerUtil.log("_appLanguageInfoCacheFile exist $exist");
+
+    if (!exist) {
+      return await file.create(recursive: true);
+    } else {
+      return file;
+    }
+  }
+
+  Future<File> get _dataTrackingLevelCacheFile async {
+    final directory = await getApplicationDocumentsDirectory();
+    final file = File("${directory.path}/fw_data_tracking_level.txt");
+    final exist = await file.exists();
+
+    FWExampleLoggerUtil.log("_dataTrackingLevelCacheFile exist $exist");
 
     if (!exist) {
       return await file.create(recursive: true);

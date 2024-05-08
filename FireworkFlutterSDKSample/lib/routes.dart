@@ -15,8 +15,10 @@ import 'package:fw_flutter_sdk_example/screens/configuration/sku_configuration_s
 import 'package:fw_flutter_sdk_example/screens/configuration/story_block_configuration_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/link_content/link_content_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/feed/feed_screen.dart';
+import 'package:fw_flutter_sdk_example/screens/log/log_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/more/circle_thumbnails.dart';
 import 'package:fw_flutter_sdk_example/screens/more/enable_custom_cta_click_callback_screen.dart';
+import 'package:fw_flutter_sdk_example/screens/more/enable_on_video_playback_log.dart';
 import 'package:fw_flutter_sdk_example/screens/more/open_video_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/more/set_share_base_url_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/tab/tab_screen.dart';
@@ -129,6 +131,16 @@ final routeMap = <String, FWRouteFactory>{
   '/single_content_configuration': (settings) {
     return MaterialPageRoute(
       builder: (context) => const SingleContentConfigurationScreen(),
+    );
+  },
+  '/log': (settings) {
+    return MaterialPageRoute(
+      builder: (context) => const LogScreen(),
+    );
+  },
+  '/enable_on_video_playback_log': (settings) {
+    return MaterialPageRoute(
+      builder: (context) => const EnableOnVideoPlaybackLogScreen(),
     );
   },
 };

@@ -103,69 +103,77 @@ class _FeedScreenState extends State<FeedScreen> {
     }
 
     return WillPopScope(
-        child: Scaffold(
-          backgroundColor: Colors.white,
-          appBar: fwAppBar(
-            context: context,
-            titleText: titleText ?? S.of(context).feed,
-            actions: [
-              if (_feedWidgetType == FeedWidgetType.videoFeed)
-                IconButton(
-                  onPressed: () {
-                    _refreshVideoFeed();
-                  },
-                  icon: const Icon(
-                    Icons.refresh,
-                  ),
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        appBar: fwAppBar(
+          context: context,
+          titleText: titleText ?? S.of(context).feed,
+          actions: [
+            if (_feedWidgetType == FeedWidgetType.videoFeed)
+              IconButton(
+                onPressed: () {
+                  _refreshVideoFeed();
+                },
+                icon: const Icon(
+                  Icons.refresh,
                 ),
-              if (_feedWidgetType == FeedWidgetType.storyBlock)
-                IconButton(
-                  onPressed: () {
-                    Navigator.of(context)
-                        .pushNamed("/story_block_configuration");
-                  },
-                  icon: const Icon(
-                    Icons.settings,
-                  ),
+              ),
+            if (_feedWidgetType == FeedWidgetType.storyBlock)
+              IconButton(
+                onPressed: () {
+                  Navigator.of(context).pushNamed("/story_block_configuration");
+                },
+                icon: const Icon(
+                  Icons.settings,
                 ),
-              if (_feedWidgetType == FeedWidgetType.storyBlock)
-                IconButton(
-                  onPressed: () {
-                    _playStoryBlock();
-                  },
-                  icon: const Icon(
-                    Icons.play_circle,
-                  ),
+              ),
+            if (_feedWidgetType == FeedWidgetType.storyBlock)
+              IconButton(
+                onPressed: () {
+                  _playStoryBlock();
+                },
+                icon: const Icon(
+                  Icons.play_circle,
                 ),
-              if (_feedWidgetType == FeedWidgetType.storyBlock)
-                IconButton(
-                  onPressed: () {
-                    _pauseStoryBlock();
-                  },
-                  icon: const Icon(
-                    Icons.pause_circle,
-                  ),
+              ),
+            if (_feedWidgetType == FeedWidgetType.storyBlock)
+              IconButton(
+                onPressed: () {
+                  _pauseStoryBlock();
+                },
+                icon: const Icon(
+                  Icons.pause_circle,
                 ),
-              if (_feedWidgetType == FeedWidgetType.storyBlock)
-                IconButton(
-                  onPressed: () {
-                    _openFullScreenStoryBlock();
-                  },
-                  icon: const Icon(
-                    Icons.fullscreen,
-                  ),
+              ),
+            if (_feedWidgetType == FeedWidgetType.storyBlock)
+              IconButton(
+                onPressed: () {
+                  _openFullScreenStoryBlock();
+                },
+                icon: const Icon(
+                  Icons.fullscreen,
                 ),
-            ],
-          ),
-          body: _buildBody(context),
+              ),
+          ],
         ),
-        onWillPop: () async {
-          FWExampleLoggerUtil.log("FeedConfigurationState onWillPop");
-          context.read<FeedConfigurationState>().reset();
-          context.read<PlayerConfigurationState>().reset();
+        body: _buildBody(context),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.of(context).pushNamed("/log");
+          },
+          child: Text(
+            S.of(context).log,
+          ),
+        ),
+      ),
+      onWillPop: () async {
+        FWExampleLoggerUtil.log("FeedConfigurationState onWillPop");
+        context.read<FeedConfigurationState>().reset();
+        context.read<PlayerConfigurationState>().reset();
 
-          return true;
-        });
+        return true;
+      },
+    );
   }
 
   Widget _buildBody(BuildContext context) {

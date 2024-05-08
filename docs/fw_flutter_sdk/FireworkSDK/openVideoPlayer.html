@@ -84,8 +84,8 @@
   required String url,
   OpenVideoPlayerConfiguration? config,
 }) async {
-  if (!FWGlobalState.getInstance().sdkInitCalled) {
-    await FWGlobalState.getInstance().sdkInitCalledFuture;
+  if (!FWGlobalState.getInstance().sdkInitSucceeded) {
+    await FWGlobalState.getInstance().sdkInitSucceededFuture;
   }
   final nativeMethodName = FireworkSDKNativeMethodName.openVideoPlayer.name;
   Map&lt;String, dynamic&gt; arg = {
@@ -130,7 +130,7 @@
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.8.1
+      2.9.0
   </span>
 
   
