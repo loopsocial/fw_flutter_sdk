@@ -7,7 +7,7 @@ import com.firework.livestream.singlehost.SingleHostLivestreamPlayerInitializer
 import com.fireworksdk.bridge.flutter.FWFlutterSDK
 import com.fireworksdk.bridge.models.FWSDKInitOptionsModel
 import com.fireworksdk.bridge.models.enums.FWPlayerLaunchBehavior
-import com.fireworksdk.bridge.utils.FWLanguageUtil
+import com.fireworksdk.bridge.models.enums.FWSwitchLanguageBehavior
 import io.flutter.app.FlutterApplication
 
 class MainApplication: FlutterApplication() {
@@ -19,7 +19,7 @@ class MainApplication: FlutterApplication() {
 //    FWFlutterSDK.addLivestreamPlayerInitializer(MultiHostLivestreamPlayerInitializer())
 
     FWFlutterSDK.setImageLoader(GlideImageLoaderFactory.createInstance(this))
-
+    FWFlutterSDK.setLanguageSwitchingBehavior(FWSwitchLanguageBehavior.NotRestartingActivity)
     FWFlutterSDK.init(
       this,
       FWSDKInitOptionsModel(videoLaunchBehavior = FWPlayerLaunchBehavior.MuteOnFirstLaunch)
@@ -27,8 +27,6 @@ class MainApplication: FlutterApplication() {
   }
 
   override fun attachBaseContext(base: Context) {
-    // Optional, setup language if you already have language setting in your app
-    // FWFlutterSDK.changeLanguage("en", base)
     super.attachBaseContext(FWFlutterSDK.updateBaseContextLocale(base))
   }
 }

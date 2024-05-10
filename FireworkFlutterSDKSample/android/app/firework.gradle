@@ -9,6 +9,7 @@ dependencies {
   implementation "com.firework.external.livestream:singleHostPlayer:+"
   implementation "com.firework.external.livestream:multiHostPlayer:+"
   implementation "com.firework.external.imageloading:glide:+"
+  implementation 'androidx.appcompat:appcompat:1.6.1'
 }
 
 configurations.all {
