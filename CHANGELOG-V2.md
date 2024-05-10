@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.9.1]
+
+### Added
+
+- [Android] Support changing app language without restarting the activity
+
 ## [2.9.0]
 
 ### Added
@@ -12,7 +18,7 @@
 
 ### Fixed
 
-- [Android] "Host Will be right back" pop up message is missing in viewers mobile when the streamer paused the live stream.
+- [Android] "Host Will be right back" pop up message is missing in viewers mobile when the streamer paused the live stream
 
 ## [2.8.1]
 
