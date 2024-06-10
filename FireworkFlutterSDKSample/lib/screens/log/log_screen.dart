@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:fw_flutter_sdk_example/utils/fw_example_logger_util.dart';
 import 'package:flutter/services.dart';
 
@@ -49,7 +50,29 @@ class _LogScreenState extends State<LogScreen> {
               ),
             ),
           ),
-        )
+        ),
+        GestureDetector(
+          onTap: () {
+            FWExampleLoggerUtil.messageList.clear();
+            setState(() {
+              _messageList = [];
+            });
+            EasyLoading.showToast(
+              S.of(context).clearLogSuccessfully,
+            );
+          },
+          child: Container(
+            padding: const EdgeInsets.all(20),
+            child: Center(
+              child: Text(
+                S.of(context).clearLog,
+                style: const TextStyle(
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+          ),
+        ),
       ]),
       body: Container(
         color: Colors.white,

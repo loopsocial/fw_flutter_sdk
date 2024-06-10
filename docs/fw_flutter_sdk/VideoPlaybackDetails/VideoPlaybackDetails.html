@@ -71,7 +71,9 @@
 <li><span class="parameter" id="-param-progress"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">progress</span>, </span></li>
 <li><span class="parameter" id="-param-ctaActionType"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">ctaActionType</span>, </span></li>
 <li><span class="parameter" id="-param-ctaActionURL"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">ctaActionURL</span>, </span></li>
-<li><span class="parameter" id="-param-feedId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">feedId</span>}</span></li>
+<li><span class="parameter" id="-param-feedId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">feedId</span>, </span></li>
+<li><span class="parameter" id="-param-videoType"><span class="type-annotation"><a href="../../fw_flutter_sdk/VideoType.html">VideoType</a>?</span> <span class="parameter-name">videoType</span>, </span></li>
+<li><span class="parameter" id="-param-liveStreamStatus"><span class="type-annotation"><a href="../../fw_flutter_sdk/LiveStreamStatus.html">LiveStreamStatus</a>?</span> <span class="parameter-name">liveStreamStatus</span>}</span></li>
 </ol>)
     </section>
 
@@ -81,17 +83,20 @@
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">VideoPlaybackDetails(
-    {required this.videoId,
-    this.duration,
-    this.caption,
-    this.badge,
-    this.playerSize,
-    this.hasCTA,
-    this.progress,
-    this.ctaActionType,
-    this.ctaActionURL,
-    this.feedId});</code></pre>
+  <pre class="language-dart"><code class="language-dart">VideoPlaybackDetails({
+  required this.videoId,
+  this.duration,
+  this.caption,
+  this.badge,
+  this.playerSize,
+  this.hasCTA,
+  this.progress,
+  this.ctaActionType,
+  this.ctaActionURL,
+  this.feedId,
+  this.videoType,
+  this.liveStreamStatus,
+});</code></pre>
 </section>
 
 
@@ -125,7 +130,7 @@
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.9.1
+      2.10.0
   </span>
 
   

@@ -41,8 +41,10 @@ class HostAppService {
     final feedId = event?.video.feedId ?? "";
     final videoId = event?.video.videoId;
     final widgetType = FireworkSDK.getInstance().getWidgetType(feedId);
+    final videoType = event?.video.videoType;
+    final liveStreamStatus = event?.video.liveStreamStatus;
     FWExampleLoggerUtil.log(
-      "onShopNow feedId: $feedId videoId: $videoId widgetType: $widgetType",
+      "onShopNow feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
       shouldCache: true,
     );
     final widgetInfo = HostAppService.getInstance().widgetInfoMap[feedId];
@@ -83,8 +85,10 @@ class HostAppService {
     final feedId = event?.video.feedId ?? "";
     final videoId = event?.video.videoId;
     final widgetType = FireworkSDK.getInstance().getWidgetType(feedId);
+    final videoType = event?.video.videoType;
+    final liveStreamStatus = event?.video.liveStreamStatus;
     FWExampleLoggerUtil.log(
-      "onAddToCart feedId: $feedId videoId: $videoId widgetType: $widgetType",
+      "onAddToCart feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
       shouldCache: true,
     );
     await event?.ctaHandler?.showLoader();
@@ -171,8 +175,10 @@ class HostAppService {
     final feedId = event?.video.feedId ?? "";
     final videoId = event?.video.videoId;
     final widgetType = FireworkSDK.getInstance().getWidgetType(feedId);
+    final videoType = event?.video.videoType;
+    final liveStreamStatus = event?.video.liveStreamStatus;
     FWExampleLoggerUtil.log(
-      "onCustomClickCartIcon feedId: $feedId videoId: $videoId widgetType: $widgetType",
+      "onCustomClickCartIcon feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
       shouldCache: true,
     );
     await startFloatingPlayerOrClosePlayer();
@@ -187,8 +193,10 @@ class HostAppService {
     final feedId = event?.video.feedId ?? "";
     final videoId = event?.video.videoId;
     final widgetType = FireworkSDK.getInstance().getWidgetType(feedId);
+    final videoType = event?.video.videoType;
+    final liveStreamStatus = event?.video.liveStreamStatus;
     FWExampleLoggerUtil.log(
-      "onUpdateProductDetails feedId: $feedId videoId: $videoId widgetType: $widgetType",
+      "onUpdateProductDetails feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
       shouldCache: true,
     );
     if (event == null) {
@@ -249,8 +257,10 @@ class HostAppService {
     final feedId = event?.video?.feedId ?? "";
     final videoId = event?.video?.videoId;
     final widgetType = FireworkSDK.getInstance().getWidgetType(feedId);
+    final videoType = event?.video?.videoType;
+    final liveStreamStatus = event?.video?.liveStreamStatus;
     FWExampleLoggerUtil.log(
-      "onCustomClickLinkButton feedId: $feedId videoId: $videoId widgetType: $widgetType",
+      "onCustomClickLinkButton feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
       shouldCache: true,
     );
 
@@ -278,8 +288,10 @@ class HostAppService {
     final feedId = event?.video.feedId ?? "";
     final videoId = event?.video.videoId;
     final widgetType = FireworkSDK.getInstance().getWidgetType(feedId);
+    final videoType = event?.video.videoType;
+    final liveStreamStatus = event?.video.liveStreamStatus;
     FWExampleLoggerUtil.log(
-      "onCustomTapProductCard feedId: $feedId videoId: $videoId widgetType: $widgetType",
+      "onCustomTapProductCard feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
       shouldCache: true,
     );
 
@@ -293,8 +305,10 @@ class HostAppService {
     final feedId = event?.video.feedId ?? "";
     final videoId = event?.video.videoId;
     final widgetType = FireworkSDK.getInstance().getWidgetType(feedId);
+    final videoType = event?.video.videoType;
+    final liveStreamStatus = event?.video.liveStreamStatus;
     FWExampleLoggerUtil.log(
-      "onClickProduct feedId: $feedId videoId: $videoId widgetType: $widgetType",
+      "onClickProduct feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
       shouldCache: true,
     );
   }
@@ -303,8 +317,10 @@ class HostAppService {
     final feedId = event?.video.feedId ?? "";
     final videoId = event?.video.videoId;
     final widgetType = FireworkSDK.getInstance().getWidgetType(feedId);
+    final videoType = event?.video.videoType;
+    final liveStreamStatus = event?.video.liveStreamStatus;
     FWExampleLoggerUtil.log(
-      "onCustomCTAClick feedId: $feedId videoId: $videoId widgetType: $widgetType",
+      "onCustomCTAClick feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
       shouldCache: true,
     );
     final url = event?.url ?? "";
@@ -337,8 +353,11 @@ class HostAppService {
       final widgetType = FireworkSDK.getInstance().getWidgetType(feedId);
       final duration = event.info.duration;
       final progress = event.info.progress;
+      final videoType = event.info.videoType;
+      final liveStreamStatus = event.info.liveStreamStatus;
+
       FWExampleLoggerUtil.log(
-        "onVideoPlayback eventName:$eventName feedId: $feedId videoId: $videoId widgetType: $widgetType duration: $duration progress: $progress",
+        "onVideoPlayback eventName:$eventName feedId: $feedId videoId: $videoId widgetType: $widgetType duration: $duration progress: $progress videoType: $videoType liveStreamStatus: $liveStreamStatus",
         shouldCache: true,
       );
       switch (eventName) {
@@ -398,8 +417,11 @@ class HostAppService {
     final feedId = event?.info.feedId ?? "";
     final videoId = event?.info.id;
     final widgetType = FireworkSDK.getInstance().getWidgetType(feedId);
+    final videoType = event?.info.videoType;
+    final liveStreamStatus = event?.info.liveStreamStatus;
+
     FWExampleLoggerUtil.log(
-      "onVideoFeedClick feedId: $feedId videoId: $videoId widgetType: $widgetType",
+      "onVideoFeedClick source: ${event?.info.source} feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
       shouldCache: true,
     );
   }
@@ -410,8 +432,10 @@ class HostAppService {
       final feedId = event.info.feedId ?? "";
       final videoId = event.info.id;
       final widgetType = FireworkSDK.getInstance().getWidgetType(feedId);
+      final videoType = event.info.videoType;
+      final liveStreamStatus = event.info.liveStreamStatus;
       FWExampleLoggerUtil.log(
-        "onLiveStreamEvent eventName: $eventName feedId: $feedId videoId: $videoId widgetType: $widgetType",
+        "onLiveStreamEvent eventName: $eventName feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
         shouldCache: true,
       );
 
@@ -435,8 +459,10 @@ class HostAppService {
       final feedId = event.liveStream.feedId ?? "";
       final videoId = event.liveStream.id;
       final widgetType = FireworkSDK.getInstance().getWidgetType(feedId);
+      final videoType = event.liveStream.videoType;
+      final liveStreamStatus = event.liveStream.liveStreamStatus;
       FWExampleLoggerUtil.log(
-        "onLiveStreamChatEvent eventName: $eventName feedId: $feedId videoId: $videoId widgetType: $widgetType",
+        "onLiveStreamChatEvent eventName: $eventName feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
         shouldCache: true,
       );
       switch (eventName) {
@@ -617,6 +643,10 @@ class HostAppService {
         displayName: 'Vietnamese',
       ),
       AppLanguageInfo(
+        languageCode: 'th',
+        displayName: 'Thai',
+      ),
+      AppLanguageInfo(
         languageCode: null,
         displayName: 'System',
       ),
@@ -674,7 +704,7 @@ class HostAppService {
     try {
       final cacheFile = await _dataTrackingLevelCacheFile;
       final contents = await cacheFile.readAsString();
-      return DataTrackingLevel.values.byName(contents);
+      return DataTrackingLevel.values.asNameMap()[contents];
     } catch (e) {
       FWExampleLoggerUtil.log("getCacheDataTrackingLevel e $e");
     }

@@ -1,15 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:fw_flutter_sdk/fw_flutter_sdk.dart';
 import 'package:fw_flutter_sdk_example/models/app_language_info.dart';
-import 'package:fw_flutter_sdk_example/utils/fw_example_logger_util.dart';
 import 'package:fw_flutter_sdk_example/utils/host_app_service.dart';
 import '../../generated/l10n.dart';
 import '../../widgets/fw_app_bar.dart';
 
-const fwNativeVersionOfAndroid = '6.11.0';
+const fwNativeVersionOfAndroid = '6.12.2';
 
 class MoreScreen extends StatefulWidget {
   const MoreScreen({
@@ -203,16 +201,6 @@ class _MoreScreenState extends State<MoreScreen> {
               onTap: () {
                 Navigator.of(context)
                     .pushNamed("/enable_on_video_playback_log");
-              },
-            ),
-            _buildItem(
-              context: context,
-              title: S.of(context).clearLog,
-              onTap: () {
-                FWExampleLoggerUtil.messageList.clear();
-                EasyLoading.showToast(
-                  S.of(context).clearLogSuccessfully,
-                );
               },
             ),
           ],
