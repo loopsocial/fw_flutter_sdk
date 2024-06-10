@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## [2.10.0]
+
+### Added
+
+- Support Thai language
+- Pass `videoType` and `liveStreamStatus` in the event callbacks
+- [iOS] Support not muting the Story block during the initial display
+
 ## [2.9.1]
 
 ### Added
