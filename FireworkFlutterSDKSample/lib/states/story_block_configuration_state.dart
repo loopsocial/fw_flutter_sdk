@@ -14,12 +14,17 @@ class StoryBlockConfigurationState extends ChangeNotifier {
           VideoPlayerCTADelay(type: VideoPlayerCTADelayType.constant, value: 3),
       ctaHighlightDelay:
           VideoPlayerCTADelay(type: VideoPlayerCTADelayType.constant, value: 3),
+      ctaButtonStyle: VideoPlayerCTAStyle(shape: ButtonShape.roundRectangle),
       ctaWidth: VideoPlayerCTAWidth.fullWidth,
       showVideoDetailTitle: true,
       countdownTimerConfiguration: CountdownTimerConfiguration(
         isHidden: false,
         appearance: CountdownTimerAppearanceMode.dark,
       ),
+      actionButtonStyle:
+          VideoPlayerActionButtonStyle(shape: ButtonShape.roundRectangle),
+      cancelButtonStyle:
+          VideoPlayerActionButtonStyle(shape: ButtonShape.roundRectangle),
     );
   }
 

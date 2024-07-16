@@ -480,10 +480,10 @@ class S {
     );
   }
 
-  /// `CTA background color(iOS)`
+  /// `CTA background color`
   String get ctaBackgroundColor {
     return Intl.message(
-      'CTA background color(iOS)',
+      'CTA background color',
       name: 'ctaBackgroundColor',
       desc: '',
       args: [],
@@ -500,10 +500,10 @@ class S {
     );
   }
 
-  /// `CTA text color(iOS)`
+  /// `CTA text color`
   String get ctaTextColor {
     return Intl.message(
-      'CTA text color(iOS)',
+      'CTA text color',
       name: 'ctaTextColor',
       desc: '',
       args: [],
@@ -520,10 +520,10 @@ class S {
     );
   }
 
-  /// `CTA font size(iOS)`
+  /// `CTA font size`
   String get ctaFontSize {
     return Intl.message(
-      'CTA font size(iOS)',
+      'CTA font size',
       name: 'ctaFontSize',
       desc: '',
       args: [],
@@ -560,10 +560,10 @@ class S {
     );
   }
 
-  /// `advanceToNext`
+  /// `advance to next`
   String get advanceToNext {
     return Intl.message(
-      'advanceToNext',
+      'advance to next',
       name: 'advanceToNext',
       desc: '',
       args: [],
@@ -2130,30 +2130,30 @@ class S {
     );
   }
 
-  /// `CTA background color(iOS)`
+  /// `CTA background color`
   String get ctaBackgroundColor2 {
     return Intl.message(
-      'CTA background color(iOS)',
+      'CTA background color',
       name: 'ctaBackgroundColor2',
       desc: '',
       args: [],
     );
   }
 
-  /// `CTA text color(iOS)`
+  /// `CTA text color`
   String get ctaTextColor2 {
     return Intl.message(
-      'CTA text color(iOS)',
+      'CTA text color',
       name: 'ctaTextColor2',
       desc: '',
       args: [],
     );
   }
 
-  /// `CTA font size(iOS)`
+  /// `CTA font size`
   String get ctaFontSize2 {
     return Intl.message(
-      'CTA font size(iOS)',
+      'CTA font size',
       name: 'ctaFontSize2',
       desc: '',
       args: [],
@@ -2866,6 +2866,106 @@ class S {
     return Intl.message(
       'Clear log successfully',
       name: 'clearLogSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Round rectangle`
+  String get roundRectangle {
+    return Intl.message(
+      'Round rectangle',
+      name: 'roundRectangle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Oval`
+  String get oval {
+    return Intl.message(
+      'Oval',
+      name: 'oval',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Action button background color`
+  String get actionButtonBackgroundColor {
+    return Intl.message(
+      'Action button background color',
+      name: 'actionButtonBackgroundColor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Action button text color`
+  String get actionButtonTextColor {
+    return Intl.message(
+      'Action button text color',
+      name: 'actionButtonTextColor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Action button divider line color`
+  String get actionButtonDividerLineColor {
+    return Intl.message(
+      'Action button divider line color',
+      name: 'actionButtonDividerLineColor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Action button shape type`
+  String get actionButtonShape {
+    return Intl.message(
+      'Action button shape type',
+      name: 'actionButtonShape',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel button background color`
+  String get cancelButtonBackgroundColor {
+    return Intl.message(
+      'Cancel button background color',
+      name: 'cancelButtonBackgroundColor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel button text color`
+  String get cancelButtonTextColor {
+    return Intl.message(
+      'Cancel button text color',
+      name: 'cancelButtonTextColor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel button shape`
+  String get cancelButtonShape {
+    return Intl.message(
+      'Cancel button shape',
+      name: 'cancelButtonShape',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `CTA shape`
+  String get ctaShape {
+    return Intl.message(
+      'CTA shape',
+      name: 'ctaShape',
       desc: '',
       args: [],
     );

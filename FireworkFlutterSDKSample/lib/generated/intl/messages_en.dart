@@ -48,15 +48,30 @@ class MessageLookup extends MessageLookupByLibrary {
         "CVC": MessageLookupByLibrary.simpleMessage("CVN"),
         "MM": MessageLookupByLibrary.simpleMessage("MM"),
         "YY": MessageLookupByLibrary.simpleMessage("YY"),
+        "actionButtonBackgroundColor": MessageLookupByLibrary.simpleMessage(
+            "Action button background color"),
+        "actionButtonDividerLineColor": MessageLookupByLibrary.simpleMessage(
+            "Action button divider line color"),
+        "actionButtonShape":
+            MessageLookupByLibrary.simpleMessage("Action button shape type"),
+        "actionButtonTextColor":
+            MessageLookupByLibrary.simpleMessage("Action button text color"),
         "ad": MessageLookupByLibrary.simpleMessage("ad"),
         "addToCart": MessageLookupByLibrary.simpleMessage("Add to cart"),
-        "advanceToNext": MessageLookupByLibrary.simpleMessage("advanceToNext"),
+        "advanceToNext":
+            MessageLookupByLibrary.simpleMessage("advance to next"),
         "backgroundColor":
             MessageLookupByLibrary.simpleMessage("Background Color"),
         "backgroundColorHint":
             MessageLookupByLibrary.simpleMessage("e.g. #c0c0c0"),
         "buyNow": MessageLookupByLibrary.simpleMessage("Buy now"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "cancelButtonBackgroundColor": MessageLookupByLibrary.simpleMessage(
+            "Cancel button background color"),
+        "cancelButtonShape":
+            MessageLookupByLibrary.simpleMessage("Cancel button shape"),
+        "cancelButtonTextColor":
+            MessageLookupByLibrary.simpleMessage("Cancel button text color"),
         "cardNumber": MessageLookupByLibrary.simpleMessage("Card Number"),
         "cartPage": MessageLookupByLibrary.simpleMessage("Cart Page"),
         "changeAppLanguage": m0,
@@ -103,27 +118,24 @@ class MessageLookup extends MessageLookupByLibrary {
         "creditCardInfo":
             MessageLookupByLibrary.simpleMessage("Credit Card Info"),
         "ctaBackgroundColor":
-            MessageLookupByLibrary.simpleMessage("CTA background color(iOS)"),
+            MessageLookupByLibrary.simpleMessage("CTA background color"),
         "ctaBackgroundColor2":
-            MessageLookupByLibrary.simpleMessage("CTA background color(iOS)"),
+            MessageLookupByLibrary.simpleMessage("CTA background color"),
         "ctaBackgroundColorHint":
             MessageLookupByLibrary.simpleMessage("e.g. #c0c0c0"),
         "ctaDelayType": MessageLookupByLibrary.simpleMessage("CTA delay type"),
         "ctaDelayValue": m2,
         "ctaFontHint": MessageLookupByLibrary.simpleMessage("e.g. 14"),
-        "ctaFontSize":
-            MessageLookupByLibrary.simpleMessage("CTA font size(iOS)"),
-        "ctaFontSize2":
-            MessageLookupByLibrary.simpleMessage("CTA font size(iOS)"),
+        "ctaFontSize": MessageLookupByLibrary.simpleMessage("CTA font size"),
+        "ctaFontSize2": MessageLookupByLibrary.simpleMessage("CTA font size"),
         "ctaHighlightDelayType":
             MessageLookupByLibrary.simpleMessage("CTA highlight delay type"),
         "ctaHighlightDelayValue": m3,
         "ctaLinkContentScreenTitle": MessageLookupByLibrary.simpleMessage(
             "CTA Link Content(Flutter page)"),
-        "ctaTextColor":
-            MessageLookupByLibrary.simpleMessage("CTA text color(iOS)"),
-        "ctaTextColor2":
-            MessageLookupByLibrary.simpleMessage("CTA text color(iOS)"),
+        "ctaShape": MessageLookupByLibrary.simpleMessage("CTA shape"),
+        "ctaTextColor": MessageLookupByLibrary.simpleMessage("CTA text color"),
+        "ctaTextColor2": MessageLookupByLibrary.simpleMessage("CTA text color"),
         "ctaTextColorHint":
             MessageLookupByLibrary.simpleMessage("e.g. #000000"),
         "ctaWidth": MessageLookupByLibrary.simpleMessage("CTA width"),
@@ -262,6 +274,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Please enter grid columns in [1, 5]"),
         "open": MessageLookupByLibrary.simpleMessage("Open"),
         "openVideoURL": MessageLookupByLibrary.simpleMessage("Open Video URL"),
+        "oval": MessageLookupByLibrary.simpleMessage("Oval"),
         "pageUrlToastText": m8,
         "pause": MessageLookupByLibrary.simpleMessage("Pause"),
         "percentage": MessageLookupByLibrary.simpleMessage("percentage"),
@@ -370,6 +383,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "reset": MessageLookupByLibrary.simpleMessage("Reset"),
         "resetTip": MessageLookupByLibrary.simpleMessage(
             "Do you want to reset to default configuration?"),
+        "roundRectangle":
+            MessageLookupByLibrary.simpleMessage("Round rectangle"),
         "row": MessageLookupByLibrary.simpleMessage("Row"),
         "save": MessageLookupByLibrary.simpleMessage("Save"),
         "selectChannelId":

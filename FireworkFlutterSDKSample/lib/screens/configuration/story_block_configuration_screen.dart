@@ -71,6 +71,10 @@ class _StoryBlockConfigurationScreenState
               const SizedBox(
                 height: 20,
               ),
+              _buildCtaShapeSegmentedControl(context),
+              const SizedBox(
+                height: 20,
+              ),
               Row(
                 children: [
                   Expanded(
@@ -120,6 +124,50 @@ class _StoryBlockConfigurationScreenState
                 height: 20,
               ),
               _buildCTAWidthSegmentedControl(context),
+              const SizedBox(
+                height: 20,
+              ),
+              _buildActionButtonShapeSegmentedControl(context),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: _buildActionButtonBackgroundColor(context),
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: _buildActionButtonTextColor(context),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              _buildActionButtonDividingLineColor(context),
+              const SizedBox(
+                height: 20,
+              ),
+              _buildCancelButtonShapeSegmentedControl(context),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: _buildCancelButtonBackgroundColor(context),
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: _buildCancelButtonTextColor(context),
+                  ),
+                ],
+              ),
               const SizedBox(
                 height: 20,
               ),
@@ -297,6 +345,120 @@ class _StoryBlockConfigurationScreenState
     );
   }
 
+  Widget _buildActionButtonShapeSegmentedControl(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(
+          S.of(context).actionButtonShape,
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        CupertinoSegmentedControl<ButtonShape>(
+          padding: EdgeInsets.zero,
+          onValueChanged: (value) {
+            setState(() {
+              _resultConfig.actionButtonStyle?.shape = value;
+            });
+          },
+          children: {
+            ButtonShape.roundRectangle: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Text(
+                S.of(context).roundRectangle,
+              ),
+            ),
+            ButtonShape.oval: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Text(
+                S.of(context).oval,
+              ),
+            ),
+          },
+          groupValue: _resultConfig.actionButtonStyle?.shape,
+        ),
+      ],
+    );
+  }
+
+  Widget _buildCancelButtonShapeSegmentedControl(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(
+          S.of(context).cancelButtonShape,
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        CupertinoSegmentedControl<ButtonShape>(
+          padding: EdgeInsets.zero,
+          onValueChanged: (value) {
+            setState(() {
+              _resultConfig.cancelButtonStyle?.shape = value;
+            });
+          },
+          children: {
+            ButtonShape.roundRectangle: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Text(
+                S.of(context).roundRectangle,
+              ),
+            ),
+            ButtonShape.oval: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Text(
+                S.of(context).oval,
+              ),
+            ),
+          },
+          groupValue: _resultConfig.cancelButtonStyle?.shape,
+        ),
+      ],
+    );
+  }
+
+  Widget _buildCtaShapeSegmentedControl(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(
+          S.of(context).ctaShape,
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        CupertinoSegmentedControl<ButtonShape>(
+          padding: EdgeInsets.zero,
+          onValueChanged: (value) {
+            setState(() {
+              _resultConfig.ctaButtonStyle?.shape = value;
+            });
+          },
+          children: {
+            ButtonShape.roundRectangle: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Text(
+                S.of(context).roundRectangle,
+              ),
+            ),
+            ButtonShape.oval: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Text(
+                S.of(context).oval,
+              ),
+            ),
+          },
+          groupValue: _resultConfig.ctaButtonStyle?.shape,
+        ),
+      ],
+    );
+  }
+
   Widget _buildShareButtonShow(BuildContext context) {
     return CheckboxListTile(
       contentPadding: EdgeInsets.zero,
@@ -346,6 +508,64 @@ class _StoryBlockConfigurationScreenState
     );
   }
 
+  Widget _buildActionButtonBackgroundColor(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(S.of(context).actionButtonBackgroundColor),
+        FWTextFormField(
+          initialValue:
+              _initConfig.actionButtonStyle?.backgroundColor?.toString(),
+          hintText: S.of(context).ctaBackgroundColorHint,
+          validator: (text) {
+            return ValidationUtil.validateColor(
+              text,
+              context,
+            );
+          },
+          onSaved: (text) {
+            _resultConfig.actionButtonStyle ??= VideoPlayerActionButtonStyle();
+            if ((text ?? "").isNotEmpty) {
+              _resultConfig.actionButtonStyle?.backgroundColor = text;
+            } else {
+              _resultConfig.actionButtonStyle?.backgroundColor = null;
+            }
+          },
+        ),
+      ],
+    );
+  }
+
+  Widget _buildCancelButtonBackgroundColor(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(S.of(context).cancelButtonBackgroundColor),
+        FWTextFormField(
+          initialValue:
+              _initConfig.cancelButtonStyle?.backgroundColor?.toString(),
+          hintText: S.of(context).ctaBackgroundColorHint,
+          validator: (text) {
+            return ValidationUtil.validateColor(
+              text,
+              context,
+            );
+          },
+          onSaved: (text) {
+            _resultConfig.cancelButtonStyle ??= VideoPlayerActionButtonStyle();
+            if ((text ?? "").isNotEmpty) {
+              _resultConfig.cancelButtonStyle?.backgroundColor = text;
+            } else {
+              _resultConfig.cancelButtonStyle?.backgroundColor = null;
+            }
+          },
+        ),
+      ],
+    );
+  }
+
   Widget _buildCTATextColor(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -373,6 +593,91 @@ class _StoryBlockConfigurationScreenState
               _resultConfig.ctaButtonStyle?.textColor = text;
             } else {
               _resultConfig.ctaButtonStyle?.textColor = null;
+            }
+          },
+        ),
+      ],
+    );
+  }
+
+  Widget _buildActionButtonTextColor(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(S.of(context).actionButtonTextColor),
+        FWTextFormField(
+          initialValue: _initConfig.actionButtonStyle?.textColor?.toString(),
+          hintText: S.of(context).ctaTextColorHint,
+          validator: (text) {
+            return ValidationUtil.validateColor(
+              text,
+              context,
+            );
+          },
+          onSaved: (text) {
+            _resultConfig.actionButtonStyle ??= VideoPlayerActionButtonStyle();
+            if ((text ?? "").isNotEmpty) {
+              _resultConfig.actionButtonStyle?.textColor = text;
+            } else {
+              _resultConfig.actionButtonStyle?.textColor = null;
+            }
+          },
+        ),
+      ],
+    );
+  }
+
+  Widget _buildCancelButtonTextColor(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(S.of(context).cancelButtonTextColor),
+        FWTextFormField(
+          initialValue: _initConfig.cancelButtonStyle?.textColor?.toString(),
+          hintText: S.of(context).ctaTextColorHint,
+          validator: (text) {
+            return ValidationUtil.validateColor(
+              text,
+              context,
+            );
+          },
+          onSaved: (text) {
+            _resultConfig.cancelButtonStyle ??= VideoPlayerActionButtonStyle();
+            if ((text ?? "").isNotEmpty) {
+              _resultConfig.cancelButtonStyle?.textColor = text;
+            } else {
+              _resultConfig.cancelButtonStyle?.textColor = null;
+            }
+          },
+        ),
+      ],
+    );
+  }
+
+  Widget _buildActionButtonDividingLineColor(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(S.of(context).actionButtonDividerLineColor),
+        FWTextFormField(
+          initialValue:
+              _initConfig.actionButtonStyle?.dividingLineColor?.toString(),
+          hintText: S.of(context).ctaTextColorHint,
+          validator: (text) {
+            return ValidationUtil.validateColor(
+              text,
+              context,
+            );
+          },
+          onSaved: (text) {
+            _resultConfig.actionButtonStyle ??= VideoPlayerActionButtonStyle();
+            if ((text ?? "").isNotEmpty) {
+              _resultConfig.actionButtonStyle?.dividingLineColor = text;
+            } else {
+              _resultConfig.actionButtonStyle?.dividingLineColor = null;
             }
           },
         ),
@@ -704,6 +1009,7 @@ class _StoryBlockConfigurationScreenState
             _resultConfig.buttonConfiguration = VideoPlayerButtonConfiguration(
               videoDetailButton: ButtonInfo(imageName: "custom_more"),
               closeButton: ButtonInfo(imageName: "custom_close"),
+              pipButton: ButtonInfo(imageName: "custom_pip"),
               muteButton: ButtonInfo(imageName: "custom_mute"),
               unmuteButton: ButtonInfo(imageName: "custom_unmute"),
               playButton: ButtonInfo(imageName: "custom_play"),

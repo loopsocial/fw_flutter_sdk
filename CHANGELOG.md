@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## [2.11.0]
+
+### Added
+
+- Support live commerce UI/UX customization
+- Make the copies for main entries consistent across iOS and Android
+- Display forward and backward arrows for the full-screen player.
+- Hide or show the chat message when it's deleted or undeleted in business portal
+- Scroll the announcement automatically in live stream
+- [Android] Display cta and product cards for compact story block
+
+### Changed
+
+- [iOS] Hide the product icon when the product list is empty
+- [iOS] Show poll title when the user selects the poll option
+- [Android] Show the mini-size icon when the short video/replay plays
+- [Android] Expand chat messages by default
+
 ## [2.10.0]
 
 ### Added

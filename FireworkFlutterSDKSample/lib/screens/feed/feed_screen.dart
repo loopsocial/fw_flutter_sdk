@@ -398,7 +398,7 @@ class _FeedScreenState extends State<FeedScreen> {
         "_FeedScreenState _buildFeed _hashtagFilterExpression $_hashtagFilterExpression");
     final feedWidget = VideoFeed(
       wantKeepAlive: _mode == VideoFeedMode.row ? _enableKeepingAlive : null,
-      height: 220,
+      height: 300,
       width: (_mode == VideoFeedMode.column && Platform.isAndroid) ? 150 : null,
       source: source,
       channel: channel,

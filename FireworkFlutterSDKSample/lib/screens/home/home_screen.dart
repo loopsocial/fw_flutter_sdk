@@ -340,7 +340,7 @@ class _HomeScreenState extends State<HomeScreen> {
           : const EdgeInsets.fromLTRB(0, 10, 0, 0),
       child: VideoFeed(
         wantKeepAlive: _enableKeepingAlive,
-        height: 220,
+        height: 300,
         source: VideoFeedSource.playlist,
         channel: _channelId,
         playlist: _playlistId,
@@ -415,7 +415,7 @@ class _HomeScreenState extends State<HomeScreen> {
     }
     Map<String, WidgetInfo> globalWidgetInfoMap = {};
     VideoFeed(
-      height: 220,
+      height: 300,
       source: VideoFeedSource.playlist,
       channel: "your encoded channel id",
       playlist: "your encoded playlist id",
@@ -466,7 +466,7 @@ class _HomeScreenState extends State<HomeScreen> {
               : EdgeInsets.zero,
           child: VideoFeed(
             wantKeepAlive: _enableKeepingAlive,
-            height: 220,
+            height: 300,
             source: VideoFeedSource.playlist,
             channel: e.channelId,
             playlist: e.playlistId,
