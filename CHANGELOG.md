@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## [2.11.1]
+
+### Fixed
+
+- Keep product impression/click event reporting consistent with Web
+- [iOS] Touchscreen is not working when video is playing in PIP mode on iPad.
+- [Android] Ensure that the PIP video remains unmuted even when another video is opened for playback
+- [Android] Ensure that the product is displayed at the top when adding a new product to livestream
+
 ## [2.11.0]
 
 ### Added
