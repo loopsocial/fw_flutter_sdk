@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.11.2]
+
+### Changed
+
+- Keep player style consistent on iOS and Android
+
 ## [2.11.1]
 
 ### Fixed
