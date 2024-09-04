@@ -271,9 +271,7 @@ class _StoryBlockConfigurationScreenState
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Text(
-          defaultTargetPlatform == TargetPlatform.iOS
-              ? S.of(context).videoPlayerStyle2
-              : S.of(context).videoPlayerStyle,
+          S.of(context).videoPlayerStyle,
         ),
         const SizedBox(
           height: 10,
