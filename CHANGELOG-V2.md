@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## [2.11.3]
+
+### Added
+
+- Support Hungarian
+
+### Fixed
+
+- [Android] Submit button text is not in alignment with the button
+- [iOS] Fix some parity issues
+
 ## [2.11.2]
 
 ### Changed
