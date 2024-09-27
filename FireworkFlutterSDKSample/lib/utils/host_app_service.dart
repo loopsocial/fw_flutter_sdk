@@ -647,6 +647,10 @@ class HostAppService {
         displayName: 'Thai',
       ),
       AppLanguageInfo(
+        languageCode: 'hu',
+        displayName: 'Hungarian',
+      ),
+      AppLanguageInfo(
         languageCode: null,
         displayName: 'System',
       ),
