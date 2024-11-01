@@ -11,20 +11,16 @@
   
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
   
   <link rel="stylesheet" href="../static-assets/github.css?v1">
   <link rel="stylesheet" href="../static-assets/styles.css?v1">
   <link rel="icon" href="../static-assets/favicon.png?v1">
-
   
 </head>
 
-
 <body data-base-href="../" data-using-base-href="false" class="light-theme">
-
 <div id="overlay-under-drawer"></div>
-
 <header id="title">
   <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
   <ol class="breadcrumbs gt-separated dark hidden-xs">
@@ -36,41 +32,40 @@
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
-  <div class="toggle" id="theme-button">
+  <div class="toggle" id="theme-button" title="Toggle brightness">
     <label for="theme">
       <input type="checkbox" id="theme" value="light-theme">
       <span id="dark-theme-button" class="material-symbols-outlined">
-        brightness_4
+        dark_mode
       </span>
       <span id="light-theme-button" class="material-symbols-outlined">
-        brightness_5
+        light_mode
       </span>
     </label>
   </div>
 </header>
 <main>
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar="fw_flutter_sdk&#47;fw_flutter_sdk-library-sidebar.html"
+    data-below-sidebar="fw_flutter_sdk&#47;VideoPlayerCTAWidth-enum-sidebar.html">
+    <div>
 
-  <div
-      id="dartdoc-main-content"
-      class="main-content"
-      data-above-sidebar="fw_flutter_sdk&#47;fw_flutter_sdk-library-sidebar.html"
-      data-below-sidebar="fw_flutter_sdk&#47;VideoPlayerCTAWidth-enum-sidebar.html">
-      <div>
-
-        <h1>
-          <span class="kind-enum">VideoPlayerCTAWidth</span>
-          enum 
+      <h1>
+        <span class="kind-enum">VideoPlayerCTAWidth</span>
+        enum 
  
 
-        </h1>
-      </div>
+      </h1>
+    </div>
 
     
 
 
-    <section>
-      <dl class="dl-horizontal">
-        
+      <section>
+        <dl class="dl-horizontal">
+          
   <dt>Inheritance</dt>
   <dd>
     <ul class="gt-separated dark eNum-relationships">
@@ -80,34 +75,23 @@
     </ul>
   </dd>
 
-        
-        
-        
-
-
-      </dl>
-    </section>
-
-    
-  <section class="summary offset-anchor" id="constructors">
-    <h2>Constructors</h2>
-
-    <dl class="constructor-summary-list">
-        <dt id="VideoPlayerCTAWidth" class="callable">
-          <span class="name"><a href="../fw_flutter_sdk/VideoPlayerCTAWidth/VideoPlayerCTAWidth.html">VideoPlayerCTAWidth</a></span><span class="signature">()</span>
-        </dt>
-        <dd>
           
-            <div class="constructor-modifier features">const</div>
-        </dd>
-    </dl>
-  </section>
+          
+          
+  <dt>Available extensions</dt>
+  <dd><ul class="comma-separated clazz-relationships">
+      <li><a href="https://api.flutter.dev/flutter/dart-core/EnumName.html">EnumName</a></li>
+  </ul></dd>
+          
 
-    <section class="summary offset-anchor" id="values">
-      <h2>Values</h2>
 
-      <dl class="properties">
-          <dt id="fullWidth" class="constant">
+        </dl>
+      </section>
+
+      <section class="summary offset-anchor" id="values">
+        <h2>Values</h2>
+        <dl class="properties">
+            <dt id="fullWidth" class="constant">
     <span class="name ">fullWidth</span>
   <span class="signature">&#8594; const <a href="../fw_flutter_sdk/VideoPlayerCTAWidth.html">VideoPlayerCTAWidth</a></span>
   
@@ -119,7 +103,7 @@
 
 </dd>
 
-          <dt id="compact" class="constant">
+            <dt id="compact" class="constant">
     <span class="name ">compact</span>
   <span class="signature">&#8594; const <a href="../fw_flutter_sdk/VideoPlayerCTAWidth.html">VideoPlayerCTAWidth</a></span>
   
@@ -131,7 +115,7 @@
 
 </dd>
 
-          <dt id="sizeToFit" class="constant">
+            <dt id="sizeToFit" class="constant">
     <span class="name ">sizeToFit</span>
   <span class="signature">&#8594; const <a href="../fw_flutter_sdk/VideoPlayerCTAWidth.html">VideoPlayerCTAWidth</a></span>
   
@@ -143,20 +127,19 @@
 
 </dd>
 
-      </dl>
-    </section>
+        </dl>
+      </section>
 
-    <section
-        class="
-          summary
-          offset-anchorinherited"
-        id="instance-properties">
-      <h2>Properties</h2>
-
-      <dl class="properties">
+    
+  <section
+      class="summary offset-anchor inherited"
+      id="instance-properties">
+    <h2>Properties</h2>
+    <dl class="properties">
         <dt id="hashCode" class="property inherited">
   <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></span>
-  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> 
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  
 
 </dt>
 <dd class="inherited">
@@ -167,7 +150,8 @@
 
         <dt id="index" class="property inherited">
   <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Enum/index.html">index</a></span>
-  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> 
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  
 
 </dt>
 <dd class="inherited">
@@ -178,7 +162,8 @@
 
         <dt id="runtimeType" class="property inherited">
   <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></span>
-  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Type-class.html">Type</a></span> 
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Type-class.html">Type</a></span>
+  
 
 </dt>
 <dd class="inherited">
@@ -187,9 +172,8 @@
 
 </dd>
 
-      </dl>
-    </section>
-
+    </dl>
+  </section>
     
   <section
       class="summary offset-anchor inherited"
@@ -251,7 +235,6 @@
 
   <section class="summary offset-anchor" id="constants">
     <h2>Constants</h2>
-
     <dl class="properties">
         <dt id="values" class="constant">
     <span class="name "><a href="../fw_flutter_sdk/VideoPlayerCTAWidth/values-constant.html">values</a></span>
@@ -267,49 +250,38 @@
 
     </dl>
   </section>
-  </div><!-- /.main-content -->
-
-  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
-    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+</div><!-- /.main-content -->
+<div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+  <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
 <header id="header-search-sidebar" class="hidden-l">
   <form class="search-sidebar" role="search">
     <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
 </header>
-
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
     <li><a href="../index.html">fw_flutter_sdk</a></li>
     <li><a href="../fw_flutter_sdk/fw_flutter_sdk-library.html">fw_flutter_sdk</a></li>
     <li class="self-crumb">VideoPlayerCTAWidth enum</li>
 </ol>
 
-
-    <h5>fw_flutter_sdk library</h5>
-    <div id="dartdoc-sidebar-left-content"></div>
-  </div>
-
-  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
-  </div><!-- /.sidebar-offcanvas -->
-
+  <h5>fw_flutter_sdk library</h5>
+  <div id="dartdoc-sidebar-left-content"></div>
+</div>
+<div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+</div><!-- /.sidebar-offcanvas -->
 </main>
-
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.11.3
+      2.12.0
   </span>
-
   
 </footer>
-
 
 
 <script src="../static-assets/highlight.pack.js?v1"></script>
 <script src="../static-assets/docs.dart.js"></script>
 
-
-
 </body>
-
 </html>
 

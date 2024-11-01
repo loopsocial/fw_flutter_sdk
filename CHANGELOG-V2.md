@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [2.12.0]
+
+### Added
+
+- Support Turkish
+- Support video stopping on the playback finish
+- Support customizing the share url
+- Support disabling autoplay for story block
+- Support hiding full screen icon for story block
+
 ## [2.11.3]
 
 ### Added
@@ -41,7 +51,7 @@
 
 - [iOS] Hide the product icon when the product list is empty
 - [iOS] Show poll title when the user selects the poll option
-- [Android] Show the mini-size icon when the short video/replay plays
+- [Android] Show the mini-size icon when the short video/replay pauses
 - [Android] Expand chat messages by default
 
 ## [2.10.0]
