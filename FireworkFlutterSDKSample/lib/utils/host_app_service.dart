@@ -476,6 +476,12 @@ class HostAppService {
     }
   }
 
+  Future<CustomShareUrlResult?> onCustomShareUrl(
+      CustomShareUrlEvent? event) async {
+    await Future.delayed(const Duration(seconds: 2));
+    return CustomShareUrlResult(url: "${event?.url ?? ""}&custom=true");
+  }
+
   Future<void> startFloatingPlayerOrClosePlayer() async {
     final result =
         await FireworkSDK.getInstance().navigator.startFloatingPlayer();
@@ -649,6 +655,10 @@ class HostAppService {
       AppLanguageInfo(
         languageCode: 'hu',
         displayName: 'Hungarian',
+      ),
+      AppLanguageInfo(
+        languageCode: 'tr',
+        displayName: 'Turkish',
       ),
       AppLanguageInfo(
         languageCode: null,

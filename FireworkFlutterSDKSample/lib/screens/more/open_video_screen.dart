@@ -21,7 +21,8 @@ class _OpenVideoScreenState extends State<OpenVideoScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
+    return PopScope(
+      canPop: true,
       child: Scaffold(
         appBar: fwAppBar(
           context: context,
@@ -34,10 +35,9 @@ class _OpenVideoScreenState extends State<OpenVideoScreen> {
           child: _buildBody(context),
         ),
       ),
-      onWillPop: () async {
+      onPopInvokedWithResult: (_, __) {
         context.read<PlayerConfigurationState>().reset();
         FWExampleLoggerUtil.log("_OpenVideoScreenState will pop");
-        return true;
       },
     );
   }

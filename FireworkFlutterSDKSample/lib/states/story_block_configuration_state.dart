@@ -25,6 +25,9 @@ class StoryBlockConfigurationState extends ChangeNotifier {
           VideoPlayerActionButtonStyle(shape: ButtonShape.roundRectangle),
       cancelButtonStyle:
           VideoPlayerActionButtonStyle(shape: ButtonShape.roundRectangle),
+      enableAutoplay: true,
+      enableAutopause: false,
+      enableFullScreen: true,
     );
   }
 

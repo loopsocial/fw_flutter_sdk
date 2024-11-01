@@ -171,8 +171,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "dynamicContentParametersRequiredError":
             MessageLookupByLibrary.simpleMessage(
                 "Please enter dynamic content parameters"),
+        "enableAutopause":
+            MessageLookupByLibrary.simpleMessage("Enable autopause"),
         "enableAutoplay":
             MessageLookupByLibrary.simpleMessage("Enable Autoplay"),
+        "enableAutoplay2":
+            MessageLookupByLibrary.simpleMessage("Enable autoplay"),
         "enableCustomButtons":
             MessageLookupByLibrary.simpleMessage("Enable custom buttons"),
         "enableCustomCTAClickCallback": MessageLookupByLibrary.simpleMessage(
@@ -190,6 +194,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Enable Custom Layout Name(Android)"),
         "enableCustomTapProductCard": MessageLookupByLibrary.simpleMessage(
             "Enable custom tap product card"),
+        "enableFullScreen":
+            MessageLookupByLibrary.simpleMessage("Enable full screen"),
         "enableKeepingAlive":
             MessageLookupByLibrary.simpleMessage("Enable Keeping Alive"),
         "enableOnVideoPlaybackLog":

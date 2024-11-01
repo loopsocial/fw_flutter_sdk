@@ -820,17 +820,19 @@ class _FeedConfigurationScreenState extends State<FeedConfigurationScreen> {
                 _formKey.currentState!.validate()) {
               _formKey.currentState!.save();
               _parseVastAttributesString().then((vastAttributes) {
-                if (vastAttributes == null) {
+                if (vastAttributes == null && context.mounted) {
                   EasyLoading.showError(
                       S.of(context).vastAttributesFormatError);
                   return;
                 }
                 _resultAdConfig.vastAttributes = vastAttributes;
-                context.read<FeedConfigurationState>().feedConfiguration =
-                    _resultConfig;
-                context.read<FeedConfigurationState>().adConfiguration =
-                    _resultAdConfig;
-                Navigator.of(context).pop();
+                if (context.mounted) {
+                  context.read<FeedConfigurationState>().feedConfiguration =
+                      _resultConfig;
+                  context.read<FeedConfigurationState>().adConfiguration =
+                      _resultAdConfig;
+                  Navigator.of(context).pop();
+                }
               });
             }
           },

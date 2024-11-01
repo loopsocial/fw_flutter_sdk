@@ -7,7 +7,7 @@ import 'package:fw_flutter_sdk_example/utils/host_app_service.dart';
 import '../../generated/l10n.dart';
 import '../../widgets/fw_app_bar.dart';
 
-const fwNativeVersionOfAndroid = '6.14.2';
+const fwNativeVersionOfAndroid = '6.15.2';
 
 class MoreScreen extends StatefulWidget {
   const MoreScreen({
@@ -201,6 +201,14 @@ class _MoreScreenState extends State<MoreScreen> {
               onTap: () {
                 Navigator.of(context)
                     .pushNamed("/enable_on_video_playback_log");
+              },
+            ),
+            _buildItem(
+              context: context,
+              title: "Enable custom share url callback",
+              onTap: () {
+                Navigator.of(context)
+                    .pushNamed("/enable_custom_share_url_callback");
               },
             ),
           ],

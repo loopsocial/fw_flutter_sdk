@@ -102,7 +102,8 @@ class _FeedScreenState extends State<FeedScreen> {
       }
     }
 
-    return WillPopScope(
+    return PopScope(
+      canPop: true,
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: fwAppBar(
@@ -110,12 +111,15 @@ class _FeedScreenState extends State<FeedScreen> {
           titleText: titleText ?? S.of(context).feed,
           actions: [
             if (_feedWidgetType == FeedWidgetType.videoFeed)
-              IconButton(
-                onPressed: () {
-                  _refreshVideoFeed();
-                },
-                icon: const Icon(
-                  Icons.refresh,
+              Semantics(
+                label: 'Refresh',
+                child: IconButton(
+                  onPressed: () {
+                    _refreshVideoFeed();
+                  },
+                  icon: const Icon(
+                    Icons.refresh,
+                  ),
                 ),
               ),
             if (_feedWidgetType == FeedWidgetType.storyBlock)
@@ -166,12 +170,10 @@ class _FeedScreenState extends State<FeedScreen> {
           ),
         ),
       ),
-      onWillPop: () async {
+      onPopInvokedWithResult: (_, __) {
         FWExampleLoggerUtil.log("FeedConfigurationState onWillPop");
         context.read<FeedConfigurationState>().reset();
         context.read<PlayerConfigurationState>().reset();
-
-        return true;
       },
     );
   }

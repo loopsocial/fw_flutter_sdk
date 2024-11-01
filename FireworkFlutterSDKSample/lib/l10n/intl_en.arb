@@ -290,5 +290,8 @@
   "cancelButtonBackgroundColor": "Cancel button background color",
   "cancelButtonTextColor": "Cancel button text color",
   "cancelButtonShape": "Cancel button shape",
-  "ctaShape": "CTA shape"
+  "ctaShape": "CTA shape",
+  "enableAutopause": "Enable autopause",
+  "enableAutoplay2": "Enable autoplay",
+  "enableFullScreen": "Enable full screen"
 }

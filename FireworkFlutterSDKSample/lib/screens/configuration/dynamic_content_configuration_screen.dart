@@ -155,17 +155,19 @@ class _DynamicContentConfigurationScreenState
               _formKey.currentState!.save();
               _parseDynamicContentParametersString()
                   .then((dynamicContentParameters) {
-                if (dynamicContentParameters == null) {
+                if (dynamicContentParameters == null && context.mounted) {
                   EasyLoading.showError(
                       S.of(context).dynamicContentParametersFormatError);
                   return;
                 }
                 FWExampleLoggerUtil.log(
                     "dynamicContentParameters $dynamicContentParameters");
-                Navigator.of(context).pop(<String, dynamic>{
-                  "dynamicContentParameters": dynamicContentParameters,
-                  "channelId": _channelId,
-                });
+                if (context.mounted) {
+                  Navigator.of(context).pop(<String, dynamic>{
+                    "dynamicContentParameters": dynamicContentParameters,
+                    "channelId": _channelId,
+                  });
+                }
               });
             }
           },

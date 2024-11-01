@@ -19,7 +19,7 @@ dependencies:
     sdk: flutter
 
 
-  fw_flutter_sdk: 2.11.3
+  fw_flutter_sdk: 2.12.0
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.5
@@ -51,8 +51,6 @@ dev_dependencies:
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 # The following section is specific to Flutter.
-dependency_overrides:
-  webview_flutter_wkwebview: "3.5.0"
 flutter:
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

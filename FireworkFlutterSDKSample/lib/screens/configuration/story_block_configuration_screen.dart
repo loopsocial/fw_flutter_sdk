@@ -257,6 +257,35 @@ class _StoryBlockConfigurationScreenState
               const SizedBox(
                 height: 20,
               ),
+              Row(
+                children: [
+                  Expanded(
+                    child: _buildAutoplayEnable(context),
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: _buildAutopauseEnable(context),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: _buildAutoFullScreenEnable(context),
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
               _buildButtonList(context),
             ],
           ),
@@ -1286,5 +1315,50 @@ class _StoryBlockConfigurationScreenState
         ),
       ),
     ]);
+  }
+
+  Widget _buildAutoplayEnable(BuildContext context) {
+    return CheckboxListTile(
+      contentPadding: EdgeInsets.zero,
+      value: _resultConfig.enableAutoplay,
+      onChanged: (value) {
+        setState(() {
+          _resultConfig.enableAutoplay = value;
+        });
+      },
+      title: Text(
+        S.of(context).enableAutoplay2,
+      ),
+    );
+  }
+
+  Widget _buildAutopauseEnable(BuildContext context) {
+    return CheckboxListTile(
+      contentPadding: EdgeInsets.zero,
+      value: _resultConfig.enableAutopause,
+      onChanged: (value) {
+        setState(() {
+          _resultConfig.enableAutopause = value;
+        });
+      },
+      title: Text(
+        S.of(context).enableAutopause,
+      ),
+    );
+  }
+
+  Widget _buildAutoFullScreenEnable(BuildContext context) {
+    return CheckboxListTile(
+      contentPadding: EdgeInsets.zero,
+      value: _resultConfig.enableFullScreen,
+      onChanged: (value) {
+        setState(() {
+          _resultConfig.enableFullScreen = value;
+        });
+      },
+      title: Text(
+        S.of(context).enableFullScreen,
+      ),
+    );
   }
 }

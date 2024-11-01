@@ -2970,6 +2970,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Enable autopause`
+  String get enableAutopause {
+    return Intl.message(
+      'Enable autopause',
+      name: 'enableAutopause',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enable autoplay`
+  String get enableAutoplay2 {
+    return Intl.message(
+      'Enable autoplay',
+      name: 'enableAutoplay2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enable full screen`
+  String get enableFullScreen {
+    return Intl.message(
+      'Enable full screen',
+      name: 'enableFullScreen',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

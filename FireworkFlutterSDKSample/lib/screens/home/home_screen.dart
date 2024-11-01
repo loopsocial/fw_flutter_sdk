@@ -153,21 +153,27 @@ class _HomeScreenState extends State<HomeScreen> {
         titleText: S.of(context).shopping,
         actions: [
           if (_tabIndex == HomeScreenTabIndex.shopping)
-            IconButton(
-              onPressed: () {
-                _refresh();
-              },
-              icon: const Icon(
-                Icons.refresh,
+            Semantics(
+              label: 'Refresh',
+              child: IconButton(
+                onPressed: () {
+                  _refresh();
+                },
+                icon: const Icon(
+                  Icons.refresh,
+                ),
               ),
             ),
-          IconButton(
-            onPressed: () {
-              _goPlaylistConfiguration();
-            },
-            icon: const Icon(
-              Icons.settings,
-            ),
+          Semantics(
+              label: 'Playlist Config',
+              child: IconButton(
+                onPressed: () {
+                  _goPlaylistConfiguration();
+                },
+                icon: const Icon(
+                  Icons.settings,
+                ),
+              ),
           ),
         ],
       ),

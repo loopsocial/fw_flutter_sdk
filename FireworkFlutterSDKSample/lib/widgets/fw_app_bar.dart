@@ -14,11 +14,14 @@ AppBar fwAppBar({
     actions: actions,
     automaticallyImplyLeading: false,
     leading: canPop
-        ? IconButton(
-            onPressed: () {
-              Navigator.of(context).maybePop();
-            },
-            icon: const Icon(Icons.arrow_back),
+        ? Semantics(
+              label: 'Back',
+              child: IconButton(
+                onPressed: () {
+                  Navigator.of(context).maybePop();
+                },
+                icon: const Icon(Icons.arrow_back),
+              )
           )
         : null,
   );
