@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.12.1]
+
+### Fixed
+
+- [Android] The crash for sharing
+
 ## [2.12.0]
 
 ### Added
