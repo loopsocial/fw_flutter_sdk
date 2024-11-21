@@ -272,6 +272,8 @@
   "selectLanguage": "Select language",
   "selectDataTrackingLevel": "Select data tracking level",
   "changeDataTrackingLevel": "Change data tracking level({level})",
+  "selectLiveStreamPlayerVersion": "Select livestream player design version",
+  "changeLiveStreamPlayerVersion": "Change livestream player version({version})",
   "log": "Log",
   "export": "Export",
   "theUserComesFromTitle": "The user comes from {title}",

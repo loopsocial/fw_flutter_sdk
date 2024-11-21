@@ -726,6 +726,29 @@ class HostAppService {
     return null;
   }
 
+  Future<void> cacheLivestreamPlayerVersion(
+      LivestreamPlayerDesignVersion playerVersion) async {
+    try {
+      final cacheFile = await _livestreamPlayerVersionCacheFile;
+      await cacheFile.writeAsString(playerVersion.name);
+      FireworkSDK.getInstance().livestreamPlayerDesignVersion = playerVersion;
+    } catch (e) {
+      FWExampleLoggerUtil.log("cacheLivestreamPlayerVersion e $e");
+    }
+  }
+
+  Future<LivestreamPlayerDesignVersion?> getLivestreamPlayerVersion() async {
+    try {
+      final cacheFile = await _livestreamPlayerVersionCacheFile;
+      final contents = await cacheFile.readAsString();
+      return LivestreamPlayerDesignVersion.values.asNameMap()[contents];
+    } catch (e) {
+      FWExampleLoggerUtil.log("getLivestreamPlayerVersion e $e");
+    }
+
+    return null;
+  }
+
   Future<File> get _cartItemsCacheFile async {
     final directory = await getApplicationDocumentsDirectory();
     final file = File("${directory.path}/fw_example_cart_items.json");
@@ -760,6 +783,20 @@ class HostAppService {
     final exist = await file.exists();
 
     FWExampleLoggerUtil.log("_dataTrackingLevelCacheFile exist $exist");
+
+    if (!exist) {
+      return await file.create(recursive: true);
+    } else {
+      return file;
+    }
+  }
+
+  Future<File> get _livestreamPlayerVersionCacheFile async {
+    final directory = await getApplicationDocumentsDirectory();
+    final file = File("${directory.path}/fw_livestream_player_version.txt");
+    final exist = await file.exists();
+
+    FWExampleLoggerUtil.log("_livestreamPlayerVersionCacheFile exist $exist");
 
     if (!exist) {
       return await file.create(recursive: true);

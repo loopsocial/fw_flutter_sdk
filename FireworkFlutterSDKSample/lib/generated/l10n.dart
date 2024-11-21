@@ -2781,6 +2781,26 @@ class S {
     );
   }
 
+  /// `Select livestream player design version`
+  String get selectLiveStreamPlayerVersion {
+    return Intl.message(
+      'Select livestream player design version',
+      name: 'selectLiveStreamPlayerVersion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Change livestream player version({version})`
+  String changeLiveStreamPlayerVersion(Object version) {
+    return Intl.message(
+      'Change livestream player version($version)',
+      name: 'changeLiveStreamPlayerVersion',
+      desc: '',
+      args: [version],
+    );
+  }
+
   /// `Log`
   String get log {
     return Intl.message(

@@ -7,7 +7,7 @@ import 'package:fw_flutter_sdk_example/utils/host_app_service.dart';
 import '../../generated/l10n.dart';
 import '../../widgets/fw_app_bar.dart';
 
-const fwNativeVersionOfAndroid = '6.15.3';
+const fwNativeVersionOfAndroid = '6.16.0';
 
 class MoreScreen extends StatefulWidget {
   const MoreScreen({
@@ -21,6 +21,8 @@ class MoreScreen extends StatefulWidget {
 class _MoreScreenState extends State<MoreScreen> {
   AppLanguageInfo? _currentAppLanguage;
   DataTrackingLevel _dataTrackingLevel = DataTrackingLevel.all;
+  LivestreamPlayerDesignVersion _livestreamPlayerVersion =
+      LivestreamPlayerDesignVersion.v1;
   @override
   void initState() {
     super.initState();
@@ -38,6 +40,11 @@ class _MoreScreenState extends State<MoreScreen> {
       HostAppService.getInstance().getCacheDataTrackingLevel().then((value) {
         setState(() {
           _dataTrackingLevel = value ?? DataTrackingLevel.all;
+        });
+      });
+      HostAppService.getInstance().getLivestreamPlayerVersion().then((value) {
+        setState(() {
+          _livestreamPlayerVersion = value ?? LivestreamPlayerDesignVersion.v1;
         });
       });
     });
@@ -174,6 +181,53 @@ class _MoreScreenState extends State<MoreScreen> {
                       ),
                       actions: [
                         for (var w in dataTrackingLevelWidgetArray) w,
+                      ],
+                      cancelButton: CupertinoActionSheetAction(
+                        child: Text(
+                          S.of(context).cancel,
+                        ),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                    );
+                  },
+                );
+              },
+            ),
+            _buildItem(
+              context: context,
+              title: S
+                  .of(context)
+                  .changeLiveStreamPlayerVersion(_livestreamPlayerVersion.name),
+              onTap: () {
+                showCupertinoModalPopup(
+                  context: context,
+                  builder: (context) {
+                    final livestreamPlayerDesignVersionWidgetArray =
+                        LivestreamPlayerDesignVersion.values.map(
+                      (version) => CupertinoActionSheetAction(
+                        isDefaultAction: true,
+                        onPressed: () {
+                          HostAppService.getInstance()
+                              .cacheLivestreamPlayerVersion(version);
+                          setState(() {
+                            _livestreamPlayerVersion = version;
+                          });
+                          Navigator.of(context).pop();
+                        },
+                        child: Text(
+                          version.name,
+                        ),
+                      ),
+                    );
+                    return CupertinoActionSheet(
+                      title: Text(
+                        S.of(context).selectLiveStreamPlayerVersion,
+                      ),
+                      actions: [
+                        for (var w in livestreamPlayerDesignVersionWidgetArray)
+                          w,
                       ],
                       cancelButton: CupertinoActionSheetAction(
                         child: Text(

@@ -24,24 +24,26 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m1(level) => "Change data tracking level(${level})";
 
-  static String m2(value) => "CTA delay value: ${value}";
+  static String m2(version) => "Change livestream player version(${version})";
 
-  static String m3(value) => "CTA highlight delay value: ${value}";
+  static String m3(value) => "CTA delay value: ${value}";
 
-  static String m4(url) => "Current: ${url}";
+  static String m4(value) => "CTA highlight delay value: ${value}";
 
-  static String m5(version) => "Firework Android SDK version: ${version}";
+  static String m5(url) => "Current: ${url}";
 
-  static String m6(min, max) => "Please enter height in [${min}, ${max}]";
+  static String m6(version) => "Firework Android SDK version: ${version}";
 
-  static String m7(url, iOSUrl, androidUrl) =>
+  static String m7(min, max) => "Please enter height in [${min}, ${max}]";
+
+  static String m8(url, iOSUrl, androidUrl) =>
       "The base url is ${url}.\nThe iOS url is ${iOSUrl}.\nThe Android url is ${androidUrl}.";
 
-  static String m8(url) => "The page url is ${url}.";
+  static String m9(url) => "The page url is ${url}.";
 
-  static String m9(title) => "The user comes from ${title}";
+  static String m10(title) => "The user comes from ${title}";
 
-  static String m10(min, max) => "Please enter width in [${min}, ${max}]";
+  static String m11(min, max) => "Please enter width in [${min}, ${max}]";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -76,6 +78,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "cartPage": MessageLookupByLibrary.simpleMessage("Cart Page"),
         "changeAppLanguage": m0,
         "changeDataTrackingLevel": m1,
+        "changeLiveStreamPlayerVersion": m2,
         "channelAggregator":
             MessageLookupByLibrary.simpleMessage("Channel Aggregator"),
         "channelFeed": MessageLookupByLibrary.simpleMessage("Channel Feed"),
@@ -124,13 +127,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "ctaBackgroundColorHint":
             MessageLookupByLibrary.simpleMessage("e.g. #c0c0c0"),
         "ctaDelayType": MessageLookupByLibrary.simpleMessage("CTA delay type"),
-        "ctaDelayValue": m2,
+        "ctaDelayValue": m3,
         "ctaFontHint": MessageLookupByLibrary.simpleMessage("e.g. 14"),
         "ctaFontSize": MessageLookupByLibrary.simpleMessage("CTA font size"),
         "ctaFontSize2": MessageLookupByLibrary.simpleMessage("CTA font size"),
         "ctaHighlightDelayType":
             MessageLookupByLibrary.simpleMessage("CTA highlight delay type"),
-        "ctaHighlightDelayValue": m3,
+        "ctaHighlightDelayValue": m4,
         "ctaLinkContentScreenTitle": MessageLookupByLibrary.simpleMessage(
             "CTA Link Content(Flutter page)"),
         "ctaShape": MessageLookupByLibrary.simpleMessage("CTA shape"),
@@ -139,7 +142,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "ctaTextColorHint":
             MessageLookupByLibrary.simpleMessage("e.g. #000000"),
         "ctaWidth": MessageLookupByLibrary.simpleMessage("CTA width"),
-        "currentShareBaseURLTip": m4,
+        "currentShareBaseURLTip": m5,
         "custom": MessageLookupByLibrary.simpleMessage("Custom"),
         "customizeLinkButtonHandler": MessageLookupByLibrary.simpleMessage(
             "Customize link button handler"),
@@ -219,7 +222,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Please enter font size in [8, 30]"),
         "full": MessageLookupByLibrary.simpleMessage("full"),
         "fullWidth": MessageLookupByLibrary.simpleMessage("Full width"),
-        "fwAndroidSdkVersion": m5,
+        "fwAndroidSdkVersion": m6,
         "grid": MessageLookupByLibrary.simpleMessage("Grid"),
         "gridColumns": MessageLookupByLibrary.simpleMessage("Grid Columns"),
         "gridColumnsError": MessageLookupByLibrary.simpleMessage(
@@ -240,7 +243,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Hashtag Playlist Info"),
         "heightError":
             MessageLookupByLibrary.simpleMessage("Please enter correct height"),
-        "heightRangeError": m6,
+        "heightRangeError": m7,
         "hideCountdownTimer":
             MessageLookupByLibrary.simpleMessage("Hide countdown timer"),
         "hideLinkButton":
@@ -264,7 +267,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "loop": MessageLookupByLibrary.simpleMessage("loop"),
         "more": MessageLookupByLibrary.simpleMessage("More"),
         "multiFeeds": MessageLookupByLibrary.simpleMessage("Multi-feeds"),
-        "multiplePageUrlsToastText": m7,
+        "multiplePageUrlsToastText": m8,
         "muteOnFirstLaunch":
             MessageLookupByLibrary.simpleMessage("muteOnFirstLaunch"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
@@ -281,7 +284,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "open": MessageLookupByLibrary.simpleMessage("Open"),
         "openVideoURL": MessageLookupByLibrary.simpleMessage("Open Video URL"),
         "oval": MessageLookupByLibrary.simpleMessage("Oval"),
-        "pageUrlToastText": m8,
+        "pageUrlToastText": m9,
         "pause": MessageLookupByLibrary.simpleMessage("Pause"),
         "percentage": MessageLookupByLibrary.simpleMessage("percentage"),
         "play": MessageLookupByLibrary.simpleMessage("Play"),
@@ -401,6 +404,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Select Dynamic Content Info"),
         "selectLanguage":
             MessageLookupByLibrary.simpleMessage("Select language"),
+        "selectLiveStreamPlayerVersion": MessageLookupByLibrary.simpleMessage(
+            "Select livestream player design version"),
         "selectPlaylistGroupId":
             MessageLookupByLibrary.simpleMessage("Select Playlist Group Id"),
         "selectPlaylistInfo":
@@ -483,7 +488,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "storyBlockLoadError":
             MessageLookupByLibrary.simpleMessage("Fail to load story block"),
         "street": MessageLookupByLibrary.simpleMessage("Street"),
-        "theUserComesFromTitle": m9,
+        "theUserComesFromTitle": m10,
         "titleColor": MessageLookupByLibrary.simpleMessage("Title Color"),
         "titleColorHint": MessageLookupByLibrary.simpleMessage("e.g. #000000"),
         "titleFontSize":
@@ -533,6 +538,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Video Launch Behavior"),
         "widthError":
             MessageLookupByLibrary.simpleMessage("Please enter correct width"),
-        "widthRangeError": m10
+        "widthRangeError": m11
       };
 }

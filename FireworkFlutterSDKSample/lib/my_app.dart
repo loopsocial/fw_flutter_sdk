@@ -80,6 +80,11 @@ class _MyAppState extends State<MyApp> {
           FireworkSDK.getInstance().dataTrackingLevel = value;
         }
       });
+      HostAppService.getInstance().getLivestreamPlayerVersion().then((value) {
+        if (value != null) {
+          FireworkSDK.getInstance().livestreamPlayerDesignVersion = value;
+        }
+      });
     });
   }
 
