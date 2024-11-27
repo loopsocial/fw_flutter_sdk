@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.13.1]
+
+### Fixed
+
+- [iOS] Fix tracking issue.
+
 ## [2.13.0]
 
 ### Added
