@@ -1,10 +1,16 @@
 # CHANGELOG
 
+## [2.13.2]
+
+### Fixed
+
+- [iOS] Bug fixes and improvements
+
 ## [2.13.1]
 
 ### Fixed
 
-- [iOS] Fix tracking issue.
+- [iOS] Bug fixes and improvements
 
 ## [2.13.0]
 
