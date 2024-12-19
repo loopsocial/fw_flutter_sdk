@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.13.3]
+
+### Fixed
+
+- [Android] Bug fixes and improvements
+
 ## [2.13.2]
 
 ### Fixed
