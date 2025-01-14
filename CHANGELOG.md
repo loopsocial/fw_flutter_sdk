@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.13.5]
+
+### Fixed
+
+- [Android] Enhanced compatibility with the latest versions of Android Gradle Plugin.
+
 ## [2.13.4]
 
 ### Fixed
