@@ -99,13 +99,24 @@ Default to all.</p>
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">set dataTrackingLevel(DataTrackingLevel value) {
+  final valueHasChanged = _dataTrackingLevel != value;
   _dataTrackingLevel = value;
   final nativeMethodName =
       FireworkSDKNativeMethodName.setDataTrackingLevel.name;
-  FWMethodChannelUtil.getFirewokSDKChannel().invokeMethod(
+  FWMethodChannelUtil.getFirewokSDKChannel()
+      .invokeMethod(
     nativeMethodName,
     value.name,
-  );
+  )
+      .then((value) {
+    if (valueHasChanged) {
+      FWEventBus.getInstance().fire(
+        FWEvent(
+          eventName: FWEventName.dataTrackingLevelUpdated,
+        ),
+      );
+    }
+  });
 }</code></pre>
 </section>
 
@@ -135,7 +146,7 @@ Default to all.</p>
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.13.6
+      2.14.0
   </span>
   
 </footer>
