@@ -482,6 +482,25 @@ class HostAppService {
     return CustomShareUrlResult(url: "${event?.url ?? ""}&custom=true");
   }
 
+  Future<void> onCustomLinkInteractionClick(
+      CustomLinkInteractionClickEvent? event) async {
+    if (event != null) {
+      final feedId = event.info.feedId ?? "";
+      final videoId = event.info.id;
+      final widgetType = FireworkSDK.getInstance().getWidgetType(feedId);
+      final videoType = event.info.videoType;
+      final liveStreamStatus = event.info.liveStreamStatus;
+      FWExampleLoggerUtil.log(
+        "onCustomLinkInteractionClick feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
+        shouldCache: true,
+      );
+      await startFloatingPlayerOrClosePlayer();
+      globalNavigatorKey.currentState?.pushNamed('/link_content', arguments: {
+        "url": event.url,
+      });
+    }
+  }
+
   Future<void> startFloatingPlayerOrClosePlayer() async {
     final result =
         await FireworkSDK.getInstance().navigator.startFloatingPlayer();

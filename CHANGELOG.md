@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## [2.14.0]
+
+### Added
+
+- Display countdown timer based on business portal configuration
+- Support private messages for replay
+- Support multi-pin(Giveaway + Products)
+- Support link interaction in livestream
+
 ## [2.13.6]
 
 ### Fixed
