@@ -58,7 +58,8 @@
     <section class="multi-line-signature">
       
 <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">void</span>&gt;</span></span>
-<span class="name ">markInitCalled</span>(<wbr>)
+<span class="name ">markInitCalled</span>(<wbr>{<ol class="parameter-list"> <li><span class="parameter" id="markInitCalled-param-directlyCallNativeInit"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">directlyCallNativeInit</span> = <span class="default-value">false</span>, </span></li>
+</ol>})
 
       
 
@@ -72,16 +73,22 @@
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future&lt;void&gt; markInitCalled() async {
+  <pre class="language-dart"><code class="language-dart">Future&lt;void&gt; markInitCalled({bool directlyCallNativeInit = false}) async {
   final initSucceeded =
       await FWMethodChannelUtil.getFirewokSDKChannel().invokeMethod(
     FireworkSDKNativeMethodName.markInitCalled.name,
   );
 
-  if (initSucceeded is bool &amp;&amp; initSucceeded == true) {
-    FWLoggerUtil.log(
-        &quot;markInitCalled _completeRemainingInitialization sdkInitSucceeded: ${FWGlobalState.getInstance().sdkInitSucceeded}&quot;);
+  FWLoggerUtil.log(
+      &quot;markInitCalled _completeRemainingInitialization directlyCallNativeInit: $directlyCallNativeInit&quot;);
+  if (directlyCallNativeInit) {
     await _completeRemainingInitialization();
+  } else {
+    if (initSucceeded is bool &amp;&amp; initSucceeded == true) {
+      FWLoggerUtil.log(
+          &quot;markInitCalled _completeRemainingInitialization sdkInitSucceeded: ${FWGlobalState.getInstance().sdkInitSucceeded}&quot;);
+      await _completeRemainingInitialization();
+    }
   }
 }</code></pre>
 </section>
@@ -111,7 +118,7 @@
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.14.1
+      2.14.2
   </span>
   
 </footer>
