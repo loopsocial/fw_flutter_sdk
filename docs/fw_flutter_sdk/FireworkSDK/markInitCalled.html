@@ -66,7 +66,7 @@
     </section>
     
 <section class="desc markdown">
-  <p>You need to call this method when you call init method in native side.</p>
+  <p>Mark the initialization method as being called on the Dart side.</p>
 </section>
 
 
@@ -74,20 +74,24 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">Future&lt;void&gt; markInitCalled({bool directlyCallNativeInit = false}) async {
-  final initSucceeded =
-      await FWMethodChannelUtil.getFirewokSDKChannel().invokeMethod(
-    FireworkSDKNativeMethodName.markInitCalled.name,
-  );
-
   FWLoggerUtil.log(
       &quot;markInitCalled _completeRemainingInitialization directlyCallNativeInit: $directlyCallNativeInit&quot;);
   if (directlyCallNativeInit) {
-    await _completeRemainingInitialization();
+    await _completeRemainingInitialization(
+        directlyCallNativeInit: directlyCallNativeInit);
+    await FWMethodChannelUtil.getFirewokSDKChannel().invokeMethod(
+      FireworkSDKNativeMethodName.markInitCalled.name,
+    );
   } else {
+    final initSucceeded =
+        await FWMethodChannelUtil.getFirewokSDKChannel().invokeMethod(
+      FireworkSDKNativeMethodName.markInitCalled.name,
+    );
     if (initSucceeded is bool &amp;&amp; initSucceeded == true) {
       FWLoggerUtil.log(
           &quot;markInitCalled _completeRemainingInitialization sdkInitSucceeded: ${FWGlobalState.getInstance().sdkInitSucceeded}&quot;);
-      await _completeRemainingInitialization();
+      await _completeRemainingInitialization(
+          directlyCallNativeInit: directlyCallNativeInit);
     }
   }
 }</code></pre>
@@ -118,7 +122,7 @@
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.14.2
+      2.14.3
   </span>
   
 </footer>
