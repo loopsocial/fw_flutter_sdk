@@ -105,6 +105,7 @@ class _FeedScreenState extends State<FeedScreen> {
     return PopScope(
       canPop: true,
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: Colors.white,
         appBar: fwAppBar(
           context: context,

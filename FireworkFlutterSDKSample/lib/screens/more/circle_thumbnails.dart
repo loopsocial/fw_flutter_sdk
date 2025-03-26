@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:fw_flutter_sdk/fw_flutter_sdk.dart';
 import '../../widgets/fw_app_bar.dart';
@@ -26,7 +28,12 @@ class _CircleThumbnailsState extends State<CircleThumbnails> {
       left: paddingLeft,
     );
     double aspectRatio = 1.0;
-    double thumbnailHeight = feedHeight - paddingTop - paddingBottom;
+    double thumbnailHeight = 0;
+    if (Platform.isAndroid) {
+      thumbnailHeight = feedHeight;
+    } else {
+      thumbnailHeight = feedHeight - paddingTop - paddingBottom;
+    }
     final videoFeedConfiguration = VideoFeedConfiguration(
       aspectRatio: aspectRatio,
       contentPadding: contentPadding,
@@ -45,7 +52,9 @@ class _CircleThumbnailsState extends State<CircleThumbnails> {
         child: Center(
           child: VideoFeed(
             height: feedHeight,
-            source: VideoFeedSource.discover,
+            source: VideoFeedSource.playlist,
+            channel: "bJDywZ",
+            playlist: "g206q5",
             mode: VideoFeedMode.row,
             videoFeedConfiguration: videoFeedConfiguration,
           ),

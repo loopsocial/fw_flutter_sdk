@@ -1,15 +1,15 @@
 PODS:
-  - AmazonIVSPlayer (1.32.0)
-  - FirebaseCore (11.8.1):
-    - FirebaseCoreInternal (~> 11.8.0)
+  - AmazonIVSPlayer (1.38.0)
+  - FirebaseCore (11.10.0):
+    - FirebaseCoreInternal (~> 11.10.0)
     - GoogleUtilities/Environment (~> 8.0)
     - GoogleUtilities/Logger (~> 8.0)
-  - FirebaseCoreExtension (11.8.0):
-    - FirebaseCore (~> 11.8.0)
-  - FirebaseCoreInternal (11.8.0):
+  - FirebaseCoreExtension (11.10.0):
+    - FirebaseCore (~> 11.10.0)
+  - FirebaseCoreInternal (11.10.0):
     - "GoogleUtilities/NSData+zlib (~> 8.0)"
-  - FirebaseCrashlytics (11.8.0):
-    - FirebaseCore (~> 11.8.0)
+  - FirebaseCrashlytics (11.10.0):
+    - FirebaseCore (~> 11.10.0)
     - FirebaseInstallations (~> 11.0)
     - FirebaseRemoteConfigInterop (~> 11.0)
     - FirebaseSessions (~> 11.0)
@@ -17,29 +17,29 @@ PODS:
     - GoogleUtilities/Environment (~> 8.0)
     - nanopb (~> 3.30910.0)
     - PromisesObjC (~> 2.4)
-  - FirebaseInstallations (11.8.0):
-    - FirebaseCore (~> 11.8.0)
+  - FirebaseInstallations (11.10.0):
+    - FirebaseCore (~> 11.10.0)
     - GoogleUtilities/Environment (~> 8.0)
     - GoogleUtilities/UserDefaults (~> 8.0)
     - PromisesObjC (~> 2.4)
-  - FirebaseRemoteConfigInterop (11.8.0)
-  - FirebaseSessions (11.8.0):
-    - FirebaseCore (~> 11.8.0)
-    - FirebaseCoreExtension (~> 11.8.0)
+  - FirebaseRemoteConfigInterop (11.10.0)
+  - FirebaseSessions (11.10.0):
+    - FirebaseCore (~> 11.10.0)
+    - FirebaseCoreExtension (~> 11.10.0)
     - FirebaseInstallations (~> 11.0)
     - GoogleDataTransport (~> 10.0)
     - GoogleUtilities/Environment (~> 8.0)
     - GoogleUtilities/UserDefaults (~> 8.0)
     - nanopb (~> 3.30910.0)
     - PromisesSwift (~> 2.1)
-  - FireworkVideo (1.28.3)
-  - FireworkVideoIVSSupport (0.8.1):
-    - AmazonIVSPlayer (= 1.32.0)
+  - FireworkVideo (1.29.0)
+  - FireworkVideoIVSSupport (0.9.0):
+    - AmazonIVSPlayer (= 1.38.0)
   - FireworkVideoUI (0.2.14):
     - FireworkVideo (>= 1.27.1)
   - Flutter (1.0.0)
   - fw_flutter_sdk (1.0.0):
-    - FireworkVideo (= 1.28.3)
+    - FireworkVideo (= 1.29.0)
     - FireworkVideoUI (= 0.2.14)
     - Flutter
   - GoogleDataTransport (10.1.0):
@@ -76,7 +76,7 @@ PODS:
 
 DEPENDENCIES:
   - FirebaseCrashlytics
-  - FireworkVideoIVSSupport
+  - FireworkVideoIVSSupport (= 0.9.0)
   - Flutter (from `Flutter`)
   - fw_flutter_sdk (from `.symlinks/plugins/fw_flutter_sdk/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
@@ -115,19 +115,19 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/webview_flutter_wkwebview/darwin"
 
 SPEC CHECKSUMS:
-  AmazonIVSPlayer: 6036b6b2b3bbfddd979d13eaeefe812bdb99847a
-  FirebaseCore: 99fe0c4b44a39f37d99e6404e02009d2db5d718d
-  FirebaseCoreExtension: 3d3f2017a00d06e09ab4ebe065391b0bb642565e
-  FirebaseCoreInternal: df24ce5af28864660ecbd13596fc8dd3a8c34629
-  FirebaseCrashlytics: a1102c035f18d5dd94a5969ee439c526d0c9e313
-  FirebaseInstallations: 6c963bd2a86aca0481eef4f48f5a4df783ae5917
-  FirebaseRemoteConfigInterop: 98897a64aa372eac3c5b3fe2816594ccfaac55ef
-  FirebaseSessions: c4d40a97f88f9eaff2834d61b4fea0a522d62123
-  FireworkVideo: 75b1751ef686b0aae67e65ac4ef31242bd632a3c
-  FireworkVideoIVSSupport: 356c278332028c75912230d7abcdd38e417ebcc0
+  AmazonIVSPlayer: a0814406d75cca65998039f63ff9057ab3492b91
+  FirebaseCore: 8344daef5e2661eb004b177488d6f9f0f24251b7
+  FirebaseCoreExtension: 6f357679327f3614e995dc7cf3f2d600bdc774ac
+  FirebaseCoreInternal: ef4505d2afb1d0ebbc33162cb3795382904b5679
+  FirebaseCrashlytics: 84b073c997235740e6a951b7ee49608932877e5c
+  FirebaseInstallations: 9980995bdd06ec8081dfb6ab364162bdd64245c3
+  FirebaseRemoteConfigInterop: 7c9a9c65eff32cbb0f7bf8d18140612ad57dfcc6
+  FirebaseSessions: 9b3b30947b97a15370e0902ee7a90f50ef60ead6
+  FireworkVideo: 6f88beae304ae85fcb6cda858095f54f7376638c
+  FireworkVideoIVSSupport: 04df9642ad79ead5fddaece08f98da005bfa2451
   FireworkVideoUI: f1e71480b035e4b21a2842f271e5b489e8b5d928
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
-  fw_flutter_sdk: 0d423e0eaf11f1d617b8c5777129c675d3c7943b
+  fw_flutter_sdk: bc05f99b5af1f5ceb8ea55973c05b7665b3cf8e1
   GoogleDataTransport: aae35b7ea0c09004c3797d53c8c41f66f219d6a7
   GoogleUtilities: 26a3abef001b6533cf678d3eb38fd3f614b7872d
   nanopb: fad817b59e0457d11a5dfbde799381cd727c1275
@@ -137,6 +137,6 @@ SPEC CHECKSUMS:
   sqflite_darwin: 5a7236e3b501866c1c9befc6771dfd73ffb8702d
   webview_flutter_wkwebview: 0982481e3d9c78fd5c6f62a002fcd24fc791f1e4
 
-PODFILE CHECKSUM: bcba40b046e3c420d346bc36a405b1e8810b0cf4
+PODFILE CHECKSUM: c977bdbbfc5775d212b470eb3ed9212d7eebb829
 
 COCOAPODS: 1.16.2

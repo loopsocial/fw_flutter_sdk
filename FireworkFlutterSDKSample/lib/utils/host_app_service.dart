@@ -485,13 +485,15 @@ class HostAppService {
   Future<void> onCustomLinkInteractionClick(
       CustomLinkInteractionClickEvent? event) async {
     if (event != null) {
+      final title = event.title;
+      final url = event.url;
       final feedId = event.info.feedId ?? "";
       final videoId = event.info.id;
       final widgetType = FireworkSDK.getInstance().getWidgetType(feedId);
       final videoType = event.info.videoType;
       final liveStreamStatus = event.info.liveStreamStatus;
       FWExampleLoggerUtil.log(
-        "onCustomLinkInteractionClick feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
+        "onCustomLinkInteractionClick title: $title url: $url feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
         shouldCache: true,
       );
       await startFloatingPlayerOrClosePlayer();

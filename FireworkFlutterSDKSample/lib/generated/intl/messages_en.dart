@@ -92,7 +92,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "channelInfo": MessageLookupByLibrary.simpleMessage("Channel Info"),
         "checkout": MessageLookupByLibrary.simpleMessage("CHECKOUT"),
         "circleThumbnails":
-            MessageLookupByLibrary.simpleMessage("Circle Thumbnails(iOS)"),
+            MessageLookupByLibrary.simpleMessage("Circle Thumbnails"),
         "city": MessageLookupByLibrary.simpleMessage("City"),
         "clearLog": MessageLookupByLibrary.simpleMessage("Clear log"),
         "clearLogSuccessfully":

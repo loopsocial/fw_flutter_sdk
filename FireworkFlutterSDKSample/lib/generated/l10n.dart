@@ -1360,10 +1360,10 @@ class S {
     );
   }
 
-  /// `Circle Thumbnails(iOS)`
+  /// `Circle Thumbnails`
   String get circleThumbnails {
     return Intl.message(
-      'Circle Thumbnails(iOS)',
+      'Circle Thumbnails',
       name: 'circleThumbnails',
       desc: '',
       args: [],

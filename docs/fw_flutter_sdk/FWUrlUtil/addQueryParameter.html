@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="description" content="API docs for the deepCopy method from the ProductCardPriceConfiguration class, for the Dart programming language.">
-  <title>deepCopy method - ProductCardPriceConfiguration class - fw_flutter_sdk library - Dart API</title>
+  <meta name="description" content="API docs for the addQueryParameter method from the FWUrlUtil class, for the Dart programming language.">
+  <title>addQueryParameter method - FWUrlUtil class - fw_flutter_sdk library - Dart API</title>
 
 
   
@@ -26,10 +26,10 @@
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li><a href="../../index.html">fw_flutter_sdk</a></li>
     <li><a href="../../fw_flutter_sdk/fw_flutter_sdk-library.html">fw_flutter_sdk.dart</a></li>
-    <li><a href="../../fw_flutter_sdk/ProductCardPriceConfiguration-class.html">ProductCardPriceConfiguration</a></li>
-    <li class="self-crumb">deepCopy method</li>
+    <li><a href="../../fw_flutter_sdk/FWUrlUtil-class.html">FWUrlUtil</a></li>
+    <li class="self-crumb">addQueryParameter static method</li>
   </ol>
-  <div class="self-name">deepCopy</div>
+  <div class="self-name">addQueryParameter</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
@@ -49,34 +49,72 @@
 <div
     id="dartdoc-main-content"
     class="main-content"
-    data-above-sidebar="fw_flutter_sdk&#47;ProductCardPriceConfiguration-class-sidebar.html"
+    data-above-sidebar="fw_flutter_sdk&#47;FWUrlUtil-class-sidebar.html"
     data-below-sidebar="">
     <div>
-<h1><span class="kind-method">deepCopy</span> method 
+<h1><span class="kind-method">addQueryParameter</span> static method 
 </h1></div>
 
     <section class="multi-line-signature">
       
-<span class="returntype"><a href="../../fw_flutter_sdk/ProductCardPriceConfiguration-class.html">ProductCardPriceConfiguration</a></span>
-<span class="name ">deepCopy</span>(<wbr>)
+<span class="returntype">dynamic</span>
+<span class="name ">addQueryParameter</span>(<wbr>{<ol class="parameter-list"> <li><span class="parameter" id="addQueryParameter-param-url"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">url</span>, </span></li>
+<li><span class="parameter" id="addQueryParameter-param-key"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">key</span>, </span></li>
+<li><span class="parameter" id="addQueryParameter-param-value"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">value</span>, </span></li>
+</ol>})
 
       
 
     </section>
     
+<section class="desc markdown">
+  <p>Add query parameter to url</p>
+<p>Parameters:</p>
+<ul>
+<li><code>url</code>: The url to add query parameter.
+The url cannot be empty.</li>
+<li><code>key</code>: The key of query parameter.
+The key cannot be empty.
+Since this function will encode the key, it does not need to be encoded before being passed to it.</li>
+<li><code>value</code>: The value of query parameter
+Since this function will encode the key, it does not need to be encoded before being passed to it.</li>
+</ul>
+<p>Example:</p>
+<pre class="language-dart"><code class="language-dart">const url = "https://firework.com";
+const key = "product_id";
+const value = "1234";
+final updatedUrl = FWUrlUtil.addQueryParameter(
+  url: url,
+  key: key,
+  value: value,
+);
+print(updatedUrl); // https://firework.com?product_id=1234
+</code></pre>
+</section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">ProductCardPriceConfiguration deepCopy() =&gt; ProductCardPriceConfiguration(
-      &#47;&#47; ignore: deprecated_member_use_from_same_package
-      isHidden: isHidden,
-      axis: axis,
-      priceLabel: priceLabel?.deepCopy(),
-      originalPriceLabel: originalPriceLabel?.deepCopy(),
-      isPriceFirst: isPriceFirst,
-    );</code></pre>
+  <pre class="language-dart"><code class="language-dart">static addQueryParameter({
+  required String url,
+  required String key,
+  required String value,
+}) {
+  if (url.isEmpty || key.isEmpty) {
+    return url;
+  }
+
+  Uri uri = Uri.parse(url);
+
+  String encodedKey = Uri.encodeComponent(key);
+  String encodedValue = Uri.encodeComponent(value);
+  String newQueryParam = &quot;$encodedKey=$encodedValue&quot;;
+
+  final updatedUrl = &quot;$url${uri.query.isEmpty ? &quot;?&quot; : &quot;&amp;&quot;}$newQueryParam&quot;;
+
+  return updatedUrl;
+}</code></pre>
 </section>
 
 
@@ -91,11 +129,11 @@
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
     <li><a href="../../index.html">fw_flutter_sdk</a></li>
     <li><a href="../../fw_flutter_sdk/fw_flutter_sdk-library.html">fw_flutter_sdk</a></li>
-    <li><a href="../../fw_flutter_sdk/ProductCardPriceConfiguration-class.html">ProductCardPriceConfiguration</a></li>
-    <li class="self-crumb">deepCopy method</li>
+    <li><a href="../../fw_flutter_sdk/FWUrlUtil-class.html">FWUrlUtil</a></li>
+    <li class="self-crumb">addQueryParameter static method</li>
 </ol>
 
-    <h5>ProductCardPriceConfiguration class</h5>
+    <h5>FWUrlUtil class</h5>
     <div id="dartdoc-sidebar-left-content"></div>
   </div><!--/.sidebar-offcanvas-->
   <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
