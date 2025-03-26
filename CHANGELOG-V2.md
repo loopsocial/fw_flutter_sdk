@@ -1,6 +1,11 @@
 # CHANGELOG
 
-## [2.14.4-beta.1]
+## [2.15.0]
+
+### Added
+
+- Support hiding products in livestream
+- Support multi-pin for poll, question and giveaway
 
 ### Fixed
 
