@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.15.2-beta.1]
+
+### Fixed
+
+- Beta release
+
 ## [2.15.1]
 
 ### Fixed

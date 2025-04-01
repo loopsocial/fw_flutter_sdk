@@ -44,7 +44,7 @@ class HostAppService {
     final videoType = event?.video.videoType;
     final liveStreamStatus = event?.video.liveStreamStatus;
     FWExampleLoggerUtil.log(
-      "onShopNow feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
+      "[Analytics] [Shopping] onShopNow feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
       shouldCache: true,
     );
     final widgetInfo = HostAppService.getInstance().widgetInfoMap[feedId];
@@ -88,7 +88,7 @@ class HostAppService {
     final videoType = event?.video.videoType;
     final liveStreamStatus = event?.video.liveStreamStatus;
     FWExampleLoggerUtil.log(
-      "onAddToCart feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
+      "[Analytics] [Shopping] onAddToCart feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
       shouldCache: true,
     );
     await event?.ctaHandler?.showLoader();
@@ -178,7 +178,7 @@ class HostAppService {
     final videoType = event?.video.videoType;
     final liveStreamStatus = event?.video.liveStreamStatus;
     FWExampleLoggerUtil.log(
-      "onCustomClickCartIcon feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
+      "[Analytics] [Shopping] onCustomClickCartIcon feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
       shouldCache: true,
     );
     await startFloatingPlayerOrClosePlayer();
@@ -196,7 +196,7 @@ class HostAppService {
     final videoType = event?.video.videoType;
     final liveStreamStatus = event?.video.liveStreamStatus;
     FWExampleLoggerUtil.log(
-      "onUpdateProductDetails feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
+      "[Analytics] [Shopping] onUpdateProductDetails feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
       shouldCache: true,
     );
     if (event == null) {
@@ -260,7 +260,7 @@ class HostAppService {
     final videoType = event?.video?.videoType;
     final liveStreamStatus = event?.video?.liveStreamStatus;
     FWExampleLoggerUtil.log(
-      "onCustomClickLinkButton feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
+      "[Analytics] [Shopping] onCustomClickLinkButton feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
       shouldCache: true,
     );
 
@@ -291,7 +291,7 @@ class HostAppService {
     final videoType = event?.video.videoType;
     final liveStreamStatus = event?.video.liveStreamStatus;
     FWExampleLoggerUtil.log(
-      "onCustomTapProductCard feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
+      "[Analytics] [Shopping] onCustomTapProductCard feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
       shouldCache: true,
     );
 
@@ -308,7 +308,7 @@ class HostAppService {
     final videoType = event?.video.videoType;
     final liveStreamStatus = event?.video.liveStreamStatus;
     FWExampleLoggerUtil.log(
-      "onClickProduct feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
+      "[Analytics] [Shopping] onClickProduct feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
       shouldCache: true,
     );
   }
@@ -320,7 +320,7 @@ class HostAppService {
     final videoType = event?.video.videoType;
     final liveStreamStatus = event?.video.liveStreamStatus;
     FWExampleLoggerUtil.log(
-      "onCustomCTAClick feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
+      "[Analytics] [CTA] onCustomCTAClick feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
       shouldCache: true,
     );
     final url = event?.url ?? "";
@@ -357,7 +357,7 @@ class HostAppService {
       final liveStreamStatus = event.info.liveStreamStatus;
 
       FWExampleLoggerUtil.log(
-        "onVideoPlayback eventName:$eventName feedId: $feedId videoId: $videoId widgetType: $widgetType duration: $duration progress: $progress videoType: $videoType liveStreamStatus: $liveStreamStatus",
+        "[Analytics] [Playback] onVideoPlayback eventName:$eventName feedId: $feedId videoId: $videoId widgetType: $widgetType duration: $duration progress: $progress videoType: $videoType liveStreamStatus: $liveStreamStatus",
         shouldCache: true,
       );
       switch (eventName) {
@@ -435,7 +435,7 @@ class HostAppService {
       final videoType = event.info.videoType;
       final liveStreamStatus = event.info.liveStreamStatus;
       FWExampleLoggerUtil.log(
-        "onLiveStreamEvent eventName: $eventName feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
+        "[Analytics] [Livestream] onLiveStreamEvent eventName: $eventName feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
         shouldCache: true,
       );
 
@@ -462,7 +462,7 @@ class HostAppService {
       final videoType = event.liveStream.videoType;
       final liveStreamStatus = event.liveStream.liveStreamStatus;
       FWExampleLoggerUtil.log(
-        "onLiveStreamChatEvent eventName: $eventName feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
+        "[Analytics] [Livestream] onLiveStreamChatEvent eventName: $eventName feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
         shouldCache: true,
       );
       switch (eventName) {
@@ -478,6 +478,15 @@ class HostAppService {
 
   Future<CustomShareUrlResult?> onCustomShareUrl(
       CustomShareUrlEvent? event) async {
+    final feedId = event?.video.feedId ?? "";
+    final videoId = event?.video.videoId;
+    final widgetType = FireworkSDK.getInstance().getWidgetType(feedId);
+    final videoType = event?.video.videoType;
+    final liveStreamStatus = event?.video.liveStreamStatus;
+    FWExampleLoggerUtil.log(
+      "[Analytics] [Share] onCustomShareUrl url: ${event?.url} feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
+      shouldCache: true,
+    );
     await Future.delayed(const Duration(seconds: 2));
     return CustomShareUrlResult(url: "${event?.url ?? ""}&custom=true");
   }
@@ -493,7 +502,7 @@ class HostAppService {
       final videoType = event.info.videoType;
       final liveStreamStatus = event.info.liveStreamStatus;
       FWExampleLoggerUtil.log(
-        "onCustomLinkInteractionClick title: $title url: $url feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
+        "[Analytics] [Livestream] onCustomLinkInteractionClick title: $title url: $url feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
         shouldCache: true,
       );
       await startFloatingPlayerOrClosePlayer();

@@ -97,11 +97,11 @@ class _MyAppState extends State<MyApp> {
     FireworkSDK.getInstance().onCustomCTAClick =
         HostAppService.getInstance().onCustomCTAClick;
 
-    // FireworkSDK.getInstance().onVideoPlayback =
-    //     HostAppService.getInstance().onVideoPlayback;
+    FireworkSDK.getInstance().onVideoPlayback =
+        HostAppService.getInstance().onVideoPlayback;
 
-    FireworkSDK.getInstance().onVideoFeedClick =
-        HostAppService.getInstance().onVideoFeedClick;
+    // FireworkSDK.getInstance().onVideoFeedClick =
+    //     HostAppService.getInstance().onVideoFeedClick;
 
     FireworkSDK.getInstance().shopping.onShoppingCTA =
         HostAppService.getInstance().onShopNow;
