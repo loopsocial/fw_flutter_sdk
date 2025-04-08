@@ -323,7 +323,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "2.15.2-beta.3"
+    version: "2.15.2-beta.4"
   glob:
     dependency: transitive
     description:
