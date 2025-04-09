@@ -295,5 +295,6 @@
   "ctaShape": "CTA shape",
   "enableAutopause": "Enable autopause",
   "enableAutoplay2": "Enable autoplay",
-  "enableFullScreen": "Enable full screen"
+  "enableFullScreen": "Enable full screen",
+  "enableSmallSizeInCompact": "Enable small size in compact"
 }

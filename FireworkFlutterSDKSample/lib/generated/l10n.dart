@@ -1360,10 +1360,10 @@ class S {
     );
   }
 
-  /// `Circle Thumbnails`
+  /// `Circle Thumbnails(iOS)`
   String get circleThumbnails {
     return Intl.message(
-      'Circle Thumbnails',
+      'Circle Thumbnails(iOS)',
       name: 'circleThumbnails',
       desc: '',
       args: [],
@@ -3016,6 +3016,16 @@ class S {
     return Intl.message(
       'Enable full screen',
       name: 'enableFullScreen',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enable small size in compact`
+  String get enableSmallSizeInCompact {
+    return Intl.message(
+      'Enable small size in compact',
+      name: 'enableSmallSizeInCompact',
       desc: '',
       args: [],
     );

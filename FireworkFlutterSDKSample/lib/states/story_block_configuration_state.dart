@@ -28,6 +28,7 @@ class StoryBlockConfigurationState extends ChangeNotifier {
       enableAutoplay: true,
       enableAutopause: false,
       enableFullScreen: true,
+      enableSmallSizeInCompact: false,
     );
   }
 

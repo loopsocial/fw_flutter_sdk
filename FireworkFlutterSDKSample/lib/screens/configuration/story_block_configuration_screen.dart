@@ -283,6 +283,16 @@ class _StoryBlockConfigurationScreenState
                   ),
                 ],
               ),
+              Row(
+                children: [
+                  Expanded(
+                    child: _buildSmallSizeInCompactEnable(context),
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                ],
+              ),
               const SizedBox(
                 height: 20,
               ),
@@ -1358,6 +1368,21 @@ class _StoryBlockConfigurationScreenState
       },
       title: Text(
         S.of(context).enableFullScreen,
+      ),
+    );
+  }
+
+  Widget _buildSmallSizeInCompactEnable(BuildContext context) {
+    return CheckboxListTile(
+      contentPadding: EdgeInsets.zero,
+      value: _resultConfig.enableSmallSizeInCompact,
+      onChanged: (value) {
+        setState(() {
+          _resultConfig.enableSmallSizeInCompact = value;
+        });
+      },
+      title: Text(
+        S.of(context).enableSmallSizeInCompact,
       ),
     );
   }

@@ -92,7 +92,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "channelInfo": MessageLookupByLibrary.simpleMessage("Channel Info"),
         "checkout": MessageLookupByLibrary.simpleMessage("CHECKOUT"),
         "circleThumbnails":
-            MessageLookupByLibrary.simpleMessage("Circle Thumbnails"),
+            MessageLookupByLibrary.simpleMessage("Circle Thumbnails(iOS)"),
         "city": MessageLookupByLibrary.simpleMessage("City"),
         "clearLog": MessageLookupByLibrary.simpleMessage("Clear log"),
         "clearLogSuccessfully":
@@ -210,6 +210,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enable Pause Player"),
         "enablePictureInPicture":
             MessageLookupByLibrary.simpleMessage("Enable Picture In Picture"),
+        "enableSmallSizeInCompact": MessageLookupByLibrary.simpleMessage(
+            "Enable small size in compact"),
         "export": MessageLookupByLibrary.simpleMessage("Export"),
         "feed": MessageLookupByLibrary.simpleMessage("Feed"),
         "feedConfiguration":
