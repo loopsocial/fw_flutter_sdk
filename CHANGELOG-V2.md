@@ -1,5 +1,26 @@
 # CHANGELOG
 
+## [2.15.2]
+
+### Added
+
+- Add like count widget in modern(v2) livestream player
+- Support showing range price and discount for product list page
+
+### Changed
+
+- [iOS] Change the product list to a light theme on modern(v2) livestream player to ensure consistency with Android
+- [iOS] Replace the bag icon with "Shop" text on the product list to align with Android
+
+### Fixed
+
+- [iOS] The feature to hide product prices is not functioning correctly
+- [iOS] The product sold-out state is inaccurately displayed under certain conditions
+- [iOS] Player logo configuration doesn't work
+- [Android] Story block mute status didn't sync with the full-screen player
+- [Android] Chat indicator still displays even scroll to the end manually
+- [Android] CC button will show without multi-host integration
+
 ## [2.15.2-beta.4]
 
 - Beta release
