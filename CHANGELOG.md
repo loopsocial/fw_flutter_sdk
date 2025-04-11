@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.15.4]
+
+### Fixed
+
+- Bug fixes and improvements
+
 ## [2.15.3]
 
 ### Fixed
