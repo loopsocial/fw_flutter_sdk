@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="description" content="API docs for the AndroidFontInfo constructor from Class AndroidFontInfo from the fw_flutter_sdk library, for the Dart programming language.">
-  <title>AndroidFontInfo constructor - AndroidFontInfo - fw_flutter_sdk library - Dart API</title>
+  <meta name="description" content="API docs for the isPiPShown method from the FWNavigator class, for the Dart programming language.">
+  <title>isPiPShown method - FWNavigator class - fw_flutter_sdk library - Dart API</title>
 
 
   
@@ -26,10 +26,10 @@
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li><a href="../../index.html">fw_flutter_sdk</a></li>
     <li><a href="../../fw_flutter_sdk/fw_flutter_sdk-library.html">fw_flutter_sdk.dart</a></li>
-    <li><a href="../../fw_flutter_sdk/AndroidFontInfo-class.html">AndroidFontInfo</a></li>
-    <li class="self-crumb">AndroidFontInfo constructor</li>
+    <li><a href="../../fw_flutter_sdk/FWNavigator-class.html">FWNavigator</a></li>
+    <li class="self-crumb">isPiPShown method</li>
   </ol>
-  <div class="self-name">AndroidFontInfo</div>
+  <div class="self-name">isPiPShown</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
@@ -46,31 +46,39 @@
   </div>
 </header>
 <main>
-  <div
-      id="dartdoc-main-content"
-      class="main-content"
-      data-above-sidebar="fw_flutter_sdk&#47;AndroidFontInfo-class-sidebar.html"
-      data-below-sidebar="">
-      <div>
-<h1><span class="kind-constructor">AndroidFontInfo</span> constructor 
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar="fw_flutter_sdk&#47;FWNavigator-class-sidebar.html"
+    data-below-sidebar="">
+    <div>
+<h1><span class="kind-method">isPiPShown</span> method 
 </h1></div>
 
     <section class="multi-line-signature">
       
-      <span class="name ">AndroidFontInfo</span>(<wbr>{<ol class="parameter-list"> <li><span class="parameter" id="-param-isCustom"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">isCustom</span>, </span></li>
-<li><span class="parameter" id="-param-typefaceName"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">typefaceName</span>, </span></li>
-</ol>})
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>&gt;</span></span>
+<span class="name ">isPiPShown</span>(<wbr>)
+
+      
+
     </section>
     
+<section class="desc markdown">
+  <p>Check if the PiP is shown.</p>
+</section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">AndroidFontInfo({
-  this.isCustom,
-  this.typefaceName,
-});</code></pre>
+  <pre class="language-dart"><code class="language-dart">Future&lt;bool&gt; isPiPShown() async {
+  final result =
+      await FWMethodChannelUtil.getNavigatorMethodChannel().invokeMethod(
+    NavigatorNativeMethodName.isPiPShown.name,
+  );
+  return result;
+}</code></pre>
 </section>
 
 
@@ -85,15 +93,15 @@
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
     <li><a href="../../index.html">fw_flutter_sdk</a></li>
     <li><a href="../../fw_flutter_sdk/fw_flutter_sdk-library.html">fw_flutter_sdk</a></li>
-    <li><a href="../../fw_flutter_sdk/AndroidFontInfo-class.html">AndroidFontInfo</a></li>
-    <li class="self-crumb">AndroidFontInfo constructor</li>
+    <li><a href="../../fw_flutter_sdk/FWNavigator-class.html">FWNavigator</a></li>
+    <li class="self-crumb">isPiPShown method</li>
 </ol>
 
-    <h5>AndroidFontInfo class</h5>
+    <h5>FWNavigator class</h5>
     <div id="dartdoc-sidebar-left-content"></div>
-  </div><!--/.sidebar-offcanvas-left-->
-  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
   </div><!--/.sidebar-offcanvas-->
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+</div><!--/.sidebar-offcanvas-->
 </main>
 <footer>
   <span class="no-break">
