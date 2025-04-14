@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:fw_flutter_sdk/fw_flutter_sdk.dart';
 import 'package:fw_flutter_sdk_example/models/app_language_info.dart';
 import 'package:fw_flutter_sdk_example/utils/host_app_service.dart';
@@ -271,6 +272,20 @@ class _MoreScreenState extends State<MoreScreen> {
               onTap: () {
                 Navigator.of(context)
                     .pushNamed("/enable_link_interaction_click_callback");
+              },
+            ),
+            _buildItem(
+              context: context,
+              title: "Check if PiP is shown",
+              onTap: () async {
+                final result =
+                    await FireworkSDK.getInstance().navigator.isPiPShown();
+                EasyLoading.showToast(
+                  "The PiP is shown: $result",
+                  duration: const Duration(
+                    seconds: 5,
+                  ),
+                );
               },
             ),
           ],

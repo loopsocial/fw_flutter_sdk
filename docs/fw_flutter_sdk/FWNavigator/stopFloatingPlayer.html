@@ -57,7 +57,7 @@
 
     <section class="multi-line-signature">
       
-<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">void</span>&gt;</span></span>
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>&gt;</span></span>
 <span class="name ">stopFloatingPlayer</span>(<wbr>)
 
       
@@ -72,7 +72,7 @@
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future&lt;void&gt; stopFloatingPlayer() async {
+  <pre class="language-dart"><code class="language-dart">Future&lt;bool&gt; stopFloatingPlayer() async {
   final result =
       await FWMethodChannelUtil.getNavigatorMethodChannel().invokeMethod(
     NavigatorNativeMethodName.stopFloatingPlayer.name,
@@ -106,7 +106,7 @@
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.15.5
+      2.15.6
   </span>
   
 </footer>
