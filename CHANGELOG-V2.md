@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## [2.16.0]
+
+### Added
+
+- Support French
+- Support Portuguese
+
+### Changed
+
+- Handle iOS and Android modern player differences
+
 ## [2.15.10]
 
 ### Fixed
