@@ -691,6 +691,14 @@ class HostAppService {
         displayName: 'Turkish',
       ),
       AppLanguageInfo(
+        languageCode: 'fr',
+        displayName: 'French',
+      ),
+      AppLanguageInfo(
+        languageCode: 'pt',
+        displayName: 'Portuguese',
+      ),
+      AppLanguageInfo(
         languageCode: null,
         displayName: 'System',
       ),

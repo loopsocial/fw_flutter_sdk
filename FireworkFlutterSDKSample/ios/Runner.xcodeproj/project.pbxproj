@@ -62,6 +62,10 @@
 		461BA91F2C0EEB9100617FBF /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		46AC925D2CC8F11F00959622 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Main.strings; sourceTree = "<group>"; };
 		46AC925E2CC8F11F00959622 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		46BF682C2DAE4E92001EFC5A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		46BF682D2DAE4E92001EFC5A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		46BF682E2DAE4E9F001EFC5A /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Main.strings; sourceTree = "<group>"; };
+		46BF682F2DAE4E9F001EFC5A /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		46D7E9FE2B6CC9A3002F0D38 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		46E2A1E02CA509710077B5ED /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/Main.strings; sourceTree = "<group>"; };
 		46E2A1E12CA509710077B5ED /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -236,6 +240,8 @@
 				th,
 				hu,
 				tr,
+				fr,
+				pt,
 			);
 			mainGroup = 97C146E51CF9000F007C117D;
 			productRefGroup = 97C146EF1CF9000F007C117D /* Products */;
@@ -404,6 +410,8 @@
 				461BA91E2C0EEB9100617FBF /* th */,
 				46E2A1E02CA509710077B5ED /* hu */,
 				46AC925D2CC8F11F00959622 /* tr */,
+				46BF682C2DAE4E92001EFC5A /* fr */,
+				46BF682E2DAE4E9F001EFC5A /* pt */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -428,6 +436,8 @@
 				461BA91F2C0EEB9100617FBF /* th */,
 				46E2A1E12CA509710077B5ED /* hu */,
 				46AC925E2CC8F11F00959622 /* tr */,
+				46BF682D2DAE4E92001EFC5A /* fr */,
+				46BF682F2DAE4E9F001EFC5A /* pt */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -504,7 +514,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.15.2;
+				MARKETING_VERSION = 2.16.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.loopnow.fondor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = fondor;
@@ -586,7 +596,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.15.2;
+				MARKETING_VERSION = 2.16.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.loopnow.fondor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = fondor;
@@ -723,7 +733,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.15.2;
+				MARKETING_VERSION = 2.16.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.loopnow.fondor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -752,7 +762,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.15.2;
+				MARKETING_VERSION = 2.16.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.loopnow.fondor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = fondor;

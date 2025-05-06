@@ -32,28 +32,28 @@ PODS:
     - GoogleUtilities/UserDefaults (~> 8.0)
     - nanopb (~> 3.30910.0)
     - PromisesSwift (~> 2.1)
-  - FireworkVideo (1.29.9)
+  - FireworkVideo (1.30.0)
   - FireworkVideoIVSSupport (0.9.0):
     - AmazonIVSPlayer (= 1.38.0)
   - FireworkVideoUI (0.2.15):
     - FireworkVideo (>= 1.29.1)
   - Flutter (1.0.0)
   - fw_flutter_sdk (1.0.0):
-    - FireworkVideo (= 1.29.9)
+    - FireworkVideo (= 1.30.0)
     - FireworkVideoUI (= 0.2.15)
     - Flutter
   - GoogleDataTransport (10.1.0):
     - nanopb (~> 3.30910.0)
     - PromisesObjC (~> 2.4)
-  - GoogleUtilities/Environment (8.0.2):
+  - GoogleUtilities/Environment (8.1.0):
     - GoogleUtilities/Privacy
-  - GoogleUtilities/Logger (8.0.2):
+  - GoogleUtilities/Logger (8.1.0):
     - GoogleUtilities/Environment
     - GoogleUtilities/Privacy
-  - "GoogleUtilities/NSData+zlib (8.0.2)":
+  - "GoogleUtilities/NSData+zlib (8.1.0)":
     - GoogleUtilities/Privacy
-  - GoogleUtilities/Privacy (8.0.2)
-  - GoogleUtilities/UserDefaults (8.0.2):
+  - GoogleUtilities/Privacy (8.1.0)
+  - GoogleUtilities/UserDefaults (8.1.0):
     - GoogleUtilities/Logger
     - GoogleUtilities/Privacy
   - nanopb (3.30910.0):
@@ -123,13 +123,13 @@ SPEC CHECKSUMS:
   FirebaseInstallations: 41189d8b11007152d9e46ec844019f38a0a4282a
   FirebaseRemoteConfigInterop: 82b81fd06ee550cbeff40004e2c106daedf73e38
   FirebaseSessions: 2c0ea8956085570415601d64cc7ebe83c8dd5c93
-  FireworkVideo: f26c037e376ba9b4f8c1c28fb3883308e9261ca5
+  FireworkVideo: 3666a2f164ddfeadb99da5dd93213d3256a82dd5
   FireworkVideoIVSSupport: 04df9642ad79ead5fddaece08f98da005bfa2451
   FireworkVideoUI: c4cc4c5a8a405881ce9d8e15b3fe36d5ae9fabdb
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
-  fw_flutter_sdk: 36aea6a15b8d52c10bd4ecef30f0e936b7fb02bc
+  fw_flutter_sdk: a69bc20d6850c96dc438eba1f5b4e9626542e90c
   GoogleDataTransport: aae35b7ea0c09004c3797d53c8c41f66f219d6a7
-  GoogleUtilities: 26a3abef001b6533cf678d3eb38fd3f614b7872d
+  GoogleUtilities: 00c88b9a86066ef77f0da2fab05f65d7768ed8e1
   nanopb: fad817b59e0457d11a5dfbde799381cd727c1275
   path_provider_foundation: 2b6b4c569c0fb62ec74538f866245ac84301af46
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
