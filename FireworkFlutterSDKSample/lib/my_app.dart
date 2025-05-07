@@ -126,6 +126,8 @@ class _MyAppState extends State<MyApp> {
 
     FireworkSDK.getInstance().shopping.onCustomClickLinkButton =
         HostAppService.getInstance().onCustomClickLinkButton;
+    FireworkSDK.getInstance().onCustomShareUrl =
+        HostAppService.getInstance().onCustomShareUrl;
   }
 
   @override

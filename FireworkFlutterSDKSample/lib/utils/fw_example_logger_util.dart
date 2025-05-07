@@ -1,4 +1,4 @@
-import 'dart:developer' as developer;
+import 'package:flutter/material.dart';
 
 class FWExampleLoggerUtil {
   static final messageList = <String>[];
@@ -7,7 +7,7 @@ class FWExampleLoggerUtil {
     String name = 'com.loopnow.fondor_example',
     bool shouldCache = false,
   }) {
-    developer.log(message, name: name);
+    debugPrint("[$name] $message");
     if (shouldCache) {
       messageList.add(message);
     }
