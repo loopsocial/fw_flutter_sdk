@@ -1,17 +1,8 @@
 # CHANGELOG
 
-## [2.17.0]
+## [2.16.1-beta.2]
 
-### Added
-
-- Enhance the product list page for modern livestream
-- Add livestream engagement analytics callback
-
-### Fixed
-
-- Bug fixes and improvements
-
-### Changed
+- Add debug logs
 
 ## [2.16.1-beta.1]
 
