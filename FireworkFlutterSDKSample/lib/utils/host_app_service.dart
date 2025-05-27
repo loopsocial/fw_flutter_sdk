@@ -512,21 +512,6 @@ class HostAppService {
     }
   }
 
-  Future<void> onInteractableEngagement(
-      InteractableEngagementEvent? event) async {
-    if (event != null) {
-      final feedId = event.video.feedId ?? "";
-      final videoId = event.video.videoId;
-      final widgetType = FireworkSDK.getInstance().getWidgetType(feedId);
-      final videoType = event.video.videoType;
-      final liveStreamStatus = event.video.liveStreamStatus;
-      FWExampleLoggerUtil.log(
-        "[Analytics] [Interactable] onInteractableEngagement feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
-        shouldCache: true,
-      );
-    }
-  }
-
   Future<void> startFloatingPlayerOrClosePlayer() async {
     final result =
         await FireworkSDK.getInstance().navigator.startFloatingPlayer();
@@ -712,14 +697,6 @@ class HostAppService {
       AppLanguageInfo(
         languageCode: 'pt',
         displayName: 'Portuguese',
-      ),
-      AppLanguageInfo(
-        languageCode: 'id',
-        displayName: 'Indonesian',
-      ),
-      AppLanguageInfo(
-        languageCode: 'sv',
-        displayName: 'Swedish',
       ),
       AppLanguageInfo(
         languageCode: null,

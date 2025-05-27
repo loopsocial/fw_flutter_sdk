@@ -98,6 +98,8 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">set onCustomShareUrl(CustomShareUrlCallback? newValue) {
+  FWLoggerUtil.log(
+      &quot;set onCustomShareUrl: ${newValue != null ? &quot;not null&quot; : &quot;null&quot;}&quot;);
   final updated = _onCustomShareUrl != newValue;
   _onCustomShareUrl = newValue;
   final nativeMethodName =
@@ -143,7 +145,7 @@
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.17.0
+      2.16.1-beta.2
   </span>
   
 </footer>
