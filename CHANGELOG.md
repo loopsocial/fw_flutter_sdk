@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## [2.16.1-beta.3]
+
+- Add debug logs
+
 ## [2.16.1-beta.2]
 
 - Add debug logs
