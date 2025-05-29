@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [2.16.1]
+
+### Added
+
+- Add `customShareUrl` API
+
+### Fixed
+
+- [iOS] [StoryBlock] The livestream video cannot be maximized while an announcement is being displayed
+
 ## [2.16.1-beta.3]
 
 - Add debug logs

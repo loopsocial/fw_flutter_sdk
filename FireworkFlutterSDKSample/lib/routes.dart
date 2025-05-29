@@ -19,6 +19,7 @@ import 'package:fw_flutter_sdk_example/screens/log/log_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/more/circle_thumbnails.dart';
 import 'package:fw_flutter_sdk_example/screens/more/enable_custom_cta_click_callback_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/more/enable_custom_share_url_callback_screen.dart';
+import 'package:fw_flutter_sdk_example/screens/more/enable_custom_share_url_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/more/enable_link_interaction_click_callback_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/more/enable_on_video_playback_log.dart';
 import 'package:fw_flutter_sdk_example/screens/more/open_video_screen.dart';
@@ -148,6 +149,11 @@ final routeMap = <String, FWRouteFactory>{
   '/enable_custom_share_url_callback': (settings) {
     return MaterialPageRoute(
       builder: (context) => const EnableCustomShareUrlCallbackScreen(),
+    );
+  },
+  '/enable_custom_share_url': (settings) {
+    return MaterialPageRoute(
+      builder: (context) => const EnableCustomShareUrlScreen(),
     );
   },
   '/enable_link_interaction_click_callback': (settings) {

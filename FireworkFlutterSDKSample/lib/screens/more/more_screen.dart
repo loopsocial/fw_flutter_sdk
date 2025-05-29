@@ -268,6 +268,13 @@ class _MoreScreenState extends State<MoreScreen> {
             ),
             _buildItem(
               context: context,
+              title: "Enable custom share url",
+              onTap: () {
+                Navigator.of(context).pushNamed("/enable_custom_share_url");
+              },
+            ),
+            _buildItem(
+              context: context,
               title: "Enable link interaction click callback",
               onTap: () {
                 Navigator.of(context)
