@@ -512,6 +512,49 @@ class HostAppService {
     }
   }
 
+  Future<void> onCustomGiveawayTermsAndConditionsClick(
+      CustomGiveawayTermsAndConditionsClickEvent? event) async {
+    if (event != null) {
+      final name = event.name;
+      final url = event.url;
+      final feedId = event.info.feedId ?? "";
+      final videoId = event.info.id;
+      final widgetType = FireworkSDK.getInstance().getWidgetType(feedId);
+      final videoType = event.info.videoType;
+      final liveStreamStatus = event.info.liveStreamStatus;
+      FWExampleLoggerUtil.log(
+        "[Analytics] [Livestream] onCustomGiveawayTermsAndConditionsClick name: $name url: $url feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
+        shouldCache: true,
+      );
+      await startFloatingPlayerOrClosePlayer();
+      if (url != null && url.isNotEmpty) {
+        globalNavigatorKey.currentState?.pushNamed('/link_content', arguments: {
+          "url": url,
+        });
+      } else {
+        EasyLoading.showToast(
+          "Giveaway terms and conditions clicked: $name",
+          duration: const Duration(seconds: 3),
+        );
+      }
+    }
+  }
+
+  Future<void> onInteractableEngagement(
+      InteractableEngagementEvent? event) async {
+    if (event != null) {
+      final feedId = event.video.feedId ?? "";
+      final videoId = event.video.videoId;
+      final widgetType = FireworkSDK.getInstance().getWidgetType(feedId);
+      final videoType = event.video.videoType;
+      final liveStreamStatus = event.video.liveStreamStatus;
+      FWExampleLoggerUtil.log(
+        "[Analytics] [Interactable] onInteractableEngagement feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
+        shouldCache: true,
+      );
+    }
+  }
+
   Future<void> startFloatingPlayerOrClosePlayer() async {
     final result =
         await FireworkSDK.getInstance().navigator.startFloatingPlayer();
@@ -697,6 +740,14 @@ class HostAppService {
       AppLanguageInfo(
         languageCode: 'pt',
         displayName: 'Portuguese',
+      ),
+      AppLanguageInfo(
+        languageCode: 'id',
+        displayName: 'Indonesian',
+      ),
+      AppLanguageInfo(
+        languageCode: 'sv',
+        displayName: 'Swedish',
       ),
       AppLanguageInfo(
         languageCode: null,

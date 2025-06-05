@@ -100,6 +100,9 @@ class _MyAppState extends State<MyApp> {
     FireworkSDK.getInstance().onVideoPlayback =
         HostAppService.getInstance().onVideoPlayback;
 
+    FireworkSDK.getInstance().onInteractableEngagement =
+        HostAppService.getInstance().onInteractableEngagement;
+
     // FireworkSDK.getInstance().onVideoFeedClick =
     //     HostAppService.getInstance().onVideoFeedClick;
 

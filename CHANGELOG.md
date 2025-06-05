@@ -1,5 +1,31 @@
 # CHANGELOG
 
+## [2.17.1]
+
+### Added
+
+- Support Swedish
+- Support Indonesian
+- Show carousel slider below pinned products on livestream
+- Add custom callback for clicking Giveaway Terms & Conditions
+
+### Changed
+
+- Optimize Hungarian translations.
+
+## [2.17.0]
+
+### Added
+
+- Enhance the product list page for modern livestream
+- Add livestream engagement analytics callback
+
+### Fixed
+
+- Bug fixes and improvements
+
+### Changed
+
 ## [2.16.2]
 
 - Bug fixes and improvements
