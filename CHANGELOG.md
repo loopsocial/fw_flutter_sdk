@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## [2.18.0]
+
+### Added
+
+- Support Romanian
+- Support Trivia Giveaway
+- Add type field to `CustomGiveawayTermsAndConditionsClickEvent`
+
+### Fixed
+
+- Bug fixes and improvements
+
 ## [2.17.1]
 
 ### Added

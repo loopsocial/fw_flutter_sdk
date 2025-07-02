@@ -517,13 +517,14 @@ class HostAppService {
     if (event != null) {
       final name = event.name;
       final url = event.url;
+      final type = event.type;
       final feedId = event.info.feedId ?? "";
       final videoId = event.info.id;
       final widgetType = FireworkSDK.getInstance().getWidgetType(feedId);
       final videoType = event.info.videoType;
       final liveStreamStatus = event.info.liveStreamStatus;
       FWExampleLoggerUtil.log(
-        "[Analytics] [Livestream] onCustomGiveawayTermsAndConditionsClick name: $name url: $url feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
+        "[Analytics] [Livestream] onCustomGiveawayTermsAndConditionsClick name: $name type: $type url: $url feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
         shouldCache: true,
       );
       await startFloatingPlayerOrClosePlayer();
@@ -533,7 +534,7 @@ class HostAppService {
         });
       } else {
         EasyLoading.showToast(
-          "Giveaway terms and conditions clicked: $name",
+          "Giveaway terms and conditions clicked: $name, type: $type",
           duration: const Duration(seconds: 3),
         );
       }
@@ -748,6 +749,10 @@ class HostAppService {
       AppLanguageInfo(
         languageCode: 'sv',
         displayName: 'Swedish',
+      ),
+      AppLanguageInfo(
+        languageCode: 'ro',
+        displayName: 'Romanian',
       ),
       AppLanguageInfo(
         languageCode: null,
