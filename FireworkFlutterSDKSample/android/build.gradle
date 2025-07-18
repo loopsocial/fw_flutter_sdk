@@ -18,7 +18,7 @@ allprojects {
         mavenCentral()
 
         maven {
-            setUrl("https://s01.oss.sonatype.org/content/repositories/snapshots/")
+            setUrl("https://central.sonatype.com/repository/maven-snapshots/")
             mavenContent {
                 snapshotsOnly()
             }

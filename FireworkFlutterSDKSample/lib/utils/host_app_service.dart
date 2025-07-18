@@ -43,8 +43,12 @@ class HostAppService {
     final widgetType = FireworkSDK.getInstance().getWidgetType(feedId);
     final videoType = event?.video.videoType;
     final liveStreamStatus = event?.video.liveStreamStatus;
+    final customProductCTA = event?.customProductCTA;
+    final customProductCTAUrl = customProductCTA?.url ?? "";
+    final customProductCTATitleKey = customProductCTA?.titleKey ?? "";
+    final customProductCTATitle = customProductCTA?.title ?? "";
     FWExampleLoggerUtil.log(
-      "[Analytics] [Shopping] onShopNow feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
+      "[Analytics] [Shopping] onShopNow feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus customProductCTAUrl: $customProductCTAUrl customProductCTATitleKey: $customProductCTATitleKey customProductCTATitle: $customProductCTATitle",
       shouldCache: true,
     );
     final widgetInfo = HostAppService.getInstance().widgetInfoMap[feedId];
@@ -87,8 +91,12 @@ class HostAppService {
     final widgetType = FireworkSDK.getInstance().getWidgetType(feedId);
     final videoType = event?.video.videoType;
     final liveStreamStatus = event?.video.liveStreamStatus;
+    final customProductCTA = event?.customProductCTA;
+    final customProductCTAUrl = customProductCTA?.url ?? "";
+    final customProductCTATitleKey = customProductCTA?.titleKey ?? "";
+    final customProductCTATitle = customProductCTA?.title ?? "";
     FWExampleLoggerUtil.log(
-      "[Analytics] [Shopping] onAddToCart feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
+      "[Analytics] [Shopping] onAddToCart feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus customProductCTAUrl: $customProductCTAUrl customProductCTATitleKey: $customProductCTATitleKey customProductCTATitle: $customProductCTATitle",
       shouldCache: true,
     );
     await event?.ctaHandler?.showLoader();
@@ -171,7 +179,27 @@ class HostAppService {
     return null;
   }
 
-  Future<void> onCustomClickCartIcon(event) async {
+  Future<void> onShoppingSecondaryCTA(ShoppingSecondaryCTAEvent? event) async {
+    final feedId = event?.video.feedId ?? "";
+    final videoId = event?.video.videoId;
+    final widgetType = FireworkSDK.getInstance().getWidgetType(feedId);
+    final videoType = event?.video.videoType;
+    final liveStreamStatus = event?.video.liveStreamStatus;
+    final customProductCTA = event?.customProductCTA;
+    final customProductCTAUrl = customProductCTA?.url ?? "";
+    final customProductCTATitleKey = customProductCTA?.titleKey ?? "";
+    final customProductCTATitle = customProductCTA?.title ?? "";
+    FWExampleLoggerUtil.log(
+      "[Analytics] [Shopping] onShoppingSecondaryCTA feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus customProductCTAUrl: $customProductCTAUrl customProductCTATitleKey: $customProductCTATitleKey customProductCTATitle: $customProductCTATitle",
+      shouldCache: true,
+    );
+    await startFloatingPlayerOrClosePlayer();
+    globalNavigatorKey.currentState?.pushNamed('/link_content', arguments: {
+      "url": event?.url ?? '',
+    });
+  }
+
+  Future<void> onCustomClickCartIcon(CustomClickCartIconEvent? event) async {
     final feedId = event?.video.feedId ?? "";
     final videoId = event?.video.videoId;
     final widgetType = FireworkSDK.getInstance().getWidgetType(feedId);

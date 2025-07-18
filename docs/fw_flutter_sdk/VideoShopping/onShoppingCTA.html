@@ -56,27 +56,62 @@
 </h1></div>
 
     
-      <section class="multi-line-signature">
-        
-        <a href="../../fw_flutter_sdk/ShoppingCTACallback.html">ShoppingCTACallback</a>?
-        <span class="name ">onShoppingCTA</span>
-        <div class="features"><span class="feature">getter/setter pair</span></div>
-
-      </section>
-      
-<section class="desc markdown">
-  <p>This callback is triggered when the user clicks the "Add to cart" or "Shop now" button.</p>
-<p>The host app can return an <a href="../../fw_flutter_sdk/ShoppingCTAResult-class.html">ShoppingCTAResult</a> object to tell SDK how to handle the result.</p>
-</section>
-
-      
-<section class="summary source-code" id="source">
-  <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">ShoppingCTACallback? onShoppingCTA;</code></pre>
-</section>
-
 
     
+        
+  <section id="getter">
+    <section class="multi-line-signature">
+      
+      <span class="returntype"><a href="../../fw_flutter_sdk/ShoppingCTACallback.html">ShoppingCTACallback</a>?</span>
+      get
+      <span class="name ">onShoppingCTA</span>
+      
+
+    </section>
+    
+<section class="desc markdown">
+  <p>This callback is triggered when the user clicks primary CTA in Firework in-stream PDP.</p>
+<p>The host app can customize the click event processing logic of
+the shopping CTA by setting the callback.</p>
+</section>
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">ShoppingCTACallback? get onShoppingCTA =&gt; _onShoppingCTA;</code></pre>
+</section>
+
+  </section>
+
+
+        
+  <section id="setter">
+    <section class="multi-line-signature">
+      
+      set
+      <span class="name ">onShoppingCTA</span>
+      <span class="signature">(<wbr><span class="parameter" id="onShoppingCTA=-param-value"><span class="type-annotation"><a href="../../fw_flutter_sdk/ShoppingCTACallback.html">ShoppingCTACallback</a>?</span> <span class="parameter-name">value</span></span>)</span>
+      
+
+    </section>
+    
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">set onShoppingCTA(ShoppingCTACallback? value) {
+  _onShoppingCTA = value;
+  final nativeMethodName =
+      ShoppingNativeMethodName.setCustomShoppingCTAEnabled.name;
+  FWMethodChannelUtil.getShoppingChannel().invokeMethod(
+    nativeMethodName,
+    value != null,
+  );
+}</code></pre>
+</section>
+
+  </section>
+
 </div> <!-- /.main-content -->
 <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
   <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
@@ -101,7 +136,7 @@
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.18.1
+      2.18.2
   </span>
   
 </footer>

@@ -32,6 +32,8 @@ class _ShoppingConfigurationScreenState
       ProductCardConfiguration();
   bool _resultCustomizeLinkButtonHandler = false;
   bool _resultCustomizeTapProductCardHandler = false;
+  bool _resultCustomizeShoppingCTAHandler = false;
+  bool _resultCustomizeShoppingSecondaryCTAHandler = false;
 
   @override
   void initState() {
@@ -74,6 +76,10 @@ class _ShoppingConfigurationScreenState
         FireworkSDK.getInstance().shopping.onCustomClickLinkButton != null;
     _resultCustomizeTapProductCardHandler =
         FireworkSDK.getInstance().shopping.onCustomTapProductCard != null;
+    _resultCustomizeShoppingCTAHandler =
+        FireworkSDK.getInstance().shopping.onShoppingCTA != null;
+    _resultCustomizeShoppingSecondaryCTAHandler =
+        FireworkSDK.getInstance().shopping.onShoppingSecondaryCTA != null;
   }
 
   @override
@@ -215,6 +221,14 @@ class _ShoppingConfigurationScreenState
                 height: 20,
               ),
               _buildCustomizeTapProductCardHandler(context),
+              const SizedBox(
+                height: 20,
+              ),
+              _buildCustomizeShoppingShoppingCTAHandler(context),
+              const SizedBox(
+                height: 20,
+              ),
+              _buildCustomizeShoppingSecondaryCTAHandler(context),
               const SizedBox(
                 height: 20,
               ),
@@ -976,6 +990,36 @@ class _ShoppingConfigurationScreenState
     );
   }
 
+  Widget _buildCustomizeShoppingShoppingCTAHandler(BuildContext context) {
+    return CheckboxListTile(
+      contentPadding: EdgeInsets.zero,
+      value: _resultCustomizeShoppingCTAHandler,
+      onChanged: (value) {
+        setState(() {
+          _resultCustomizeShoppingCTAHandler = value ?? false;
+        });
+      },
+      title: const Text(
+        "Enable custom shopping CTA",
+      ),
+    );
+  }
+
+  Widget _buildCustomizeShoppingSecondaryCTAHandler(BuildContext context) {
+    return CheckboxListTile(
+      contentPadding: EdgeInsets.zero,
+      value: _resultCustomizeShoppingSecondaryCTAHandler,
+      onChanged: (value) {
+        setState(() {
+          _resultCustomizeShoppingSecondaryCTAHandler = value ?? false;
+        });
+      },
+      title: const Text(
+        "Enable custom shopping secondary CTA",
+      ),
+    );
+  }
+
   Widget _buildButtonList(BuildContext context) {
     return Row(children: [
       Expanded(
@@ -1005,14 +1049,6 @@ class _ShoppingConfigurationScreenState
               );
               FireworkSDK.getInstance().shopping.cartIconVisible =
                   _resultShowCartIcon;
-              if (_resultShoppingCTAButtonConfig.text ==
-                  ShoppingCTAButtonText.shopNow) {
-                FireworkSDK.getInstance().shopping.onShoppingCTA =
-                    HostAppService.getInstance().onShopNow;
-              } else {
-                FireworkSDK.getInstance().shopping.onShoppingCTA =
-                    HostAppService.getInstance().onAddToCart;
-              }
               if (_resultCustomizeLinkButtonHandler) {
                 FireworkSDK.getInstance().shopping.onCustomClickLinkButton =
                     HostAppService.getInstance().onCustomClickLinkButton;
@@ -1025,6 +1061,25 @@ class _ShoppingConfigurationScreenState
                     HostAppService.getInstance().onCustomTapProductCard;
               } else {
                 FireworkSDK.getInstance().shopping.onCustomTapProductCard =
+                    null;
+              }
+              if (_resultCustomizeShoppingCTAHandler) {
+                if (_resultShoppingCTAButtonConfig.text ==
+                    ShoppingCTAButtonText.shopNow) {
+                  FireworkSDK.getInstance().shopping.onShoppingCTA =
+                      HostAppService.getInstance().onShopNow;
+                } else {
+                  FireworkSDK.getInstance().shopping.onShoppingCTA =
+                      HostAppService.getInstance().onAddToCart;
+                }
+              } else {
+                FireworkSDK.getInstance().shopping.onShoppingCTA = null;
+              }
+              if (_resultCustomizeShoppingSecondaryCTAHandler) {
+                FireworkSDK.getInstance().shopping.onShoppingSecondaryCTA =
+                    HostAppService.getInstance().onShoppingSecondaryCTA;
+              } else {
+                FireworkSDK.getInstance().shopping.onShoppingSecondaryCTA =
                     null;
               }
               FocusScope.of(context).unfocus();
