@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## [2.18.2]
+
+### Added
+
+- Support coupon code
+- Add secondary CTA button callback in Firework in-stream PDP
+
+### Fixed
+
+- Bug fixes and improvements
+
 ## [2.18.1]
 
 ### Fixed
