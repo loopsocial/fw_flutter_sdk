@@ -27,6 +27,10 @@ class PlayerConfigurationState extends ChangeNotifier {
         ),
         cancelButtonStyle: VideoPlayerActionButtonStyle(
           shape: ButtonShape.roundRectangle,
+        ),
+        chatStyle: ChatStyle(
+          textColor: null,
+          textShadow: null,
         ));
   }
 

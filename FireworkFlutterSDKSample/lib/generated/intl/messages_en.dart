@@ -90,9 +90,33 @@ class MessageLookup extends MessageLookupByLibrary {
         "channelIdRequiredError":
             MessageLookupByLibrary.simpleMessage("Please enter channel id"),
         "channelInfo": MessageLookupByLibrary.simpleMessage("Channel Info"),
+        "chatFontHint": MessageLookupByLibrary.simpleMessage("e.g. 13"),
+        "chatFontSize": MessageLookupByLibrary.simpleMessage("Chat font size"),
+        "chatShadowColor":
+            MessageLookupByLibrary.simpleMessage("Chat shadow color"),
+        "chatShadowColorHint":
+            MessageLookupByLibrary.simpleMessage("e.g. #000000"),
+        "chatShadowOffsetX":
+            MessageLookupByLibrary.simpleMessage("Chat shadow offset X"),
+        "chatShadowOffsetXHint": MessageLookupByLibrary.simpleMessage("e.g. 0"),
+        "chatShadowOffsetY":
+            MessageLookupByLibrary.simpleMessage("Chat shadow offset Y"),
+        "chatShadowOffsetYHint":
+            MessageLookupByLibrary.simpleMessage("e.g. 0.5"),
+        "chatShadowOpacity":
+            MessageLookupByLibrary.simpleMessage("Chat shadow opacity"),
+        "chatShadowOpacityHint":
+            MessageLookupByLibrary.simpleMessage("e.g. 0.4"),
+        "chatShadowRadius":
+            MessageLookupByLibrary.simpleMessage("Chat shadow radius"),
+        "chatShadowRadiusHint": MessageLookupByLibrary.simpleMessage("e.g. 7"),
+        "chatTextColor":
+            MessageLookupByLibrary.simpleMessage("Chat text color"),
+        "chatTextColorHint":
+            MessageLookupByLibrary.simpleMessage("e.g. #000000"),
         "checkout": MessageLookupByLibrary.simpleMessage("CHECKOUT"),
         "circleThumbnails":
-            MessageLookupByLibrary.simpleMessage("Circle Thumbnails(iOS)"),
+            MessageLookupByLibrary.simpleMessage("Circle Thumbnails"),
         "city": MessageLookupByLibrary.simpleMessage("City"),
         "clearLog": MessageLookupByLibrary.simpleMessage("Clear log"),
         "clearLogSuccessfully":
@@ -330,11 +354,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "productCardBackgroundColor": MessageLookupByLibrary.simpleMessage(
             "Product card background color"),
         "productCardCTAButtonFontSize": MessageLookupByLibrary.simpleMessage(
-            "Font size of product card CTA button(iOS)"),
+            "Font size of product card CTA button"),
         "productCardCTAButtonText": MessageLookupByLibrary.simpleMessage(
             "Product card CTA button text"),
         "productCardCTAButtonTextColor": MessageLookupByLibrary.simpleMessage(
-            "Text color of product card CTA button(iOS)"),
+            "Text color of product card CTA button"),
         "productCardCTAButtonTextColorHint":
             MessageLookupByLibrary.simpleMessage("e.g. #ffffff"),
         "productCardCornerRadius":
@@ -342,7 +366,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "productCardCornerRadiusHint": MessageLookupByLibrary.simpleMessage(
             "Enter product card corner radius"),
         "productCardHeight":
-            MessageLookupByLibrary.simpleMessage("Product card height(iOS)"),
+            MessageLookupByLibrary.simpleMessage("Product card height"),
         "productCardHeightHint":
             MessageLookupByLibrary.simpleMessage("e.g. 88"),
         "productCardIconCornerRadius": MessageLookupByLibrary.simpleMessage(
@@ -352,36 +376,36 @@ class MessageLookup extends MessageLookupByLibrary {
         "productCardIsPriceFirst": MessageLookupByLibrary.simpleMessage(
             "Product card is price first(iOS)"),
         "productCardNameLabelFontSize": MessageLookupByLibrary.simpleMessage(
-            "Font size of product card name label(iOS)"),
+            "Font size of product card name label"),
         "productCardNameLabelLines": MessageLookupByLibrary.simpleMessage(
-            "Number of lines for product card name label(iOS)"),
+            "Number of lines for product card name label"),
         "productCardNameLabelTextColor": MessageLookupByLibrary.simpleMessage(
-            "Text color of product card name label(iOS)"),
+            "Text color of product card name label"),
         "productCardNameLabelTextColorHint":
             MessageLookupByLibrary.simpleMessage("e.g. #ffffff"),
         "productCardOriginalPriceLabelFontSize":
             MessageLookupByLibrary.simpleMessage(
-                "Font size of product card original price label(iOS)"),
+                "Font size of product card original price label"),
         "productCardOriginalPriceLabelLines":
             MessageLookupByLibrary.simpleMessage(
-                "Number of lines for product card original price label(iOS)"),
+                "Number of lines for product card original price label"),
         "productCardOriginalPriceLabelTextColor":
             MessageLookupByLibrary.simpleMessage(
-                "Text color of product card original price label(iOS)"),
+                "Text color of product card original price label"),
         "productCardOriginalPriceLabelTextColorHint":
             MessageLookupByLibrary.simpleMessage("e.g. #ffffff"),
         "productCardPriceLabelFontSize": MessageLookupByLibrary.simpleMessage(
-            "Font size of product card price label(iOS)"),
+            "Font size of product card price label"),
         "productCardPriceLabelLines": MessageLookupByLibrary.simpleMessage(
-            "Number of lines for product card price label(iOS)"),
+            "Number of lines for product card price label"),
         "productCardPriceLabelTextColor": MessageLookupByLibrary.simpleMessage(
-            "Text color of product card price label(iOS)"),
+            "Text color of product card price label"),
         "productCardPriceLabelTextColorHint":
             MessageLookupByLibrary.simpleMessage("e.g. #ffffff"),
         "productCardTheme":
             MessageLookupByLibrary.simpleMessage("Product card theme"),
         "productCardWidth":
-            MessageLookupByLibrary.simpleMessage("Product card width(iOS)"),
+            MessageLookupByLibrary.simpleMessage("Product card width"),
         "productCardWidthHint":
             MessageLookupByLibrary.simpleMessage("e.g. 218"),
         "productIds": MessageLookupByLibrary.simpleMessage("Product ids"),
@@ -437,6 +461,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "shadowOpacityHint": MessageLookupByLibrary.simpleMessage("e.g. 0.6"),
         "shadowOpacityRangeError": MessageLookupByLibrary.simpleMessage(
             "Please enter opacity in [0, 1]"),
+        "shadowRadiusError": MessageLookupByLibrary.simpleMessage(
+            "Please enter correct shadow radius"),
+        "shadowRadiusRangeError": MessageLookupByLibrary.simpleMessage(
+            "Please enter shadow radius in [0, 50]"),
         "shadowWidth": MessageLookupByLibrary.simpleMessage("Shadow width"),
         "shadowWidthError": MessageLookupByLibrary.simpleMessage(
             "Please enter correct shadow width"),
@@ -505,6 +533,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "urlRequiredError":
             MessageLookupByLibrary.simpleMessage("Please enter correct url"),
         "use": MessageLookupByLibrary.simpleMessage("Use"),
+        "useAndroidFontInfoForChat": MessageLookupByLibrary.simpleMessage(
+            "Use Android font info for chat"),
+        "useAndroidFontInfoForShopping": MessageLookupByLibrary.simpleMessage(
+            "Use Android font info(MONOSPACE)"),
         "useAndroidFontInfoForTitle": MessageLookupByLibrary.simpleMessage(
             "Use Android font info for title"),
         "useAndroidGradientDrawableForTitle":
@@ -514,6 +546,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Use iOS font info(TimesNewRomanPS-ItalicMT)"),
         "useIOSFontInfoForCTA": MessageLookupByLibrary.simpleMessage(
             "Use iOS font info(TimesNewRomanPS-ItalicMT) for CTA"),
+        "useIOSFontInfoForChat":
+            MessageLookupByLibrary.simpleMessage("Use iOS font info for chat"),
         "useIOSFontInfoForTitle": MessageLookupByLibrary.simpleMessage(
             "Use iOS font info(TimesNewRomanPS-ItalicMT) for title"),
         "vastAttributes":

@@ -8,7 +8,7 @@ import 'package:fw_flutter_sdk_example/utils/host_app_service.dart';
 import '../../generated/l10n.dart';
 import '../../widgets/fw_app_bar.dart';
 
-const fwNativeVersionOfAndroid = '6.22.3';
+const fwNativeVersionOfAndroid = '6.23.0';
 
 class MoreScreen extends StatefulWidget {
   const MoreScreen({

@@ -208,6 +208,10 @@ class _ShoppingConfigurationScreenState
               const SizedBox(
                 height: 20,
               ),
+              _buildUseAndroidFontInfo(context),
+              const SizedBox(
+                height: 20,
+              ),
               _buildCartIconButtonShow(context),
               const SizedBox(
                 height: 20,
@@ -920,6 +924,54 @@ class _ShoppingConfigurationScreenState
       },
       title: Text(
         S.of(context).useIOSFontInfo,
+      ),
+    );
+  }
+
+  Widget _buildUseAndroidFontInfo(BuildContext context) {
+    return CheckboxListTile(
+      contentPadding: EdgeInsets.zero,
+      value: _resultShoppingCTAButtonConfig.androidFontInfo != null,
+      onChanged: (value) {
+        setState(() {
+          if (value == true) {
+            _resultProductCardConfig.ctaButtonStyle!.androidFontInfo =
+                AndroidFontInfo(
+              isCustom: false,
+              typefaceName: "MONOSPACE",
+            );
+            _resultProductCardConfig.priceConfiguration!.priceLabel!
+                .androidFontInfo = AndroidFontInfo(
+              isCustom: false,
+              typefaceName: "MONOSPACE",
+            );
+            _resultProductCardConfig.priceConfiguration!.originalPriceLabel!
+                .androidFontInfo = AndroidFontInfo(
+              isCustom: false,
+              typefaceName: "MONOSPACE",
+            );
+            _resultProductCardConfig.nameLabel!.androidFontInfo =
+                AndroidFontInfo(
+              isCustom: false,
+              typefaceName: "MONOSPACE",
+            );
+            _resultShoppingCTAButtonConfig.androidFontInfo = AndroidFontInfo(
+              isCustom: false,
+              typefaceName: "MONOSPACE",
+            );
+          } else {
+            _resultProductCardConfig.ctaButtonStyle!.androidFontInfo = null;
+            _resultProductCardConfig
+                .priceConfiguration!.priceLabel!.androidFontInfo = null;
+            _resultProductCardConfig
+                .priceConfiguration!.originalPriceLabel!.androidFontInfo = null;
+            _resultProductCardConfig.nameLabel!.androidFontInfo = null;
+            _resultShoppingCTAButtonConfig.androidFontInfo = null;
+          }
+        });
+      },
+      title: Text(
+        S.of(context).useAndroidFontInfoForShopping,
       ),
     );
   }

@@ -1360,10 +1360,10 @@ class S {
     );
   }
 
-  /// `Circle Thumbnails(iOS)`
+  /// `Circle Thumbnails`
   String get circleThumbnails {
     return Intl.message(
-      'Circle Thumbnails(iOS)',
+      'Circle Thumbnails',
       name: 'circleThumbnails',
       desc: '',
       args: [],
@@ -1890,6 +1890,16 @@ class S {
     );
   }
 
+  /// `Use Android font info(MONOSPACE)`
+  String get useAndroidFontInfoForShopping {
+    return Intl.message(
+      'Use Android font info(MONOSPACE)',
+      name: 'useAndroidFontInfoForShopping',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Use Android gradient drawable for title`
   String get useAndroidGradientDrawableForTitle {
     return Intl.message(
@@ -2300,20 +2310,20 @@ class S {
     );
   }
 
-  /// `Text color of product card CTA button(iOS)`
+  /// `Text color of product card CTA button`
   String get productCardCTAButtonTextColor {
     return Intl.message(
-      'Text color of product card CTA button(iOS)',
+      'Text color of product card CTA button',
       name: 'productCardCTAButtonTextColor',
       desc: '',
       args: [],
     );
   }
 
-  /// `Font size of product card CTA button(iOS)`
+  /// `Font size of product card CTA button`
   String get productCardCTAButtonFontSize {
     return Intl.message(
-      'Font size of product card CTA button(iOS)',
+      'Font size of product card CTA button',
       name: 'productCardCTAButtonFontSize',
       desc: '',
       args: [],
@@ -2330,10 +2340,10 @@ class S {
     );
   }
 
-  /// `Product card width(iOS)`
+  /// `Product card width`
   String get productCardWidth {
     return Intl.message(
-      'Product card width(iOS)',
+      'Product card width',
       name: 'productCardWidth',
       desc: '',
       args: [],
@@ -2350,10 +2360,10 @@ class S {
     );
   }
 
-  /// `Product card height(iOS)`
+  /// `Product card height`
   String get productCardHeight {
     return Intl.message(
-      'Product card height(iOS)',
+      'Product card height',
       name: 'productCardHeight',
       desc: '',
       args: [],
@@ -2440,20 +2450,20 @@ class S {
     );
   }
 
-  /// `Text color of product card name label(iOS)`
+  /// `Text color of product card name label`
   String get productCardNameLabelTextColor {
     return Intl.message(
-      'Text color of product card name label(iOS)',
+      'Text color of product card name label',
       name: 'productCardNameLabelTextColor',
       desc: '',
       args: [],
     );
   }
 
-  /// `Font size of product card name label(iOS)`
+  /// `Font size of product card name label`
   String get productCardNameLabelFontSize {
     return Intl.message(
-      'Font size of product card name label(iOS)',
+      'Font size of product card name label',
       name: 'productCardNameLabelFontSize',
       desc: '',
       args: [],
@@ -2470,30 +2480,30 @@ class S {
     );
   }
 
-  /// `Number of lines for product card name label(iOS)`
+  /// `Number of lines for product card name label`
   String get productCardNameLabelLines {
     return Intl.message(
-      'Number of lines for product card name label(iOS)',
+      'Number of lines for product card name label',
       name: 'productCardNameLabelLines',
       desc: '',
       args: [],
     );
   }
 
-  /// `Text color of product card price label(iOS)`
+  /// `Text color of product card price label`
   String get productCardPriceLabelTextColor {
     return Intl.message(
-      'Text color of product card price label(iOS)',
+      'Text color of product card price label',
       name: 'productCardPriceLabelTextColor',
       desc: '',
       args: [],
     );
   }
 
-  /// `Font size of product card price label(iOS)`
+  /// `Font size of product card price label`
   String get productCardPriceLabelFontSize {
     return Intl.message(
-      'Font size of product card price label(iOS)',
+      'Font size of product card price label',
       name: 'productCardPriceLabelFontSize',
       desc: '',
       args: [],
@@ -2510,30 +2520,30 @@ class S {
     );
   }
 
-  /// `Number of lines for product card price label(iOS)`
+  /// `Number of lines for product card price label`
   String get productCardPriceLabelLines {
     return Intl.message(
-      'Number of lines for product card price label(iOS)',
+      'Number of lines for product card price label',
       name: 'productCardPriceLabelLines',
       desc: '',
       args: [],
     );
   }
 
-  /// `Text color of product card original price label(iOS)`
+  /// `Text color of product card original price label`
   String get productCardOriginalPriceLabelTextColor {
     return Intl.message(
-      'Text color of product card original price label(iOS)',
+      'Text color of product card original price label',
       name: 'productCardOriginalPriceLabelTextColor',
       desc: '',
       args: [],
     );
   }
 
-  /// `Font size of product card original price label(iOS)`
+  /// `Font size of product card original price label`
   String get productCardOriginalPriceLabelFontSize {
     return Intl.message(
-      'Font size of product card original price label(iOS)',
+      'Font size of product card original price label',
       name: 'productCardOriginalPriceLabelFontSize',
       desc: '',
       args: [],
@@ -2550,10 +2560,10 @@ class S {
     );
   }
 
-  /// `Number of lines for product card original price label(iOS)`
+  /// `Number of lines for product card original price label`
   String get productCardOriginalPriceLabelLines {
     return Intl.message(
-      'Number of lines for product card original price label(iOS)',
+      'Number of lines for product card original price label',
       name: 'productCardOriginalPriceLabelLines',
       desc: '',
       args: [],
@@ -2725,6 +2735,26 @@ class S {
     return Intl.message(
       'Please enter shadow height in [0, 100]',
       name: 'shadowHeightRangeError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter correct shadow radius`
+  String get shadowRadiusError {
+    return Intl.message(
+      'Please enter correct shadow radius',
+      name: 'shadowRadiusError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter shadow radius in [0, 50]`
+  String get shadowRadiusRangeError {
+    return Intl.message(
+      'Please enter shadow radius in [0, 50]',
+      name: 'shadowRadiusRangeError',
       desc: '',
       args: [],
     );
@@ -3026,6 +3056,166 @@ class S {
     return Intl.message(
       'Enable small size in compact',
       name: 'enableSmallSizeInCompact',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chat text color`
+  String get chatTextColor {
+    return Intl.message(
+      'Chat text color',
+      name: 'chatTextColor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `e.g. #000000`
+  String get chatTextColorHint {
+    return Intl.message(
+      'e.g. #000000',
+      name: 'chatTextColorHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chat shadow color`
+  String get chatShadowColor {
+    return Intl.message(
+      'Chat shadow color',
+      name: 'chatShadowColor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `e.g. #000000`
+  String get chatShadowColorHint {
+    return Intl.message(
+      'e.g. #000000',
+      name: 'chatShadowColorHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chat font size`
+  String get chatFontSize {
+    return Intl.message(
+      'Chat font size',
+      name: 'chatFontSize',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `e.g. 13`
+  String get chatFontHint {
+    return Intl.message(
+      'e.g. 13',
+      name: 'chatFontHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chat shadow opacity`
+  String get chatShadowOpacity {
+    return Intl.message(
+      'Chat shadow opacity',
+      name: 'chatShadowOpacity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `e.g. 0.4`
+  String get chatShadowOpacityHint {
+    return Intl.message(
+      'e.g. 0.4',
+      name: 'chatShadowOpacityHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chat shadow offset X`
+  String get chatShadowOffsetX {
+    return Intl.message(
+      'Chat shadow offset X',
+      name: 'chatShadowOffsetX',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `e.g. 0`
+  String get chatShadowOffsetXHint {
+    return Intl.message(
+      'e.g. 0',
+      name: 'chatShadowOffsetXHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chat shadow offset Y`
+  String get chatShadowOffsetY {
+    return Intl.message(
+      'Chat shadow offset Y',
+      name: 'chatShadowOffsetY',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `e.g. 0.5`
+  String get chatShadowOffsetYHint {
+    return Intl.message(
+      'e.g. 0.5',
+      name: 'chatShadowOffsetYHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chat shadow radius`
+  String get chatShadowRadius {
+    return Intl.message(
+      'Chat shadow radius',
+      name: 'chatShadowRadius',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `e.g. 7`
+  String get chatShadowRadiusHint {
+    return Intl.message(
+      'e.g. 7',
+      name: 'chatShadowRadiusHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Use iOS font info for chat`
+  String get useIOSFontInfoForChat {
+    return Intl.message(
+      'Use iOS font info for chat',
+      name: 'useIOSFontInfoForChat',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Use Android font info for chat`
+  String get useAndroidFontInfoForChat {
+    return Intl.message(
+      'Use Android font info for chat',
+      name: 'useAndroidFontInfoForChat',
       desc: '',
       args: [],
     );

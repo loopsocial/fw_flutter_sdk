@@ -178,6 +178,54 @@ class _StoryBlockConfigurationScreenState
               Row(
                 children: [
                   Expanded(
+                    child: _buildChatTextColor(context),
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: _buildChatShadowOpacity(context),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: _buildChatShadowColor(context),
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: _buildChatShadowRadius(context),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: _buildChatShadowOffsetX(context),
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: _buildChatShadowOffsetY(context),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                children: [
+                  Expanded(
                     child: _buildShareButtonShow(context),
                   ),
                   const SizedBox(
@@ -1384,6 +1432,182 @@ class _StoryBlockConfigurationScreenState
       title: Text(
         S.of(context).enableSmallSizeInCompact,
       ),
+    );
+  }
+
+  Widget _buildChatTextColor(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(S.of(context).chatTextColor),
+        FWTextFormField(
+          initialValue: _initConfig.chatStyle?.textColor?.toString(),
+          hintText: S.of(context).chatTextColorHint,
+          validator: (text) {
+            return ValidationUtil.validateColor(
+              text,
+              context,
+            );
+          },
+          onSaved: (text) {
+            _resultConfig.chatStyle ??= ChatStyle();
+            if ((text ?? "").isNotEmpty) {
+              _resultConfig.chatStyle?.textColor = text;
+            } else {
+              _resultConfig.chatStyle?.textColor = null;
+            }
+          },
+        ),
+      ],
+    );
+  }
+
+  Widget _buildChatShadowOpacity(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(S.of(context).chatShadowOpacity),
+        FWTextFormField(
+          initialValue: _initConfig.chatStyle?.textShadow?.opacity?.toString(),
+          hintText: S.of(context).chatShadowOpacityHint,
+          validator: (text) {
+            return ValidationUtil.validateDoubleNumber(
+              context: context,
+              text: text,
+              min: 0,
+              max: 1,
+              errorMessage: S.of(context).shadowOpacityError,
+              rangeErrorMessage: S.of(context).shadowOpacityRangeError,
+            );
+          },
+          onSaved: (text) {
+            _resultConfig.chatStyle ??= ChatStyle();
+            _resultConfig.chatStyle?.textShadow ??= TextShadowConfiguration();
+            _resultConfig.chatStyle?.textShadow?.opacity =
+                double.tryParse(text ?? '');
+          },
+        )
+      ],
+    );
+  }
+
+  Widget _buildChatShadowColor(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(S.of(context).chatShadowColor),
+        FWTextFormField(
+          initialValue: _initConfig.chatStyle?.textShadow?.color,
+          hintText: S.of(context).chatShadowColorHint,
+          validator: (text) {
+            return ValidationUtil.validateColor(
+              text,
+              context,
+            );
+          },
+          onSaved: (text) {
+            _resultConfig.chatStyle ??= ChatStyle();
+            _resultConfig.chatStyle?.textShadow ??= TextShadowConfiguration();
+            _resultConfig.chatStyle?.textShadow?.color = text;
+          },
+        ),
+      ],
+    );
+  }
+
+  Widget _buildChatShadowOffsetX(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(S.of(context).chatShadowOffsetX),
+        FWTextFormField(
+          initialValue:
+              _initConfig.chatStyle?.textShadow?.offsetX?.toStringAsFixed(0),
+          hintText: S.of(context).chatShadowOffsetXHint,
+          validator: (text) {
+            return ValidationUtil.validateNumber(
+              context: context,
+              text: text,
+              min: 0,
+              max: 100,
+              errorMessage: S.of(context).shadowWidthError,
+              rangeErrorMessage: S.of(context).shadowWidthRangeError,
+            );
+          },
+          onSaved: (text) {
+            _resultConfig.chatStyle ??= ChatStyle();
+            _resultConfig.chatStyle?.textShadow ??= TextShadowConfiguration();
+            _resultConfig.chatStyle?.textShadow?.offsetX =
+                int.tryParse(text ?? '')?.toDouble();
+          },
+        )
+      ],
+    );
+  }
+
+  Widget _buildChatShadowOffsetY(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(S.of(context).chatShadowOffsetY),
+        FWTextFormField(
+          initialValue:
+              _initConfig.chatStyle?.textShadow?.offsetY?.toStringAsFixed(0),
+          hintText: S.of(context).chatShadowOffsetYHint,
+          validator: (text) {
+            return ValidationUtil.validateNumber(
+              context: context,
+              text: text,
+              min: 0,
+              max: 100,
+              errorMessage: S.of(context).shadowHeightError,
+              rangeErrorMessage: S.of(context).shadowHeightRangeError,
+            );
+          },
+          onSaved: (text) {
+            _resultConfig.chatStyle ??= ChatStyle();
+            _resultConfig.chatStyle?.textShadow ??= TextShadowConfiguration();
+            _resultConfig.chatStyle?.textShadow?.offsetY =
+                int.tryParse(text ?? '')?.toDouble();
+          },
+        )
+      ],
+    );
+  }
+
+  Widget _buildChatShadowRadius(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(S.of(context).chatShadowRadius),
+        FWTextFormField(
+          initialValue:
+              _initConfig.chatStyle?.textShadow?.radius?.toStringAsFixed(0),
+          hintText: S.of(context).chatShadowRadiusHint,
+          validator: (text) {
+            return ValidationUtil.validateNumber(
+              context: context,
+              text: text,
+              min: 0,
+              max: 50,
+              errorMessage: S.of(context).shadowRadiusError,
+              rangeErrorMessage: S.of(context).shadowRadiusRangeError,
+            );
+          },
+          onSaved: (text) {
+            _resultConfig.chatStyle ??= ChatStyle();
+            _resultConfig.chatStyle?.textShadow ??= TextShadowConfiguration();
+            _resultConfig.chatStyle?.textShadow?.radius =
+                int.tryParse(text ?? '')?.toDouble();
+          },
+        )
+      ],
     );
   }
 }

@@ -29,6 +29,10 @@ class StoryBlockConfigurationState extends ChangeNotifier {
       enableAutopause: false,
       enableFullScreen: true,
       enableSmallSizeInCompact: false,
+      chatStyle: ChatStyle(
+        textColor: null,
+        textShadow: null,
+      ),
     );
   }
 
