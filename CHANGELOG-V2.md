@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## [2.19.0]
+
+### Added
+
+- Support multiple winners for Giveaway and Trivia Giveaway
+- AI Copilot support
+- Enable Chat Font Color Customization for general messages
+
+### Fixed
+
+- Bug fix and improvements
+
 ## [2.18.2]
 
 ### Added
