@@ -8,7 +8,7 @@ import 'package:fw_flutter_sdk_example/utils/host_app_service.dart';
 import '../../generated/l10n.dart';
 import '../../widgets/fw_app_bar.dart';
 
-const fwNativeVersionOfAndroid = '6.23.0';
+const fwNativeVersionOfAndroid = '6.23.1';
 
 class MoreScreen extends StatefulWidget {
   const MoreScreen({
@@ -301,6 +301,13 @@ class _MoreScreenState extends State<MoreScreen> {
                     seconds: 5,
                   ),
                 );
+              },
+            ),
+            _buildItem(
+              context: context,
+              title: "Open StoryBlock with Video ID",
+              onTap: () {
+                Navigator.of(context).pushNamed("/enter_video_id");
               },
             ),
           ],

@@ -3220,6 +3220,276 @@ class S {
       args: [],
     );
   }
+
+  /// `Video ID`
+  String get videoId {
+    return Intl.message(
+      'Video ID',
+      name: 'videoId',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unknown`
+  String get unknown {
+    return Intl.message(
+      'Unknown',
+      name: 'unknown',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No video ID provided`
+  String get noVideoIdProvided {
+    return Intl.message(
+      'No video ID provided',
+      name: 'noVideoIdProvided',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Video Player Demo`
+  String get videoPlayerDemo {
+    return Intl.message(
+      'Video Player Demo',
+      name: 'videoPlayerDemo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This is a StoryBlock component displaying a single video. You can interact with the video player below.`
+  String get storyBlockVideoDescription {
+    return Intl.message(
+      'This is a StoryBlock component displaying a single video. You can interact with the video player below.',
+      name: 'storyBlockVideoDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Video Information`
+  String get videoInformation {
+    return Intl.message(
+      'Video Information',
+      name: 'videoInformation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Status`
+  String get status {
+    return Intl.message(
+      'Status',
+      name: 'status',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Loaded`
+  String get loaded {
+    return Intl.message(
+      'Loaded',
+      name: 'loaded',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error`
+  String get error {
+    return Intl.message(
+      'Error',
+      name: 'error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Autoplay`
+  String get autoplay {
+    return Intl.message(
+      'Autoplay',
+      name: 'autoplay',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enabled`
+  String get enabled {
+    return Intl.message(
+      'Enabled',
+      name: 'enabled',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Picture-in-Picture`
+  String get pictureInPicture {
+    return Intl.message(
+      'Picture-in-Picture',
+      name: 'pictureInPicture',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Full Screen`
+  String get fullScreen {
+    return Intl.message(
+      'Full Screen',
+      name: 'fullScreen',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Supported`
+  String get supported {
+    return Intl.message(
+      'Supported',
+      name: 'supported',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Features`
+  String get features {
+    return Intl.message(
+      'Features',
+      name: 'features',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Interactive Controls`
+  String get interactiveControls {
+    return Intl.message(
+      'Interactive Controls',
+      name: 'interactiveControls',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Play, pause, mute, and share`
+  String get playPauseMuteShare {
+    return Intl.message(
+      'Play, pause, mute, and share',
+      name: 'playPauseMuteShare',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Continue watching while using other apps`
+  String get continueWatchingOtherApps {
+    return Intl.message(
+      'Continue watching while using other apps',
+      name: 'continueWatchingOtherApps',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Full Screen Mode`
+  String get fullScreenMode {
+    return Intl.message(
+      'Full Screen Mode',
+      name: 'fullScreenMode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Immersive viewing experience`
+  String get immersiveViewing {
+    return Intl.message(
+      'Immersive viewing experience',
+      name: 'immersiveViewing',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Audio Controls`
+  String get audioControls {
+    return Intl.message(
+      'Audio Controls',
+      name: 'audioControls',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mute and unmute functionality`
+  String get muteUnmuteFunction {
+    return Intl.message(
+      'Mute and unmute functionality',
+      name: 'muteUnmuteFunction',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Share Options`
+  String get shareOptions {
+    return Intl.message(
+      'Share Options',
+      name: 'shareOptions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Share video content easily`
+  String get shareVideoContent {
+    return Intl.message(
+      'Share video content easily',
+      name: 'shareVideoContent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tips`
+  String get tips {
+    return Intl.message(
+      'Tips',
+      name: 'tips',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `• Tap the video to play/pause\n• Use the controls to adjust playback\n• Try the Picture-in-Picture feature\n• Swipe up for full screen mode\n• Use the share button to share content`
+  String get videoTips {
+    return Intl.message(
+      '• Tap the video to play/pause\n• Use the controls to adjust playback\n• Try the Picture-in-Picture feature\n• Swipe up for full screen mode\n• Use the share button to share content',
+      name: 'videoTips',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to load video`
+  String get failedToLoadVideo {
+    return Intl.message(
+      'Failed to load video',
+      name: 'failedToLoadVideo',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

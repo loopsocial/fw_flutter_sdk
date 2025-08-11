@@ -62,6 +62,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "addToCart": MessageLookupByLibrary.simpleMessage("Add to cart"),
         "advanceToNext":
             MessageLookupByLibrary.simpleMessage("advance to next"),
+        "audioControls": MessageLookupByLibrary.simpleMessage("Audio Controls"),
+        "autoplay": MessageLookupByLibrary.simpleMessage("Autoplay"),
         "backgroundColor":
             MessageLookupByLibrary.simpleMessage("Background Color"),
         "backgroundColorHint":
@@ -135,6 +137,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enter content id"),
         "contentIdRequiredError":
             MessageLookupByLibrary.simpleMessage("Please enter content id"),
+        "continueWatchingOtherApps": MessageLookupByLibrary.simpleMessage(
+            "Continue watching while using other apps"),
         "cornerRadius": MessageLookupByLibrary.simpleMessage("Corner radius"),
         "cornerRadiusError": MessageLookupByLibrary.simpleMessage(
             "Please enter correct corner radius"),
@@ -236,7 +240,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enable Picture In Picture"),
         "enableSmallSizeInCompact": MessageLookupByLibrary.simpleMessage(
             "Enable small size in compact"),
+        "enabled": MessageLookupByLibrary.simpleMessage("Enabled"),
+        "error": MessageLookupByLibrary.simpleMessage("Error"),
         "export": MessageLookupByLibrary.simpleMessage("Export"),
+        "failedToLoadVideo":
+            MessageLookupByLibrary.simpleMessage("Failed to load video"),
+        "features": MessageLookupByLibrary.simpleMessage("Features"),
         "feed": MessageLookupByLibrary.simpleMessage("Feed"),
         "feedConfiguration":
             MessageLookupByLibrary.simpleMessage("Feed Configuration"),
@@ -247,6 +256,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "fontSizeRangeError": MessageLookupByLibrary.simpleMessage(
             "Please enter font size in [8, 30]"),
         "full": MessageLookupByLibrary.simpleMessage("full"),
+        "fullScreen": MessageLookupByLibrary.simpleMessage("Full Screen"),
+        "fullScreenMode":
+            MessageLookupByLibrary.simpleMessage("Full Screen Mode"),
         "fullWidth": MessageLookupByLibrary.simpleMessage("Full width"),
         "fwAndroidSdkVersion": m6,
         "grid": MessageLookupByLibrary.simpleMessage("Grid"),
@@ -283,12 +295,17 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Hide replay badge"),
         "hideTitle": MessageLookupByLibrary.simpleMessage("Hide Title"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
+        "immersiveViewing": MessageLookupByLibrary.simpleMessage(
+            "Immersive viewing experience"),
         "integration": MessageLookupByLibrary.simpleMessage("Integration"),
+        "interactiveControls":
+            MessageLookupByLibrary.simpleMessage("Interactive Controls"),
         "light": MessageLookupByLibrary.simpleMessage("Light"),
         "linkContentScreenTitle":
             MessageLookupByLibrary.simpleMessage("Link Content(Flutter page)"),
         "livestreamCountdownTimerTheme": MessageLookupByLibrary.simpleMessage(
             "Livestream countdown timer theme"),
+        "loaded": MessageLookupByLibrary.simpleMessage("Loaded"),
         "log": MessageLookupByLibrary.simpleMessage("Log"),
         "loop": MessageLookupByLibrary.simpleMessage("loop"),
         "more": MessageLookupByLibrary.simpleMessage("More"),
@@ -296,9 +313,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "multiplePageUrlsToastText": m8,
         "muteOnFirstLaunch":
             MessageLookupByLibrary.simpleMessage("muteOnFirstLaunch"),
+        "muteUnmuteFunction": MessageLookupByLibrary.simpleMessage(
+            "Mute and unmute functionality"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "nameOnCard": MessageLookupByLibrary.simpleMessage("Name On Card"),
         "nested": MessageLookupByLibrary.simpleMessage("nested"),
+        "noVideoIdProvided":
+            MessageLookupByLibrary.simpleMessage("No video ID provided"),
         "numberOfTitleLines":
             MessageLookupByLibrary.simpleMessage("Number of title lines"),
         "numberOfTitleLinesError": MessageLookupByLibrary.simpleMessage(
@@ -313,6 +334,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "pageUrlToastText": m9,
         "pause": MessageLookupByLibrary.simpleMessage("Pause"),
         "percentage": MessageLookupByLibrary.simpleMessage("percentage"),
+        "pictureInPicture":
+            MessageLookupByLibrary.simpleMessage("Picture-in-Picture"),
         "play": MessageLookupByLibrary.simpleMessage("Play"),
         "playIconWidth":
             MessageLookupByLibrary.simpleMessage("Play icon width"),
@@ -321,6 +344,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "playIconWidthHint": MessageLookupByLibrary.simpleMessage("e.g. 36"),
         "playIconWidthRangeError": MessageLookupByLibrary.simpleMessage(
             "Please enter play icon width in [0, 100]"),
+        "playPauseMuteShare": MessageLookupByLibrary.simpleMessage(
+            "Play, pause, mute, and share"),
         "playerConfiguration":
             MessageLookupByLibrary.simpleMessage("Player Configuration"),
         "playerLogoClickable":
@@ -472,6 +497,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "shadowWidthRangeError": MessageLookupByLibrary.simpleMessage(
             "Please enter shadow width in [0, 100]"),
         "shareBaseURL": MessageLookupByLibrary.simpleMessage("Share base URL"),
+        "shareOptions": MessageLookupByLibrary.simpleMessage("Share Options"),
+        "shareVideoContent":
+            MessageLookupByLibrary.simpleMessage("Share video content easily"),
         "shippingInfo": MessageLookupByLibrary.simpleMessage("Shipping Info"),
         "shopNow": MessageLookupByLibrary.simpleMessage("Shop now"),
         "shopping": MessageLookupByLibrary.simpleMessage("Shopping"),
@@ -508,6 +536,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "sponsored": MessageLookupByLibrary.simpleMessage("sponsored"),
         "stacked": MessageLookupByLibrary.simpleMessage("stacked"),
         "state": MessageLookupByLibrary.simpleMessage("State"),
+        "status": MessageLookupByLibrary.simpleMessage("Status"),
         "stopFloatingPlayer":
             MessageLookupByLibrary.simpleMessage("Stop floating player"),
         "storeDetails": MessageLookupByLibrary.simpleMessage("Store Details"),
@@ -517,8 +546,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Story block configuration"),
         "storyBlockLoadError":
             MessageLookupByLibrary.simpleMessage("Fail to load story block"),
+        "storyBlockVideoDescription": MessageLookupByLibrary.simpleMessage(
+            "This is a StoryBlock component displaying a single video. You can interact with the video player below."),
         "street": MessageLookupByLibrary.simpleMessage("Street"),
+        "supported": MessageLookupByLibrary.simpleMessage("Supported"),
         "theUserComesFromTitle": m10,
+        "tips": MessageLookupByLibrary.simpleMessage("Tips"),
         "titleColor": MessageLookupByLibrary.simpleMessage("Title Color"),
         "titleColorHint": MessageLookupByLibrary.simpleMessage("e.g. #000000"),
         "titleFontSize":
@@ -527,6 +560,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "titleFontSizeHint1": MessageLookupByLibrary.simpleMessage("e.g. 12"),
         "titlePosition": MessageLookupByLibrary.simpleMessage("Title Position"),
         "total": MessageLookupByLibrary.simpleMessage("Total"),
+        "unknown": MessageLookupByLibrary.simpleMessage("Unknown"),
         "urlError":
             MessageLookupByLibrary.simpleMessage("Please enter correct url"),
         "urlHint": MessageLookupByLibrary.simpleMessage("Enter url"),
@@ -561,14 +595,21 @@ class MessageLookup extends MessageLookupByLibrary {
         "videoFeed": MessageLookupByLibrary.simpleMessage("Video Feed"),
         "videoFeedLoadError":
             MessageLookupByLibrary.simpleMessage("Fail to load video feed"),
+        "videoId": MessageLookupByLibrary.simpleMessage("Video ID"),
+        "videoInformation":
+            MessageLookupByLibrary.simpleMessage("Video Information"),
         "videoPlayerCompleteAction": MessageLookupByLibrary.simpleMessage(
             "Video player complete action"),
         "videoPlayerCompleteAction2": MessageLookupByLibrary.simpleMessage(
             "Video player complete action(full-screen)"),
+        "videoPlayerDemo":
+            MessageLookupByLibrary.simpleMessage("Video Player Demo"),
         "videoPlayerStyle":
             MessageLookupByLibrary.simpleMessage("Video player style"),
         "videoPlayerStyle2": MessageLookupByLibrary.simpleMessage(
             "Video player style(full-screen)"),
+        "videoTips": MessageLookupByLibrary.simpleMessage(
+            "• Tap the video to play/pause\n• Use the controls to adjust playback\n• Try the Picture-in-Picture feature\n• Swipe up for full screen mode\n• Use the share button to share content"),
         "videoURL": MessageLookupByLibrary.simpleMessage("Video URL"),
         "videolaunchBehavior":
             MessageLookupByLibrary.simpleMessage("Video Launch Behavior"),

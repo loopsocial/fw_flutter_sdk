@@ -23,8 +23,10 @@ import 'package:fw_flutter_sdk_example/screens/more/enable_custom_share_url_scre
 import 'package:fw_flutter_sdk_example/screens/more/enable_link_interaction_click_callback_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/more/enable_giveaway_terms_click_callback_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/more/enable_on_video_playback_log.dart';
+import 'package:fw_flutter_sdk_example/screens/more/enter_video_id_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/more/open_video_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/more/set_share_base_url_screen.dart';
+import 'package:fw_flutter_sdk_example/screens/more/open_story_block_video_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/tab/tab_screen.dart';
 
 typedef FWRouteFactory = Route<dynamic>? Function(RouteSettings settings);
@@ -165,6 +167,16 @@ final routeMap = <String, FWRouteFactory>{
   '/enable_giveaway_terms_click_callback': (settings) {
     return MaterialPageRoute(
       builder: (context) => const EnableGiveawayTermsClickCallbackScreen(),
+    );
+  },
+  '/enter_video_id': (settings) {
+    return MaterialPageRoute(
+      builder: (context) => const EnterVideoIdScreen(),
+    );
+  },
+  '/story_block_video': (settings) {
+    return MaterialPageRoute(
+      builder: (context) => OpenStoryBlockVideoScreen(settings: settings),
     );
   },
 };
