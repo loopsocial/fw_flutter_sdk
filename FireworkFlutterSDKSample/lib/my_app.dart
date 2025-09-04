@@ -103,6 +103,9 @@ class _MyAppState extends State<MyApp> {
     FireworkSDK.getInstance().onInteractableEngagement =
         HostAppService.getInstance().onInteractableEngagement;
 
+    FireworkSDK.getInstance().onStoryBlockClickToFullScreen =
+        HostAppService.getInstance().onStoryBlockClickToFullScreen;
+
     // FireworkSDK.getInstance().onVideoFeedClick =
     //     HostAppService.getInstance().onVideoFeedClick;
 

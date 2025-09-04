@@ -463,7 +463,7 @@ class HostAppService {
       final videoType = event.info.videoType;
       final liveStreamStatus = event.info.liveStreamStatus;
       FWExampleLoggerUtil.log(
-        "[Analytics] [Livestream] onLiveStreamEvent eventName: $eventName feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
+        "[Analytics] [Livestream] onLiveStreamEvent eventName: $eventName feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus videoIdFromVideo: ${event.info.video.videoId} duration: ${event.info.video.duration} caption: ${event.info.video.caption}",
         shouldCache: true,
       );
 
@@ -490,7 +490,7 @@ class HostAppService {
       final videoType = event.liveStream.videoType;
       final liveStreamStatus = event.liveStream.liveStreamStatus;
       FWExampleLoggerUtil.log(
-        "[Analytics] [Livestream] onLiveStreamChatEvent eventName: $eventName feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
+        "[Analytics] [Livestream] onLiveStreamChatEvent eventName: $eventName feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus videoIdFromVideo: ${event.liveStream.video.videoId} duration: ${event.liveStream.video.duration} caption: ${event.liveStream.video.caption}",
         shouldCache: true,
       );
       switch (eventName) {
@@ -530,7 +530,7 @@ class HostAppService {
       final videoType = event.info.videoType;
       final liveStreamStatus = event.info.liveStreamStatus;
       FWExampleLoggerUtil.log(
-        "[Analytics] [Livestream] onCustomLinkInteractionClick title: $title url: $url feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
+        "[Analytics] [Livestream] onCustomLinkInteractionClick title: $title url: $url feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus videoIdFromVideo: ${event.info.video.videoId} duration: ${event.info.video.duration} caption: ${event.info.video.caption}",
         shouldCache: true,
       );
       await startFloatingPlayerOrClosePlayer();
@@ -552,7 +552,7 @@ class HostAppService {
       final videoType = event.info.videoType;
       final liveStreamStatus = event.info.liveStreamStatus;
       FWExampleLoggerUtil.log(
-        "[Analytics] [Livestream] onCustomGiveawayTermsAndConditionsClick name: $name type: $type url: $url feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
+        "[Analytics] [Livestream] onCustomGiveawayTermsAndConditionsClick name: $name type: $type url: $url feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus videoIdFromVideo: ${event.info.video.videoId} duration: ${event.info.video.duration} caption: ${event.info.video.caption}",
         shouldCache: true,
       );
       await startFloatingPlayerOrClosePlayer();
@@ -579,6 +579,21 @@ class HostAppService {
       final liveStreamStatus = event.video.liveStreamStatus;
       FWExampleLoggerUtil.log(
         "[Analytics] [Interactable] onInteractableEngagement feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
+        shouldCache: true,
+      );
+    }
+  }
+
+  Future<void> onStoryBlockClickToFullScreen(
+      StoryBlockClickToFullScreenEvent? event) async {
+    if (event != null) {
+      final feedId = event.video.feedId ?? "";
+      final videoId = event.video.videoId;
+      final widgetType = FireworkSDK.getInstance().getWidgetType(feedId);
+      final videoType = event.video.videoType;
+      final liveStreamStatus = event.video.liveStreamStatus;
+      FWExampleLoggerUtil.log(
+        "[Analytics] [StoryBlock] onStoryBlockClickToFullScreen feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus ctaActionType: ${event.video.ctaActionType} ctaActionURL: ${event.video.ctaActionURL} progress: ${event.video.progress} duration: ${event.video.duration} playerSizeWidth: ${event.video.playerSize?.width} playerSizeHeight: ${event.video.playerSize?.height} caption: ${event.video.caption} badge: ${event.video.badge} hasCTA: ${event.video.hasCTA}",
         shouldCache: true,
       );
     }
