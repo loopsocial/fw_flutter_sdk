@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## [2.20.0]
+
+### Added
+
+- Adapt re-stream
+- Add callback for clicking story block to fullscreen
+
+### Fixed
+
+- Bug fix and improvements
+
 ## [2.19.1]
 
 ### Fixed
