@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.20.1]
+
+### Fixed
+
+- Fix the black screen issue on Android when using RTL (Right-to-Left) mode
+
 ## [2.20.0]
 
 ### Added
