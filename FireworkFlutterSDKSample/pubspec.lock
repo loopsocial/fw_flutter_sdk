@@ -321,10 +321,10 @@ packages:
     dependency: "direct main"
     description:
       name: fw_flutter_sdk
-      sha256: e455cf8aa0d8b1e82a8b6848f988b1381466b22ac7cd726bbc2b5a2487654360
+      sha256: "1970a541dd9af2c3496e6b7cd7431062f9baa2147e449ee76f17f80bf4b1c4d4"
       url: "https://pub.dev"
     source: hosted
-    version: "2.20.1"
+    version: "2.20.2-beta.1"
   glob:
     dependency: transitive
     description:
@@ -637,6 +637,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.4.0"
+  responsive_framework:
+    dependency: "direct main"
+    description:
+      name: responsive_framework
+      sha256: a8e1c13d4ba980c60cbf6fa1e9907cd60662bf2585184d7c96ca46c43de91552
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.5.1"
   rxdart:
     dependency: transitive
     description:
