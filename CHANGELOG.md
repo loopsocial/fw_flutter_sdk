@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## [2.20.2]
+
+## Added
+
+- Add additional parameters for purchase tracking API
+
+## Fixed
+
+- [Android] Fix the story block black screen issue when using RTL (Right-to-Left) mode
+- [Android] Fix input issue in right-to-left (RTL) layout
+
+## Fixed
+
 ## [2.20.2-beta.1]
 
 - Beta release

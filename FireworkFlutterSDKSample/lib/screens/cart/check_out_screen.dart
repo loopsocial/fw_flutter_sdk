@@ -238,6 +238,12 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               value: random.nextInt(100) + 1,
               currencyCode: "USD",
               countryCode: "US",
+              shippingPrice: 1,
+              subtotal: 9,
+              products: [
+                PurchaseProduct(
+                    extProductId: "test_product_id", price: 10, quantity: 1),
+              ],
               additionalInfo: <String, String>{
                 "additionalKey1": "additionalValue1",
                 "additionalKey2": "additionalValue2",
