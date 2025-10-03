@@ -798,6 +798,14 @@ class HostAppService {
         displayName: 'Romanian',
       ),
       AppLanguageInfo(
+        languageCode: 'zh-Hant',
+        displayName: 'Chinese (Traditional)',
+      ),
+      AppLanguageInfo(
+        languageCode: 'zh-TW',
+        displayName: 'Chinese (Traditional, Taiwan)',
+      ),
+      AppLanguageInfo(
         languageCode: null,
         displayName: 'System',
       ),
@@ -886,6 +894,29 @@ class HostAppService {
     return null;
   }
 
+  Future<void> cacheShortVideoPlayerVersion(
+      ShortVideoPlayerDesignVersion playerVersion) async {
+    try {
+      final cacheFile = await _shortVideoPlayerVersionCacheFile;
+      await cacheFile.writeAsString(playerVersion.name);
+      FireworkSDK.getInstance().shortVideoPlayerDesignVersion = playerVersion;
+    } catch (e) {
+      FWExampleLoggerUtil.log("cacheShortVideoPlayerVersion e $e");
+    }
+  }
+
+  Future<ShortVideoPlayerDesignVersion?> getShortVideoPlayerVersion() async {
+    try {
+      final cacheFile = await _shortVideoPlayerVersionCacheFile;
+      final contents = await cacheFile.readAsString();
+      return ShortVideoPlayerDesignVersion.values.asNameMap()[contents];
+    } catch (e) {
+      FWExampleLoggerUtil.log("getShortVideoPlayerVersion e $e");
+    }
+
+    return null;
+  }
+
   Future<File> get _cartItemsCacheFile async {
     final directory = await getApplicationDocumentsDirectory();
     final file = File("${directory.path}/fw_example_cart_items.json");
@@ -934,6 +965,20 @@ class HostAppService {
     final exist = await file.exists();
 
     FWExampleLoggerUtil.log("_livestreamPlayerVersionCacheFile exist $exist");
+
+    if (!exist) {
+      return await file.create(recursive: true);
+    } else {
+      return file;
+    }
+  }
+
+  Future<File> get _shortVideoPlayerVersionCacheFile async {
+    final directory = await getApplicationDocumentsDirectory();
+    final file = File("${directory.path}/fw_short_video_player_version.txt");
+    final exist = await file.exists();
+
+    FWExampleLoggerUtil.log("_shortVideoPlayerVersionCacheFile exist $exist");
 
     if (!exist) {
       return await file.create(recursive: true);

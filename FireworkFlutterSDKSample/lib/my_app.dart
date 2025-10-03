@@ -85,6 +85,11 @@ class _MyAppState extends State<MyApp> {
           FireworkSDK.getInstance().livestreamPlayerDesignVersion = value;
         }
       });
+      HostAppService.getInstance().getShortVideoPlayerVersion().then((value) {
+        if (value != null) {
+          FireworkSDK.getInstance().shortVideoPlayerDesignVersion = value;
+        }
+      });
     });
   }
 

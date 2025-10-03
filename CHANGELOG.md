@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [2.21.0]
+
+### Added
+
+- Support Traditional Chinese
+- Support modern (v2) design for short videos
+
 ## [2.20.3]
 
 ### Fixed

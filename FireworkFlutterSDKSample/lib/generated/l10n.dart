@@ -2821,11 +2821,31 @@ class S {
     );
   }
 
+  /// `Select short video player design version`
+  String get selectShortVideoPlayerVersion {
+    return Intl.message(
+      'Select short video player design version',
+      name: 'selectShortVideoPlayerVersion',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Change livestream player version({version})`
   String changeLiveStreamPlayerVersion(Object version) {
     return Intl.message(
       'Change livestream player version($version)',
       name: 'changeLiveStreamPlayerVersion',
+      desc: '',
+      args: [version],
+    );
+  }
+
+  /// `Change short video player version({version})`
+  String changeShortVideoPlayerVersion(Object version) {
+    return Intl.message(
+      'Change short video player version($version)',
+      name: 'changeShortVideoPlayerVersion',
       desc: '',
       args: [version],
     );
