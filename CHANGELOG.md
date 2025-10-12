@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [2.21.1]
+
+### Fixed
+
+- [iOS] Occasionally, when a livestream or replay is opened in PiP mode from a video feed, attempting to open another one from the same feed fails to play
+- [Android] Fix crash when attaching the storyblock widget
+
 ## [2.21.0]
 
 ### Added
