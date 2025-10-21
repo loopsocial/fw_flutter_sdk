@@ -31,7 +31,7 @@ target 'Runner' do
   use_modular_headers!
 
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
-  pod 'FireworkVideoIVSSupport', '0.9.0'
+  pod 'FireworkVideoIVSSupport', '0.9.3'
   pod 'FirebaseCrashlytics'
 end
 
