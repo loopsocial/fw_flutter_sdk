@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## [2.22.0]
+
+### Added
+
+- Support Dutch
+- Support vertical scroll player
+- Support closing fullscreen player immediately when Picture-in-Picture is enabled
+
+### Changed
+
+- [Android] Show mute icon on Android if video is muted for pip mode
+
 ## [2.21.2]
 
 ### Fixed
