@@ -5,6 +5,7 @@ class PlayerConfigurationState extends ChangeNotifier {
   static VideoPlayerConfiguration _getDefaultConfiguration() {
     return VideoPlayerConfiguration(
         playerStyle: VideoPlayerStyle.full,
+        scrollDirection: VideoPlayerScrollDirection.horizontal,
         showShareButton: true,
         showMuteButton: true,
         showBranding: true,

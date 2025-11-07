@@ -112,6 +112,7 @@ bool operator ==(Object other) {
 
   if (other is VideoPlayerConfiguration) {
     return playerStyle == other.playerStyle &amp;&amp;
+        scrollDirection == other.scrollDirection &amp;&amp;
         videoCompleteAction == other.videoCompleteAction &amp;&amp;
         showShareButton == other.showShareButton &amp;&amp;
         ctaButtonStyle == other.ctaButtonStyle &amp;&amp;
@@ -161,7 +162,7 @@ bool operator ==(Object other) {
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.21.2
+      2.22.0
   </span>
   
 </footer>

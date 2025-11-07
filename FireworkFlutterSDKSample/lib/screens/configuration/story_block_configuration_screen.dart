@@ -236,6 +236,32 @@ class _StoryBlockConfigurationScreenState
                   ),
                 ],
               ),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: _buildShouldShowCloseButtonWhenPiPEnabled(context),
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: Container(),
+                  ),
+                ],
+              ),
+              if (defaultTargetPlatform == TargetPlatform.iOS)
+                const SizedBox(
+                  height: 20,
+                ),
+                _buildScrollDirectionSegmentedControl(context),
+              if (defaultTargetPlatform == TargetPlatform.iOS)
+                const SizedBox(
+                  height: 20,
+                ),
+                _buildEnableScrollForVertical(context),
               if (defaultTargetPlatform == TargetPlatform.android)
                 const SizedBox(
                   height: 20,
@@ -1084,16 +1110,29 @@ class _StoryBlockConfigurationScreenState
     );
   }
 
+  bool _hasCustomButtons() {
+    final config = _resultConfig.buttonConfiguration;
+    if (config == null) return false;
+    return config.videoDetailButton != null ||
+           config.closeButton != null ||
+           config.pipButton != null ||
+           config.muteButton != null ||
+           config.unmuteButton != null ||
+           config.playButton != null ||
+           config.pauseButton != null;
+  }
+
   Widget _buildCustomButtons(BuildContext context) {
     return CheckboxListTile(
       contentPadding: EdgeInsets.zero,
-      value: _resultConfig.buttonConfiguration != null,
+      value: _hasCustomButtons(),
       onChanged: (value) {
         setState(() {
           if (value == true) {
             _resultConfig.buttonConfiguration = VideoPlayerButtonConfiguration(
               videoDetailButton: ButtonInfo(imageName: "custom_more"),
               closeButton: ButtonInfo(imageName: "custom_close"),
+              shouldShowCloseButtonWhenPiPEnabled: _resultConfig.buttonConfiguration?.shouldShowCloseButtonWhenPiPEnabled ?? false,
               pipButton: ButtonInfo(imageName: "custom_pip"),
               muteButton: ButtonInfo(imageName: "custom_mute"),
               unmuteButton: ButtonInfo(imageName: "custom_unmute"),
@@ -1101,12 +1140,49 @@ class _StoryBlockConfigurationScreenState
               pauseButton: ButtonInfo(imageName: "custom_pause"),
             );
           } else {
-            _resultConfig.buttonConfiguration = null;
+            final shouldShow = _resultConfig.buttonConfiguration?.shouldShowCloseButtonWhenPiPEnabled ?? false;
+            if (shouldShow) {
+              _resultConfig.buttonConfiguration = VideoPlayerButtonConfiguration(
+                shouldShowCloseButtonWhenPiPEnabled: shouldShow,
+              );
+            } else {
+              _resultConfig.buttonConfiguration = null;
+            }
           }
         });
       },
       title: Text(
         S.of(context).enableCustomButtons,
+      ),
+    );
+  }
+
+  Widget _buildShouldShowCloseButtonWhenPiPEnabled(BuildContext context) {
+    return CheckboxListTile(
+      contentPadding: EdgeInsets.zero,
+      value: _resultConfig.buttonConfiguration?.shouldShowCloseButtonWhenPiPEnabled ?? false,
+      onChanged: (value) {
+        setState(() {
+          if (_resultConfig.buttonConfiguration != null) {
+            _resultConfig.buttonConfiguration = VideoPlayerButtonConfiguration(
+              videoDetailButton: _resultConfig.buttonConfiguration?.videoDetailButton,
+              closeButton: _resultConfig.buttonConfiguration?.closeButton,
+              shouldShowCloseButtonWhenPiPEnabled: value ?? false,
+              pipButton: _resultConfig.buttonConfiguration?.pipButton,
+              muteButton: _resultConfig.buttonConfiguration?.muteButton,
+              unmuteButton: _resultConfig.buttonConfiguration?.unmuteButton,
+              playButton: _resultConfig.buttonConfiguration?.playButton,
+              pauseButton: _resultConfig.buttonConfiguration?.pauseButton,
+            );
+          } else {
+            _resultConfig.buttonConfiguration = VideoPlayerButtonConfiguration(
+              shouldShowCloseButtonWhenPiPEnabled: value ?? false,
+            );
+          }
+        });
+      },
+      title: Text(
+        S.of(context).showCloseButtonWhenPiPEnabled,
       ),
     );
   }
@@ -1608,6 +1684,59 @@ class _StoryBlockConfigurationScreenState
           },
         )
       ],
+    );
+  }
+
+  Widget _buildScrollDirectionSegmentedControl(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(
+          S.of(context).videoPlayerScrollDirection,
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        CupertinoSegmentedControl<VideoPlayerScrollDirection>(
+          padding: EdgeInsets.zero,
+          onValueChanged: (value) {
+            setState(() {
+              _resultConfig.scrollDirection = value;
+            });
+          },
+          children: {
+            VideoPlayerScrollDirection.vertical: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Text(
+                S.of(context).verticalScroll,
+              ),
+            ),
+            VideoPlayerScrollDirection.horizontal: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Text(
+                S.of(context).horizontalScroll,
+              ),
+            ),
+          },
+          groupValue: _resultConfig.scrollDirection,
+        ),
+      ],
+    );
+  }
+
+  Widget _buildEnableScrollForVertical(BuildContext context) {
+    return CheckboxListTile(
+      contentPadding: EdgeInsets.zero,
+      value: _resultConfig.enableScrollForVertical,
+      onChanged: (value) {
+        setState(() {
+          _resultConfig.enableScrollForVertical = value;
+        });
+      },
+      title: Text(
+        S.of(context).enableScrollForVertical,
+      ),
     );
   }
 }

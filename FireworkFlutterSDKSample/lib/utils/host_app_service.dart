@@ -806,6 +806,10 @@ class HostAppService {
         displayName: 'Chinese (Traditional, Taiwan)',
       ),
       AppLanguageInfo(
+        languageCode: 'nl',
+        displayName: 'Dutch',
+      ),
+      AppLanguageInfo(
         languageCode: null,
         displayName: 'System',
       ),

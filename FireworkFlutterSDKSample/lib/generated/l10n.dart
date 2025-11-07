@@ -2110,6 +2110,16 @@ class S {
     );
   }
 
+  /// `Show Close Button When PiP Enabled`
+  String get showCloseButtonWhenPiPEnabled {
+    return Intl.message(
+      'Show Close Button When PiP Enabled',
+      name: 'showCloseButtonWhenPiPEnabled',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Video player complete action(full-screen)`
   String get videoPlayerCompleteAction2 {
     return Intl.message(
@@ -3236,6 +3246,46 @@ class S {
     return Intl.message(
       'Use Android font info for chat',
       name: 'useAndroidFontInfoForChat',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Video player scroll direction`
+  String get videoPlayerScrollDirection {
+    return Intl.message(
+      'Video player scroll direction',
+      name: 'videoPlayerScrollDirection',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Vertical`
+  String get verticalScroll {
+    return Intl.message(
+      'Vertical',
+      name: 'verticalScroll',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Horizontal`
+  String get horizontalScroll {
+    return Intl.message(
+      'Horizontal',
+      name: 'horizontalScroll',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enable scroll for vertical`
+  String get enableScrollForVertical {
+    return Intl.message(
+      'Enable scroll for vertical',
+      name: 'enableScrollForVertical',
       desc: '',
       args: [],
     );

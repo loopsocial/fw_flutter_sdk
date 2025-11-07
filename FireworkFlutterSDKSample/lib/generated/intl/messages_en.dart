@@ -213,6 +213,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enable autoplay"),
         "enableCustomButtons":
             MessageLookupByLibrary.simpleMessage("Enable custom buttons"),
+        "showCloseButtonWhenPiPEnabled":
+            MessageLookupByLibrary.simpleMessage("Show Close Button When PiP Enabled"),
         "enableCustomCTAClickCallback": MessageLookupByLibrary.simpleMessage(
             "Enable Custom CTA Click Callback"),
         "enableCustomCTAClickCallbackSuccessfully":
@@ -581,6 +583,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "useAndroidGradientDrawableForTitle":
             MessageLookupByLibrary.simpleMessage(
                 "Use Android gradient drawable for title"),
+        "verticalScroll": MessageLookupByLibrary.simpleMessage("Vertical"),
+        "horizontalScroll": MessageLookupByLibrary.simpleMessage("Horizontal"),
+        "videoPlayerScrollDirection":
+            MessageLookupByLibrary.simpleMessage("Video player scroll direction"),
+        "enableScrollForVertical":
+            MessageLookupByLibrary.simpleMessage("Enable scroll for vertical"),
         "useIOSFontInfo": MessageLookupByLibrary.simpleMessage(
             "Use iOS font info(TimesNewRomanPS-ItalicMT)"),
         "useIOSFontInfoForCTA": MessageLookupByLibrary.simpleMessage(

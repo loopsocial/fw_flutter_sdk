@@ -113,6 +113,7 @@ bool operator ==(Object other) {
   if (other is VideoPlayerButtonConfiguration) {
     return videoDetailButton == other.videoDetailButton &amp;&amp;
         closeButton == other.closeButton &amp;&amp;
+        shouldShowCloseButtonWhenPiPEnabled == other.shouldShowCloseButtonWhenPiPEnabled &amp;&amp;
         pipButton == other.pipButton &amp;&amp;
         muteButton == other.muteButton &amp;&amp;
         unmuteButton == other.unmuteButton &amp;&amp;
@@ -149,7 +150,7 @@ bool operator ==(Object other) {
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.21.2
+      2.22.0
   </span>
   
 </footer>

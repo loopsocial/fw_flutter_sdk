@@ -68,6 +68,8 @@
 		46838F492DDAD69D006A1C9D /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		46838F4A2DDAD6A6006A1C9D /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Main.strings; sourceTree = "<group>"; };
 		46838F4B2DDAD6A6006A1C9D /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		469482E02EA8894400D53BE4 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Main.strings; sourceTree = "<group>"; };
+		469482E12EA8894400D53BE4 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		46970CC02DFFF11700DF8C4D /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Main.strings; sourceTree = "<group>"; };
 		46970CC12DFFF11700DF8C4D /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		46AC925D2CC8F11F00959622 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Main.strings; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 				ro,
 				"zh-Hant",
 				"zh-Hant-TW",
+				nl,
 			);
 			mainGroup = 97C146E51CF9000F007C117D;
 			productRefGroup = 97C146EF1CF9000F007C117D /* Products */;
@@ -432,6 +435,7 @@
 				46970CC02DFFF11700DF8C4D /* ro */,
 				467104EF2E82A5ED00CB2773 /* zh-Hant */,
 				467104F12E82A60300CB2773 /* zh-Hant-TW */,
+				469482E02EA8894400D53BE4 /* nl */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -463,6 +467,7 @@
 				46970CC12DFFF11700DF8C4D /* ro */,
 				467104F02E82A5ED00CB2773 /* zh-Hant */,
 				467104F22E82A60300CB2773 /* zh-Hant-TW */,
+				469482E12EA8894400D53BE4 /* nl */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -539,7 +544,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.21.0;
+				MARKETING_VERSION = 2.22.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.loopnow.fondor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = fondor;
@@ -621,7 +626,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.21.0;
+				MARKETING_VERSION = 2.22.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.loopnow.fondor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = fondor;
@@ -758,7 +763,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.21.0;
+				MARKETING_VERSION = 2.22.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.loopnow.fondor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -787,7 +792,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.21.0;
+				MARKETING_VERSION = 2.22.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.loopnow.fondor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = fondor;

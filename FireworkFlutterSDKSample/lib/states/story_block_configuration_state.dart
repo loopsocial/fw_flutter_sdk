@@ -5,6 +5,8 @@ class StoryBlockConfigurationState extends ChangeNotifier {
   static StoryBlockConfiguration _getDefaultConfiguration() {
     return StoryBlockConfiguration(
       playerStyle: VideoPlayerStyle.full,
+      scrollDirection: VideoPlayerScrollDirection.horizontal,
+      enableScrollForVertical: false,
       showShareButton: true,
       showPlaybackButton: true,
       showMuteButton: true,
