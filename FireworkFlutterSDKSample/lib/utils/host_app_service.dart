@@ -569,6 +569,34 @@ class HostAppService {
     }
   }
 
+  Future<void> onCustomQuestionTermsAndConditionsClick(
+      CustomQuestionTermsAndConditionsClickEvent? event) async {
+    if (event != null) {
+      final name = event.name;
+      final url = event.url;
+      final feedId = event.info.feedId ?? "";
+      final videoId = event.info.id;
+      final widgetType = FireworkSDK.getInstance().getWidgetType(feedId);
+      final videoType = event.info.videoType;
+      final liveStreamStatus = event.info.liveStreamStatus;
+      FWExampleLoggerUtil.log(
+        "[Analytics] [Livestream] onCustomQuestionTermsAndConditionsClick name: $name url: $url feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus videoIdFromVideo: ${event.info.video.videoId} duration: ${event.info.video.duration} caption: ${event.info.video.caption}",
+        shouldCache: true,
+      );
+      await startFloatingPlayerOrClosePlayer();
+      if (url != null && url.isNotEmpty) {
+        globalNavigatorKey.currentState?.pushNamed('/link_content', arguments: {
+          "url": url,
+        });
+      } else {
+        EasyLoading.showToast(
+          "Question terms and conditions clicked: $name",
+          duration: const Duration(seconds: 3),
+        );
+      }
+    }
+  }
+
   Future<void> onInteractableEngagement(
       InteractableEngagementEvent? event) async {
     if (event != null) {

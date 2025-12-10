@@ -3291,6 +3291,16 @@ class S {
     );
   }
 
+  /// `Enable horizontal layout`
+  String get enableHorizontalLayout {
+    return Intl.message(
+      'Enable horizontal layout',
+      name: 'enableHorizontalLayout',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Video ID`
   String get videoId {
     return Intl.message(

@@ -36,8 +36,6 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>We need to use camera</string>
-	<key>NSUserTrackingUsageDescription</key>
-	<string>We need your data for analytics</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UIBackgroundModes</key>

@@ -67,6 +67,10 @@ class _PlayerConfigurationScreenState extends State<PlayerConfigurationScreen> {
               const SizedBox(
                 height: 20,
               ),
+              _buildEnableHorizontalLayout(context),
+              const SizedBox(
+                height: 20,
+              ),
               _buildVideoCompleteActionSegmentedControl(context),
               const SizedBox(
                 height: 20,
@@ -400,6 +404,21 @@ class _PlayerConfigurationScreenState extends State<PlayerConfigurationScreen> {
           groupValue: _resultConfig.scrollDirection,
         )
       ],
+    );
+  }
+
+  Widget _buildEnableHorizontalLayout(BuildContext context) {
+    return CheckboxListTile(
+      contentPadding: EdgeInsets.zero,
+      value: _resultConfig.horizontalLayout.isEnabled,
+      onChanged: (value) {
+        setState(() {
+          _resultConfig.horizontalLayout.isEnabled = value ?? false;
+        });
+      },
+      title: Text(
+        S.of(context).enableHorizontalLayout,
+      ),
     );
   }
 

@@ -22,6 +22,7 @@ import 'package:fw_flutter_sdk_example/screens/more/enable_custom_share_url_call
 import 'package:fw_flutter_sdk_example/screens/more/enable_custom_share_url_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/more/enable_link_interaction_click_callback_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/more/enable_giveaway_terms_click_callback_screen.dart';
+import 'package:fw_flutter_sdk_example/screens/more/enable_question_terms_click_callback_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/more/enable_on_video_playback_log.dart';
 import 'package:fw_flutter_sdk_example/screens/more/enter_video_id_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/more/open_video_screen.dart';
@@ -167,6 +168,11 @@ final routeMap = <String, FWRouteFactory>{
   '/enable_giveaway_terms_click_callback': (settings) {
     return MaterialPageRoute(
       builder: (context) => const EnableGiveawayTermsClickCallbackScreen(),
+    );
+  },
+  '/enable_question_terms_click_callback': (settings) {
+    return MaterialPageRoute(
+      builder: (context) => const EnableQuestionTermsClickCallbackScreen(),
     );
   },
   '/enter_video_id': (settings) {

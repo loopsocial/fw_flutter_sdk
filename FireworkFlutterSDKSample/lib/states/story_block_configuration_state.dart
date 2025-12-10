@@ -31,6 +31,9 @@ class StoryBlockConfigurationState extends ChangeNotifier {
       enableAutopause: false,
       enableFullScreen: true,
       enableSmallSizeInCompact: false,
+      horizontalLayout: VideoPlayerHorizontalLayoutConfiguration(
+        isEnabled: false,
+      ),
       chatStyle: ChatStyle(
         textColor: null,
         textShadow: null,

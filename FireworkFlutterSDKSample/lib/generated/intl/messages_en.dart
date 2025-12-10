@@ -589,6 +589,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Video player scroll direction"),
         "enableScrollForVertical":
             MessageLookupByLibrary.simpleMessage("Enable scroll for vertical"),
+        "enableHorizontalLayout":
+            MessageLookupByLibrary.simpleMessage("Enable horizontal layout"),
         "useIOSFontInfo": MessageLookupByLibrary.simpleMessage(
             "Use iOS font info(TimesNewRomanPS-ItalicMT)"),
         "useIOSFontInfoForCTA": MessageLookupByLibrary.simpleMessage(

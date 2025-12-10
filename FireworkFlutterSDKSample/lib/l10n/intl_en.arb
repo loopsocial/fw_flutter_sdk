@@ -323,6 +323,7 @@
   "verticalScroll": "Vertical",
   "horizontalScroll": "Horizontal",
   "enableScrollForVertical": "Enable scroll for vertical",
+  "enableHorizontalLayout": "Enable horizontal layout",
   "videoId": "Video ID",
   "unknown": "Unknown",
   "noVideoIdProvided": "No video ID provided",

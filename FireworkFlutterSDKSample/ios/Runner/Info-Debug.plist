@@ -40,8 +40,6 @@
 	<string>We need to use camera</string>
 	<key>NSLocalNetworkUsageDescription</key>
 	<string>Allow flutter tools on your computer to connect and debug your application. This prompt will not appear on release builds.</string>
-	<key>NSUserTrackingUsageDescription</key>
-	<string>We need your data for analytics</string>
 	<key>UIBackgroundModes</key>
 	<array/>
 	<key>UILaunchStoryboardName</key>

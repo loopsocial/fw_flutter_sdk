@@ -8,7 +8,7 @@ import 'package:fw_flutter_sdk_example/utils/host_app_service.dart';
 import '../../generated/l10n.dart';
 import '../../widgets/fw_app_bar.dart';
 
-const fwNativeVersionOfAndroid = '6.26.0';
+const fwNativeVersionOfAndroid = '6.27.1';
 
 class MoreScreen extends StatefulWidget {
   const MoreScreen({
@@ -341,6 +341,14 @@ class _MoreScreenState extends State<MoreScreen> {
               onTap: () {
                 Navigator.of(context)
                     .pushNamed("/enable_giveaway_terms_click_callback");
+              },
+            ),
+            _buildItem(
+              context: context,
+              title: "Enable question terms and conditions click callback",
+              onTap: () {
+                Navigator.of(context)
+                    .pushNamed("/enable_question_terms_click_callback");
               },
             ),
             _buildItem(

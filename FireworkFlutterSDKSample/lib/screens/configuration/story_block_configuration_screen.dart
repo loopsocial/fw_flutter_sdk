@@ -248,7 +248,7 @@ class _StoryBlockConfigurationScreenState
                     width: 20,
                   ),
                   Expanded(
-                    child: Container(),
+                    child: _buildEnableHorizontalLayout(context),
                   ),
                 ],
               ),
@@ -1507,6 +1507,22 @@ class _StoryBlockConfigurationScreenState
       },
       title: Text(
         S.of(context).enableSmallSizeInCompact,
+      ),
+    );
+  }
+
+  Widget _buildEnableHorizontalLayout(BuildContext context) {
+    return CheckboxListTile(
+      contentPadding: EdgeInsets.zero,
+      value: _resultConfig.horizontalLayout?.isEnabled ?? false,
+      onChanged: (value) {
+        setState(() {
+          _resultConfig.horizontalLayout ??= VideoPlayerHorizontalLayoutConfiguration();
+          _resultConfig.horizontalLayout!.isEnabled = value ?? false;
+        });
+      },
+      title: Text(
+        S.of(context).enableHorizontalLayout,
       ),
     );
   }
