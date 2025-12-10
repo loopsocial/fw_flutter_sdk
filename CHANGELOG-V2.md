@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## [2.23.0]
+
+### Added
+
+- Support horizontal layout for livestream player.
+- Support displaying terms and conditions link of question in livestream.
+
+### Fixed
+
+- Bug fix and improvements.
+
 ## [2.22.0]
 
 ### Added

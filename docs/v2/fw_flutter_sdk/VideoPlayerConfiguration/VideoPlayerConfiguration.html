@@ -77,6 +77,7 @@
 <li><span class="parameter" id="-param-actionButtonStyle"><span class="type-annotation"><a href="../../fw_flutter_sdk/VideoPlayerActionButtonStyle-class.html">VideoPlayerActionButtonStyle</a>?</span> <span class="parameter-name">actionButtonStyle</span>, </span></li>
 <li><span class="parameter" id="-param-cancelButtonStyle"><span class="type-annotation"><a href="../../fw_flutter_sdk/VideoPlayerActionButtonStyle-class.html">VideoPlayerActionButtonStyle</a>?</span> <span class="parameter-name">cancelButtonStyle</span>, </span></li>
 <li><span class="parameter" id="-param-chatStyle"><span class="type-annotation"><a href="../../fw_flutter_sdk/ChatStyle-class.html">ChatStyle</a>?</span> <span class="parameter-name">chatStyle</span>, </span></li>
+<li><span class="parameter" id="-param-horizontalLayout"><span class="type-annotation"><a href="../../fw_flutter_sdk/VideoPlayerHorizontalLayoutConfiguration-class.html">VideoPlayerHorizontalLayoutConfiguration</a>?</span> <span class="parameter-name">horizontalLayout</span>, </span></li>
 </ol>})
     </section>
     
@@ -106,7 +107,8 @@
   this.actionButtonStyle,
   this.cancelButtonStyle,
   this.chatStyle,
-});</code></pre>
+  VideoPlayerHorizontalLayoutConfiguration? horizontalLayout,
+}) : horizontalLayout = horizontalLayout ?? VideoPlayerHorizontalLayoutConfiguration();</code></pre>
 </section>
 
 
@@ -134,7 +136,7 @@
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.22.0
+      2.23.0
   </span>
   
 </footer>
