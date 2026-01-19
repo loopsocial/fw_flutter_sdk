@@ -32,15 +32,12 @@ PODS:
     - GoogleUtilities/UserDefaults (~> 8.1)
     - nanopb (~> 3.30910.0)
     - PromisesSwift (~> 2.1)
-  - FireworkVideo (1.38.1)
-  - FireworkVideoIVSSupport (0.9.3):
+  - FireworkVideo (1.39.4)
+  - FireworkVideoIVSSupport (0.9.5):
     - AmazonIVSPlayer (= 1.38.0)
-  - FireworkVideoUI (0.2.16):
-    - FireworkVideo (>= 1.29.1)
   - Flutter (1.0.0)
   - fw_flutter_sdk (1.0.0):
-    - FireworkVideo (= 1.38.1)
-    - FireworkVideoUI (= 0.2.16)
+    - FireworkVideo (= 1.39.4)
     - Flutter
   - GoogleDataTransport (10.1.0):
     - nanopb (~> 3.30910.0)
@@ -76,7 +73,7 @@ PODS:
 
 DEPENDENCIES:
   - FirebaseCrashlytics
-  - FireworkVideoIVSSupport (= 0.9.3)
+  - FireworkVideoIVSSupport (= 0.9.5)
   - Flutter (from `Flutter`)
   - fw_flutter_sdk (from `.symlinks/plugins/fw_flutter_sdk/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
@@ -95,7 +92,6 @@ SPEC REPOS:
     - FirebaseSessions
     - FireworkVideo
     - FireworkVideoIVSSupport
-    - FireworkVideoUI
     - GoogleDataTransport
     - GoogleUtilities
     - nanopb
@@ -123,11 +119,10 @@ SPEC CHECKSUMS:
   FirebaseInstallations: 317270fec08a5d418fdbc8429282238cab3ac843
   FirebaseRemoteConfigInterop: 1c6135e8a094cc6368949f5faeeca7ee8948b8aa
   FirebaseSessions: b9a92c1c51bbb81e78fc3142cda6d925d700f8e7
-  FireworkVideo: 7d72d6dd506e02e9caddf69ac8b7da831a383491
-  FireworkVideoIVSSupport: f6fc9c6fef537ece6d12b89626a32f505105b67c
-  FireworkVideoUI: dfa96fab744ab850ad6a2fe6cde169d773c329c6
+  FireworkVideo: e96da11e28f433d1f001e6c8fc3c78388a75e86f
+  FireworkVideoIVSSupport: c7cac5bec23b65a9fe3148f4dfeeba2762561527
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
-  fw_flutter_sdk: cf89425f2f5984b08c2a6e5c7123c744f2d010b7
+  fw_flutter_sdk: faf85878c0c5a776d55689ad1cbacada958e7493
   GoogleDataTransport: aae35b7ea0c09004c3797d53c8c41f66f219d6a7
   GoogleUtilities: 00c88b9a86066ef77f0da2fab05f65d7768ed8e1
   nanopb: fad817b59e0457d11a5dfbde799381cd727c1275
@@ -137,6 +132,6 @@ SPEC CHECKSUMS:
   sqflite_darwin: 20b2a3a3b70e43edae938624ce550a3cbf66a3d0
   webview_flutter_wkwebview: 44d4dee7d7056d5ad185d25b38404436d56c547c
 
-PODFILE CHECKSUM: 78588ae00ed0ad3397282f292263dc632a994936
+PODFILE CHECKSUM: 20752256cdb5fdd7c4ecceeaf33a74120cd95b08
 
 COCOAPODS: 1.16.2

@@ -3,6 +3,8 @@ import 'package:fw_flutter_sdk_example/screens/cart/cart_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/cart/check_out_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/configuration/ad_badge_configuration_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/configuration/channel_configuration_screen.dart';
+import 'package:fw_flutter_sdk_example/screens/configuration/circle_story_configuration_screen.dart';
+import 'package:fw_flutter_sdk_example/screens/configuration/circle_story_source_configuration_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/configuration/dynamic_content_configuration_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/configuration/feed_configuration_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/configuration/hashtag_playlist_configuration_screen.dart';
@@ -17,6 +19,7 @@ import 'package:fw_flutter_sdk_example/screens/link_content/link_content_screen.
 import 'package:fw_flutter_sdk_example/screens/feed/feed_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/log/log_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/more/circle_thumbnails.dart';
+import 'package:fw_flutter_sdk_example/screens/more/circle_story_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/more/enable_custom_cta_click_callback_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/more/enable_custom_share_url_callback_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/more/enable_custom_share_url_screen.dart';
@@ -118,6 +121,21 @@ final routeMap = <String, FWRouteFactory>{
   '/circle_thumbnails': (settings) {
     return MaterialPageRoute(
       builder: (context) => const CircleThumbnails(),
+    );
+  },
+  '/circle_story': (settings) {
+    return MaterialPageRoute(
+      builder: (context) => const CircleStoryScreen(),
+    );
+  },
+  '/circle_story_configuration': (settings) {
+    return MaterialPageRoute(
+      builder: (context) => const CircleStoryConfigurationScreen(),
+    );
+  },
+  '/circle_story_source_configuration': (settings) {
+    return MaterialPageRoute(
+      builder: (context) => const CircleStorySourceConfigurationScreen(),
     );
   },
   '/hashtag_playlist_configuration': (settings) {

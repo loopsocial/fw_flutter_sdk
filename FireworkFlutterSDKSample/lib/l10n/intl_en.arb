@@ -350,5 +350,6 @@
   "shareVideoContent": "Share video content easily",
   "tips": "Tips",
   "videoTips": "• Tap the video to play/pause\n• Use the controls to adjust playback\n• Try the Picture-in-Picture feature\n• Swipe up for full screen mode\n• Use the share button to share content",
-  "failedToLoadVideo": "Failed to load video"
+  "failedToLoadVideo": "Failed to load video",
+  "circleStoryView": "Circle Story View"
 }

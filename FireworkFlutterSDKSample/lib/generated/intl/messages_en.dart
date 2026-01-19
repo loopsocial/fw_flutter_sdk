@@ -120,6 +120,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "chatTextColorHint":
             MessageLookupByLibrary.simpleMessage("e.g. #000000"),
         "checkout": MessageLookupByLibrary.simpleMessage("CHECKOUT"),
+        "circleStoryView":
+            MessageLookupByLibrary.simpleMessage("Circle Story View"),
         "circleThumbnails":
             MessageLookupByLibrary.simpleMessage("Circle Thumbnails"),
         "city": MessageLookupByLibrary.simpleMessage("City"),

@@ -133,6 +133,49 @@ class _FeedConfigurationScreenState extends State<FeedConfigurationScreen> {
               const SizedBox(
                 height: 20,
               ),
+              // Content Padding Section Header
+              const Text(
+                'Content Padding',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: _buildContentPaddingTop(context),
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: _buildContentPaddingRight(context),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: _buildContentPaddingBottom(context),
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: _buildContentPaddingLeft(context),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
               Row(
                 children: [
                   Expanded(
@@ -273,6 +316,122 @@ class _FeedConfigurationScreenState extends State<FeedConfigurationScreen> {
           },
           onSaved: (text) {
             _resultConfig.cornerRadius = int.tryParse(text ?? '')?.toDouble();
+          },
+        )
+      ],
+    );
+  }
+
+  Widget _buildContentPaddingTop(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        const Text('Padding Top'),
+        FWTextFormField(
+          initialValue: _initConfig.contentPadding?.top?.toStringAsFixed(0),
+          hintText: 'Enter top padding (e.g., 10)',
+          validator: (text) {
+            return ValidationUtil.validateNumber(
+              context: context,
+              text: text,
+              min: 0,
+              max: 100,
+              errorMessage: 'Invalid padding top value',
+              rangeErrorMessage: 'Padding top must be between 0 and 100',
+            );
+          },
+          onSaved: (text) {
+            _resultConfig.contentPadding ??= VideoFeedPadding();
+            _resultConfig.contentPadding?.top =
+                int.tryParse(text ?? '')?.toDouble();
+          },
+        )
+      ],
+    );
+  }
+
+  Widget _buildContentPaddingRight(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        const Text('Padding Right'),
+        FWTextFormField(
+          initialValue: _initConfig.contentPadding?.right?.toStringAsFixed(0),
+          hintText: 'Enter right padding (e.g., 10)',
+          validator: (text) {
+            return ValidationUtil.validateNumber(
+              context: context,
+              text: text,
+              min: 0,
+              max: 100,
+              errorMessage: 'Invalid padding right value',
+              rangeErrorMessage: 'Padding right must be between 0 and 100',
+            );
+          },
+          onSaved: (text) {
+            _resultConfig.contentPadding ??= VideoFeedPadding();
+            _resultConfig.contentPadding?.right =
+                int.tryParse(text ?? '')?.toDouble();
+          },
+        )
+      ],
+    );
+  }
+
+  Widget _buildContentPaddingBottom(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        const Text('Padding Bottom'),
+        FWTextFormField(
+          initialValue: _initConfig.contentPadding?.bottom?.toStringAsFixed(0),
+          hintText: 'Enter bottom padding (e.g., 10)',
+          validator: (text) {
+            return ValidationUtil.validateNumber(
+              context: context,
+              text: text,
+              min: 0,
+              max: 100,
+              errorMessage: 'Invalid padding bottom value',
+              rangeErrorMessage: 'Padding bottom must be between 0 and 100',
+            );
+          },
+          onSaved: (text) {
+            _resultConfig.contentPadding ??= VideoFeedPadding();
+            _resultConfig.contentPadding?.bottom =
+                int.tryParse(text ?? '')?.toDouble();
+          },
+        )
+      ],
+    );
+  }
+
+  Widget _buildContentPaddingLeft(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        const Text('Padding Left'),
+        FWTextFormField(
+          initialValue: _initConfig.contentPadding?.left?.toStringAsFixed(0),
+          hintText: 'Enter left padding (e.g., 10)',
+          validator: (text) {
+            return ValidationUtil.validateNumber(
+              context: context,
+              text: text,
+              min: 0,
+              max: 100,
+              errorMessage: 'Invalid padding left value',
+              rangeErrorMessage: 'Padding left must be between 0 and 100',
+            );
+          },
+          onSaved: (text) {
+            _resultConfig.contentPadding ??= VideoFeedPadding();
+            _resultConfig.contentPadding?.left =
+                int.tryParse(text ?? '')?.toDouble();
           },
         )
       ],

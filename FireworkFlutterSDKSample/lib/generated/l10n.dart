@@ -3570,6 +3570,16 @@ class S {
       args: [],
     );
   }
+  
+  /// `Circle Story View`
+  String get circleStoryView {
+    return Intl.message(
+      'Circle Story View',
+      name: 'circleStoryView',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
