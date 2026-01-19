@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## [2.24.0]
+
+### Added
+
+- Add circle story widget
+- Apply seek bar to short videos/trailers when duration ≥ 300s
+
+### Changed
+
+- [iOS] Activate the audio session only when necessary
+- [Android] Automatically mute PiP video when another video is unmuted
+- [Android] Align the interaction display timing with the livestream latency
+
 ## [2.23.2]
 
 ### Fixed
