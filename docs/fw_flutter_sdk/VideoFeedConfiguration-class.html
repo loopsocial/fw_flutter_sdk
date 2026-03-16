@@ -25,24 +25,21 @@
   <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li><a href="../index.html">fw_flutter_sdk</a></li>
-    <li><a href="../fw_flutter_sdk/fw_flutter_sdk-library.html">fw_flutter_sdk.dart</a></li>
+    <li><a href="../fw_flutter_sdk/">fw_flutter_sdk.dart</a></li>
     <li class="self-crumb">VideoFeedConfiguration class</li>
   </ol>
   <div class="self-name">VideoFeedConfiguration</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
-  <div class="toggle" id="theme-button" title="Toggle brightness">
-    <label for="theme">
-      <input type="checkbox" id="theme" value="light-theme">
-      <span id="dark-theme-button" class="material-symbols-outlined">
-        dark_mode
-      </span>
-      <span id="light-theme-button" class="material-symbols-outlined">
-        light_mode
-      </span>
-    </label>
-  </div>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
 </header>
 <main>
 <div
@@ -63,8 +60,8 @@
   <section class="summary offset-anchor" id="constructors">
     <h2>Constructors</h2>
     <dl class="constructor-summary-list">
-        <dt id="VideoFeedConfiguration" class="callable">
-          <span class="name"><a href="../fw_flutter_sdk/VideoFeedConfiguration/VideoFeedConfiguration.html">VideoFeedConfiguration</a></span><span class="signature">({<span class="parameter" id="-param-backgroundColor"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">backgroundColor</span>, </span><span class="parameter" id="-param-cornerRadius"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">cornerRadius</span>, </span><span class="parameter" id="-param-title"><span class="type-annotation"><a href="../fw_flutter_sdk/VideoFeedTitleConfiguration-class.html">VideoFeedTitleConfiguration</a>?</span> <span class="parameter-name">title</span>, </span><span class="parameter" id="-param-titlePosition"><span class="type-annotation"><a href="../fw_flutter_sdk/VideoFeedTitlePosition.html">VideoFeedTitlePosition</a>?</span> <span class="parameter-name">titlePosition</span>, </span><span class="parameter" id="-param-titlePadding"><span class="type-annotation"><a href="../fw_flutter_sdk/VideoFeedPadding-class.html">VideoFeedPadding</a>?</span> <span class="parameter-name">titlePadding</span>, </span><span class="parameter" id="-param-playIcon"><span class="type-annotation"><a href="../fw_flutter_sdk/VideoFeedPlayIconConfiguration-class.html">VideoFeedPlayIconConfiguration</a>?</span> <span class="parameter-name">playIcon</span>, </span><span class="parameter" id="-param-showAdBadge"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">showAdBadge</span>, </span><span class="parameter" id="-param-aspectRatio"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">aspectRatio</span>, </span><span class="parameter" id="-param-contentPadding"><span class="type-annotation"><a href="../fw_flutter_sdk/VideoFeedPadding-class.html">VideoFeedPadding</a>?</span> <span class="parameter-name">contentPadding</span>, </span><span class="parameter" id="-param-itemSpacing"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">itemSpacing</span>, </span><span class="parameter" id="-param-enableAutoplay"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">enableAutoplay</span>, </span><span class="parameter" id="-param-gridColumns"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">gridColumns</span>, </span><span class="parameter" id="-param-replayBadge"><span class="type-annotation"><a href="../fw_flutter_sdk/ReplayBadgeConfiguration-class.html">ReplayBadgeConfiguration</a>?</span> <span class="parameter-name">replayBadge</span>, </span><span class="parameter" id="-param-shadow"><span class="type-annotation"><a href="../fw_flutter_sdk/VideoFeedShadowConfiguration-class.html">VideoFeedShadowConfiguration</a>?</span> <span class="parameter-name">shadow</span></span>})</span>
+        <dt id="VideoFeedConfiguration.new" class="callable">
+          <span class="name"><a href="../fw_flutter_sdk/VideoFeedConfiguration/VideoFeedConfiguration.html">VideoFeedConfiguration.new</a></span><span class="signature">({<span class="parameter" id="-param-backgroundColor"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">backgroundColor</span>, </span><span class="parameter" id="-param-cornerRadius"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">cornerRadius</span>, </span><span class="parameter" id="-param-title"><span class="type-annotation"><a href="../fw_flutter_sdk/VideoFeedTitleConfiguration-class.html">VideoFeedTitleConfiguration</a>?</span> <span class="parameter-name">title</span>, </span><span class="parameter" id="-param-titlePosition"><span class="type-annotation"><a href="../fw_flutter_sdk/VideoFeedTitlePosition.html">VideoFeedTitlePosition</a>?</span> <span class="parameter-name">titlePosition</span>, </span><span class="parameter" id="-param-titlePadding"><span class="type-annotation"><a href="../fw_flutter_sdk/VideoFeedPadding-class.html">VideoFeedPadding</a>?</span> <span class="parameter-name">titlePadding</span>, </span><span class="parameter" id="-param-playIcon"><span class="type-annotation"><a href="../fw_flutter_sdk/VideoFeedPlayIconConfiguration-class.html">VideoFeedPlayIconConfiguration</a>?</span> <span class="parameter-name">playIcon</span>, </span><span class="parameter" id="-param-showAdBadge"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">showAdBadge</span>, </span><span class="parameter" id="-param-aspectRatio"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">aspectRatio</span>, </span><span class="parameter" id="-param-contentPadding"><span class="type-annotation"><a href="../fw_flutter_sdk/VideoFeedPadding-class.html">VideoFeedPadding</a>?</span> <span class="parameter-name">contentPadding</span>, </span><span class="parameter" id="-param-itemSpacing"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">itemSpacing</span>, </span><span class="parameter" id="-param-enableAutoplay"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">enableAutoplay</span>, </span><span class="parameter" id="-param-gridColumns"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">gridColumns</span>, </span><span class="parameter" id="-param-replayBadge"><span class="type-annotation"><a href="../fw_flutter_sdk/ReplayBadgeConfiguration-class.html">ReplayBadgeConfiguration</a>?</span> <span class="parameter-name">replayBadge</span>, </span><span class="parameter" id="-param-shadow"><span class="type-annotation"><a href="../fw_flutter_sdk/VideoFeedShadowConfiguration-class.html">VideoFeedShadowConfiguration</a>?</span> <span class="parameter-name">shadow</span></span>})</span>
         </dt>
         <dd>
           
@@ -286,6 +283,7 @@ Defaults to nested.
 
     </dl>
   </section>
+
     
   <section
       class="summary offset-anchor"
@@ -368,7 +366,7 @@ Defaults to nested.
 </header>
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
     <li><a href="../index.html">fw_flutter_sdk</a></li>
-    <li><a href="../fw_flutter_sdk/fw_flutter_sdk-library.html">fw_flutter_sdk</a></li>
+    <li><a href="../fw_flutter_sdk/">fw_flutter_sdk</a></li>
     <li class="self-crumb">VideoFeedConfiguration class</li>
 </ol>
 
@@ -381,7 +379,7 @@ Defaults to nested.
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.24.2
+      2.25.0
   </span>
   
 </footer>

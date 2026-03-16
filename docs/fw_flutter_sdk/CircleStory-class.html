@@ -25,24 +25,21 @@
   <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li><a href="../index.html">fw_flutter_sdk</a></li>
-    <li><a href="../fw_flutter_sdk/fw_flutter_sdk-library.html">fw_flutter_sdk.dart</a></li>
+    <li><a href="../fw_flutter_sdk/">fw_flutter_sdk.dart</a></li>
     <li class="self-crumb">CircleStory class</li>
   </ol>
   <div class="self-name">CircleStory</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
-  <div class="toggle" id="theme-button" title="Toggle brightness">
-    <label for="theme">
-      <input type="checkbox" id="theme" value="light-theme">
-      <span id="dark-theme-button" class="material-symbols-outlined">
-        dark_mode
-      </span>
-      <span id="light-theme-button" class="material-symbols-outlined">
-        light_mode
-      </span>
-    </label>
-  </div>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
 </header>
 <main>
 <div
@@ -90,8 +87,8 @@
   <section class="summary offset-anchor" id="constructors">
     <h2>Constructors</h2>
     <dl class="constructor-summary-list">
-        <dt id="CircleStory" class="callable">
-          <span class="name"><a href="../fw_flutter_sdk/CircleStory/CircleStory.html">CircleStory</a></span><span class="signature">({<span class="parameter" id="-param-key"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/foundation/Key-class.html">Key</a>?</span> <span class="parameter-name">key</span>, </span><span class="parameter" id="-param-source"><span>required</span> <span class="type-annotation"><a href="../fw_flutter_sdk/VideoFeedSource.html">VideoFeedSource</a></span> <span class="parameter-name">source</span>, </span><span class="parameter" id="-param-channel"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">channel</span>, </span><span class="parameter" id="-param-playlist"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">playlist</span>, </span><span class="parameter" id="-param-enablePictureInPicture"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">enablePictureInPicture</span>, </span><span class="parameter" id="-param-width"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">width</span>, </span><span class="parameter" id="-param-height"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">height</span>, </span><span class="parameter" id="-param-wantKeepAlive"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">wantKeepAlive</span>, </span><span class="parameter" id="-param-circleStoryConfiguration"><span class="type-annotation"><a href="../fw_flutter_sdk/CircleStoryConfiguration-class.html">CircleStoryConfiguration</a>?</span> <span class="parameter-name">circleStoryConfiguration</span>, </span><span class="parameter" id="-param-videoPlayerConfiguration"><span class="type-annotation"><a href="../fw_flutter_sdk/VideoPlayerConfiguration-class.html">VideoPlayerConfiguration</a>?</span> <span class="parameter-name">videoPlayerConfiguration</span>, </span><span class="parameter" id="-param-onCircleStoryCreated"><span class="type-annotation"><a href="../fw_flutter_sdk/CircleStoryCreatedCallback.html">CircleStoryCreatedCallback</a>?</span> <span class="parameter-name">onCircleStoryCreated</span>, </span><span class="parameter" id="-param-onCircleStoryLoadFinished"><span class="type-annotation"><a href="../fw_flutter_sdk/CircleStoryLoadFinishedCallback.html">CircleStoryLoadFinishedCallback</a>?</span> <span class="parameter-name">onCircleStoryLoadFinished</span>, </span><span class="parameter" id="-param-onCircleStoryEmpty"><span class="type-annotation"><a href="../fw_flutter_sdk/CircleStoryEmptyCallback.html">CircleStoryEmptyCallback</a>?</span> <span class="parameter-name">onCircleStoryEmpty</span>, </span><span class="parameter" id="-param-onCircleStoryDidStartPictureInPicture"><span class="type-annotation"><a href="../fw_flutter_sdk/CircleStoryDidStartPictureInPictureCallback.html">CircleStoryDidStartPictureInPictureCallback</a>?</span> <span class="parameter-name">onCircleStoryDidStartPictureInPicture</span>, </span><span class="parameter" id="-param-onCircleStoryDidStopPictureInPicture"><span class="type-annotation"><a href="../fw_flutter_sdk/CircleStoryDidStopPictureInPictureCallback.html">CircleStoryDidStopPictureInPictureCallback</a>?</span> <span class="parameter-name">onCircleStoryDidStopPictureInPicture</span>, </span><span class="parameter" id="-param-onCircleStoryGetFeedId"><span class="type-annotation"><a href="../fw_flutter_sdk/CircleStoryGetFeedIdCallback.html">CircleStoryGetFeedIdCallback</a>?</span> <span class="parameter-name">onCircleStoryGetFeedId</span></span>})</span>
+        <dt id="CircleStory.new" class="callable">
+          <span class="name"><a href="../fw_flutter_sdk/CircleStory/CircleStory.html">CircleStory.new</a></span><span class="signature">({<span class="parameter" id="-param-key"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/foundation/Key-class.html">Key</a>?</span> <span class="parameter-name">key</span>, </span><span class="parameter" id="-param-source"><span>required</span> <span class="type-annotation"><a href="../fw_flutter_sdk/VideoFeedSource.html">VideoFeedSource</a></span> <span class="parameter-name">source</span>, </span><span class="parameter" id="-param-channel"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">channel</span>, </span><span class="parameter" id="-param-playlist"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">playlist</span>, </span><span class="parameter" id="-param-playlistGroup"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">playlistGroup</span>, </span><span class="parameter" id="-param-dynamicContentParameters"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>&gt;</span>?</span> <span class="parameter-name">dynamicContentParameters</span>, </span><span class="parameter" id="-param-hashtagFilterExpression"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">hashtagFilterExpression</span>, </span><span class="parameter" id="-param-productIds"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">productIds</span>, </span><span class="parameter" id="-param-contentId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">contentId</span>, </span><span class="parameter" id="-param-enablePictureInPicture"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">enablePictureInPicture</span>, </span><span class="parameter" id="-param-width"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">width</span>, </span><span class="parameter" id="-param-height"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">height</span>, </span><span class="parameter" id="-param-wantKeepAlive"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">wantKeepAlive</span>, </span><span class="parameter" id="-param-circleStoryConfiguration"><span class="type-annotation"><a href="../fw_flutter_sdk/CircleStoryConfiguration-class.html">CircleStoryConfiguration</a>?</span> <span class="parameter-name">circleStoryConfiguration</span>, </span><span class="parameter" id="-param-videoPlayerConfiguration"><span class="type-annotation"><a href="../fw_flutter_sdk/VideoPlayerConfiguration-class.html">VideoPlayerConfiguration</a>?</span> <span class="parameter-name">videoPlayerConfiguration</span>, </span><span class="parameter" id="-param-adConfiguration"><span class="type-annotation"><a href="../fw_flutter_sdk/AdConfiguration-class.html">AdConfiguration</a>?</span> <span class="parameter-name">adConfiguration</span>, </span><span class="parameter" id="-param-onCircleStoryCreated"><span class="type-annotation"><a href="../fw_flutter_sdk/CircleStoryCreatedCallback.html">CircleStoryCreatedCallback</a>?</span> <span class="parameter-name">onCircleStoryCreated</span>, </span><span class="parameter" id="-param-onCircleStoryLoadFinished"><span class="type-annotation"><a href="../fw_flutter_sdk/CircleStoryLoadFinishedCallback.html">CircleStoryLoadFinishedCallback</a>?</span> <span class="parameter-name">onCircleStoryLoadFinished</span>, </span><span class="parameter" id="-param-onCircleStoryEmpty"><span class="type-annotation"><a href="../fw_flutter_sdk/CircleStoryEmptyCallback.html">CircleStoryEmptyCallback</a>?</span> <span class="parameter-name">onCircleStoryEmpty</span>, </span><span class="parameter" id="-param-onCircleStoryDidStartPictureInPicture"><span class="type-annotation"><a href="../fw_flutter_sdk/CircleStoryDidStartPictureInPictureCallback.html">CircleStoryDidStartPictureInPictureCallback</a>?</span> <span class="parameter-name">onCircleStoryDidStartPictureInPicture</span>, </span><span class="parameter" id="-param-onCircleStoryDidStopPictureInPicture"><span class="type-annotation"><a href="../fw_flutter_sdk/CircleStoryDidStopPictureInPictureCallback.html">CircleStoryDidStopPictureInPictureCallback</a>?</span> <span class="parameter-name">onCircleStoryDidStopPictureInPicture</span>, </span><span class="parameter" id="-param-onCircleStoryGetFeedId"><span class="type-annotation"><a href="../fw_flutter_sdk/CircleStoryGetFeedIdCallback.html">CircleStoryGetFeedIdCallback</a>?</span> <span class="parameter-name">onCircleStoryGetFeedId</span></span>})</span>
         </dt>
         <dd>
           
@@ -105,6 +102,18 @@
       id="instance-properties">
     <h2>Properties</h2>
     <dl class="properties">
+        <dt id="adConfiguration" class="property">
+  <span class="name"><a href="../fw_flutter_sdk/CircleStory/adConfiguration.html">adConfiguration</a></span>
+  <span class="signature">&#8594; <a href="../fw_flutter_sdk/AdConfiguration-class.html">AdConfiguration</a>?</span>
+  
+
+</dt>
+<dd>
+  Ad configuration of the circle story.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
         <dt id="channel" class="property">
   <span class="name"><a href="../fw_flutter_sdk/CircleStory/channel.html">channel</a></span>
   <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span>
@@ -130,6 +139,32 @@ Required when the source is set as <code>channel</code> or <code>playlist</code>
 
 </dd>
 
+        <dt id="contentId" class="property">
+  <span class="name"><a href="../fw_flutter_sdk/CircleStory/contentId.html">contentId</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span>
+  
+
+</dt>
+<dd>
+  The content id.
+Required when the source is set as <code>singleContent</code>.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="dynamicContentParameters" class="property">
+  <span class="name"><a href="../fw_flutter_sdk/CircleStory/dynamicContentParameters.html">dynamicContentParameters</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>&gt;</span>?</span>
+  
+
+</dt>
+<dd>
+  The dynamic content parameters of the circle story.
+Required when the source is set as <code>dynamicContent</code>.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
         <dt id="enablePictureInPicture" class="property">
   <span class="name"><a href="../fw_flutter_sdk/CircleStory/enablePictureInPicture.html">enablePictureInPicture</a></span>
   <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span>
@@ -151,6 +186,22 @@ Required when the source is set as <code>channel</code> or <code>playlist</code>
 <dd class="inherited">
   The hash code for this object.
   <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="hashtagFilterExpression" class="property">
+  <span class="name"><a href="../fw_flutter_sdk/CircleStory/hashtagFilterExpression.html">hashtagFilterExpression</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span>
+  
+
+</dt>
+<dd>
+  Hashtag filter expression is an s-expression used to provide feeds filtered by hashtags with specified criteria.
+Queries are specified with boolean predicates on what hashtags are there on the video.
+For instance, (and sport food) (or sport food) (and sport (or food comedy)) sport are all valid expressions.
+Non-UTF-8 characters are not allowed. If using boolean predicates, the expression needs to be wrapped with parenthesis.
+Required when the source is set as hashtagPlaylist.
+  <div class="features"><span class="feature">final</span></div>
 
 </dd>
 
@@ -270,6 +321,32 @@ Required when the source is set as <code>playlist</code>.
 
 </dd>
 
+        <dt id="playlistGroup" class="property">
+  <span class="name"><a href="../fw_flutter_sdk/CircleStory/playlistGroup.html">playlistGroup</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span>
+  
+
+</dt>
+<dd>
+  Playlist group id of the circle story.
+Required when the source is set as <code>playlistGroup</code>.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="productIds" class="property">
+  <span class="name"><a href="../fw_flutter_sdk/CircleStory/productIds.html">productIds</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span>
+  
+
+</dt>
+<dd>
+  Product ids used to generate the sku feed.
+Required when the source is set as sku.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
         <dt id="runtimeType" class="property inherited">
   <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></span>
   <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Type-class.html">Type</a></span>
@@ -334,6 +411,7 @@ Default to false.
 
     </dl>
   </section>
+
     
   <section
       class="summary offset-anchor"
@@ -434,7 +512,7 @@ tools and by <a href="https://api.flutter.dev/flutter/foundation/DiagnosticsNode
 </dd>
 
         <dt id="toStringDeep" class="callable inherited">
-  <span class="name"><a href="https://api.flutter.dev/flutter/foundation/DiagnosticableTree/toStringDeep.html">toStringDeep</a></span><span class="signature">(<wbr>{<span class="parameter" id="toStringDeep-param-prefixLineOne"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">prefixLineOne</span> = <span class="default-value">&#39;&#39;</span>, </span><span class="parameter" id="toStringDeep-param-prefixOtherLines"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">prefixOtherLines</span>, </span><span class="parameter" id="toStringDeep-param-minLevel"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/foundation/DiagnosticLevel.html">DiagnosticLevel</a></span> <span class="parameter-name">minLevel</span> = <span class="default-value">DiagnosticLevel.debug</span></span>})
+  <span class="name"><a href="https://api.flutter.dev/flutter/foundation/DiagnosticableTree/toStringDeep.html">toStringDeep</a></span><span class="signature">(<wbr>{<span class="parameter" id="toStringDeep-param-prefixLineOne"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">prefixLineOne</span> = <span class="default-value">&#39;&#39;</span>, </span><span class="parameter" id="toStringDeep-param-prefixOtherLines"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">prefixOtherLines</span>, </span><span class="parameter" id="toStringDeep-param-minLevel"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/foundation/DiagnosticLevel.html">DiagnosticLevel</a></span> <span class="parameter-name">minLevel</span> = <span class="default-value">DiagnosticLevel.debug</span>, </span><span class="parameter" id="toStringDeep-param-wrapWidth"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">wrapWidth</span> = <span class="default-value">65</span></span>})
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
   </span>
   
@@ -509,7 +587,7 @@ tools and by <a href="https://api.flutter.dev/flutter/foundation/DiagnosticsNode
 </header>
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
     <li><a href="../index.html">fw_flutter_sdk</a></li>
-    <li><a href="../fw_flutter_sdk/fw_flutter_sdk-library.html">fw_flutter_sdk</a></li>
+    <li><a href="../fw_flutter_sdk/">fw_flutter_sdk</a></li>
     <li class="self-crumb">CircleStory class</li>
 </ol>
 
@@ -522,7 +600,7 @@ tools and by <a href="https://api.flutter.dev/flutter/foundation/DiagnosticsNode
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.24.2
+      2.25.0
   </span>
   
 </footer>

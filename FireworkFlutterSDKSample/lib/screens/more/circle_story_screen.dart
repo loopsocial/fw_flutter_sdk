@@ -90,59 +90,31 @@ class _CircleStoryScreenState extends State<CircleStoryScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              const Text(
-                                'Source:',
-                                style: TextStyle(fontWeight: FontWeight.w500),
-                              ),
-                              Text(
-                                circleStorySource.source.name,
-                                style: TextStyle(color: Colors.blue[700]),
-                              ),
-                            ],
-                          ),
-                          if (circleStorySource.channel != null) ...[
-                            const SizedBox(height: 8),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                const Text(
-                                  'Channel:',
-                                  style: TextStyle(fontWeight: FontWeight.w500),
-                                ),
-                                Flexible(
-                                  child: Text(
-                                    circleStorySource.channel!,
-                                    style:
-                                        const TextStyle(color: Colors.black87),
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                          if (circleStorySource.playlist != null) ...[
-                            const SizedBox(height: 8),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                const Text(
-                                  'Playlist:',
-                                  style: TextStyle(fontWeight: FontWeight.w500),
-                                ),
-                                Flexible(
-                                  child: Text(
-                                    circleStorySource.playlist!,
-                                    style:
-                                        const TextStyle(color: Colors.black87),
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
+                          _buildSourceInfoRow(
+                              'Source:', circleStorySource.source.name,
+                              isHighlighted: true),
+                          if (circleStorySource.channel != null)
+                            _buildSourceInfoRow(
+                                'Channel:', circleStorySource.channel!),
+                          if (circleStorySource.playlist != null)
+                            _buildSourceInfoRow(
+                                'Playlist:', circleStorySource.playlist!),
+                          if (circleStorySource.playlistGroup != null)
+                            _buildSourceInfoRow('Playlist Group:',
+                                circleStorySource.playlistGroup!),
+                          if (circleStorySource.dynamicContentParameters !=
+                              null)
+                            _buildSourceInfoRow('Dynamic Params:',
+                                circleStorySource.dynamicContentParameters.toString()),
+                          if (circleStorySource.hashtagFilterExpression != null)
+                            _buildSourceInfoRow('Hashtag Filter:',
+                                circleStorySource.hashtagFilterExpression!),
+                          if (circleStorySource.productIds != null)
+                            _buildSourceInfoRow('Product IDs:',
+                                circleStorySource.productIds!.join(', ')),
+                          if (circleStorySource.contentId != null)
+                            _buildSourceInfoRow(
+                                'Content ID:', circleStorySource.contentId!),
                         ],
                       ),
                     ),
@@ -153,19 +125,30 @@ class _CircleStoryScreenState extends State<CircleStoryScreen> {
                           context,
                           '/circle_story_source_configuration',
                         );
-                        if (result is Map<String, String>) {
-                          final channel = result["channelId"] ?? "";
-                          final playlist = result["playlistId"] ?? "";
-                          if (channel.isNotEmpty && playlist.isNotEmpty) {
-                            // ignore: use_build_context_synchronously
-                            context
-                                .read<CircleStorySourceState>()
-                                .updateSource(
-                                  source: VideoFeedSource.playlist,
-                                  channel: channel,
-                                  playlist: playlist,
-                                );
-                          }
+                        if (result is Map<String, dynamic>) {
+                          final sourceName = result["source"] as String?;
+                          if (sourceName == null) return;
+                          final source = VideoFeedSource.values
+                              .firstWhere((e) => e.name == sourceName);
+                          // ignore: use_build_context_synchronously
+                          context
+                              .read<CircleStorySourceState>()
+                              .updateSource(
+                                source: source,
+                                channel: result["channelId"] as String?,
+                                playlist: result["playlistId"] as String?,
+                                playlistGroup:
+                                    result["playlistGroupId"] as String?,
+                                dynamicContentParameters:
+                                    result["dynamicContentParameters"]
+                                        as Map<String, List<String>>?,
+                                hashtagFilterExpression:
+                                    result["hashtagFilterExpression"]
+                                        as String?,
+                                productIds:
+                                    result["productIds"] as List<String>?,
+                                contentId: result["contentId"] as String?,
+                              );
                         }
                       },
                       icon: const Icon(Icons.edit),
@@ -261,6 +244,13 @@ class _CircleStoryScreenState extends State<CircleStoryScreen> {
                   source: circleStorySource.source,
                   channel: circleStorySource.channel,
                   playlist: circleStorySource.playlist,
+                  playlistGroup: circleStorySource.playlistGroup,
+                  dynamicContentParameters:
+                      circleStorySource.dynamicContentParameters,
+                  hashtagFilterExpression:
+                      circleStorySource.hashtagFilterExpression,
+                  productIds: circleStorySource.productIds,
+                  contentId: circleStorySource.contentId,
                   enablePictureInPicture: _enablePictureInPicture,
                   circleStoryConfiguration:
                       circleStoryConfiguration.deepCopy(),
@@ -278,6 +268,28 @@ class _CircleStoryScreenState extends State<CircleStoryScreen> {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildSourceInfoRow(String label, String value,
+      {bool isHighlighted = false}) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 8),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(label, style: const TextStyle(fontWeight: FontWeight.w500)),
+          Flexible(
+            child: Text(
+              value,
+              style: TextStyle(
+                color: isHighlighted ? Colors.blue[700] : Colors.black87,
+              ),
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class FWTextFormField extends StatefulWidget {
+  /// Initial value, used when [text] is null and only in initState.
   final String? initialValue;
+  /// External text: when non-null and updated by parent, the field content is synced to this value.
+  final String? text;
   final String? hintText;
   final int? maxLines;
   final int? minLines;
@@ -13,6 +16,7 @@ class FWTextFormField extends StatefulWidget {
   const FWTextFormField({
     Key? key,
     this.initialValue,
+    this.text,
     this.hintText,
     this.maxLines,
     this.minLines,
@@ -32,6 +36,19 @@ class _FWTextFormFieldState extends State<FWTextFormField> {
   void initState() {
     super.initState();
     _defaultController.text = widget.initialValue ?? '';
+  }
+
+  @override
+  void didUpdateWidget(covariant FWTextFormField oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.text != oldWidget.text) {
+      final controller = widget.controller ?? _defaultController;
+      final value = widget.text ?? '';
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (!mounted) return;
+        controller.text = value;
+      });
+    }
   }
 
   @override
