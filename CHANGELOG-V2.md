@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [2.25.0]
+
+### Added
+
+- Support hashtag playlist for circle story widget
+
+### Fixed
+
+- Bug fix and improvements
+
 ## [2.24.2]
 
 ### Fixed
