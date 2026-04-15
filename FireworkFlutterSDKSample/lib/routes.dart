@@ -21,6 +21,7 @@ import 'package:fw_flutter_sdk_example/screens/log/log_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/more/circle_thumbnails.dart';
 import 'package:fw_flutter_sdk_example/screens/more/circle_story_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/more/enable_custom_cta_click_callback_screen.dart';
+import 'package:fw_flutter_sdk_example/screens/more/enable_product_details_hydration_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/more/enable_custom_share_url_callback_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/more/enable_custom_share_url_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/more/enable_link_interaction_click_callback_screen.dart';
@@ -106,6 +107,11 @@ final routeMap = <String, FWRouteFactory>{
   '/enable_custom_cta_click_callback': (settings) {
     return MaterialPageRoute(
       builder: (context) => const EnableCustomCTAClickCallbackScreen(),
+    );
+  },
+  '/enable_product_details_hydration': (settings) {
+    return MaterialPageRoute(
+      builder: (context) => const EnableProductDetailsHydrationScreen(),
     );
   },
   '/cart': (settings) {

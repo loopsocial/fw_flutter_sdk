@@ -92,6 +92,11 @@ class _MyAppState extends State<MyApp> {
           FireworkSDK.getInstance().shortVideoPlayerDesignVersion = value;
         }
       });
+      HostAppService.getInstance()
+          .getCacheProductDetailsHydration()
+          .then((value) {
+        HostAppService.getInstance().enableProductDetailsHydration = value;
+      });
     });
   }
 

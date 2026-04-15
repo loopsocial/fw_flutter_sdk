@@ -30,6 +30,7 @@ class HostAppService {
   }
 
   bool enablePausePlayer = false;
+  bool enableProductDetailsHydration = false;
 
   Map<String, WidgetInfo> widgetInfoMap = {};
 
@@ -232,8 +233,10 @@ class HostAppService {
     }
 
     final showCart = await shouldShowCart();
-    if (!showCart) {
-      return null;
+    FWExampleLoggerUtil.log(
+        "onUpdateProductDetails showCart: $showCart enableProductDetailsHydration: $enableProductDetailsHydration");
+    if (!showCart || enableProductDetailsHydration) {
+      return _hydrateProductsForTesting(event);
     }
 
     List<Product> productList = [];
@@ -278,6 +281,103 @@ class HostAppService {
     }
 
     return productList;
+  }
+
+  List<Product> _hydrateProductsForTesting(UpdateProductDetailsEvent event) {
+    List<Product> updatedProducts = [];
+    final productIds = event.productIds;
+
+    for (var i = 0; i < productIds.length; i++) {
+      final productId = productIds[i];
+      final productIndex = i % 3;
+      final isOnSale = (i % 2 == 0);
+
+      final bool? hidden =
+          productIndex == 0 ? true : (productIndex == 1 ? false : null);
+      final bool? productIsAvailable =
+          productIndex == 0 ? true : (productIndex == 1 ? false : null);
+
+      final product = Product(
+        productId: productId,
+        name: 'Hydrated Product $productId',
+        subtitle: 'Latest version',
+        description:
+            'This is the hydrated product data for $productId. Updated at ${DateTime.now().toIso8601String()}',
+        isAvailable: productIsAvailable,
+        mainProductImage:
+            'https://cdn4.fireworktv.com/medias/2022/9/6/1662493723-camvuesx/720_720/7197ThQPZFL._AC_UX500_.jpg',
+        currency: 'USD',
+        hidePrice: false,
+        hidden: hidden,
+        units: [
+          ProductUnit(
+            unitId: '$productId-hydration-variant-1',
+            name: 'Hydration variant 1',
+            url:
+                'https://www.amazon.com/Soda-Glove-Ankle-Elastic-Chunky/dp/B07VXKVZTR/',
+            imageUrl:
+                'https://cdn4.fireworktv.com/medias/2022/9/6/1662493723-camvuesx/720_720/7197ThQPZFL._AC_UX500_.jpg',
+            price: ProductPrice(amount: 100, currencyCode: 'USD'),
+            originalPrice: isOnSale
+                ? ProductPrice(amount: 120, currencyCode: 'USD')
+                : null,
+            isAvailable: true,
+            options: [
+              ProductUnitOption(name: 'Color', value: 'Black(hydrated)'),
+              ProductUnitOption(name: 'Size', value: 'L(hydrated)'),
+            ],
+          ),
+          ProductUnit(
+            unitId: '$productId-hydration-variant-2',
+            name: 'Hydration variant 2 (unavailable)',
+            url:
+                'https://www.amazon.com/Soda-Glove-Ankle-Elastic-Chunky/dp/B08L479F2J/',
+            imageUrl:
+                'https://cdn4.fireworktv.com/medias/2024/8/28/1724837216-crjnidhk/720_720/WechatIMG124.jpg',
+            price: ProductPrice(amount: 110, currencyCode: 'USD'),
+            originalPrice: isOnSale
+                ? ProductPrice(amount: 130, currencyCode: 'USD')
+                : null,
+            isAvailable: false,
+            options: [
+              ProductUnitOption(name: 'Color', value: 'White(hydrated)'),
+              ProductUnitOption(name: 'Size', value: 'M(hydrated)'),
+            ],
+          ),
+          ProductUnit(
+            unitId: '$productId-hydration-variant-3',
+            name: 'Hydration variant 3 (isAvailable omitted)',
+            url:
+                'https://www.amazon.com/Soda-Glove-Ankle-Elastic-Chunky/dp/B07VXKVZTR/',
+            imageUrl:
+                'https://cdn4.fireworktv.com/medias/2022/9/6/1662493723-camvuesx/720_720/7197ThQPZFL._AC_UX500_.jpg',
+            price: ProductPrice(amount: 95, currencyCode: 'USD'),
+            options: [
+              ProductUnitOption(name: 'Color', value: 'Red(hydrated)'),
+              ProductUnitOption(name: 'Size', value: 'S(hydrated)'),
+            ],
+          ),
+        ],
+      );
+
+      updatedProducts.add(product);
+
+      final hiddenLabel = hidden == true
+          ? ' (hidden)'
+          : (hidden == false ? ' (visible)' : ' (hidden unchanged)');
+      final availLabel = productIsAvailable == true
+          ? ' (available)'
+          : (productIsAvailable == false
+              ? ' (unavailable)'
+              : ' (availability unchanged)');
+
+      FWExampleLoggerUtil.log(
+        'Successfully hydrated product $productId$hiddenLabel$availLabel',
+        shouldCache: true,
+      );
+    }
+
+    return updatedProducts;
   }
 
   Future<void> onCustomClickLinkButton(
@@ -591,6 +691,33 @@ class HostAppService {
       } else {
         EasyLoading.showToast(
           "Question terms and conditions clicked: $name",
+          duration: const Duration(seconds: 3),
+        );
+      }
+    }
+  }
+
+  Future<void> onCustomVideoQuestionTermsAndConditionsClick(
+      CustomVideoQuestionTermsAndConditionsClickEvent? event) async {
+    if (event != null) {
+      final name = event.name;
+      final url = event.url;
+      final videoId = event.video?.videoId ?? "";
+      final feedId = event.video?.feedId ?? "";
+      final widgetType = FireworkSDK.getInstance().getWidgetType(feedId);
+      final videoType = event.video?.videoType;
+      FWExampleLoggerUtil.log(
+        "[Analytics] [Video] onCustomVideoQuestionTermsAndConditionsClick name: $name url: $url videoId: $videoId feedId: $feedId widgetType: $widgetType videoType: $videoType",
+        shouldCache: true,
+      );
+      await startFloatingPlayerOrClosePlayer();
+      if (url != null && url.isNotEmpty) {
+        globalNavigatorKey.currentState?.pushNamed('/link_content', arguments: {
+          "url": url,
+        });
+      } else {
+        EasyLoading.showToast(
+          "Video question terms and conditions clicked: $name",
           duration: const Duration(seconds: 3),
         );
       }
@@ -1012,6 +1139,39 @@ class HostAppService {
 
     FWExampleLoggerUtil.log("_shortVideoPlayerVersionCacheFile exist $exist");
 
+    if (!exist) {
+      return await file.create(recursive: true);
+    } else {
+      return file;
+    }
+  }
+
+  Future<void> cacheProductDetailsHydration(bool enabled) async {
+    try {
+      final cacheFile = await _productDetailsHydrationCacheFile;
+      await cacheFile.writeAsString(enabled ? 'true' : 'false');
+      enableProductDetailsHydration = enabled;
+    } catch (e) {
+      FWExampleLoggerUtil.log("cacheProductDetailsHydration e $e");
+    }
+  }
+
+  Future<bool> getCacheProductDetailsHydration() async {
+    try {
+      final cacheFile = await _productDetailsHydrationCacheFile;
+      final contents = await cacheFile.readAsString();
+      return contents == 'true';
+    } catch (e) {
+      FWExampleLoggerUtil.log("getCacheProductDetailsHydration e $e");
+    }
+    return false;
+  }
+
+  Future<File> get _productDetailsHydrationCacheFile async {
+    final directory = await getApplicationDocumentsDirectory();
+    final file =
+        File("${directory.path}/fw_enable_product_details_hydration.txt");
+    final exist = await file.exists();
     if (!exist) {
       return await file.create(recursive: true);
     } else {

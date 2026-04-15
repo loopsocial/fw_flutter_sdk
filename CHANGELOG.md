@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## [2.26.0]
+
+### Added
+
+- Subtitle support for livestream, restream, and V2L events
+- Display an AI disclaimer on AI-generated short videos and livestreams
+- Required terms & conditions acknowledgement for Question, Giveaway, and Trivia Giveaway in livestream
+- Terms & conditions link and required acknowledgement in short video question, with a customizable click handler
+
+### Changed
+
+- [iOS] Viewers no longer need to re-enter the access code after unlocking a livestream within the same session
+
 ## [2.25.0]
 
 ### Added

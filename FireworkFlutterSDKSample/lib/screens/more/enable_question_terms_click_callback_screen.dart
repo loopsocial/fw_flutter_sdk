@@ -16,15 +16,19 @@ class EnableQuestionTermsClickCallbackScreen extends StatefulWidget {
 class _EnableQuestionTermsClickCallbackScreenState
     extends State<EnableQuestionTermsClickCallbackScreen> {
   final _formKey = GlobalKey<FormState>();
-  bool _enableQuestionTermsClickCallback = false;
+  bool _enableLivestreamQuestionTermsClickCallback = false;
+  bool _enableVideoQuestionTermsClickCallback = false;
 
   @override
   void initState() {
     super.initState();
 
-    _enableQuestionTermsClickCallback = FireworkSDK.getInstance()
+    _enableLivestreamQuestionTermsClickCallback = FireworkSDK.getInstance()
             .liveStream
             .onCustomQuestionTermsAndConditionsClick !=
+        null;
+    _enableVideoQuestionTermsClickCallback = FireworkSDK.getInstance()
+            .onCustomVideoQuestionTermsAndConditionsClick !=
         null;
   }
 
@@ -55,10 +59,10 @@ class _EnableQuestionTermsClickCallbackScreenState
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              _buildQuestionTermsClickCallbackEnable(context),
-              const SizedBox(
-                height: 20,
-              ),
+              _buildLivestreamQuestionTermsClickCallbackEnable(context),
+              const SizedBox(height: 10),
+              _buildVideoQuestionTermsClickCallbackEnable(context),
+              const SizedBox(height: 20),
               _buildActionButtonList(context),
             ],
           ),
@@ -67,17 +71,33 @@ class _EnableQuestionTermsClickCallbackScreenState
     );
   }
 
-  Widget _buildQuestionTermsClickCallbackEnable(BuildContext context) {
+  Widget _buildLivestreamQuestionTermsClickCallbackEnable(
+      BuildContext context) {
     return CheckboxListTile(
       contentPadding: EdgeInsets.zero,
-      value: _enableQuestionTermsClickCallback,
+      value: _enableLivestreamQuestionTermsClickCallback,
       onChanged: (value) {
         setState(() {
-          _enableQuestionTermsClickCallback = value ?? false;
+          _enableLivestreamQuestionTermsClickCallback = value ?? false;
         });
       },
       title: const Text(
-        "Enable question terms and conditions click callback",
+        "Enable livestream question terms and conditions click callback",
+      ),
+    );
+  }
+
+  Widget _buildVideoQuestionTermsClickCallbackEnable(BuildContext context) {
+    return CheckboxListTile(
+      contentPadding: EdgeInsets.zero,
+      value: _enableVideoQuestionTermsClickCallback,
+      onChanged: (value) {
+        setState(() {
+          _enableVideoQuestionTermsClickCallback = value ?? false;
+        });
+      },
+      title: const Text(
+        "Enable video question terms and conditions click callback",
       ),
     );
   }
@@ -103,21 +123,31 @@ class _EnableQuestionTermsClickCallbackScreenState
             if (_formKey.currentState != null &&
                 _formKey.currentState!.validate()) {
               _formKey.currentState!.save();
-              if (_enableQuestionTermsClickCallback) {
+
+              if (_enableLivestreamQuestionTermsClickCallback) {
                 FireworkSDK.getInstance()
                         .liveStream
                         .onCustomQuestionTermsAndConditionsClick =
                     HostAppService.getInstance()
                         .onCustomQuestionTermsAndConditionsClick;
-                EasyLoading.showToast(
-                    "Enable question terms and conditions click callback successfully.");
               } else {
                 FireworkSDK.getInstance()
                     .liveStream
                     .onCustomQuestionTermsAndConditionsClick = null;
-                EasyLoading.showToast(
-                    "Disable question terms and conditions click callback successfully.");
               }
+
+              if (_enableVideoQuestionTermsClickCallback) {
+                FireworkSDK.getInstance()
+                        .onCustomVideoQuestionTermsAndConditionsClick =
+                    HostAppService.getInstance()
+                        .onCustomVideoQuestionTermsAndConditionsClick;
+              } else {
+                FireworkSDK.getInstance()
+                    .onCustomVideoQuestionTermsAndConditionsClick = null;
+              }
+
+              EasyLoading.showToast(
+                  "Question terms and conditions click callback settings saved successfully.");
               Navigator.of(context).pop();
             }
           },
@@ -129,4 +159,3 @@ class _EnableQuestionTermsClickCallbackScreenState
     ]);
   }
 }
-
