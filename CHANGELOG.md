@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.26.1]
+
+### Fixed
+
+- Bug fix and improvements
+
 ## [2.26.0]
 
 ### Added
