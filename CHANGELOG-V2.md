@@ -1,6 +1,14 @@
 # CHANGELOG
 
-## [2.26.1]
+## [2.27.0]
+
+### Added
+
+- Support chat during replay
+
+### Changed
+
+- [iOS] Improvements and enhancements
 
 ### Fixed
 
