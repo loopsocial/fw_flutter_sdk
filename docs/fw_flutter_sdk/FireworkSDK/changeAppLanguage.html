@@ -81,9 +81,6 @@ If language is null or empty string, SDK will use system language.</p>
   final result = await FWMethodChannelUtil.getFirewokSDKChannel()
       .invokeMethod(nativeMethodName, language);
   if (result) {
-    if (defaultTargetPlatform == TargetPlatform.iOS) {
-      await navigator.stopFloatingPlayer();
-    }
     _updateInternalAppLanguage(language);
   }
   return result;
@@ -115,7 +112,7 @@ If language is null or empty string, SDK will use system language.</p>
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.26.1
+      2.27.0
   </span>
   
 </footer>

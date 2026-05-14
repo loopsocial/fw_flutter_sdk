@@ -134,6 +134,9 @@ class _MyAppState extends State<MyApp> {
       ctaButton: ShoppingCTAButtonConfiguration(
         text: ShoppingCTAButtonText.shopNow,
       ),
+      hydration: ProductHydrationConfiguration(
+        variantsHydrationStrategy: VariantsHydrationStrategy.merge,
+      ),
     );
 
     FireworkSDK.getInstance().liveStream.onLiveStreamEvent =

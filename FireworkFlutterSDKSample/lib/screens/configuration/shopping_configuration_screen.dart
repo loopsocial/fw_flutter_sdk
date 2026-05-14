@@ -34,6 +34,8 @@ class _ShoppingConfigurationScreenState
   bool _resultCustomizeTapProductCardHandler = false;
   bool _resultCustomizeShoppingCTAHandler = false;
   bool _resultCustomizeShoppingSecondaryCTAHandler = false;
+  VariantsHydrationStrategy _resultVariantsHydrationStrategy =
+      VariantsHydrationStrategy.merge;
 
   @override
   void initState() {
@@ -80,6 +82,12 @@ class _ShoppingConfigurationScreenState
         FireworkSDK.getInstance().shopping.onShoppingCTA != null;
     _resultCustomizeShoppingSecondaryCTAHandler =
         FireworkSDK.getInstance().shopping.onShoppingSecondaryCTA != null;
+    _resultVariantsHydrationStrategy = FireworkSDK.getInstance()
+            .shopping
+            .productInfoViewConfiguration
+            ?.hydration
+            ?.variantsHydrationStrategy ??
+        VariantsHydrationStrategy.merge;
   }
 
   @override
@@ -233,6 +241,10 @@ class _ShoppingConfigurationScreenState
                 height: 20,
               ),
               _buildCustomizeShoppingSecondaryCTAHandler(context),
+              const SizedBox(
+                height: 20,
+              ),
+              _buildVariantsHydrationStrategySegmentedControl(context),
               const SizedBox(
                 height: 20,
               ),
@@ -1072,6 +1084,37 @@ class _ShoppingConfigurationScreenState
     );
   }
 
+  Widget _buildVariantsHydrationStrategySegmentedControl(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        const Text("Variants hydration strategy"),
+        const SizedBox(
+          height: 20,
+        ),
+        CupertinoSegmentedControl<VariantsHydrationStrategy>(
+          onValueChanged: (value) {
+            setState(() {
+              _resultVariantsHydrationStrategy = value;
+            });
+          },
+          children: const {
+            VariantsHydrationStrategy.merge: Text(
+              "merge",
+              style: TextStyle(fontSize: 13),
+            ),
+            VariantsHydrationStrategy.replace: Text(
+              "replace",
+              style: TextStyle(fontSize: 13),
+            ),
+          },
+          groupValue: _resultVariantsHydrationStrategy,
+        ),
+      ],
+    );
+  }
+
   Widget _buildButtonList(BuildContext context) {
     return Row(children: [
       Expanded(
@@ -1098,6 +1141,10 @@ class _ShoppingConfigurationScreenState
                 ctaButton: _resultShoppingCTAButtonConfig,
                 linkButton: _resultLinkButtonConfig,
                 productCard: _resultProductCardConfig,
+                hydration: ProductHydrationConfiguration(
+                  variantsHydrationStrategy:
+                      _resultVariantsHydrationStrategy,
+                ),
               );
               FireworkSDK.getInstance().shopping.cartIconVisible =
                   _resultShowCartIcon;
