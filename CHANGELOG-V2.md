@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [2.27.1]
+
+### Changed
+
+- Enhance Hungarian localization
+
+### Fixed
+
+- Bug fix and improvements
+
 ## [2.27.0]
 
 ### Added

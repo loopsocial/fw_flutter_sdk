@@ -113,8 +113,9 @@ bool operator ==(Object other) {
         fontSize == other.fontSize &amp;&amp;
         numberOfLines == other.numberOfLines &amp;&amp;
         iOSFontInfo == other.iOSFontInfo &amp;&amp;
-        androidFontInfo == androidFontInfo &amp;&amp;
-        gradientDrawable == other.gradientDrawable;
+        androidFontInfo == other.androidFontInfo &amp;&amp;
+        gradientDrawable == other.gradientDrawable &amp;&amp;
+        textAlignment == other.textAlignment;
   }
 
   return false;
@@ -146,7 +147,7 @@ bool operator ==(Object other) {
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.27.0
+      2.27.1
   </span>
   
 </footer>
