@@ -220,6 +220,10 @@ class _FeedConfigurationScreenState extends State<FeedConfigurationScreen> {
               const SizedBox(
                 height: 20,
               ),
+              _buildTitleTextAlignment(context),
+              const SizedBox(
+                height: 20,
+              ),
               _buildTitleGradientDrawable(context),
               const SizedBox(
                 height: 20,
@@ -561,47 +565,310 @@ class _FeedConfigurationScreenState extends State<FeedConfigurationScreen> {
   }
 
   Widget _buildTitleUseIOSFontInfo(BuildContext context) {
-    return CheckboxListTile(
-      contentPadding: EdgeInsets.zero,
-      value: _resultConfig.title?.iOSFontInfo != null,
-      onChanged: (value) {
-        setState(() {
-          if (value == true) {
-            _resultConfig.title ??= VideoFeedTitleConfiguration();
-            _resultConfig.title?.iOSFontInfo = IOSFontInfo(
-              fontName: "TimesNewRomanPS-ItalicMT",
-            );
-          } else {
-            _resultConfig.title?.iOSFontInfo = null;
-          }
-        });
-      },
-      title: Text(
-        S.of(context).useIOSFontInfoForTitle,
-      ),
+    final fontInfo = _resultConfig.title?.iOSFontInfo;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        CheckboxListTile(
+          contentPadding: EdgeInsets.zero,
+          value: fontInfo != null,
+          onChanged: (value) {
+            setState(() {
+              if (value == true) {
+                _resultConfig.title ??= VideoFeedTitleConfiguration();
+                _resultConfig.title?.iOSFontInfo = IOSFontInfo(
+                  fontName: null,
+                  systemFontWeight: IOSSystemFontWeight.regular,
+                  systemFontStyle: IOSSystemFontStyle.normal,
+                );
+              } else {
+                _resultConfig.title?.iOSFontInfo = null;
+              }
+            });
+          },
+          title: Text(
+            S.of(context).useIOSFontInfoForTitle,
+          ),
+        ),
+        if (fontInfo != null) ...[
+          Padding(
+            padding: const EdgeInsets.only(left: 16, top: 4, bottom: 4),
+            child: Row(
+              children: [
+                const Text('iOS font name: '),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: DropdownButton<String?>(
+                    isExpanded: true,
+                    value: fontInfo.fontName,
+                    items: const [
+                      DropdownMenuItem(
+                          value: null, child: Text('System Default')),
+                      DropdownMenuItem(
+                          value: 'TimesNewRomanPS-ItalicMT',
+                          child: Text('TimesNewRomanPS-ItalicMT')),
+                      DropdownMenuItem(
+                          value: 'Helvetica', child: Text('Helvetica')),
+                      DropdownMenuItem(
+                          value: 'Helvetica-Bold',
+                          child: Text('Helvetica-Bold')),
+                      DropdownMenuItem(
+                          value: 'Courier', child: Text('Courier')),
+                      DropdownMenuItem(
+                          value: 'Georgia', child: Text('Georgia')),
+                    ],
+                    onChanged: (value) {
+                      setState(() {
+                        _resultConfig.title?.iOSFontInfo = IOSFontInfo(
+                          fontName: value,
+                          systemFontWeight: fontInfo.systemFontWeight,
+                          systemFontStyle: fontInfo.systemFontStyle,
+                        );
+                      });
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 16, top: 4, bottom: 4),
+            child: Row(
+              children: [
+                const Text('iOS weight: '),
+                const SizedBox(width: 12),
+                DropdownButton<IOSSystemFontWeight>(
+                  value: fontInfo.systemFontWeight ??
+                      IOSSystemFontWeight.regular,
+                  items: const [
+                    DropdownMenuItem(
+                        value: IOSSystemFontWeight.ultraLight,
+                        child: Text('ultraLight')),
+                    DropdownMenuItem(
+                        value: IOSSystemFontWeight.thin,
+                        child: Text('thin')),
+                    DropdownMenuItem(
+                        value: IOSSystemFontWeight.light,
+                        child: Text('light')),
+                    DropdownMenuItem(
+                        value: IOSSystemFontWeight.regular,
+                        child: Text('regular')),
+                    DropdownMenuItem(
+                        value: IOSSystemFontWeight.medium,
+                        child: Text('medium')),
+                    DropdownMenuItem(
+                        value: IOSSystemFontWeight.semibold,
+                        child: Text('semibold')),
+                    DropdownMenuItem(
+                        value: IOSSystemFontWeight.bold,
+                        child: Text('bold')),
+                    DropdownMenuItem(
+                        value: IOSSystemFontWeight.heavy,
+                        child: Text('heavy')),
+                    DropdownMenuItem(
+                        value: IOSSystemFontWeight.black,
+                        child: Text('black')),
+                  ],
+                  onChanged: (value) {
+                    setState(() {
+                      _resultConfig.title?.iOSFontInfo = IOSFontInfo(
+                        fontName: fontInfo.fontName,
+                        systemFontWeight: value,
+                        systemFontStyle: fontInfo.systemFontStyle,
+                      );
+                    });
+                  },
+                ),
+              ],
+            ),
+          ),
+          CheckboxListTile(
+            contentPadding: const EdgeInsets.only(left: 16),
+            value: fontInfo.systemFontStyle == IOSSystemFontStyle.italic,
+            onChanged: (value) {
+              setState(() {
+                _resultConfig.title?.iOSFontInfo = IOSFontInfo(
+                  fontName: fontInfo.fontName,
+                  systemFontWeight: fontInfo.systemFontWeight,
+                  systemFontStyle: value == true
+                      ? IOSSystemFontStyle.italic
+                      : IOSSystemFontStyle.normal,
+                );
+              });
+            },
+            title: const Text('iOS italic style'),
+          ),
+        ],
+      ],
     );
   }
 
   Widget _buildTitleUseAndroidFontInfo(BuildContext context) {
-    return CheckboxListTile(
-      contentPadding: EdgeInsets.zero,
-      value: _resultConfig.title?.androidFontInfo != null,
-      onChanged: (value) {
-        setState(() {
-          if (value == true) {
-            _resultConfig.title ??= VideoFeedTitleConfiguration();
-            _resultConfig.title?.androidFontInfo = AndroidFontInfo(
-              isCustom: false,
-              typefaceName: "DEFAULT_BOLD",
-            );
-          } else {
-            _resultConfig.title?.androidFontInfo = null;
-          }
-        });
-      },
-      title: Text(
-        S.of(context).useAndroidFontInfoForTitle,
-      ),
+    final fontInfo = _resultConfig.title?.androidFontInfo;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        CheckboxListTile(
+          contentPadding: EdgeInsets.zero,
+          value: fontInfo != null,
+          onChanged: (value) {
+            setState(() {
+              if (value == true) {
+                _resultConfig.title ??= VideoFeedTitleConfiguration();
+                _resultConfig.title?.androidFontInfo = AndroidFontInfo(
+                  isCustom: false,
+                  typefaceName: "DEFAULT",
+                  weight: FontWeight.w400,
+                  style: FontStyle.normal,
+                );
+              } else {
+                _resultConfig.title?.androidFontInfo = null;
+              }
+            });
+          },
+          title: Text(
+            S.of(context).useAndroidFontInfoForTitle,
+          ),
+        ),
+        if (fontInfo != null) ...[
+          Padding(
+            padding: const EdgeInsets.only(left: 16, top: 4, bottom: 4),
+            child: Row(
+              children: [
+                const Text('Android typeface: '),
+                const SizedBox(width: 12),
+                DropdownButton<String>(
+                  value: fontInfo.typefaceName ?? 'DEFAULT',
+                  items: const [
+                    DropdownMenuItem(
+                        value: 'DEFAULT', child: Text('DEFAULT')),
+                    DropdownMenuItem(
+                        value: 'DEFAULT_BOLD', child: Text('DEFAULT_BOLD')),
+                    DropdownMenuItem(
+                        value: 'SANS_SERIF', child: Text('SANS_SERIF')),
+                    DropdownMenuItem(
+                        value: 'SERIF', child: Text('SERIF')),
+                    DropdownMenuItem(
+                        value: 'MONOSPACE', child: Text('MONOSPACE')),
+                  ],
+                  onChanged: (value) {
+                    setState(() {
+                      _resultConfig.title?.androidFontInfo = AndroidFontInfo(
+                        isCustom: false,
+                        typefaceName: value,
+                        weight: fontInfo.weight,
+                        style: fontInfo.style,
+                      );
+                    });
+                  },
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 16, top: 4, bottom: 4),
+            child: Row(
+              children: [
+                const Text('Android weight: '),
+                const SizedBox(width: 12),
+                DropdownButton<FontWeight>(
+                  value: fontInfo.weight ?? FontWeight.w400,
+                  items: const [
+                    DropdownMenuItem(
+                        value: FontWeight.w100, child: Text('w100')),
+                    DropdownMenuItem(
+                        value: FontWeight.w200, child: Text('w200')),
+                    DropdownMenuItem(
+                        value: FontWeight.w300, child: Text('w300 (light)')),
+                    DropdownMenuItem(
+                        value: FontWeight.w400, child: Text('w400 (normal)')),
+                    DropdownMenuItem(
+                        value: FontWeight.w500, child: Text('w500 (medium)')),
+                    DropdownMenuItem(
+                        value: FontWeight.w600, child: Text('w600')),
+                    DropdownMenuItem(
+                        value: FontWeight.w700, child: Text('w700 (bold)')),
+                    DropdownMenuItem(
+                        value: FontWeight.w800, child: Text('w800')),
+                    DropdownMenuItem(
+                        value: FontWeight.w900, child: Text('w900 (black)')),
+                  ],
+                  onChanged: (value) {
+                    setState(() {
+                      _resultConfig.title?.androidFontInfo = AndroidFontInfo(
+                        isCustom: fontInfo.isCustom,
+                        typefaceName: fontInfo.typefaceName,
+                        weight: value,
+                        style: fontInfo.style,
+                      );
+                    });
+                  },
+                ),
+              ],
+            ),
+          ),
+          CheckboxListTile(
+            contentPadding: const EdgeInsets.only(left: 16),
+            value: fontInfo.style == FontStyle.italic,
+            onChanged: (value) {
+              setState(() {
+                _resultConfig.title?.androidFontInfo = AndroidFontInfo(
+                  isCustom: fontInfo.isCustom,
+                  typefaceName: fontInfo.typefaceName,
+                  weight: fontInfo.weight,
+                  style: value == true ? FontStyle.italic : FontStyle.normal,
+                );
+              });
+            },
+            title: const Text('Android italic style'),
+          ),
+        ],
+      ],
+    );
+  }
+
+  Widget _buildTitleTextAlignment(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text('Title text alignment'),
+        const SizedBox(height: 8),
+        CupertinoSegmentedControl<VideoFeedTitleTextAlignment>(
+          onValueChanged: (value) {
+            setState(() {
+              _resultConfig.title ??= VideoFeedTitleConfiguration();
+              _resultConfig.title?.textAlignment = value;
+            });
+          },
+          children: const {
+            VideoFeedTitleTextAlignment.left: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+              child: Text('Left'),
+            ),
+            VideoFeedTitleTextAlignment.center: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+              child: Text('Center'),
+            ),
+            VideoFeedTitleTextAlignment.right: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+              child: Text('Right'),
+            ),
+          },
+          groupValue: _resultConfig.title?.textAlignment,
+        ),
+        const SizedBox(height: 4),
+        TextButton(
+          style: TextButton.styleFrom(padding: EdgeInsets.zero),
+          onPressed: _resultConfig.title?.textAlignment == null
+              ? null
+              : () {
+                  setState(() {
+                    _resultConfig.title?.textAlignment = null;
+                  });
+                },
+          child: const Text('Clear (use SDK default)'),
+        ),
+      ],
     );
   }
 

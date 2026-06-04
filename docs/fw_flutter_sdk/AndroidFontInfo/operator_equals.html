@@ -108,7 +108,10 @@ bool operator ==(Object other) {
   }
 
   if (other is AndroidFontInfo) {
-    return isCustom == other.isCustom &amp;&amp; typefaceName == other.typefaceName;
+    return isCustom == other.isCustom &amp;&amp;
+        typefaceName == other.typefaceName &amp;&amp;
+        weight == other.weight &amp;&amp;
+        style == other.style;
   }
 
   return false;
@@ -140,7 +143,7 @@ bool operator ==(Object other) {
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.27.0
+      2.27.1
   </span>
   
 </footer>

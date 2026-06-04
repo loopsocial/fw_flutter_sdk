@@ -61,7 +61,7 @@
     <h2>Constructors</h2>
     <dl class="constructor-summary-list">
         <dt id="AndroidFontInfo.new" class="callable">
-          <span class="name"><a href="../fw_flutter_sdk/AndroidFontInfo/AndroidFontInfo.html">AndroidFontInfo.new</a></span><span class="signature">({<span class="parameter" id="-param-isCustom"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">isCustom</span>, </span><span class="parameter" id="-param-typefaceName"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">typefaceName</span></span>})</span>
+          <span class="name"><a href="../fw_flutter_sdk/AndroidFontInfo/AndroidFontInfo.html">AndroidFontInfo.new</a></span><span class="signature">({<span class="parameter" id="-param-isCustom"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">isCustom</span>, </span><span class="parameter" id="-param-typefaceName"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">typefaceName</span>, </span><span class="parameter" id="-param-weight"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-ui/FontWeight-class.html">FontWeight</a>?</span> <span class="parameter-name">weight</span>, </span><span class="parameter" id="-param-style"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-ui/FontStyle.html">FontStyle</a>?</span> <span class="parameter-name">style</span></span>})</span>
         </dt>
         <dd>
           
@@ -110,6 +110,20 @@
 
 </dd>
 
+        <dt id="style" class="property">
+  <span class="name"><a href="../fw_flutter_sdk/AndroidFontInfo/style.html">style</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-ui/FontStyle.html">FontStyle</a>?</span>
+  
+
+</dt>
+<dd>
+  The font style applied to the typeface. Accepts <code>FontStyle.normal</code> or
+<code>FontStyle.italic</code>.
+Only supported on Android.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
         <dt id="typefaceName" class="property">
   <span class="name"><a href="../fw_flutter_sdk/AndroidFontInfo/typefaceName.html">typefaceName</a></span>
   <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span>
@@ -119,6 +133,20 @@
 <dd>
   The Android system typeface name, such as "DEFAULT", "DEFAULT_BOLD", "SANS_SERIF", "SERIF", "MONOSPACE".
 Or custom font name, such as: "fonts/kaushanscript_regular.ttf". (You need to set the isCustom=true and put the font file in the "assets" directory: app/src/main/assets/fonts/kaushanscript_regular.ttf)
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="weight" class="property">
+  <span class="name"><a href="../fw_flutter_sdk/AndroidFontInfo/weight.html">weight</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-ui/FontWeight-class.html">FontWeight</a>?</span>
+  
+
+</dt>
+<dd>
+  The font weight applied to the typeface. Accepts any of Flutter's
+<a href="https://api.flutter.dev/flutter/dart-ui/FontWeight-class.html">FontWeight</a> constants (<code>FontWeight.w100</code>–<code>FontWeight.w900</code>,
+<code>FontWeight.normal</code>, <code>FontWeight.bold</code>).
   <div class="features"><span class="feature">final</span></div>
 
 </dd>
@@ -221,7 +249,7 @@ Or custom font name, such as: "fonts/kaushanscript_regular.ttf". (You need to se
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.27.0
+      2.27.1
   </span>
   
 </footer>

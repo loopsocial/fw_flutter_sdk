@@ -104,7 +104,11 @@ like <a href="https://api.flutter.dev/flutter/dart-collection/HashSet-class.html
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">@override
-int get hashCode =&gt; isCustom.hashCode ^ typefaceName.hashCode;</code></pre>
+int get hashCode =&gt;
+    isCustom.hashCode ^
+    typefaceName.hashCode ^
+    weight.hashCode ^
+    style.hashCode;</code></pre>
 </section>
 
   </section>
@@ -134,7 +138,7 @@ int get hashCode =&gt; isCustom.hashCode ^ typefaceName.hashCode;</code></pre>
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.27.0
+      2.27.1
   </span>
   
 </footer>
