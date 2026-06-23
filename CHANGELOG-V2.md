@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [2.28.0]
+
+### Added
+
+- Introduces the `PlayerDeck` widget
+
+### Fixed
+
+- Bug fix and improvements
+
 ## [2.27.2]
 
 ### Fixed

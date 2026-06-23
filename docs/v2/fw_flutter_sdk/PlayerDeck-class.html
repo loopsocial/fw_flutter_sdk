@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the PlayerDeck class from the fw_flutter_sdk library, for the Dart programming language.">
+  <title>PlayerDeck class - fw_flutter_sdk library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../static-assets/styles.css?v1">
+  <link rel="icon" href="../static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../index.html">fw_flutter_sdk</a></li>
+    <li><a href="../fw_flutter_sdk/">fw_flutter_sdk.dart</a></li>
+    <li class="self-crumb">PlayerDeck class</li>
+  </ol>
+  <div class="self-name">PlayerDeck</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
+</header>
+<main>
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar="fw_flutter_sdk&#47;fw_flutter_sdk-library-sidebar.html"
+    data-below-sidebar="fw_flutter_sdk&#47;PlayerDeck-class-sidebar.html">
+    <div>
+<h1><span class="kind-class">PlayerDeck</span> class 
+ 
+</h1></div>
+
+    
+<section class="desc markdown">
+  <p>The widget of player deck.</p>
+</section>
+
+
+    <section>
+      <dl class="dl-horizontal">
+        
+  <dt>Inheritance</dt>
+  <dd>
+    <ul class="gt-separated dark clazz-relationships">
+      <li><a href="https://api.flutter.dev/flutter/dart-core/Object-class.html">Object</a></li>
+        <li><a href="https://api.flutter.dev/flutter/foundation/DiagnosticableTree-class.html">DiagnosticableTree</a></li>
+        <li><a href="https://api.flutter.dev/flutter/widgets/Widget-class.html">Widget</a></li>
+        <li><a href="https://api.flutter.dev/flutter/widgets/StatefulWidget-class.html">StatefulWidget</a></li>
+      <li>PlayerDeck</li>
+    </ul>
+  </dd>
+
+        
+        
+
+
+        
+        
+
+
+      </dl>
+    </section>
+
+    
+  <section class="summary offset-anchor" id="constructors">
+    <h2>Constructors</h2>
+    <dl class="constructor-summary-list">
+        <dt id="PlayerDeck.new" class="callable">
+          <span class="name"><a href="../fw_flutter_sdk/PlayerDeck/PlayerDeck.html">PlayerDeck.new</a></span><span class="signature">({<span class="parameter" id="-param-key"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/foundation/Key-class.html">Key</a>?</span> <span class="parameter-name">key</span>, </span><span class="parameter" id="-param-source"><span>required</span> <span class="type-annotation"><a href="../fw_flutter_sdk/VideoFeedSource.html">VideoFeedSource</a></span> <span class="parameter-name">source</span>, </span><span class="parameter" id="-param-channel"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">channel</span>, </span><span class="parameter" id="-param-playlist"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">playlist</span>, </span><span class="parameter" id="-param-playlistGroup"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">playlistGroup</span>, </span><span class="parameter" id="-param-dynamicContentParameters"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>&gt;</span>?</span> <span class="parameter-name">dynamicContentParameters</span>, </span><span class="parameter" id="-param-hashtagFilterExpression"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">hashtagFilterExpression</span>, </span><span class="parameter" id="-param-productIds"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">productIds</span>, </span><span class="parameter" id="-param-contentId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">contentId</span>, </span><span class="parameter" id="-param-enablePictureInPicture"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">enablePictureInPicture</span>, </span><span class="parameter" id="-param-width"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">width</span>, </span><span class="parameter" id="-param-height"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">height</span>, </span><span class="parameter" id="-param-wantKeepAlive"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">wantKeepAlive</span>, </span><span class="parameter" id="-param-playerDeckConfiguration"><span class="type-annotation"><a href="../fw_flutter_sdk/PlayerDeckConfiguration-class.html">PlayerDeckConfiguration</a>?</span> <span class="parameter-name">playerDeckConfiguration</span>, </span><span class="parameter" id="-param-videoPlayerConfiguration"><span class="type-annotation"><a href="../fw_flutter_sdk/VideoPlayerConfiguration-class.html">VideoPlayerConfiguration</a>?</span> <span class="parameter-name">videoPlayerConfiguration</span>, </span><span class="parameter" id="-param-onPlayerDeckCreated"><span class="type-annotation"><a href="../fw_flutter_sdk/PlayerDeckCreatedCallback.html">PlayerDeckCreatedCallback</a>?</span> <span class="parameter-name">onPlayerDeckCreated</span>, </span><span class="parameter" id="-param-onPlayerDeckLoadFinished"><span class="type-annotation"><a href="../fw_flutter_sdk/PlayerDeckLoadFinishedCallback.html">PlayerDeckLoadFinishedCallback</a>?</span> <span class="parameter-name">onPlayerDeckLoadFinished</span>, </span><span class="parameter" id="-param-onPlayerDeckEmpty"><span class="type-annotation"><a href="../fw_flutter_sdk/PlayerDeckEmptyCallback.html">PlayerDeckEmptyCallback</a>?</span> <span class="parameter-name">onPlayerDeckEmpty</span>, </span><span class="parameter" id="-param-onPlayerDeckDidStartPictureInPicture"><span class="type-annotation"><a href="../fw_flutter_sdk/PlayerDeckDidStartPictureInPictureCallback.html">PlayerDeckDidStartPictureInPictureCallback</a>?</span> <span class="parameter-name">onPlayerDeckDidStartPictureInPicture</span>, </span><span class="parameter" id="-param-onPlayerDeckDidStopPictureInPicture"><span class="type-annotation"><a href="../fw_flutter_sdk/PlayerDeckDidStopPictureInPictureCallback.html">PlayerDeckDidStopPictureInPictureCallback</a>?</span> <span class="parameter-name">onPlayerDeckDidStopPictureInPicture</span>, </span><span class="parameter" id="-param-onPlayerDeckGetFeedId"><span class="type-annotation"><a href="../fw_flutter_sdk/PlayerDeckGetFeedIdCallback.html">PlayerDeckGetFeedIdCallback</a>?</span> <span class="parameter-name">onPlayerDeckGetFeedId</span></span>})</span>
+        </dt>
+        <dd>
+          
+            <div class="constructor-modifier features">const</div>
+        </dd>
+    </dl>
+  </section>
+    
+  <section
+      class="summary offset-anchor"
+      id="instance-properties">
+    <h2>Properties</h2>
+    <dl class="properties">
+        <dt id="channel" class="property">
+  <span class="name"><a href="../fw_flutter_sdk/PlayerDeck/channel.html">channel</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span>
+  
+
+</dt>
+<dd>
+  The channel id of the feed.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="contentId" class="property">
+  <span class="name"><a href="../fw_flutter_sdk/PlayerDeck/contentId.html">contentId</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span>
+  
+
+</dt>
+<dd>
+  The video id.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="dynamicContentParameters" class="property">
+  <span class="name"><a href="../fw_flutter_sdk/PlayerDeck/dynamicContentParameters.html">dynamicContentParameters</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>&gt;</span>?</span>
+  
+
+</dt>
+<dd>
+  The dynamic content parameters of the feed.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="enablePictureInPicture" class="property">
+  <span class="name"><a href="../fw_flutter_sdk/PlayerDeck/enablePictureInPicture.html">enablePictureInPicture</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span>
+  
+
+</dt>
+<dd>
+  Specifies if Picture in Picture is enabled.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="hashCode" class="property inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/widgets/Widget/hashCode.html">hashCode</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  
+
+</dt>
+<dd class="inherited">
+  The hash code for this object.
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="hashtagFilterExpression" class="property">
+  <span class="name"><a href="../fw_flutter_sdk/PlayerDeck/hashtagFilterExpression.html">hashtagFilterExpression</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span>
+  
+
+</dt>
+<dd>
+  Hashtag filter expression.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="height" class="property">
+  <span class="name"><a href="../fw_flutter_sdk/PlayerDeck/height.html">height</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span>
+  
+
+</dt>
+<dd>
+  The height of the player deck.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="key" class="property inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/widgets/Widget/key.html">key</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/foundation/Key-class.html">Key</a>?</span>
+  
+
+</dt>
+<dd class="inherited">
+  Controls how one widget replaces another widget in the tree.
+  <div class="features"><span class="feature">final</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="onPlayerDeckCreated" class="property">
+  <span class="name"><a href="../fw_flutter_sdk/PlayerDeck/onPlayerDeckCreated.html">onPlayerDeckCreated</a></span>
+  <span class="signature">&#8594; <a href="../fw_flutter_sdk/PlayerDeckCreatedCallback.html">PlayerDeckCreatedCallback</a>?</span>
+  
+
+</dt>
+<dd>
+  The callback of player deck creation.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="onPlayerDeckDidStartPictureInPicture" class="property">
+  <span class="name"><a href="../fw_flutter_sdk/PlayerDeck/onPlayerDeckDidStartPictureInPicture.html">onPlayerDeckDidStartPictureInPicture</a></span>
+  <span class="signature">&#8594; <a href="../fw_flutter_sdk/PlayerDeckDidStartPictureInPictureCallback.html">PlayerDeckDidStartPictureInPictureCallback</a>?</span>
+  
+
+</dt>
+<dd>
+  The callback of the feed starting picture in picture. iOS only.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="onPlayerDeckDidStopPictureInPicture" class="property">
+  <span class="name"><a href="../fw_flutter_sdk/PlayerDeck/onPlayerDeckDidStopPictureInPicture.html">onPlayerDeckDidStopPictureInPicture</a></span>
+  <span class="signature">&#8594; <a href="../fw_flutter_sdk/PlayerDeckDidStopPictureInPictureCallback.html">PlayerDeckDidStopPictureInPictureCallback</a>?</span>
+  
+
+</dt>
+<dd>
+  The callback of the feed stopping picture in picture. iOS only.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="onPlayerDeckEmpty" class="property">
+  <span class="name"><a href="../fw_flutter_sdk/PlayerDeck/onPlayerDeckEmpty.html">onPlayerDeckEmpty</a></span>
+  <span class="signature">&#8594; <a href="../fw_flutter_sdk/PlayerDeckEmptyCallback.html">PlayerDeckEmptyCallback</a>?</span>
+  
+
+</dt>
+<dd>
+  The callback is triggered when there are no items in the player deck.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="onPlayerDeckGetFeedId" class="property">
+  <span class="name"><a href="../fw_flutter_sdk/PlayerDeck/onPlayerDeckGetFeedId.html">onPlayerDeckGetFeedId</a></span>
+  <span class="signature">&#8594; <a href="../fw_flutter_sdk/PlayerDeckGetFeedIdCallback.html">PlayerDeckGetFeedIdCallback</a>?</span>
+  
+
+</dt>
+<dd>
+  The host app could use this callback to get feed id.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="onPlayerDeckLoadFinished" class="property">
+  <span class="name"><a href="../fw_flutter_sdk/PlayerDeck/onPlayerDeckLoadFinished.html">onPlayerDeckLoadFinished</a></span>
+  <span class="signature">&#8594; <a href="../fw_flutter_sdk/PlayerDeckLoadFinishedCallback.html">PlayerDeckLoadFinishedCallback</a>?</span>
+  
+
+</dt>
+<dd>
+  The callback of the feed loading result.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="playerDeckConfiguration" class="property">
+  <span class="name"><a href="../fw_flutter_sdk/PlayerDeck/playerDeckConfiguration.html">playerDeckConfiguration</a></span>
+  <span class="signature">&#8594; <a href="../fw_flutter_sdk/PlayerDeckConfiguration-class.html">PlayerDeckConfiguration</a>?</span>
+  
+
+</dt>
+<dd>
+  The configuration of the player deck.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="playlist" class="property">
+  <span class="name"><a href="../fw_flutter_sdk/PlayerDeck/playlist.html">playlist</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span>
+  
+
+</dt>
+<dd>
+  The playlist id of the feed.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="playlistGroup" class="property">
+  <span class="name"><a href="../fw_flutter_sdk/PlayerDeck/playlistGroup.html">playlistGroup</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span>
+  
+
+</dt>
+<dd>
+  Playlist group id of the feed. Only supported on iOS.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="productIds" class="property">
+  <span class="name"><a href="../fw_flutter_sdk/PlayerDeck/productIds.html">productIds</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span>
+  
+
+</dt>
+<dd>
+  Product ids used to generate the sku feed.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="runtimeType" class="property inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Type-class.html">Type</a></span>
+  
+
+</dt>
+<dd class="inherited">
+  A representation of the runtime type of the object.
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="source" class="property">
+  <span class="name"><a href="../fw_flutter_sdk/PlayerDeck/source.html">source</a></span>
+  <span class="signature">&#8594; <a href="../fw_flutter_sdk/VideoFeedSource.html">VideoFeedSource</a></span>
+  
+
+</dt>
+<dd>
+  The source of the feed.
+Defaults to discover.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="videoPlayerConfiguration" class="property">
+  <span class="name"><a href="../fw_flutter_sdk/PlayerDeck/videoPlayerConfiguration.html">videoPlayerConfiguration</a></span>
+  <span class="signature">&#8594; <a href="../fw_flutter_sdk/VideoPlayerConfiguration-class.html">VideoPlayerConfiguration</a>?</span>
+  
+
+</dt>
+<dd>
+  The configuration of the player.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="wantKeepAlive" class="property">
+  <span class="name"><a href="../fw_flutter_sdk/PlayerDeck/wantKeepAlive.html">wantKeepAlive</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span>
+  
+
+</dt>
+<dd>
+  Set this property to true if you want keep the widget alive
+during scrolling list out of view box. Default to false.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="width" class="property">
+  <span class="name"><a href="../fw_flutter_sdk/PlayerDeck/width.html">width</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span>
+  
+
+</dt>
+<dd>
+  The width of the player deck.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+
+    
+  <section
+      class="summary offset-anchor"
+      id="instance-methods">
+    <h2>Methods</h2>
+    <dl class="callables">
+        <dt id="createElement" class="callable inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/widgets/StatefulWidget/createElement.html">createElement</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/widgets/StatefulElement-class.html">StatefulElement</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Creates a <a href="https://api.flutter.dev/flutter/widgets/StatefulElement-class.html">StatefulElement</a> to manage this widget's location in the tree.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="createState" class="callable">
+  <span class="name"><a href="../fw_flutter_sdk/PlayerDeck/createState.html">createState</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/widgets/State-class.html">State</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../fw_flutter_sdk/PlayerDeck-class.html">PlayerDeck</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Creates the mutable state for this widget at a given location in the tree.
+  <div class="features"><span class="feature">override</span></div>
+
+</dd>
+
+        <dt id="debugDescribeChildren" class="callable inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/foundation/DiagnosticableTree/debugDescribeChildren.html">debugDescribeChildren</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/foundation/DiagnosticsNode-class.html">DiagnosticsNode</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Returns a list of <a href="https://api.flutter.dev/flutter/foundation/DiagnosticsNode-class.html">DiagnosticsNode</a> objects describing this node's
+children.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="debugFillProperties" class="callable inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/widgets/Widget/debugFillProperties.html">debugFillProperties</a></span><span class="signature">(<wbr><span class="parameter" id="debugFillProperties-param-properties"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/foundation/DiagnosticPropertiesBuilder-class.html">DiagnosticPropertiesBuilder</a></span> <span class="parameter-name">properties</span></span>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Add additional properties associated with the node.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="noSuchMethod" class="callable inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></span><span class="signature">(<wbr><span class="parameter" id="noSuchMethod-param-invocation"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Invocation-class.html">Invocation</a></span> <span class="parameter-name">invocation</span></span>)
+    <span class="returntype parameter">&#8594; dynamic</span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Invoked when a nonexistent method or property is accessed.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="toDiagnosticsNode" class="callable inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/foundation/DiagnosticableTree/toDiagnosticsNode.html">toDiagnosticsNode</a></span><span class="signature">(<wbr>{<span class="parameter" id="toDiagnosticsNode-param-name"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">name</span>, </span><span class="parameter" id="toDiagnosticsNode-param-style"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/foundation/DiagnosticsTreeStyle.html">DiagnosticsTreeStyle</a>?</span> <span class="parameter-name">style</span></span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/foundation/DiagnosticsNode-class.html">DiagnosticsNode</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Returns a debug representation of the object that is used by debugging
+tools and by <a href="https://api.flutter.dev/flutter/foundation/DiagnosticsNode/toStringDeep.html">DiagnosticsNode.toStringDeep</a>.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="toString" class="callable inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/foundation/Diagnosticable/toString.html">toString</a></span><span class="signature">(<wbr>{<span class="parameter" id="toString-param-minLevel"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/foundation/DiagnosticLevel.html">DiagnosticLevel</a></span> <span class="parameter-name">minLevel</span> = <span class="default-value">DiagnosticLevel.info</span></span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  A string representation of this object.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="toStringDeep" class="callable inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/foundation/DiagnosticableTree/toStringDeep.html">toStringDeep</a></span><span class="signature">(<wbr>{<span class="parameter" id="toStringDeep-param-prefixLineOne"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">prefixLineOne</span> = <span class="default-value">&#39;&#39;</span>, </span><span class="parameter" id="toStringDeep-param-prefixOtherLines"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">prefixOtherLines</span>, </span><span class="parameter" id="toStringDeep-param-minLevel"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/foundation/DiagnosticLevel.html">DiagnosticLevel</a></span> <span class="parameter-name">minLevel</span> = <span class="default-value">DiagnosticLevel.debug</span>, </span><span class="parameter" id="toStringDeep-param-wrapWidth"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">wrapWidth</span> = <span class="default-value">65</span></span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Returns a string representation of this node and its descendants.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="toStringShallow" class="callable inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/foundation/DiagnosticableTree/toStringShallow.html">toStringShallow</a></span><span class="signature">(<wbr>{<span class="parameter" id="toStringShallow-param-joiner"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">joiner</span> = <span class="default-value">&#39;, &#39;</span>, </span><span class="parameter" id="toStringShallow-param-minLevel"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/foundation/DiagnosticLevel.html">DiagnosticLevel</a></span> <span class="parameter-name">minLevel</span> = <span class="default-value">DiagnosticLevel.debug</span></span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Returns a one-line detailed description of the object.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="toStringShort" class="callable inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/widgets/Widget/toStringShort.html">toStringShort</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  A short, textual description of this widget.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+    
+  <section
+      class="summary offset-anchor inherited"
+      id="operators">
+    <h2>Operators</h2>
+    <dl class="callables">
+        <dt id="operator ==" class="callable inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/widgets/Widget/operator_equals.html">operator ==</a></span><span class="signature">(<wbr><span class="parameter" id="==-param-other"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Object-class.html">Object</a></span> <span class="parameter-name">other</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  The equality operator.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+    
+    
+    
+
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../index.html">fw_flutter_sdk</a></li>
+    <li><a href="../fw_flutter_sdk/">fw_flutter_sdk</a></li>
+    <li class="self-crumb">PlayerDeck class</li>
+</ol>
+
+    <h5>fw_flutter_sdk library</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
+  </div>
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+</main>
+<footer>
+  <span class="no-break">
+    fw_flutter_sdk
+      2.28.0
+  </span>
+  
+</footer>
+
+
+<script src="../static-assets/highlight.pack.js?v1"></script>
+<script src="../static-assets/docs.dart.js"></script>
+
+</body>
+</html>
+
