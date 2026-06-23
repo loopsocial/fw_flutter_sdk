@@ -8,6 +8,7 @@ import 'package:fw_flutter_sdk_example/states/player_configuration_state.dart';
 import 'package:fw_flutter_sdk_example/states/story_block_configuration_state.dart';
 import 'package:fw_flutter_sdk_example/states/circle_story_configuration_state.dart';
 import 'package:fw_flutter_sdk_example/states/circle_story_source_state.dart';
+import 'package:fw_flutter_sdk_example/states/player_deck_configuration_state.dart';
 import 'package:fw_flutter_sdk_example/utils/fw_example_logger_util.dart';
 import 'package:fw_flutter_sdk_example/utils/host_app_service.dart';
 import 'package:flutter/material.dart';
@@ -180,6 +181,9 @@ class _MyAppState extends State<MyApp> {
         ),
         ChangeNotifierProvider(
           create: (_) => CircleStorySourceState(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => PlayerDeckConfigurationState(),
         ),
       ],
       child: MaterialApp(

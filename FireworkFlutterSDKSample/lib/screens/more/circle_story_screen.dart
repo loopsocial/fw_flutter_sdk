@@ -19,6 +19,7 @@ class _CircleStoryScreenState extends State<CircleStoryScreen> {
   FWError? _loadError;
   double _height = 120.0;
   bool _enablePictureInPicture = true;
+  bool _enableKeepingAlive = true;
 
   @override
   Widget build(BuildContext context) {
@@ -171,6 +172,18 @@ class _CircleStoryScreenState extends State<CircleStoryScreen> {
                       title: Text(S.of(context).enablePictureInPicture),
                     ),
 
+                    // Keep alive toggle
+                    CheckboxListTile(
+                      contentPadding: EdgeInsets.zero,
+                      value: _enableKeepingAlive,
+                      onChanged: (value) {
+                        setState(() {
+                          _enableKeepingAlive = value ?? false;
+                        });
+                      },
+                      title: Text(S.of(context).enableKeepingAlive),
+                    ),
+
                     const Divider(),
                     const SizedBox(height: 10),
 
@@ -252,6 +265,7 @@ class _CircleStoryScreenState extends State<CircleStoryScreen> {
                   productIds: circleStorySource.productIds,
                   contentId: circleStorySource.contentId,
                   enablePictureInPicture: _enablePictureInPicture,
+                  wantKeepAlive: _enableKeepingAlive,
                   circleStoryConfiguration:
                       circleStoryConfiguration.deepCopy(),
                   videoPlayerConfiguration: playerConfiguration.deepCopy(),

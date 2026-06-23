@@ -215,8 +215,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enable autoplay"),
         "enableCustomButtons":
             MessageLookupByLibrary.simpleMessage("Enable custom buttons"),
-        "showCloseButtonWhenPiPEnabled":
-            MessageLookupByLibrary.simpleMessage("Show Close Button When PiP Enabled"),
         "enableCustomCTAClickCallback": MessageLookupByLibrary.simpleMessage(
             "Enable Custom CTA Click Callback"),
         "enableCustomCTAClickCallbackSuccessfully":
@@ -234,6 +232,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Enable custom tap product card"),
         "enableFullScreen":
             MessageLookupByLibrary.simpleMessage("Enable full screen"),
+        "enableHorizontalLayout":
+            MessageLookupByLibrary.simpleMessage("Enable horizontal layout"),
         "enableKeepingAlive":
             MessageLookupByLibrary.simpleMessage("Enable Keeping Alive"),
         "enableOnVideoPlaybackLog":
@@ -245,6 +245,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enable Pause Player"),
         "enablePictureInPicture":
             MessageLookupByLibrary.simpleMessage("Enable Picture In Picture"),
+        "enableScrollForVertical":
+            MessageLookupByLibrary.simpleMessage("Enable scroll for vertical"),
         "enableSmallSizeInCompact": MessageLookupByLibrary.simpleMessage(
             "Enable small size in compact"),
         "enabled": MessageLookupByLibrary.simpleMessage("Enabled"),
@@ -302,6 +304,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Hide replay badge"),
         "hideTitle": MessageLookupByLibrary.simpleMessage("Hide Title"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
+        "horizontalScroll": MessageLookupByLibrary.simpleMessage("Horizontal"),
         "immersiveViewing": MessageLookupByLibrary.simpleMessage(
             "Immersive viewing experience"),
         "integration": MessageLookupByLibrary.simpleMessage("Integration"),
@@ -355,6 +358,9 @@ class MessageLookup extends MessageLookupByLibrary {
             "Play, pause, mute, and share"),
         "playerConfiguration":
             MessageLookupByLibrary.simpleMessage("Player Configuration"),
+        "playerDeck": MessageLookupByLibrary.simpleMessage("Player Deck"),
+        "playerDeckConfiguration":
+            MessageLookupByLibrary.simpleMessage("Player Deck Configuration"),
         "playerLogoClickable":
             MessageLookupByLibrary.simpleMessage("Player logo is clickable"),
         "playerLogoEncodedId":
@@ -527,6 +533,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Shopping Configuration"),
         "showAdBadge": MessageLookupByLibrary.simpleMessage("Show Ad Badge"),
         "showCartIcon": MessageLookupByLibrary.simpleMessage("Show Cart Icon"),
+        "showCloseButtonWhenPiPEnabled": MessageLookupByLibrary.simpleMessage(
+            "Show Close Button When PiP Enabled"),
         "showMuteButton":
             MessageLookupByLibrary.simpleMessage("Show mute button"),
         "showPlaybackButton":
@@ -585,14 +593,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "useAndroidGradientDrawableForTitle":
             MessageLookupByLibrary.simpleMessage(
                 "Use Android gradient drawable for title"),
-        "verticalScroll": MessageLookupByLibrary.simpleMessage("Vertical"),
-        "horizontalScroll": MessageLookupByLibrary.simpleMessage("Horizontal"),
-        "videoPlayerScrollDirection":
-            MessageLookupByLibrary.simpleMessage("Video player scroll direction"),
-        "enableScrollForVertical":
-            MessageLookupByLibrary.simpleMessage("Enable scroll for vertical"),
-        "enableHorizontalLayout":
-            MessageLookupByLibrary.simpleMessage("Enable horizontal layout"),
         "useIOSFontInfo": MessageLookupByLibrary.simpleMessage(
             "Use iOS font info(TimesNewRomanPS-ItalicMT)"),
         "useIOSFontInfoForCTA": MessageLookupByLibrary.simpleMessage(
@@ -607,6 +607,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Please enter correct vast attributes"),
         "vastAttributesHint": MessageLookupByLibrary.simpleMessage(
             "e.g. {\"name1\": \"value1\", \"name2\": \"value2\"}"),
+        "verticalScroll": MessageLookupByLibrary.simpleMessage("Vertical"),
         "videoCompleteAction":
             MessageLookupByLibrary.simpleMessage("Video complete action"),
         "videoFeed": MessageLookupByLibrary.simpleMessage("Video Feed"),
@@ -621,6 +622,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Video player complete action(full-screen)"),
         "videoPlayerDemo":
             MessageLookupByLibrary.simpleMessage("Video Player Demo"),
+        "videoPlayerScrollDirection": MessageLookupByLibrary.simpleMessage(
+            "Video player scroll direction"),
         "videoPlayerStyle":
             MessageLookupByLibrary.simpleMessage("Video player style"),
         "videoPlayerStyle2": MessageLookupByLibrary.simpleMessage(

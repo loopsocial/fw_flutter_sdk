@@ -17,6 +17,10 @@ import AppTrackingTransparency
         // Used to connect plugins
         GeneratedPluginRegistrant.register(with: self)
         FWFlutterSDK.initializeSDK(SDKInitOptions(videoLaunchBehavior: .muteOnFirstLaunch))
+        // Debug-only: swizzles UIViewController lifecycle methods to log when
+        // Firework-related view controllers appear/disappear. This is purely a
+        // debugging aid for the example app — host apps do NOT need to call this.
+        UIViewController.swizzleFireworkLifecycleLogging()
         return super.application(application, didFinishLaunchingWithOptions: launchOptions)
     }
 }

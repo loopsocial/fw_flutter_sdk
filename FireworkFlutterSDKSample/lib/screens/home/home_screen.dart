@@ -16,6 +16,16 @@ import '../../widgets/fw_app_bar.dart';
 enum HomeScreenTabIndex {
   multiFeeds,
   shopping,
+  embed,
+}
+
+/// The widget type embedded in the [HomeScreenTabIndex.embed] tab.
+/// Only one widget is embedded at a time.
+enum EmbedWidgetType {
+  videoFeed,
+  storyBlock,
+  playerDeck,
+  circleStory,
 }
 
 class HomeScreen extends StatefulWidget {
@@ -33,6 +43,8 @@ class _HomeScreenState extends State<HomeScreen> {
   bool _enablePip = true;
   bool _enableKeepingAlive = false;
   HomeScreenTabIndex _tabIndex = HomeScreenTabIndex.multiFeeds;
+  EmbedWidgetType _embedWidgetType = EmbedWidgetType.playerDeck;
+  bool _embedInitiallyVisible = true;
   List<FeedPlaylistInfo> _defaultHomeVideoFeedPlaylistInfoArray = [];
   List<FeedPlaylistInfo> _defaultHomeStoryBlockPlaylistInfoArray = [];
 
@@ -165,15 +177,15 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           Semantics(
-              label: 'Playlist Config',
-              child: IconButton(
-                onPressed: () {
-                  _goPlaylistConfiguration();
-                },
-                icon: const Icon(
-                  Icons.settings,
-                ),
+            label: 'Playlist Config',
+            child: IconButton(
+              onPressed: () {
+                _goPlaylistConfiguration();
+              },
+              icon: const Icon(
+                Icons.settings,
               ),
+            ),
           ),
         ],
       ),
@@ -209,15 +221,11 @@ class _HomeScreenState extends State<HomeScreen> {
     return ListView(
       children: [
         const SizedBox(
-          height: 20,
-        ),
-        _buildEnablePictureInPicture(context),
-        const SizedBox(
           height: 10,
         ),
-        _buildEnableKeepingAlive(context),
+        _buildOptionToggles(context),
         const SizedBox(
-          height: 10,
+          height: 6,
         ),
         _buildFeedWidgetTypeSegmentedControl(context),
         const SizedBox(
@@ -226,6 +234,8 @@ class _HomeScreenState extends State<HomeScreen> {
         if (_tabIndex == HomeScreenTabIndex.shopping)
           _buildShoppingFeed(context),
         for (var w in multiFeedsWidgetList) w,
+        if (_tabIndex == HomeScreenTabIndex.embed)
+          for (var w in _buildEmbedTab(context)) w,
         if (_tabIndex == HomeScreenTabIndex.shopping)
           Column(
             mainAxisSize: MainAxisSize.min,
@@ -259,38 +269,67 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget _buildEnablePictureInPicture(BuildContext context) {
+  Widget _buildOptionToggles(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: CheckboxListTile(
-        contentPadding: EdgeInsets.zero,
-        value: _enablePip,
-        onChanged: (value) {
-          setState(() {
-            _enablePip = value ?? false;
-          });
-        },
-        title: Text(
-          S.of(context).enablePictureInPicture,
-        ),
+      child: Row(
+        children: [
+          Expanded(
+            child: _buildCompactCheckbox(
+              value: _enablePip,
+              label: S.of(context).enablePictureInPicture,
+              onChanged: (value) {
+                setState(() {
+                  _enablePip = value ?? false;
+                });
+              },
+            ),
+          ),
+          const SizedBox(width: 8),
+          Expanded(
+            child: _buildCompactCheckbox(
+              value: _enableKeepingAlive,
+              label: S.of(context).enableKeepingAlive,
+              onChanged: (value) {
+                setState(() {
+                  _enableKeepingAlive = value ?? false;
+                });
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
 
-  Widget _buildEnableKeepingAlive(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: CheckboxListTile(
-        contentPadding: EdgeInsets.zero,
-        value: _enableKeepingAlive,
-        onChanged: (value) {
-          setState(() {
-            _enableKeepingAlive = value ?? false;
-          });
-        },
-        title: Text(
-          S.of(context).enableKeepingAlive,
-        ),
+  Widget _buildCompactCheckbox({
+    required bool value,
+    required String label,
+    required ValueChanged<bool?> onChanged,
+  }) {
+    return InkWell(
+      onTap: () => onChanged(!value),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          SizedBox(
+            width: 24,
+            height: 24,
+            child: Checkbox(
+              value: value,
+              visualDensity: VisualDensity.compact,
+              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              onChanged: onChanged,
+            ),
+          ),
+          const SizedBox(width: 6),
+          Expanded(
+            child: Text(
+              label,
+              style: const TextStyle(fontSize: 13),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -313,6 +352,10 @@ class _HomeScreenState extends State<HomeScreen> {
           HomeScreenTabIndex.shopping: Text(
             S.of(context).shopping,
             style: const TextStyle(fontSize: 13),
+          ),
+          HomeScreenTabIndex.embed: const Text(
+            "Embed",
+            style: TextStyle(fontSize: 13),
           ),
         },
         groupValue: _tabIndex,
@@ -497,6 +540,169 @@ class _HomeScreenState extends State<HomeScreen> {
     }
 
     return widgetList;
+  }
+
+  List<Widget> _buildEmbedTab(BuildContext context) {
+    final widgetList = <Widget>[];
+
+    widgetList.addAll([
+      _buildEmbedWidgetTypeSelector(context),
+      const SizedBox(height: 8),
+      _buildEmbedControlsRow(context),
+      const SizedBox(height: 12),
+    ]);
+
+    // When the widget should start off-screen, push it below the fold with
+    // leading placeholders so it only becomes visible after scrolling.
+    if (!_embedInitiallyVisible) {
+      for (var i = 0; i < 4; i++) {
+        widgetList.addAll([
+          _buildListItemPlaceholder(context),
+          const SizedBox(height: 20),
+        ]);
+      }
+    }
+
+    widgetList.addAll([
+      _buildEmbeddedWidget(context),
+      const SizedBox(height: 20),
+    ]);
+
+    // Trailing placeholders so the embedded widget can also be scrolled out of
+    // view in both directions.
+    for (var i = 0; i < 4; i++) {
+      widgetList.addAll([
+        _buildListItemPlaceholder(context),
+        const SizedBox(height: 20),
+      ]);
+    }
+
+    return widgetList;
+  }
+
+  Widget _buildEmbedWidgetTypeSelector(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      child: CupertinoSegmentedControl<EmbedWidgetType>(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        onValueChanged: (value) {
+          setState(() {
+            _embedWidgetType = value;
+          });
+        },
+        children: const {
+          EmbedWidgetType.videoFeed: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 8),
+            child: Text("VideoFeed", style: TextStyle(fontSize: 13)),
+          ),
+          EmbedWidgetType.storyBlock: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 8),
+            child: Text("StoryBlock", style: TextStyle(fontSize: 13)),
+          ),
+          EmbedWidgetType.playerDeck: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 8),
+            child: Text("PlayerDeck", style: TextStyle(fontSize: 13)),
+          ),
+          EmbedWidgetType.circleStory: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 8),
+            child: Text("CircleStory", style: TextStyle(fontSize: 13)),
+          ),
+        },
+        groupValue: _embedWidgetType,
+      ),
+    );
+  }
+
+  Widget _buildEmbedControlsRow(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: Row(
+        children: [
+          Expanded(
+            child: _buildCompactCheckbox(
+              value: _embedInitiallyVisible,
+              label: "Initially visible in ListView",
+              onChanged: (value) {
+                setState(() {
+                  _embedInitiallyVisible = value ?? false;
+                });
+              },
+            ),
+          ),
+          const SizedBox(width: 8),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).pushNamed("/embed_secondary");
+            },
+            child: const Text("Push to secondary page"),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildEmbeddedWidget(BuildContext context) {
+    final channel = _channelId;
+    final playlist = _playlistId;
+    // Fold the PiP / keep-alive flags into the key so that toggling either of
+    // them forces the embedded widget (and its native view) to be recreated
+    // rather than just rebuilt with new props, which the native side ignores.
+    final configSuffix = "pip:$_enablePip-keepAlive:$_enableKeepingAlive";
+    switch (_embedWidgetType) {
+      case EmbedWidgetType.videoFeed:
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: VideoFeed(
+            key: ValueKey("embed-video-feed-$configSuffix"),
+            wantKeepAlive: _enableKeepingAlive,
+            height: 300,
+            source: VideoFeedSource.playlist,
+            channel: channel,
+            playlist: playlist,
+            enablePictureInPicture: _enablePip,
+          ),
+        );
+      case EmbedWidgetType.storyBlock:
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: StoryBlock(
+            key: ValueKey("embed-story-block-$configSuffix"),
+            wantKeepAlive: _enableKeepingAlive,
+            cornerRadius: 20,
+            height: defaultTargetPlatform == TargetPlatform.android ? 400 : 500,
+            source: StoryBlockSource.playlist,
+            channel: channel,
+            playlist: playlist,
+            enablePictureInPicture: _enablePip,
+          ),
+        );
+      case EmbedWidgetType.playerDeck:
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: PlayerDeck(
+            key: ValueKey("embed-player-deck-$configSuffix"),
+            wantKeepAlive: _enableKeepingAlive,
+            height: 430,
+            source: VideoFeedSource.playlist,
+            channel: channel,
+            playlist: playlist,
+            enablePictureInPicture: _enablePip,
+          ),
+        );
+      case EmbedWidgetType.circleStory:
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: CircleStory(
+            key: ValueKey("embed-circle-story-$configSuffix"),
+            wantKeepAlive: _enableKeepingAlive,
+            height: 100,
+            source: VideoFeedSource.playlist,
+            channel: channel,
+            playlist: playlist,
+            enablePictureInPicture: _enablePip,
+          ),
+        );
+    }
   }
 
   Widget _buildErrorWidget(BuildContext context) {

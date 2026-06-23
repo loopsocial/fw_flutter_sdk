@@ -15,6 +15,7 @@ import 'package:fw_flutter_sdk_example/screens/configuration/shopping_configurat
 import 'package:fw_flutter_sdk_example/screens/configuration/single_content_configuration_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/configuration/sku_configuration_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/configuration/story_block_configuration_screen.dart';
+import 'package:fw_flutter_sdk_example/screens/embed/embed_secondary_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/link_content/link_content_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/feed/feed_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/log/log_screen.dart';
@@ -30,8 +31,11 @@ import 'package:fw_flutter_sdk_example/screens/more/enable_question_terms_click_
 import 'package:fw_flutter_sdk_example/screens/more/enable_on_video_playback_log.dart';
 import 'package:fw_flutter_sdk_example/screens/more/enter_video_id_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/more/open_video_screen.dart';
+import 'package:fw_flutter_sdk_example/screens/more/open_video_with_source_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/more/set_share_base_url_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/more/open_story_block_video_screen.dart';
+import 'package:fw_flutter_sdk_example/screens/configuration/player_deck_configuration_screen.dart';
+import 'package:fw_flutter_sdk_example/screens/player_deck/player_deck_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/tab/tab_screen.dart';
 
 typedef FWRouteFactory = Route<dynamic>? Function(RouteSettings settings);
@@ -82,6 +86,11 @@ final routeMap = <String, FWRouteFactory>{
   '/open_video_url': (settings) {
     return MaterialPageRoute(
       builder: (context) => const OpenVideoScreen(),
+    );
+  },
+  '/open_video_with_source': (settings) {
+    return MaterialPageRoute(
+      builder: (context) => const OpenVideoWithSourceScreen(),
     );
   },
   '/set_share_base_url': (settings) {
@@ -207,6 +216,21 @@ final routeMap = <String, FWRouteFactory>{
   '/story_block_video': (settings) {
     return MaterialPageRoute(
       builder: (context) => OpenStoryBlockVideoScreen(settings: settings),
+    );
+  },
+  '/player_deck': (settings) {
+    return MaterialPageRoute(
+      builder: (context) => PlayerDeckScreen(settings: settings),
+    );
+  },
+  '/player_deck_configuration': (settings) {
+    return MaterialPageRoute(
+      builder: (context) => const PlayerDeckConfigurationScreen(),
+    );
+  },
+  '/embed_secondary': (settings) {
+    return MaterialPageRoute(
+      builder: (context) => const EmbedSecondaryScreen(),
     );
   },
 };

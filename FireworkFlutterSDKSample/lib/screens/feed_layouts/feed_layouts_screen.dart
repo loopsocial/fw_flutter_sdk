@@ -189,6 +189,7 @@ class _FeedLayoutsScreenState extends State<FeedLayoutsScreen> {
             _buildHashtagPlaylistItem(context),
             _buildSkuItem(context),
             _buildSingleContentItem(context),
+            _buildPlayerDeckItem(context),
           ],
         ),
       ),
@@ -689,6 +690,315 @@ class _FeedLayoutsScreenState extends State<FeedLayoutsScreen> {
             "title": s.singleContentFeedInfo,
           },
         );
+      }
+    }
+  }
+
+  void _goToPlayerDeck(Map<String, dynamic> arguments) {
+    Navigator.of(context).pushNamed("/player_deck", arguments: arguments);
+  }
+
+  Widget _buildPlayerDeckItem(BuildContext context) {
+    return _buildItem(
+      context: context,
+      title: S.of(context).playerDeck,
+      onTap: () => _showPlayerDeckSourcePicker(context),
+    );
+  }
+
+  void _showPlayerDeckSourcePicker(BuildContext context) {
+    final s = S.of(context);
+    showCupertinoModalPopup(
+      context: context,
+      builder: (ctx) {
+        return CupertinoActionSheet(
+          title: Text(s.playerDeck),
+          actions: [
+            CupertinoActionSheetAction(
+              onPressed: () {
+                Navigator.of(ctx).pop();
+                _goToPlayerDeck({
+                  "source": "discover",
+                  "title": '${s.playerDeck} - ${s.discoverFeed}',
+                });
+              },
+              child: Text(s.discoverFeed),
+            ),
+            CupertinoActionSheetAction(
+              onPressed: () {
+                Navigator.of(ctx).pop();
+                _showPlayerDeckChannelPicker(context);
+              },
+              child: Text(s.channelFeed),
+            ),
+            CupertinoActionSheetAction(
+              onPressed: () {
+                Navigator.of(ctx).pop();
+                _showPlayerDeckPlaylistPicker(context);
+              },
+              child: Text(s.playlistFeed),
+            ),
+            CupertinoActionSheetAction(
+              onPressed: () {
+                Navigator.of(ctx).pop();
+                _showPlayerDeckPlaylistGroupPicker(context);
+              },
+              child: Text(s.playlistGroupFeed),
+            ),
+            CupertinoActionSheetAction(
+              onPressed: () {
+                Navigator.of(ctx).pop();
+                _showPlayerDeckDynamicContentPicker(context);
+              },
+              child: Text(s.dynamicContentFeed),
+            ),
+            CupertinoActionSheetAction(
+              onPressed: () {
+                Navigator.of(ctx).pop();
+                _showPlayerDeckHashtagPlaylistPicker(context);
+              },
+              child: Text(s.hashtagPlaylistFeed),
+            ),
+            CupertinoActionSheetAction(
+              onPressed: () {
+                Navigator.of(ctx).pop();
+                _goToPlayerDeckSkuConfiguration();
+              },
+              child: Text(s.skuFeed),
+            ),
+            CupertinoActionSheetAction(
+              onPressed: () {
+                Navigator.of(ctx).pop();
+                _goToPlayerDeckSingleContentConfiguration();
+              },
+              child: Text(s.singleContentFeed),
+            ),
+            CupertinoActionSheetAction(
+              onPressed: () {
+                Navigator.of(ctx).pop();
+                _goToPlayerDeckPlaylistConfiguration();
+              },
+              child: Text(s.custom),
+            ),
+          ],
+          cancelButton: CupertinoActionSheetAction(
+            child: Text(s.cancel),
+            onPressed: () => Navigator.of(ctx).pop(),
+          ),
+        );
+      },
+    );
+  }
+
+  void _goToPlayerDeckPlaylistConfiguration() async {
+    final s = S.of(context);
+    final result = await Navigator.of(context).pushNamed(
+      "/playlist_configuration",
+    );
+    FWExampleLoggerUtil.log(
+        "player_deck playlist_configuration result: $result type: ${result?.runtimeType}");
+    if (result is Map<String, String>) {
+      final channelId = result["channelId"] ?? "";
+      final playlistId = result["playlistId"] ?? "";
+      if (channelId.isNotEmpty && playlistId.isNotEmpty) {
+        _goToPlayerDeck({
+          "source": "playlist",
+          "channel": channelId,
+          "playlist": playlistId,
+          "title": '${s.playerDeck} - ${s.playlistFeed}',
+        });
+      }
+    }
+  }
+
+  void _showPlayerDeckChannelPicker(BuildContext context) {
+    final s = S.of(context);
+    showCupertinoModalPopup(
+      context: context,
+      builder: (ctx) {
+        final widgets = _defaultChannelIdArray.map(
+          (channelId) => CupertinoActionSheetAction(
+            isDefaultAction: true,
+            onPressed: () {
+              Navigator.of(ctx).pop();
+              _goToPlayerDeck({
+                "source": "channel",
+                "channel": channelId,
+                "title": '${s.playerDeck} - ${s.channelFeed}',
+              });
+            },
+            child: Text(channelId),
+          ),
+        );
+        return CupertinoActionSheet(
+          title: Text(s.selectChannelId),
+          actions: [...widgets],
+          cancelButton: CupertinoActionSheetAction(
+            child: Text(s.cancel),
+            onPressed: () => Navigator.of(ctx).pop(),
+          ),
+        );
+      },
+    );
+  }
+
+  void _showPlayerDeckPlaylistPicker(BuildContext context) {
+    final s = S.of(context);
+    showCupertinoModalPopup(
+      context: context,
+      builder: (ctx) {
+        final widgets = _defaultPlaylistInfoArray.map(
+          (info) => CupertinoActionSheetAction(
+            isDefaultAction: true,
+            onPressed: () {
+              Navigator.of(ctx).pop();
+              _goToPlayerDeck({
+                "source": "playlist",
+                "channel": info.channelId,
+                "playlist": info.playlistId,
+                "title": '${s.playerDeck} - ${s.playlistFeed}',
+              });
+            },
+            child: Text(
+              "channelId: ${info.channelId} playlistId: ${info.playlistId}",
+            ),
+          ),
+        );
+        return CupertinoActionSheet(
+          title: Text(s.selectPlaylistInfo),
+          actions: [...widgets],
+          cancelButton: CupertinoActionSheetAction(
+            child: Text(s.cancel),
+            onPressed: () => Navigator.of(ctx).pop(),
+          ),
+        );
+      },
+    );
+  }
+
+  void _showPlayerDeckPlaylistGroupPicker(BuildContext context) {
+    final s = S.of(context);
+    showCupertinoModalPopup(
+      context: context,
+      builder: (ctx) {
+        final widgets = _defaultPlaylistGroupIdArray.map(
+          (groupId) => CupertinoActionSheetAction(
+            isDefaultAction: true,
+            onPressed: () {
+              Navigator.of(ctx).pop();
+              _goToPlayerDeck({
+                "source": "playlistGroup",
+                "playlistGroup": groupId,
+                "title": '${s.playerDeck} - ${s.playlistGroupFeed}',
+              });
+            },
+            child: Text(groupId),
+          ),
+        );
+        return CupertinoActionSheet(
+          title: Text(s.selectPlaylistGroupId),
+          actions: [...widgets],
+          cancelButton: CupertinoActionSheetAction(
+            child: Text(s.cancel),
+            onPressed: () => Navigator.of(ctx).pop(),
+          ),
+        );
+      },
+    );
+  }
+
+  void _showPlayerDeckDynamicContentPicker(BuildContext context) {
+    final s = S.of(context);
+    showCupertinoModalPopup(
+      context: context,
+      builder: (ctx) {
+        final widgets = _defaultDynamicContentInfoArray.map(
+          (info) => CupertinoActionSheetAction(
+            isDefaultAction: true,
+            onPressed: () {
+              Navigator.of(ctx).pop();
+              _goToPlayerDeck({
+                "source": "dynamicContent",
+                "channel": info.channelId,
+                "dynamicContentParameters": info.parameters,
+                "title": '${s.playerDeck} - ${info.name}',
+              });
+            },
+            child: Text(info.name),
+          ),
+        );
+        return CupertinoActionSheet(
+          title: Text(s.selectDynamicContentInfo),
+          actions: [...widgets],
+          cancelButton: CupertinoActionSheetAction(
+            child: Text(s.cancel),
+            onPressed: () => Navigator.of(ctx).pop(),
+          ),
+        );
+      },
+    );
+  }
+
+  void _showPlayerDeckHashtagPlaylistPicker(BuildContext context) {
+    final s = S.of(context);
+    showCupertinoModalPopup(
+      context: context,
+      builder: (ctx) {
+        final widgets = _defaultHashtagPlaylistInfoArray.map(
+          (info) => CupertinoActionSheetAction(
+            isDefaultAction: true,
+            onPressed: () {
+              Navigator.of(ctx).pop();
+              _goToPlayerDeck({
+                "source": "hashtagPlaylist",
+                "channel": info.channelId,
+                "hashtagFilterExpression": info.hashtagFilterExpression,
+                "title": '${s.playerDeck} - ${info.name}',
+              });
+            },
+            child: Text(info.name),
+          ),
+        );
+        return CupertinoActionSheet(
+          title: Text(s.selectDynamicContentInfo),
+          actions: [...widgets],
+          cancelButton: CupertinoActionSheetAction(
+            child: Text(s.cancel),
+            onPressed: () => Navigator.of(ctx).pop(),
+          ),
+        );
+      },
+    );
+  }
+
+  void _goToPlayerDeckSkuConfiguration() async {
+    final navigator = Navigator.of(context);
+    final s = S.of(context);
+    final result = await navigator.pushNamed("/sku_configuration");
+    if (result is Map<String, dynamic>) {
+      if (result["channelId"] is String &&
+          result["productIds"] is List<String>) {
+        _goToPlayerDeck({
+          "source": "sku",
+          "channel": result["channelId"] as String,
+          "productIds": result["productIds"] as List<String>,
+          "title": '${s.playerDeck} - ${s.skuFeed}',
+        });
+      }
+    }
+  }
+
+  void _goToPlayerDeckSingleContentConfiguration() async {
+    final navigator = Navigator.of(context);
+    final s = S.of(context);
+    final result = await navigator.pushNamed("/single_content_configuration");
+    if (result is Map<String, dynamic>) {
+      if (result["contentId"] is String) {
+        _goToPlayerDeck({
+          "source": "singleContent",
+          "contentId": result["contentId"] as String,
+          "title": '${s.playerDeck} - ${s.singleContentFeed}',
+        });
       }
     }
   }

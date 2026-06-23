@@ -3570,12 +3570,32 @@ class S {
       args: [],
     );
   }
-  
+
   /// `Circle Story View`
   String get circleStoryView {
     return Intl.message(
       'Circle Story View',
       name: 'circleStoryView',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Player Deck`
+  String get playerDeck {
+    return Intl.message(
+      'Player Deck',
+      name: 'playerDeck',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Player Deck Configuration`
+  String get playerDeckConfiguration {
+    return Intl.message(
+      'Player Deck Configuration',
+      name: 'playerDeckConfiguration',
       desc: '',
       args: [],
     );

@@ -32,25 +32,25 @@ PODS:
     - GoogleUtilities/UserDefaults (~> 8.1)
     - nanopb (~> 3.30910.0)
     - PromisesSwift (~> 2.1)
-  - FireworkVideo (1.43.5)
-  - FireworkVideoIVSSupport (0.9.7):
+  - FireworkVideo (1.44.3)
+  - FireworkVideoIVSSupport (0.9.9):
     - AmazonIVSPlayer (= 1.38.0)
   - Flutter (1.0.0)
   - fw_flutter_sdk (1.0.0):
-    - FireworkVideo (= 1.43.5)
+    - FireworkVideo (= 1.44.3)
     - Flutter
   - GoogleDataTransport (10.1.0):
     - nanopb (~> 3.30910.0)
     - PromisesObjC (~> 2.4)
-  - GoogleUtilities/Environment (8.1.0):
+  - GoogleUtilities/Environment (8.1.1):
     - GoogleUtilities/Privacy
-  - GoogleUtilities/Logger (8.1.0):
+  - GoogleUtilities/Logger (8.1.1):
     - GoogleUtilities/Environment
     - GoogleUtilities/Privacy
-  - "GoogleUtilities/NSData+zlib (8.1.0)":
+  - "GoogleUtilities/NSData+zlib (8.1.1)":
     - GoogleUtilities/Privacy
-  - GoogleUtilities/Privacy (8.1.0)
-  - GoogleUtilities/UserDefaults (8.1.0):
+  - GoogleUtilities/Privacy (8.1.1)
+  - GoogleUtilities/UserDefaults (8.1.1):
     - GoogleUtilities/Logger
     - GoogleUtilities/Privacy
   - LookinServer (1.2.8):
@@ -64,9 +64,9 @@ PODS:
   - path_provider_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
-  - PromisesObjC (2.4.0)
-  - PromisesSwift (2.4.0):
-    - PromisesObjC (= 2.4.0)
+  - PromisesObjC (2.4.1)
+  - PromisesSwift (2.4.1):
+    - PromisesObjC (= 2.4.1)
   - sqflite_darwin (0.0.4):
     - Flutter
     - FlutterMacOS
@@ -76,7 +76,7 @@ PODS:
 
 DEPENDENCIES:
   - FirebaseCrashlytics
-  - FireworkVideoIVSSupport (= 0.9.7)
+  - FireworkVideoIVSSupport (= 0.9.9)
   - Flutter (from `Flutter`)
   - fw_flutter_sdk (from `.symlinks/plugins/fw_flutter_sdk/ios`)
   - LookinServer
@@ -124,20 +124,20 @@ SPEC CHECKSUMS:
   FirebaseInstallations: 317270fec08a5d418fdbc8429282238cab3ac843
   FirebaseRemoteConfigInterop: 1c6135e8a094cc6368949f5faeeca7ee8948b8aa
   FirebaseSessions: b9a92c1c51bbb81e78fc3142cda6d925d700f8e7
-  FireworkVideo: 9bc98fe2310186db866612ae705c4a59481316aa
-  FireworkVideoIVSSupport: 37a77acca231e693296ef41bbdc6a9dc94dc6725
+  FireworkVideo: 102ea211b213da49872936bc4f70177b91800ea4
+  FireworkVideoIVSSupport: 872be4e6863b618967cb7b8731c5c62df877d27e
   Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
-  fw_flutter_sdk: 5f729ead317c6d6929f78206fd64767f7b50f6ed
+  fw_flutter_sdk: c0539e66dd348dd67f52146fd72ab672c3532b91
   GoogleDataTransport: aae35b7ea0c09004c3797d53c8c41f66f219d6a7
-  GoogleUtilities: 00c88b9a86066ef77f0da2fab05f65d7768ed8e1
+  GoogleUtilities: 4f2618a4a1e762a1ee134a1e2323bba9843e06da
   LookinServer: 1b2b61c6402ae29fa22182d48f5cd067b4e99e80
   nanopb: fad817b59e0457d11a5dfbde799381cd727c1275
   path_provider_foundation: 080d55be775b7414fd5a5ef3ac137b97b097e564
-  PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
-  PromisesSwift: 9d77319bbe72ebf6d872900551f7eeba9bce2851
+  PromisesObjC: 752c3227f599e3467650e47ea36f433eeb10c273
+  PromisesSwift: 217dea0fd5d2ad65222a109c48698add13cc1c5b
   sqflite_darwin: 20b2a3a3b70e43edae938624ce550a3cbf66a3d0
   webview_flutter_wkwebview: 44d4dee7d7056d5ad185d25b38404436d56c547c
 
-PODFILE CHECKSUM: 6cf97aa6175320e7fba66b33fc619391026599e2
+PODFILE CHECKSUM: 44082b11f3bfde6bb5945866df63e4e0e6e78491
 
 COCOAPODS: 1.16.2
