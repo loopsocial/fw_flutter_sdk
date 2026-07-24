@@ -61,7 +61,7 @@
     <h2>Constructors</h2>
     <dl class="constructor-summary-list">
         <dt id="TrackPurchaseParameters.new" class="callable">
-          <span class="name"><a href="../fw_flutter_sdk/TrackPurchaseParameters/TrackPurchaseParameters.html">TrackPurchaseParameters.new</a></span><span class="signature">({<span class="parameter" id="-param-orderId"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">orderId</span>, </span><span class="parameter" id="-param-value"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">value</span>, </span><span class="parameter" id="-param-currencyCode"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">currencyCode</span>, </span><span class="parameter" id="-param-countryCode"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">countryCode</span>, </span><span class="parameter" id="-param-shippingPrice"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">shippingPrice</span>, </span><span class="parameter" id="-param-subtotal"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">subtotal</span>, </span><span class="parameter" id="-param-products"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../fw_flutter_sdk/PurchaseProduct-class.html">PurchaseProduct</a></span>&gt;</span>?</span> <span class="parameter-name">products</span>, </span><span class="parameter" id="-param-additionalInfo"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">additionalInfo</span></span>})</span>
+          <span class="name"><a href="../fw_flutter_sdk/TrackPurchaseParameters/TrackPurchaseParameters.html">TrackPurchaseParameters.new</a></span><span class="signature">({<span class="parameter" id="-param-orderId"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">orderId</span>, </span><span class="parameter" id="-param-value"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">value</span>, </span><span class="parameter" id="-param-currencyCode"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">currencyCode</span>, </span><span class="parameter" id="-param-countryCode"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">countryCode</span>, </span><span class="parameter" id="-param-shippingPrice"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">shippingPrice</span>, </span><span class="parameter" id="-param-subtotal"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">subtotal</span>, </span><span class="parameter" id="-param-totalDiscounts"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">totalDiscounts</span>, </span><span class="parameter" id="-param-products"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../fw_flutter_sdk/PurchaseProduct-class.html">PurchaseProduct</a></span>&gt;</span>?</span> <span class="parameter-name">products</span>, </span><span class="parameter" id="-param-additionalInfo"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">additionalInfo</span></span>})</span>
         </dt>
         <dd>
           
@@ -82,7 +82,8 @@
 </dt>
 <dd>
   Any additional information associated to the purchase.
-Reserved keys: order_id, value, currency, country, shipping_price, subtotal, product.
+Reserved keys: order_id, order_value, value, currency, country,
+shipping_price, subtotal, total_discounts, line_items, product.
 Any values passed in the additionalInfo that use a reserved key will be ignored.
   <div class="features"><span class="feature">getter/setter pair</span></div>
 
@@ -107,7 +108,7 @@ Any values passed in the additionalInfo that use a reserved key will be ignored.
 
 </dt>
 <dd>
-  The currency code of the purchase value.
+  The ISO 4217 currency code of the purchase value.
   <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
@@ -131,7 +132,7 @@ Any values passed in the additionalInfo that use a reserved key will be ignored.
 
 </dt>
 <dd>
-  A unique identifier for the user's order.
+  A unique identifier for the user's order. Required.
   <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
@@ -143,7 +144,7 @@ Any values passed in the additionalInfo that use a reserved key will be ignored.
 
 </dt>
 <dd>
-  The products of the order.
+  The purchased items of the order. Sent as <code>line_items</code>.
   <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
@@ -179,7 +180,19 @@ Any values passed in the additionalInfo that use a reserved key will be ignored.
 
 </dt>
 <dd>
-  The subtotal of the order.
+  The items cost before discounts, taxes, and shipping.
+  <div class="features"><span class="feature">getter/setter pair</span></div>
+
+</dd>
+
+        <dt id="totalDiscounts" class="property">
+  <span class="name"><a href="../fw_flutter_sdk/TrackPurchaseParameters/totalDiscounts.html">totalDiscounts</a></span>
+  <span class="signature">&#8596; <a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span>
+  
+
+</dt>
+<dd>
+  The total discounts applied to the order. Sent as <code>total_discounts</code>.
   <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
@@ -191,7 +204,8 @@ Any values passed in the additionalInfo that use a reserved key will be ignored.
 
 </dt>
 <dd>
-  The value of the order.
+  The final amount paid, including taxes, shipping, and discounts.
+Sent as <code>order_value</code>.
   <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
@@ -281,7 +295,7 @@ Any values passed in the additionalInfo that use a reserved key will be ignored.
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.28.0
+      2.29.0
   </span>
   
 </footer>

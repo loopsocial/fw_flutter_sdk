@@ -64,6 +64,14 @@
     
 <section class="desc markdown">
   <p>Records the user purchase.</p>
+<p>Shopping V2 purchase tracking (parity with Web <code>analytics.purchase</code>)
+requires <a href="../../fw_flutter_sdk/TrackPurchaseParameters/orderId.html">TrackPurchaseParameters.orderId</a>, <a href="../../fw_flutter_sdk/TrackPurchaseParameters/value.html">TrackPurchaseParameters.value</a>
+(final amount paid, sent as <code>order_value</code>),
+<a href="../../fw_flutter_sdk/TrackPurchaseParameters/currencyCode.html">TrackPurchaseParameters.currencyCode</a>, <a href="../../fw_flutter_sdk/TrackPurchaseParameters/subtotal.html">TrackPurchaseParameters.subtotal</a>,
+and a non-empty <a href="../../fw_flutter_sdk/TrackPurchaseParameters/products.html">TrackPurchaseParameters.products</a> list (sent as
+<code>line_items</code>).</p>
+<p>Send all purchase events without client-side filtering; Firework
+identifies attributed vs non-attributed purchases server-side.</p>
 </section>
 
 
@@ -71,6 +79,12 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">Future&lt;void&gt; trackPurchase(TrackPurchaseParameters parameters) async {
+  final missingFields =
+      TrackPurchaseParametersUtil.missingRequiredV2Fields(parameters);
+  if (missingFields.isNotEmpty) {
+    FWLoggerUtil.log(
+        &quot;trackPurchase is missing required purchase fields: ${missingFields.join(&#39;, &#39;)}&quot;);
+  }
   if (!FWGlobalState.getInstance().sdkInitSucceeded) {
     await FWGlobalState.getInstance().sdkInitSucceededFuture;
   }
@@ -105,7 +119,7 @@
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.28.0
+      2.29.0
   </span>
   
 </footer>
