@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## [2.29.0]
+
+### Added
+
+- Read SDK state from Dart via new `FireworkSDK` getters: `appId`, `guestId`, and `isPipShown`
+
+### Changed
+
+- Align the product card with the web experience
+- Update the `trackPurchase` API for Shopping V2 purchase tracking
+
+### Fixed
+
+- Bug fix and improvements
+
 ## [2.28.0]
 
 ### Added

@@ -20,14 +20,14 @@ class _CircleStoryScreenState extends State<CircleStoryScreen> {
   double _height = 120.0;
   bool _enablePictureInPicture = true;
   bool _enableKeepingAlive = true;
+  bool _pinCircleStoryToBottom = true;
 
   @override
   Widget build(BuildContext context) {
     final playerConfiguration =
         context.watch<PlayerConfigurationState>().playerConfiguration;
-    final circleStoryConfiguration = context
-        .watch<CircleStoryConfigurationState>()
-        .circleStoryConfiguration;
+    final circleStoryConfiguration =
+        context.watch<CircleStoryConfigurationState>().circleStoryConfiguration;
     final circleStorySource = context.watch<CircleStorySourceState>();
 
     return Scaffold(
@@ -105,8 +105,10 @@ class _CircleStoryScreenState extends State<CircleStoryScreen> {
                                 circleStorySource.playlistGroup!),
                           if (circleStorySource.dynamicContentParameters !=
                               null)
-                            _buildSourceInfoRow('Dynamic Params:',
-                                circleStorySource.dynamicContentParameters.toString()),
+                            _buildSourceInfoRow(
+                                'Dynamic Params:',
+                                circleStorySource.dynamicContentParameters
+                                    .toString()),
                           if (circleStorySource.hashtagFilterExpression != null)
                             _buildSourceInfoRow('Hashtag Filter:',
                                 circleStorySource.hashtagFilterExpression!),
@@ -132,9 +134,7 @@ class _CircleStoryScreenState extends State<CircleStoryScreen> {
                           final source = VideoFeedSource.values
                               .firstWhere((e) => e.name == sourceName);
                           // ignore: use_build_context_synchronously
-                          context
-                              .read<CircleStorySourceState>()
-                              .updateSource(
+                          context.read<CircleStorySourceState>().updateSource(
                                 source: source,
                                 channel: result["channelId"] as String?,
                                 playlist: result["playlistId"] as String?,
@@ -184,6 +184,17 @@ class _CircleStoryScreenState extends State<CircleStoryScreen> {
                       title: Text(S.of(context).enableKeepingAlive),
                     ),
 
+                    CheckboxListTile(
+                      contentPadding: EdgeInsets.zero,
+                      value: _pinCircleStoryToBottom,
+                      onChanged: (value) {
+                        setState(() {
+                          _pinCircleStoryToBottom = value ?? true;
+                        });
+                      },
+                      title: const Text('Pin Circle Story to bottom'),
+                    ),
+
                     const Divider(),
                     const SizedBox(height: 10),
 
@@ -229,58 +240,81 @@ class _CircleStoryScreenState extends State<CircleStoryScreen> {
                     ),
                     const SizedBox(height: 20),
                     const Divider(),
+                    if (!_pinCircleStoryToBottom) ...[
+                      const SizedBox(height: 10),
+                      _buildLoadErrorMessage(),
+                      _buildCircleStory(
+                        playerConfiguration: playerConfiguration,
+                        circleStoryConfiguration: circleStoryConfiguration,
+                        circleStorySource: circleStorySource,
+                      ),
+                    ],
                   ],
                 ),
               ),
             ),
 
-            const Divider(height: 1, thickness: 2),
-
-            // Error message
-            if (_loadError != null)
-              Padding(
-                padding: const EdgeInsets.all(20),
-                child: Text(
-                  'Error: ${_loadError?.reason ?? "Unknown error"}',
-                  style: const TextStyle(color: Colors.red),
-                ),
+            if (_pinCircleStoryToBottom) ...[
+              const Divider(height: 1, thickness: 2),
+              _buildLoadErrorMessage(),
+              _buildCircleStory(
+                playerConfiguration: playerConfiguration,
+                circleStoryConfiguration: circleStoryConfiguration,
+                circleStorySource: circleStorySource,
               ),
-
-            // CircleStory widget
-            Container(
-              color: Colors.grey[200],
-              child: SizedBox(
-                height: _height,
-                child: CircleStory(
-                  height: _height,
-                  width: double.infinity,
-                  source: circleStorySource.source,
-                  channel: circleStorySource.channel,
-                  playlist: circleStorySource.playlist,
-                  playlistGroup: circleStorySource.playlistGroup,
-                  dynamicContentParameters:
-                      circleStorySource.dynamicContentParameters,
-                  hashtagFilterExpression:
-                      circleStorySource.hashtagFilterExpression,
-                  productIds: circleStorySource.productIds,
-                  contentId: circleStorySource.contentId,
-                  enablePictureInPicture: _enablePictureInPicture,
-                  wantKeepAlive: _enableKeepingAlive,
-                  circleStoryConfiguration:
-                      circleStoryConfiguration.deepCopy(),
-                  videoPlayerConfiguration: playerConfiguration.deepCopy(),
-                  onCircleStoryCreated: _onCircleStoryCreated,
-                  onCircleStoryLoadFinished: _onCircleStoryLoadFinished,
-                  onCircleStoryEmpty: _onCircleStoryEmpty,
-                  onCircleStoryDidStartPictureInPicture:
-                      _onCircleStoryDidStartPictureInPicture,
-                  onCircleStoryDidStopPictureInPicture:
-                      _onCircleStoryDidStopPictureInPicture,
-                  onCircleStoryGetFeedId: _onCircleStoryGetFeedId,
-                ),
-              ),
-            ),
+            ],
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildLoadErrorMessage() {
+    if (_loadError == null) {
+      return const SizedBox.shrink();
+    }
+
+    return Padding(
+      padding: const EdgeInsets.all(20),
+      child: Text(
+        'Error: ${_loadError?.reason ?? "Unknown error"}',
+        style: const TextStyle(color: Colors.red),
+      ),
+    );
+  }
+
+  Widget _buildCircleStory({
+    required VideoPlayerConfiguration playerConfiguration,
+    required CircleStoryConfiguration circleStoryConfiguration,
+    required CircleStorySourceState circleStorySource,
+  }) {
+    return Container(
+      color: Colors.grey[200],
+      child: SizedBox(
+        height: _height,
+        child: CircleStory(
+          height: _height,
+          width: double.infinity,
+          source: circleStorySource.source,
+          channel: circleStorySource.channel,
+          playlist: circleStorySource.playlist,
+          playlistGroup: circleStorySource.playlistGroup,
+          dynamicContentParameters: circleStorySource.dynamicContentParameters,
+          hashtagFilterExpression: circleStorySource.hashtagFilterExpression,
+          productIds: circleStorySource.productIds,
+          contentId: circleStorySource.contentId,
+          enablePictureInPicture: _enablePictureInPicture,
+          wantKeepAlive: _enableKeepingAlive,
+          circleStoryConfiguration: circleStoryConfiguration.deepCopy(),
+          videoPlayerConfiguration: playerConfiguration.deepCopy(),
+          onCircleStoryCreated: _onCircleStoryCreated,
+          onCircleStoryLoadFinished: _onCircleStoryLoadFinished,
+          onCircleStoryEmpty: _onCircleStoryEmpty,
+          onCircleStoryDidStartPictureInPicture:
+              _onCircleStoryDidStartPictureInPicture,
+          onCircleStoryDidStopPictureInPicture:
+              _onCircleStoryDidStopPictureInPicture,
+          onCircleStoryGetFeedId: _onCircleStoryGetFeedId,
         ),
       ),
     );

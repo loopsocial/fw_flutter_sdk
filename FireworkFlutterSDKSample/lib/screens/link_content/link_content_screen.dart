@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:fw_flutter_sdk/fw_flutter_sdk.dart';
 import 'package:fw_flutter_sdk_example/utils/fw_example_logger_util.dart';
+import 'package:fw_flutter_sdk_example/utils/host_app_service.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 import '../../generated/l10n.dart';
@@ -20,6 +23,7 @@ class LinkContentScreen extends StatefulWidget {
 
 class _LinkContentScreenState extends State<LinkContentScreen> {
   WebViewController? _controller;
+  String? _url;
   @override
   void initState() {
     super.initState();
@@ -27,7 +31,8 @@ class _LinkContentScreenState extends State<LinkContentScreen> {
       final arg = widget.settings.arguments as Map<dynamic, dynamic>;
 
       if (arg["url"] is String) {
-        final url = arg["url"] as String;
+        final url = _injectSDKStateIfNeeded(arg["url"] as String);
+        _url = url;
         FWExampleLoggerUtil.log("_CTALinkContentScreenState url $url");
         _controller = WebViewController()
           ..setJavaScriptMode(JavaScriptMode.unrestricted)
@@ -68,6 +73,42 @@ class _LinkContentScreenState extends State<LinkContentScreen> {
     }
   }
 
+  /// Appends the SDK's app id / guest id / PiP status to [url] as query
+  /// parameters when the corresponding config is enabled on the SDK State
+  /// screen. App id / guest id are only appended when they are non-null.
+  String _injectSDKStateIfNeeded(String url) {
+    if (!HostAppService.getInstance().injectSDKStateIntoLinkContentUrl) {
+      return url;
+    }
+
+    final sdk = FireworkSDK.getInstance();
+    final parameters = <String, String>{};
+
+    final appId = sdk.appId;
+    if (appId != null) {
+      parameters["fwparam_oauth_app_id_override"] = appId;
+    }
+
+    final guestId = sdk.guestId;
+    if (guestId != null) {
+      parameters["fwparam_guest_id_override"] = guestId;
+    }
+
+    parameters["fwparam_pip_shown"] = sdk.isPipShown.toString();
+
+    return FWUrlUtil.addQueryParameters(url: url, parameters: parameters);
+  }
+
+  void _copyUrl() {
+    final url = _url;
+    if (url == null) {
+      return;
+    }
+    Clipboard.setData(ClipboardData(text: url));
+    FWExampleLoggerUtil.log("Copied link content url: $url");
+    EasyLoading.showToast("URL copied to clipboard");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,6 +116,16 @@ class _LinkContentScreenState extends State<LinkContentScreen> {
       appBar: fwAppBar(
         context: context,
         titleText: S.of(context).linkContentScreenTitle,
+        actions: [
+          if (_url != null)
+            Semantics(
+              label: 'Copy URL',
+              child: IconButton(
+                onPressed: _copyUrl,
+                icon: const Icon(Icons.copy),
+              ),
+            ),
+        ],
       ),
       body: _buildBody(context),
       floatingActionButton: FloatingActionButton(

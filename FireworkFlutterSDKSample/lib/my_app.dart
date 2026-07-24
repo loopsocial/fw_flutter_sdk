@@ -50,6 +50,13 @@ class _MyAppState extends State<MyApp> {
     FireworkSDK.getInstance().shopping.cartIconVisible = true;
     FireworkSDK.getInstance().markInitCalled();
 
+    // Read the synchronous getters once right after init to show the initial
+    // cached values are available. App id / guest id may still be null here
+    // because the SDK hasn't finished initializing/authenticating yet.
+    final sdk = FireworkSDK.getInstance();
+    FWExampleLoggerUtil.log(
+        "initial SDK state appId: ${sdk.appId ?? "null"} guestId: ${sdk.guestId ?? "null"} isPipShown: ${sdk.isPipShown}");
+
     _appLanguageUpdateEventSubscription =
         FWEventBus.getInstance().on().listen((event) {
       FWExampleLoggerUtil.log(
@@ -106,6 +113,9 @@ class _MyAppState extends State<MyApp> {
 
     FireworkSDK.getInstance().onSDKInit = (event) {
       event.logMessage();
+      final sdk = FireworkSDK.getInstance();
+      FWExampleLoggerUtil.log(
+          "onSDKInit SDK state appId: ${sdk.appId ?? "null"} guestId: ${sdk.guestId ?? "null"} isPipShown: ${sdk.isPipShown}");
     };
     FireworkSDK.getInstance().onCustomCTAClick =
         HostAppService.getInstance().onCustomCTAClick;

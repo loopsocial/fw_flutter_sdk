@@ -34,6 +34,7 @@ import 'package:fw_flutter_sdk_example/screens/more/open_video_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/more/open_video_with_source_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/more/set_share_base_url_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/more/open_story_block_video_screen.dart';
+import 'package:fw_flutter_sdk_example/screens/more/sdk_state_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/configuration/player_deck_configuration_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/player_deck/player_deck_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/tab/tab_screen.dart';
@@ -211,6 +212,11 @@ final routeMap = <String, FWRouteFactory>{
   '/enter_video_id': (settings) {
     return MaterialPageRoute(
       builder: (context) => const EnterVideoIdScreen(),
+    );
+  },
+  '/sdk_state': (settings) {
+    return MaterialPageRoute(
+      builder: (context) => const SDKStateScreen(),
     );
   },
   '/story_block_video': (settings) {

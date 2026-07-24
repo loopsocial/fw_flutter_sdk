@@ -232,17 +232,36 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
         onPressed: () {
           const uuid = Uuid();
           final random = Random();
+          // Shopping V2 purchase tracking: report every completed order
+          // (attributed or not) on the order confirmation step.
+          final quantity = random.nextInt(3) + 1;
+          const unitPrice = 10.25;
+          const shippingPrice = 1.99;
+          const totalDiscounts = 3.0;
+          final subtotal = unitPrice * quantity + 3.625;
           FireworkSDK.getInstance().trackPurchase(
             TrackPurchaseParameters(
               orderId: uuid.v4(),
-              value: random.nextInt(100) + 1,
+              value: subtotal - totalDiscounts + shippingPrice,
               currencyCode: "USD",
               countryCode: "US",
-              shippingPrice: 1,
-              subtotal: 9,
+              shippingPrice: shippingPrice,
+              subtotal: subtotal,
+              totalDiscounts: totalDiscounts,
               products: [
                 PurchaseProduct(
-                    extProductId: "test_product_id", price: 10, quantity: 1),
+                  extProductId: "test_product_id",
+                  price: unitPrice,
+                  quantity: quantity,
+                  productName: "Test product",
+                  sku: "test_sku",
+                ),
+                PurchaseProduct.fromSku(
+                  sku: "test_sku_2",
+                  price: 3.625,
+                  quantity: 1,
+                  productName: "Test product 2",
+                ),
               ],
               additionalInfo: <String, String>{
                 "additionalKey1": "additionalValue1",

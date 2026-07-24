@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +10,7 @@ import 'package:fw_flutter_sdk_example/utils/host_app_service.dart';
 import '../../generated/l10n.dart';
 import '../../widgets/fw_app_bar.dart';
 
-const fwNativeVersionOfAndroid = '6.33.0';
+const fwNativeVersionOfAndroid = '6.34.0';
 
 class MoreScreen extends StatefulWidget {
   const MoreScreen({
@@ -31,30 +33,35 @@ class _MoreScreenState extends State<MoreScreen> {
     super.initState();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      HostAppService.getInstance()
-          .getCacheAppLanguageInfo()
-          .then((appLanguage) {
-        if (mounted) {
-          setState(() {
-            _currentAppLanguage = appLanguage;
-          });
-        }
-      });
-      HostAppService.getInstance().getCacheDataTrackingLevel().then((value) {
-        setState(() {
-          _dataTrackingLevel = value ?? DataTrackingLevel.all;
-        });
-      });
-      HostAppService.getInstance().getLivestreamPlayerVersion().then((value) {
-        setState(() {
-          _livestreamPlayerVersion = value ?? LivestreamPlayerDesignVersion.v1;
-        });
-      });
-      HostAppService.getInstance().getShortVideoPlayerVersion().then((value) {
-        setState(() {
-          _shortVideoPlayerVersion = value ?? ShortVideoPlayerDesignVersion.v1;
-        });
-      });
+      unawaited(_loadCachedSettings());
+    });
+  }
+
+  Future<void> _loadCachedSettings() async {
+    final hostAppService = HostAppService.getInstance();
+    final appLanguageFuture = hostAppService.getCacheAppLanguageInfo();
+    final dataTrackingLevelFuture = hostAppService.getCacheDataTrackingLevel();
+    final livestreamPlayerVersionFuture =
+        hostAppService.getLivestreamPlayerVersion();
+    final shortVideoPlayerVersionFuture =
+        hostAppService.getShortVideoPlayerVersion();
+
+    final appLanguage = await appLanguageFuture;
+    final dataTrackingLevel = await dataTrackingLevelFuture;
+    final livestreamPlayerVersion = await livestreamPlayerVersionFuture;
+    final shortVideoPlayerVersion = await shortVideoPlayerVersionFuture;
+
+    if (!mounted) {
+      return;
+    }
+
+    setState(() {
+      _currentAppLanguage = appLanguage;
+      _dataTrackingLevel = dataTrackingLevel ?? DataTrackingLevel.all;
+      _livestreamPlayerVersion =
+          livestreamPlayerVersion ?? LivestreamPlayerDesignVersion.v1;
+      _shortVideoPlayerVersion =
+          shortVideoPlayerVersion ?? ShortVideoPlayerDesignVersion.v1;
     });
   }
 
@@ -377,6 +384,13 @@ class _MoreScreenState extends State<MoreScreen> {
                     seconds: 5,
                   ),
                 );
+              },
+            ),
+            _buildItem(
+              context: context,
+              title: "SDK State (App ID / Guest ID / PiP)",
+              onTap: () {
+                Navigator.of(context).pushNamed("/sdk_state");
               },
             ),
             _buildItem(

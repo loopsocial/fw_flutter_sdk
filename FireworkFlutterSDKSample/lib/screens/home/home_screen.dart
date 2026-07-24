@@ -660,6 +660,9 @@ class _HomeScreenState extends State<HomeScreen> {
             channel: channel,
             playlist: playlist,
             enablePictureInPicture: _enablePip,
+            videoFeedConfiguration: VideoFeedConfiguration(
+              enableAutoplay: true,
+            ),
           ),
         );
       case EmbedWidgetType.storyBlock:
@@ -700,6 +703,9 @@ class _HomeScreenState extends State<HomeScreen> {
             channel: channel,
             playlist: playlist,
             enablePictureInPicture: _enablePip,
+            circleStoryConfiguration: CircleStoryConfiguration(
+              enableAutoplay: true,
+            ),
           ),
         );
     }

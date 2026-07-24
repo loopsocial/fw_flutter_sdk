@@ -32,6 +32,10 @@ class HostAppService {
   bool enablePausePlayer = false;
   bool enableProductDetailsHydration = false;
 
+  /// When enabled, [LinkContentScreen] injects the SDK's app id / guest id /
+  /// PiP status into the link content URL as query parameters.
+  bool injectSDKStateIntoLinkContentUrl = false;
+
   Map<String, WidgetInfo> widgetInfoMap = {};
 
   HostAppService._();
