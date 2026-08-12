@@ -62,13 +62,10 @@
       </section>
       
 <section class="desc markdown">
-  <p>The callback is triggered when there are no items in the story block.
-The callback is triggered in the following cases:</p>
-<ol>
-<li>Loading successfully but the back end returns an empty list.</li>
-<li>The load failed and list is empty.
-onStoryBlockLoadFinished will also be triggered when onStoryBlockEmpty is triggered.</li>
-</ol>
+  <p>The callback is triggered when the feed loads successfully
+but there are no items in the story block.
+onStoryBlockLoadFinished will not be triggered in this case;
+the two callbacks are mutually exclusive.</p>
 </section>
 
       
@@ -103,7 +100,7 @@ onStoryBlockLoadFinished will also be triggered when onStoryBlockEmpty is trigge
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.29.1
+      2.29.2
   </span>
   
 </footer>
