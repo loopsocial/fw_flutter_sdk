@@ -220,7 +220,7 @@ class _PlayerDeckScreenState extends State<PlayerDeckScreen>
         context.watch<PlayerConfigurationState>().playerConfiguration;
 
     final deckWidget = PlayerDeck(
-      height: 301,
+      height: 420,
       source: source,
       channel: _channel,
       playlist: _playlist,

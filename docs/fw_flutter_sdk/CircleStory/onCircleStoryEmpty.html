@@ -62,13 +62,10 @@
       </section>
       
 <section class="desc markdown">
-  <p>The callback is triggered when there are no items in the circle story.
-The callback is triggered in the following cases:</p>
-<ol>
-<li>Loading successfully but the back end returns an empty list.</li>
-<li>The load failed and list is empty.
-onCircleStoryLoadFinished will also be triggered when onCircleStoryEmpty is triggered.</li>
-</ol>
+  <p>The callback is triggered when the feed loads successfully
+but there are no items in the circle story.
+onCircleStoryLoadFinished will not be triggered in this case;
+the two callbacks are mutually exclusive.</p>
 </section>
 
       
@@ -103,7 +100,7 @@ onCircleStoryLoadFinished will also be triggered when onCircleStoryEmpty is trig
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.29.1
+      2.29.2
   </span>
   
 </footer>

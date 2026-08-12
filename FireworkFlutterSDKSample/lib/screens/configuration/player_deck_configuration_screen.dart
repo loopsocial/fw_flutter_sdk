@@ -67,8 +67,6 @@ class _PlayerDeckConfigurationScreenState
                     onChanged: (v) =>
                         setState(() => _config.enableAutoplay = v),
                   ),
-                  _buildMuteStateSelector(),
-                  const Divider(height: 32),
                   _buildSectionHeader('Item Controls'),
                   _buildSwitchRow(
                     label: 'Show Play Button',
@@ -281,35 +279,6 @@ class _PlayerDeckConfigurationScreenState
               onSelected: (_) => onChanged(entry.value),
             );
           }).toList(),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildMuteStateSelector() {
-    return Row(
-      children: [
-        const Text('First Display Mute State (iOS):'),
-        const SizedBox(width: 12),
-        Expanded(
-          child: SegmentedButton<PlayerDeckMuteState>(
-            segments: const [
-              ButtonSegment(
-                value: PlayerDeckMuteState.defaultMuted,
-                label: Text('Muted', style: TextStyle(fontSize: 12)),
-              ),
-              ButtonSegment(
-                value: PlayerDeckMuteState.unmuted,
-                label: Text('Unmuted', style: TextStyle(fontSize: 12)),
-              ),
-            ],
-            selected: {
-              _config.onFirstDisplayMuteState ?? PlayerDeckMuteState.unmuted
-            },
-            onSelectionChanged: (s) {
-              setState(() => _config.onFirstDisplayMuteState = s.first);
-            },
-          ),
         ),
       ],
     );
