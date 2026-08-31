@@ -3111,6 +3111,46 @@ class S {
     );
   }
 
+  /// `Pinned message text color`
+  String get pinMessageTextColor {
+    return Intl.message(
+      'Pinned message text color',
+      name: 'pinMessageTextColor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `e.g. #FFFFFF`
+  String get pinMessageTextColorHint {
+    return Intl.message(
+      'e.g. #FFFFFF',
+      name: 'pinMessageTextColorHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pinned message background color`
+  String get pinMessageBackgroundColor {
+    return Intl.message(
+      'Pinned message background color',
+      name: 'pinMessageBackgroundColor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `e.g. #B3000000`
+  String get pinMessageBackgroundColorHint {
+    return Intl.message(
+      'e.g. #B3000000',
+      name: 'pinMessageBackgroundColorHint',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Chat shadow color`
   String get chatShadowColor {
     return Intl.message(

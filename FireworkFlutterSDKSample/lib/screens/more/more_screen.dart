@@ -10,7 +10,7 @@ import 'package:fw_flutter_sdk_example/utils/host_app_service.dart';
 import '../../generated/l10n.dart';
 import '../../widgets/fw_app_bar.dart';
 
-const fwNativeVersionOfAndroid = '6.34.4';
+const fwNativeVersionOfAndroid = '6.35.0';
 
 class MoreScreen extends StatefulWidget {
   const MoreScreen({
@@ -124,6 +124,20 @@ class _MoreScreenState extends State<MoreScreen> {
               title: S.of(context).circleStoryView,
               onTap: () {
                 Navigator.of(context).pushNamed("/circle_story");
+              },
+            ),
+            _buildItem(
+              context: context,
+              title: "Autoplay Test",
+              onTap: () {
+                Navigator.of(context).pushNamed("/autoplay_test");
+              },
+            ),
+            _buildItem(
+              context: context,
+              title: "Mute Logic Test",
+              onTap: () {
+                Navigator.of(context).pushNamed("/mute_logic_test");
               },
             ),
             _buildItem(

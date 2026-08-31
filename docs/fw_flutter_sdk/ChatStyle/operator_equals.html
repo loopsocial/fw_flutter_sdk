@@ -107,11 +107,10 @@ bool operator ==(Object other) {
     return true;
   }
 
-  if (other is ChatStyle) {
-    return textColor == other.textColor &amp;&amp; textShadow == other.textShadow;
-  }
-
-  return false;
+  return other is ChatStyle &amp;&amp;
+      textColor == other.textColor &amp;&amp;
+      textShadow == other.textShadow &amp;&amp;
+      pinMessageStyle == other.pinMessageStyle;
 }</code></pre>
 </section>
 
@@ -140,7 +139,7 @@ bool operator ==(Object other) {
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.29.4
+      2.30.0
   </span>
   
 </footer>

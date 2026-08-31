@@ -19,6 +19,8 @@ import 'package:fw_flutter_sdk_example/screens/embed/embed_secondary_screen.dart
 import 'package:fw_flutter_sdk_example/screens/link_content/link_content_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/feed/feed_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/log/log_screen.dart';
+import 'package:fw_flutter_sdk_example/screens/more/autoplay_test_screen.dart';
+import 'package:fw_flutter_sdk_example/screens/more/mute_logic_test_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/more/circle_thumbnails.dart';
 import 'package:fw_flutter_sdk_example/screens/more/circle_story_screen.dart';
 import 'package:fw_flutter_sdk_example/screens/more/enable_custom_cta_click_callback_screen.dart';
@@ -237,6 +239,16 @@ final routeMap = <String, FWRouteFactory>{
   '/embed_secondary': (settings) {
     return MaterialPageRoute(
       builder: (context) => const EmbedSecondaryScreen(),
+    );
+  },
+  '/autoplay_test': (settings) {
+    return MaterialPageRoute(
+      builder: (context) => const AutoplayTestScreen(),
+    );
+  },
+  '/mute_logic_test': (settings) {
+    return MaterialPageRoute(
+      builder: (context) => const MuteLogicTestScreen(),
     );
   },
 };
