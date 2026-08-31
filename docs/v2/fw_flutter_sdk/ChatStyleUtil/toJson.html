@@ -82,6 +82,16 @@
     }
   }
 
+  final pinMessageStyle = chatStyle.pinMessageStyle;
+  if (pinMessageStyle != null) {
+    json[&quot;pinMessageStyle&quot;] = {
+      if (pinMessageStyle.textColor != null)
+        &quot;textColor&quot;: pinMessageStyle.textColor!,
+      if (pinMessageStyle.backgroundColor != null)
+        &quot;backgroundColor&quot;: pinMessageStyle.backgroundColor!,
+    };
+  }
+
   return json;
 }</code></pre>
 </section>
@@ -111,7 +121,7 @@
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.29.4
+      2.30.0
   </span>
   
 </footer>
