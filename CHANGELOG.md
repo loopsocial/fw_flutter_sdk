@@ -1,5 +1,22 @@
 # CHANGELOG
 
+## [2.30.1]
+
+### Fixed
+
+- Bug fix and improvements
+
+## [2.30.0]
+
+### Added
+
+- Support up to 3 simultaneously pinned comments in livestreams (previously 1)
+- Render product units (variants / SKUs) as separate product cards when a specific unit is selected in the Business Portal
+- Show product subtitles on the in-player product card, the Player Deck product card, and the in-stream product details page, in addition to the product list item
+- Support host-managed one-tap Add to Cart on Player Deck product cards
+- Report shopping failures through `VideoShopping.onShoppingError` on both platforms (`missingProductId`, `missingProductUnitId`)
+- Support pinned message text and background colors through `ChatStyle`
+
 ## [2.29.5]
 
 ### Fixed
