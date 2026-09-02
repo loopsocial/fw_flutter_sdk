@@ -32,25 +32,25 @@ PODS:
     - GoogleUtilities/UserDefaults (~> 8.1)
     - nanopb (~> 3.30910.0)
     - PromisesSwift (~> 2.1)
-  - FireworkVideo (1.46.0)
+  - FireworkVideo (1.45.2)
   - FireworkVideoIVSSupport (0.9.9):
     - AmazonIVSPlayer (= 1.38.0)
   - Flutter (1.0.0)
   - fw_flutter_sdk (1.0.0):
-    - FireworkVideo (= 1.46.0)
+    - FireworkVideo (= 1.45.2)
     - Flutter
   - GoogleDataTransport (10.1.1):
     - nanopb (~> 3.30910.0)
     - PromisesObjC (~> 2.4)
-  - GoogleUtilities/Environment (8.1.3):
+  - GoogleUtilities/Environment (8.1.2):
     - GoogleUtilities/Privacy
-  - GoogleUtilities/Logger (8.1.3):
+  - GoogleUtilities/Logger (8.1.2):
     - GoogleUtilities/Environment
     - GoogleUtilities/Privacy
-  - "GoogleUtilities/NSData+zlib (8.1.3)":
+  - "GoogleUtilities/NSData+zlib (8.1.2)":
     - GoogleUtilities/Privacy
-  - GoogleUtilities/Privacy (8.1.3)
-  - GoogleUtilities/UserDefaults (8.1.3):
+  - GoogleUtilities/Privacy (8.1.2)
+  - GoogleUtilities/UserDefaults (8.1.2):
     - GoogleUtilities/Logger
     - GoogleUtilities/Privacy
   - LookinServer (1.2.8):
@@ -124,12 +124,12 @@ SPEC CHECKSUMS:
   FirebaseInstallations: 317270fec08a5d418fdbc8429282238cab3ac843
   FirebaseRemoteConfigInterop: 1c6135e8a094cc6368949f5faeeca7ee8948b8aa
   FirebaseSessions: b9a92c1c51bbb81e78fc3142cda6d925d700f8e7
-  FireworkVideo: 37d10275220b97cb9a35c102890dee849da15ad3
+  FireworkVideo: 2995301e806072904cbe76dfd7f8ba55718fe17b
   FireworkVideoIVSSupport: 872be4e6863b618967cb7b8731c5c62df877d27e
-  Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
-  fw_flutter_sdk: 3838503ccaf155cbdb0e064f7fa3906457d3e99d
+  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  fw_flutter_sdk: df7087bba52dcaf82c7e11cde1b54d60abdee1fa
   GoogleDataTransport: a24e58982ab3ba2f64d79613e027fe7f57e88539
-  GoogleUtilities: 4e0c2ad9fa0d0d18b5c4df8bf57b461cba35b0bb
+  GoogleUtilities: 766ace00c6b10d8148408f329d10c4f051931850
   LookinServer: 1b2b61c6402ae29fa22182d48f5cd067b4e99e80
   nanopb: fad817b59e0457d11a5dfbde799381cd727c1275
   path_provider_foundation: 080d55be775b7414fd5a5ef3ac137b97b097e564

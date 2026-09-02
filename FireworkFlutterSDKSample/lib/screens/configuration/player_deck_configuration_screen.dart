@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../generated/l10n.dart';
-import '../../models/player_deck_add_to_cart_test_result.dart';
 import '../../states/player_deck_configuration_state.dart';
-import '../../utils/host_app_service.dart';
 import '../../widgets/fw_app_bar.dart';
 
 class PlayerDeckConfigurationScreen extends StatefulWidget {
@@ -19,8 +17,6 @@ class PlayerDeckConfigurationScreen extends StatefulWidget {
 class _PlayerDeckConfigurationScreenState
     extends State<PlayerDeckConfigurationScreen> {
   late PlayerDeckConfiguration _config;
-  late PlayerDeckAddToCartTestResult _addToCartTestResult;
-  late double _addToCartTestDelaySeconds;
 
   @override
   void initState() {
@@ -29,12 +25,6 @@ class _PlayerDeckConfigurationScreenState
         .read<PlayerDeckConfigurationState>()
         .playerDeckConfiguration
         .deepCopy();
-    _addToCartTestResult =
-        HostAppService.getInstance().playerDeckAddToCartTestResult;
-    _addToCartTestDelaySeconds = HostAppService.getInstance()
-        .playerDeckAddToCartTestDelay
-        .inSeconds
-        .toDouble();
   }
 
   @override
@@ -110,16 +100,6 @@ class _PlayerDeckConfigurationScreenState
                     onChanged: (v) =>
                         setState(() => _config.enableFullScreen = v),
                   ),
-                  const Divider(height: 32),
-                  _buildSectionHeader('Shopping'),
-                  _buildSwitchRow(
-                    label: 'Show Add to Cart Button',
-                    value: _config.showAddToCartButton ?? false,
-                    onChanged: (v) =>
-                        setState(() => _config.showAddToCartButton = v),
-                  ),
-                  if (_config.showAddToCartButton ?? false)
-                    _buildAddToCartTestResultSelector(),
                   const Divider(height: 32),
                   _buildSectionHeader('Badges'),
                   _buildSwitchRow(
@@ -271,52 +251,6 @@ class _PlayerDeckConfigurationScreenState
     );
   }
 
-  // Host-side test aid: lets QA pick what the example app reports back for a
-  // deck Add to Cart tap without depending on the product existing in Shopify.
-  Widget _buildAddToCartTestResultSelector() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Text('Add to Cart Result (host app)',
-            style: TextStyle(fontSize: 14)),
-        const SizedBox(height: 4),
-        Wrap(
-          spacing: 8,
-          children: PlayerDeckAddToCartTestResult.values.map((result) {
-            return ChoiceChip(
-              label: Text(result.label),
-              selected: _addToCartTestResult == result,
-              onSelected: (_) => setState(() => _addToCartTestResult = result),
-            );
-          }).toList(),
-        ),
-        const SizedBox(height: 4),
-        const Text(
-          'Shopify looks the product up in the test store; '
-          'Always Success / Always Failure answer without Shopify; '
-          'No Response never answers so the SDK times out after 10 s '
-          'and restores the button without a result.',
-          style: TextStyle(fontSize: 12, color: Colors.grey),
-        ),
-        if (_addToCartTestResult.usesDelay) ...[
-          const SizedBox(height: 8),
-          _buildSliderRow(
-            label: 'Add to Cart Delay (seconds)',
-            value: _addToCartTestDelaySeconds,
-            min: 0,
-            max: 15,
-            onChanged: (v) => setState(() => _addToCartTestDelaySeconds = v),
-          ),
-          const Text(
-            'Simulated request time before the forced result is reported. '
-            'Above 10 seconds the SDK times out and restores the button first.',
-            style: TextStyle(fontSize: 12, color: Colors.grey),
-          ),
-        ],
-      ],
-    );
-  }
-
   Widget _buildSubtitleColorSelector({
     required String label,
     required String current,
@@ -385,21 +319,12 @@ class _PlayerDeckConfigurationScreenState
 
   void _onReset() {
     context.read<PlayerDeckConfigurationState>().reset();
-    HostAppService.getInstance()
-      ..playerDeckAddToCartTestResult =
-          HostAppService.defaultPlayerDeckAddToCartTestResult
-      ..playerDeckAddToCartTestDelay =
-          HostAppService.defaultPlayerDeckAddToCartTestDelay;
     Navigator.pop(context);
   }
 
   void _onSave() {
     context.read<PlayerDeckConfigurationState>().playerDeckConfiguration =
         _config;
-    HostAppService.getInstance()
-      ..playerDeckAddToCartTestResult = _addToCartTestResult
-      ..playerDeckAddToCartTestDelay =
-          Duration(seconds: _addToCartTestDelaySeconds.round());
     Navigator.pop(context);
   }
 }

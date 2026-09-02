@@ -134,10 +134,6 @@ class _MyAppState extends State<MyApp> {
 
     FireworkSDK.getInstance().shopping.onShoppingCTA =
         HostAppService.getInstance().onShopNow;
-    FireworkSDK.getInstance().shopping.onPlayerDeckAddToCart =
-        HostAppService.getInstance().onPlayerDeckAddToCart;
-    FireworkSDK.getInstance().shopping.onShoppingError =
-        HostAppService.getInstance().onShoppingError;
     FireworkSDK.getInstance().shopping.onUpdateProductDetails =
         HostAppService.getInstance().onUpdateProductDetails;
     FireworkSDK.getInstance().shopping.onCustomClickCartIcon =

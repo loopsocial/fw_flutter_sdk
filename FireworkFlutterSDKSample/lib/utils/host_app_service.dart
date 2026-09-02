@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
@@ -6,8 +5,6 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:fw_flutter_sdk_example/constants/fw_example_event_name.dart';
 import 'package:fw_flutter_sdk_example/models/app_language_info.dart';
 import 'package:fw_flutter_sdk_example/models/cart_item.dart';
-import 'package:fw_flutter_sdk_example/models/player_deck_add_to_cart_test_result.dart';
-import 'package:fw_flutter_sdk_example/models/shopify_product.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:fw_flutter_sdk/fw_flutter_sdk.dart';
 import 'package:fw_flutter_sdk_example/utils/fw_example_logger_util.dart';
@@ -34,19 +31,6 @@ class HostAppService {
 
   bool enablePausePlayer = false;
   bool enableProductDetailsHydration = false;
-
-  /// How [onPlayerDeckAddToCart] answers the SDK. Set from the Player Deck
-  /// configuration screen so QA can force a result without Shopify data.
-  PlayerDeckAddToCartTestResult playerDeckAddToCartTestResult =
-      defaultPlayerDeckAddToCartTestResult;
-
-  /// Simulated request latency for the forced Add to Cart results, so the
-  /// deck's loading state is visible.
-  Duration playerDeckAddToCartTestDelay = defaultPlayerDeckAddToCartTestDelay;
-
-  static const defaultPlayerDeckAddToCartTestResult =
-      PlayerDeckAddToCartTestResult.shopify;
-  static const defaultPlayerDeckAddToCartTestDelay = Duration(seconds: 2);
 
   /// When enabled, [LinkContentScreen] injects the SDK's app id / guest id /
   /// PiP status into the link content URL as query parameters.
@@ -140,12 +124,16 @@ class HostAppService {
         return onShopNow(event);
       }
 
-      final cartItem = _createCartItem(
-        product: shopifyProduct,
-        productId: event.productId,
-        unitId: event.unitId,
-      );
-      if (cartItem == null) {
+      final shopifyProductVariants = shopifyProduct.variants ?? [];
+
+      final variantList = shopifyProductVariants
+          .where(
+            (element) =>
+                ShopifyClient.getInstance().decodeId(element.encodedId) ==
+                event.unitId,
+          )
+          .toList();
+      if (variantList.isEmpty) {
         await event.ctaHandler?.complete(
           ShoppingCTAResult(
             res: ShoppingCTARes.fail,
@@ -155,6 +143,28 @@ class HostAppService {
         return null;
       }
 
+      final variant = variantList.first;
+
+      final cartItem = CartItem(
+        productId: event.productId,
+        unitId: event.unitId,
+      );
+      cartItem.title = shopifyProduct.title;
+      cartItem.subTitle = variant.title;
+      if (variant.priceV2 != null) {
+        final priceV2 = variant.priceV2!;
+        if (priceV2["amount"] is String && priceV2["currencyCode"] is String) {
+          cartItem.amount = priceV2["amount"] as String;
+          cartItem.currencyCode = priceV2["currencyCode"] as String;
+        }
+      }
+
+      if (variant.image != null) {
+        final image = variant.image!;
+        if (image["src"] is String) {
+          cartItem.imageURL = image["src"] as String;
+        }
+      }
       await _addCartItem(cartItem);
       await event.ctaHandler?.complete(
         ShoppingCTAResult(
@@ -172,127 +182,6 @@ class HostAppService {
       );
     }
     return null;
-  }
-
-  Future<PlayerDeckAddToCartResult> onPlayerDeckAddToCart(
-    PlayerDeckAddToCartEvent event,
-  ) async {
-    final video = event.video;
-    FWExampleLoggerUtil.log(
-      '[Analytics] [Shopping] onPlayerDeckAddToCart '
-      'feedId: ${video.feedId} videoId: ${video.videoId} '
-      'videoType: ${video.videoType} '
-      'liveStreamStatus: ${video.liveStreamStatus} '
-      'productId: ${event.productId} unitId: ${event.unitId} '
-      'url: ${event.url} '
-      'testResult: ${playerDeckAddToCartTestResult.name} '
-      'testDelay: ${playerDeckAddToCartTestDelay.inMilliseconds}ms',
-      shouldCache: true,
-    );
-
-    if (playerDeckAddToCartTestResult.usesDelay) {
-      await Future<void>.delayed(playerDeckAddToCartTestDelay);
-    }
-
-    switch (playerDeckAddToCartTestResult) {
-      case PlayerDeckAddToCartTestResult.timeout:
-        // Leave the request unanswered on purpose: the native SDK releases the
-        // card after its 10 s watchdog, which is the path under test. The
-        // pending platform call is simply never completed.
-        FWExampleLoggerUtil.log(
-          'onPlayerDeckAddToCart: not answering (No Response mode)',
-          shouldCache: true,
-        );
-        return Completer<PlayerDeckAddToCartResult>().future;
-      case PlayerDeckAddToCartTestResult.success:
-        // Bypass Shopify but still touch the local cart so the cart badge and
-        // cart screen can be verified alongside the deck button state. Reuse
-        // an existing entry so a real Shopify item is not replaced by a stub.
-        final existing = (await getAllCartItems()).where(
-          (e) => e.productId == event.productId && e.unitId == event.unitId,
-        );
-        await _addCartItem(
-          existing.isNotEmpty
-              ? existing.first
-              : (CartItem(productId: event.productId, unitId: event.unitId)
-                ..title = 'Deck product ${event.productId}'
-                ..subTitle = 'Unit ${event.unitId}'),
-        );
-        EasyLoading.showToast('Add to cart successfully (forced)');
-        return PlayerDeckAddToCartResult.success;
-      case PlayerDeckAddToCartTestResult.failure:
-        EasyLoading.showToast('Add to cart failed (forced)');
-        return PlayerDeckAddToCartResult.failure;
-      case PlayerDeckAddToCartTestResult.shopify:
-        break;
-    }
-
-    try {
-      final product =
-          await ShopifyClient.getInstance().fetchProduct(event.productId);
-      if (product == null) {
-        return PlayerDeckAddToCartResult.failure;
-      }
-
-      final cartItem = _createCartItem(
-        product: product,
-        productId: event.productId,
-        unitId: event.unitId,
-      );
-      if (cartItem == null) {
-        return PlayerDeckAddToCartResult.failure;
-      }
-
-      await _addCartItem(cartItem);
-      EasyLoading.showToast('Add to cart successfully');
-      return PlayerDeckAddToCartResult.success;
-    } catch (error) {
-      FWExampleLoggerUtil.log(
-        'onPlayerDeckAddToCart error: $error',
-        shouldCache: true,
-      );
-      return PlayerDeckAddToCartResult.failure;
-    }
-  }
-
-  void onShoppingError(FWError error) {
-    FWExampleLoggerUtil.log(
-      '[Shopping] onShoppingError name: ${error.name} reason: ${error.reason}',
-      shouldCache: true,
-    );
-    EasyLoading.showToast('Shopping error: ${error.reason}');
-  }
-
-  CartItem? _createCartItem({
-    required ShopifyProduct product,
-    required String productId,
-    required String unitId,
-  }) {
-    final variants = product.variants ?? [];
-    final matchingVariants = variants.where(
-      (variant) =>
-          ShopifyClient.getInstance().decodeId(variant.encodedId) == unitId,
-    );
-    if (matchingVariants.isEmpty) {
-      return null;
-    }
-
-    final variant = matchingVariants.first;
-    final cartItem = CartItem(productId: productId, unitId: unitId)
-      ..title = product.title
-      ..subTitle = variant.title;
-    final price = variant.priceV2;
-    if (price?["amount"] is String && price?["currencyCode"] is String) {
-      cartItem
-        ..amount = price!["amount"] as String
-        ..currencyCode = price["currencyCode"] as String;
-    }
-
-    final image = variant.image;
-    if (image?["src"] is String) {
-      cartItem.imageURL = image!["src"] as String;
-    }
-    return cartItem;
   }
 
   Future<void> onShoppingSecondaryCTA(ShoppingSecondaryCTAEvent? event) async {

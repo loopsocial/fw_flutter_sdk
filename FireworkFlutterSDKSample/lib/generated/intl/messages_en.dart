@@ -346,14 +346,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "percentage": MessageLookupByLibrary.simpleMessage("percentage"),
         "pictureInPicture":
             MessageLookupByLibrary.simpleMessage("Picture-in-Picture"),
-        "pinMessageBackgroundColor": MessageLookupByLibrary.simpleMessage(
-            "Pinned message background color"),
-        "pinMessageBackgroundColorHint":
-            MessageLookupByLibrary.simpleMessage("e.g. #B3000000"),
-        "pinMessageTextColor":
-            MessageLookupByLibrary.simpleMessage("Pinned message text color"),
-        "pinMessageTextColorHint":
-            MessageLookupByLibrary.simpleMessage("e.g. #FFFFFF"),
         "play": MessageLookupByLibrary.simpleMessage("Play"),
         "playIconWidth":
             MessageLookupByLibrary.simpleMessage("Play icon width"),

@@ -56,11 +56,6 @@ class _CartWidgetState extends State<CartWidget> {
             imageUrl: item.imageURL ?? "",
             width: 80,
             height: 80,
-            errorWidget: (_, __, ___) => const SizedBox(
-              width: 80,
-              height: 80,
-              child: Icon(Icons.image_not_supported_outlined),
-            ),
           ),
           const SizedBox(
             width: 15,

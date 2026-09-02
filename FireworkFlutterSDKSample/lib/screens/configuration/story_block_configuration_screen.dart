@@ -10,7 +10,6 @@ import '../../generated/l10n.dart';
 import '../../utils/validation_util.dart';
 import '../../widgets/fw_app_bar.dart';
 import '../../widgets/fw_text_form_field.dart';
-import '../../widgets/pin_message_style_form.dart';
 
 class StoryBlockConfigurationScreen extends StatefulWidget {
   const StoryBlockConfigurationScreen({Key? key}) : super(key: key);
@@ -220,20 +219,6 @@ class _StoryBlockConfigurationScreenState
                     child: _buildChatShadowOffsetY(context),
                   ),
                 ],
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              PinMessageStyleForm(
-                initialStyle: _initConfig.chatStyle?.pinMessageStyle,
-                onTextColorSaved: (value) => _savePinMessageStyleColor(
-                  value,
-                  (style, color) => style.textColor = color,
-                ),
-                onBackgroundColorSaved: (value) => _savePinMessageStyleColor(
-                  value,
-                  (style, color) => style.backgroundColor = color,
-                ),
               ),
               const SizedBox(
                 height: 20,
@@ -1716,21 +1701,6 @@ class _StoryBlockConfigurationScreenState
         )
       ],
     );
-  }
-
-  void _savePinMessageStyleColor(
-    String? value,
-    void Function(PinMessageStyle style, String? color) update,
-  ) {
-    final color = (value ?? '').isEmpty ? null : value;
-    final currentStyle = _resultConfig.chatStyle?.pinMessageStyle;
-    if (color == null && currentStyle == null) {
-      return;
-    }
-
-    final chatStyle = _resultConfig.chatStyle ??= ChatStyle();
-    final pinMessageStyle = chatStyle.pinMessageStyle ??= PinMessageStyle();
-    update(pinMessageStyle, color);
   }
 
   Widget _buildScrollDirectionSegmentedControl(BuildContext context) {
