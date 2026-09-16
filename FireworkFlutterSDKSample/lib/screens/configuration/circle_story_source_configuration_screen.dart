@@ -188,7 +188,7 @@ class _CircleStorySourceConfigurationScreenState
         ),
         const SizedBox(height: 8),
         DropdownButtonFormField<VideoFeedSource>(
-          value: _selectedSource,
+          initialValue: _selectedSource,
           decoration: const InputDecoration(
             border: OutlineInputBorder(),
             contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),

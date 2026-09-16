@@ -137,7 +137,7 @@ class HostAppService {
       FWExampleLoggerUtil.log(
           "fetchProduct $shopifyProduct ${shopifyProduct?.encodedId} ${shopifyProduct?.variants?.first.encodedId}");
       if (shopifyProduct == null) {
-        return onShopNow(event);
+        return await onShopNow(event);
       }
 
       final cartItem = _createCartItem(
