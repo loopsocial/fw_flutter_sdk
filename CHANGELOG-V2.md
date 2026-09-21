@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.30.3]
+
+### Fixed
+
+- Bug fix and improvements
+
 ## [2.30.2]
 
 ### Fixed
