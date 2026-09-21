@@ -32,12 +32,12 @@ PODS:
     - GoogleUtilities/UserDefaults (~> 8.1)
     - nanopb (~> 3.30910.0)
     - PromisesSwift (~> 2.1)
-  - FireworkVideo (1.46.2)
+  - FireworkVideo (1.46.3)
   - FireworkVideoIVSSupport (0.9.9):
     - AmazonIVSPlayer (= 1.38.0)
   - Flutter (1.0.0)
   - fw_flutter_sdk (1.0.0):
-    - FireworkVideo (= 1.46.2)
+    - FireworkVideo (= 1.46.3)
     - Flutter
   - GoogleDataTransport (10.1.1):
     - nanopb (~> 3.30910.0)
@@ -124,10 +124,10 @@ SPEC CHECKSUMS:
   FirebaseInstallations: f70a49eed611f5602f373e40974b3b01556ac217
   FirebaseRemoteConfigInterop: 90659b3cac8f6de884f2d930fbdbeb711533e142
   FirebaseSessions: 39bcaa7c16b5d8b91d58f495f29ce2988d2f915c
-  FireworkVideo: fbf85ed964fdcb35ad0c435f29c7787847e3a155
+  FireworkVideo: 946ae4ecb6a8d57d762e6ca8661dde0733a4c0ae
   FireworkVideoIVSSupport: 872be4e6863b618967cb7b8731c5c62df877d27e
   Flutter: 71a624a5bc0c04062bf19101d501e466baf2fb47
-  fw_flutter_sdk: aba36c4e941fee269452c4f1d0c66f40ef190618
+  fw_flutter_sdk: 87c8614cadebe0da0f82efc6e7b90f0eab913f16
   GoogleDataTransport: a24e58982ab3ba2f64d79613e027fe7f57e88539
   GoogleUtilities: 4e0c2ad9fa0d0d18b5c4df8bf57b461cba35b0bb
   LookinServer: 1b2b61c6402ae29fa22182d48f5cd067b4e99e80

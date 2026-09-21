@@ -30,6 +30,22 @@ rootProject.buildDir = '../build'
 subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"
 }
+// Flutter 3.47's Android embedding pulls androidx.exifinterface 1.4.1, which
+// requires minSdk 21, while some plugin packages still declare minSdk 19 and so
+// fail to merge their manifests. Raise those modules to the floor the embedding
+// needs. Keep it at 21 rather than the app's own minSdk: a higher value turns
+// the plugins' own SDK_INT checks into ObsoleteSdkInt lint errors.
+def pluginMinSdkFloor = 21
+subprojects {
+    afterEvaluate { subproject ->
+        def androidExtension = subproject.extensions.findByName('android')
+        if (androidExtension != null
+                && androidExtension.defaultConfig.minSdkVersion?.apiLevel < pluginMinSdkFloor) {
+            androidExtension.defaultConfig.minSdkVersion pluginMinSdkFloor
+        }
+    }
+}
+
 subprojects {
     project.evaluationDependsOn(':app')
 }
