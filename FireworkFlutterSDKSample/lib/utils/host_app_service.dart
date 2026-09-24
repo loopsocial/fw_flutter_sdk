@@ -69,7 +69,9 @@ class HostAppService {
     final customProductCTATitleKey = customProductCTA?.titleKey ?? "";
     final customProductCTATitle = customProductCTA?.title ?? "";
     FWExampleLoggerUtil.log(
-      "[Analytics] [Shopping] onShopNow feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus customProductCTAUrl: $customProductCTAUrl customProductCTATitleKey: $customProductCTATitleKey customProductCTATitle: $customProductCTATitle",
+      "[Analytics] [Shopping] onShopNow feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus customProductCTAUrl: $customProductCTAUrl customProductCTATitleKey: $customProductCTATitleKey customProductCTATitle: $customProductCTATitle "
+      "fwProductId: ${event?.fwProductId} "
+      "productId: ${event?.productId} unitId: ${event?.unitId}",
       shouldCache: true,
     );
     final widgetInfo = HostAppService.getInstance().widgetInfoMap[feedId];
@@ -117,7 +119,9 @@ class HostAppService {
     final customProductCTATitleKey = customProductCTA?.titleKey ?? "";
     final customProductCTATitle = customProductCTA?.title ?? "";
     FWExampleLoggerUtil.log(
-      "[Analytics] [Shopping] onAddToCart feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus customProductCTAUrl: $customProductCTAUrl customProductCTATitleKey: $customProductCTATitleKey customProductCTATitle: $customProductCTATitle",
+      "[Analytics] [Shopping] onAddToCart feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus customProductCTAUrl: $customProductCTAUrl customProductCTATitleKey: $customProductCTATitleKey customProductCTATitle: $customProductCTATitle "
+      "fwProductId: ${event?.fwProductId} "
+      "productId: ${event?.productId} unitId: ${event?.unitId}",
       shouldCache: true,
     );
     await event?.ctaHandler?.showLoader();
@@ -306,7 +310,9 @@ class HostAppService {
     final customProductCTATitleKey = customProductCTA?.titleKey ?? "";
     final customProductCTATitle = customProductCTA?.title ?? "";
     FWExampleLoggerUtil.log(
-      "[Analytics] [Shopping] onShoppingSecondaryCTA feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus customProductCTAUrl: $customProductCTAUrl customProductCTATitleKey: $customProductCTATitleKey customProductCTATitle: $customProductCTATitle",
+      "[Analytics] [Shopping] onShoppingSecondaryCTA feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus customProductCTAUrl: $customProductCTAUrl customProductCTATitleKey: $customProductCTATitleKey customProductCTATitle: $customProductCTATitle "
+      "fwProductId: ${event?.fwProductId} "
+      "productId: ${event?.productId} unitId: ${event?.unitId}",
       shouldCache: true,
     );
     await startFloatingPlayerOrClosePlayer();
@@ -534,7 +540,9 @@ class HostAppService {
     final videoType = event?.video.videoType;
     final liveStreamStatus = event?.video.liveStreamStatus;
     FWExampleLoggerUtil.log(
-      "[Analytics] [Shopping] onCustomTapProductCard feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
+      "[Analytics] [Shopping] onCustomTapProductCard feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus "
+      "fwProductId: ${event?.fwProductId} "
+      "productId: ${event?.productId} unitId: ${event?.unitId}",
       shouldCache: true,
     );
 
@@ -551,7 +559,9 @@ class HostAppService {
     final videoType = event?.video.videoType;
     final liveStreamStatus = event?.video.liveStreamStatus;
     FWExampleLoggerUtil.log(
-      "[Analytics] [Shopping] onClickProduct feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus",
+      "[Analytics] [Shopping] onClickProduct feedId: $feedId videoId: $videoId widgetType: $widgetType videoType: $videoType liveStreamStatus: $liveStreamStatus "
+      "fwProductId: ${event?.fwProductId} "
+      "productId: ${event?.productId} unitId: ${event?.unitId}",
       shouldCache: true,
     );
   }
