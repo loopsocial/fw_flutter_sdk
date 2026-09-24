@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [2.31.0]
+
+### Added
+
+- Added playback-speed and 10-second skip controls for livestream replays and longer videos
+
+### Changed
+
+- [iOS] Improved the "Remind Me" experience for livestream trailers, making it easier for viewers to add events to their calendar
+
 ## [2.30.3]
 
 ### Fixed
