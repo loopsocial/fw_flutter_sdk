@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [2.31.1]
+
+### Added
+
+- Added `showProductCard`, `showMoreButton` and `showCaption` to `VideoPlayerConfiguration` and `StoryBlockConfiguration` to control product card, more button and caption visibility in the video player
+- Added `showProductCardInCompact` to `StoryBlockConfiguration` to control product card visibility in embedded (compact) mode separately from the fullscreen player
+
 ## [2.31.0]
 
 ### Added

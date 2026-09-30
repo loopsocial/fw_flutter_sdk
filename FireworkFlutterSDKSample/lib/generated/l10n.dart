@@ -3091,6 +3091,96 @@ class S {
     );
   }
 
+  /// `Product card`
+  String get showPlayerProductCard {
+    return Intl.message(
+      'Product card',
+      name: 'showPlayerProductCard',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `More button`
+  String get showPlayerMoreButton {
+    return Intl.message(
+      'More button',
+      name: 'showPlayerMoreButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Caption`
+  String get showPlayerCaption {
+    return Intl.message(
+      'Caption',
+      name: 'showPlayerCaption',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Product card in compact`
+  String get showProductCardInCompact {
+    return Intl.message(
+      'Product card in compact',
+      name: 'showProductCardInCompact',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Visibility`
+  String get visibilityOptions {
+    return Intl.message(
+      'Visibility',
+      name: 'visibilityOptions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Default`
+  String get optionalBoolDefault {
+    return Intl.message(
+      'Default',
+      name: 'optionalBoolDefault',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Default (follow player)`
+  String get optionalBoolFollowPlayer {
+    return Intl.message(
+      'Default (follow player)',
+      name: 'optionalBoolFollowPlayer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Show`
+  String get optionalBoolShow {
+    return Intl.message(
+      'Show',
+      name: 'optionalBoolShow',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hide`
+  String get optionalBoolHide {
+    return Intl.message(
+      'Hide',
+      name: 'optionalBoolHide',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Chat text color`
   String get chatTextColor {
     return Intl.message(

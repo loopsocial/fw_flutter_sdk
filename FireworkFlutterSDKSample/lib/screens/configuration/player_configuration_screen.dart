@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 import '../../utils/validation_util.dart';
 import '../../widgets/fw_app_bar.dart';
 import '../../widgets/fw_text_form_field.dart';
+import '../../widgets/optional_bool_segmented_control.dart';
 import '../../widgets/pin_message_style_form.dart';
 
 class PlayerConfigurationScreen extends StatefulWidget {
@@ -303,6 +304,10 @@ class _PlayerConfigurationScreenState extends State<PlayerConfigurationScreen> {
                   ),
                 ],
               ),
+              const SizedBox(
+                height: 20,
+              ),
+              _buildVisibilityOptions(context),
               const SizedBox(
                 height: 20,
               ),
@@ -1185,6 +1190,55 @@ class _PlayerConfigurationScreenState extends State<PlayerConfigurationScreen> {
       title: Text(
         S.of(context).showCloseButtonWhenPiPEnabled,
       ),
+    );
+  }
+
+  Widget _buildVisibilityOptions(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(
+          S.of(context).visibilityOptions,
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        OptionalBoolSegmentedControl(
+          title: S.of(context).showPlayerProductCard,
+          value: _resultConfig.showProductCard,
+          onChanged: (value) {
+            setState(() {
+              _resultConfig.showProductCard = value;
+            });
+          },
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        OptionalBoolSegmentedControl(
+          title: S.of(context).showPlayerMoreButton,
+          value: _resultConfig.showMoreButton,
+          onChanged: (value) {
+            setState(() {
+              _resultConfig.showMoreButton = value;
+            });
+          },
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        OptionalBoolSegmentedControl(
+          title: S.of(context).showPlayerCaption,
+          value: _resultConfig.showCaption,
+          onChanged: (value) {
+            setState(() {
+              _resultConfig.showCaption = value;
+            });
+          },
+        ),
+      ],
     );
   }
 

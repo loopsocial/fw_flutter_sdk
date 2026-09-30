@@ -133,7 +133,11 @@ bool operator ==(Object other) {
         enableAutopause == other.enableAutopause &amp;&amp;
         enableFullScreen == other.enableFullScreen &amp;&amp;
         enableSmallSizeInCompact == other.enableSmallSizeInCompact &amp;&amp;
-        horizontalLayout == other.horizontalLayout;
+        horizontalLayout == other.horizontalLayout &amp;&amp;
+        showProductCard == other.showProductCard &amp;&amp;
+        showMoreButton == other.showMoreButton &amp;&amp;
+        showCaption == other.showCaption &amp;&amp;
+        showProductCardInCompact == other.showProductCardInCompact;
   }
 
   return false;
@@ -165,7 +169,7 @@ bool operator ==(Object other) {
 <footer>
   <span class="no-break">
     fw_flutter_sdk
-      2.31.0
+      2.31.1
   </span>
   
 </footer>
